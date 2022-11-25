@@ -1,0 +1,12 @@
+@mixin btn($bgc,$linec){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $bgc;
+    border: 1px solid $linec;
+    border-radius: 10px;
+    width: 186px;
+    height: 48px;
+    padding: 10px 50px;
+    font-size: 20px;
+}
