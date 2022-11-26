@@ -1,10 +1,10 @@
 <template lang="html">
   <div>
-    <tabs>
-      <tab title="Tab 1">YEAH</tab>
-      <tab title="Tab 2">what's up </tab>
-      <tab title="Tab 3">大家加油~</tab>
-    </tabs>
+    <Tabs>
+      <Tab title="Tab 1">YEAH</Tab>
+      <Tab title="Tab 2">what's up </Tab>
+      <Tab title="Tab 3">大家加油~</Tab>
+    </Tabs>
   </div>
 </template>
 <script>
