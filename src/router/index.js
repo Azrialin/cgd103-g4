@@ -20,6 +20,11 @@ const routes = [
     name: 'membership',
     component: () => import('../views/MembershipView.vue')
   },
+  {
+    path: '/header',
+    name: 'header',
+    component: () => import('../views/HeaderView.vue')
+  },
 ]
 
 const router = createRouter({
