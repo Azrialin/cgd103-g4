@@ -1,9 +1,9 @@
 <template lang="html">
   <div>
     <tabs>
-      <tab title="Tab 1">Hello From Tab 1</tab>
-      <tab title="Tab 2">Hello From Tab 2</tab>
-      <tab title="Tab 3">Hello From Tab 3</tab>
+      <tab title="Tab 1">YEAH</tab>
+      <tab title="Tab 2">what's up </tab>
+      <tab title="Tab 3">大家加油~</tab>
     </tabs>
   </div>
 </template>
