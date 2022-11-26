@@ -18,11 +18,12 @@ export default {
 }
 </script>
 
-<style scoped >
+<style scoped lang="scss">
+@import "../assets/scss/base/color.scss";
     .tab-content{
         min-height: 400px;
         padding: 20px;
         border-radius: 5px;
-        border:1px solid #BC955C;
+        border:1px solid $front_color_main;
     }
 </style>

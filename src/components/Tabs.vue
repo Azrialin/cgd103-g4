@@ -25,8 +25,8 @@ export default {
 }
 </script>
 
-<style scoped >
-
+<style scoped lang="scss">
+@import "../assets/scss/base/color.scss";
 .tabs{
   max-width: 400px;
   margin: 0 auto;
@@ -44,18 +44,18 @@ export default {
   text-align:center;
   padding: 10px 20px;
   /* margin-right: 10px; */
-  border: 1px solid #D7BF9D;
+  border: 1px solid $front_color_active;
   border-radius: 5px 5px 0 0;
   cursor: pointer;
   transition: 0.4s all ease-out;
   background: white;
-  color: #888888;
+  color: $color_888;
 }
 
 .tabs_header li.selected{
-    border:1px solid #BC955C;
+    border:1px solid $front_color_main;
     border-bottom: 1px solid white;
-    color: #444444;
+    color: $color_444;
 }
   
 </style>
