@@ -10,3 +10,163 @@
     padding: 10px 50px;
     font-size: 20px;
 }
+
+// class 名稱
+// .btn-blue        按鈕:藍色
+// .btn-blue_2nd    按鈕:白底藍框
+// .btn-gold        按鈕:土色
+// .btn-gold_2nd    按鈕:白底土框
+// .btn-success     按鈕:綠色
+// .btn-success_2nd 按鈕:白底綠框
+// .btn-danger      按鈕:紅色
+// .btn-danger_2nd  按鈕:白底紅框
+
+// 藍色系
+$clr_blue_L0: #2D3740;
+$clr_blue_L1: #0C3B59; // main
+$clr_blue_L2: #4F6573;
+$clr_blue_L3: #A3AFBF;
+$clr_blue_L4: #E2E9F2; 
+
+// 土色系
+$clr_gold_L0: #CC8D1B;
+$clr_gold_L1: #BC955C; // main
+$clr_gold_L2: #D7BF9D;
+$clr_gold_L3: #EBDFCE;
+
+// 灰階
+$clr_gray_L1: #444444; // 主要文字 ex.標題 內文
+$clr_gray_L2: #888888; // 次要文字 ex.圖片敘述 消息摘要 內文
+$clr_gray_L3: #cccccc; // 輔助文字 ex.輸入框提示字
+$clr_gray_L4: #E6E6E6; // disabled
+$clr_gray_L5: #F8F8F8;
+$clr_fff: #FFFFFF;
+
+// 提示
+$clr_success: #6C9255; // 正確/成功
+$clr_warning: #EFA828; // 異常/警告
+$clr_danger:  #941111; // 錯誤/刪除
+
+// transition
+$trs: 0.2s;
+
+// border (寬度, 顏色, 圓角)
+@mixin border($bdrPx, $bdrClr, $bdrs) {
+    border: $bdrPx solid $bdrClr;
+    border-radius: $bdrs;
+}
+
+// padding (上下, 左右)
+@mixin btnPadding($TB, $LR) {
+    padding: $TB+px $LR+px;
+    @media screen and (max-width: 767px){
+        padding: ($TB/5)*4+px ($LR/2)+px;
+    }
+}
+
+// font-size (粗細, 尺寸)
+@mixin btnFont($weight, $size) {
+    font: $weight $size+px 'Noto Serif TC';
+    @media screen and (max-width: 767px){
+        font: $weight ($size - 2)+px 'Noto Serif TC';   
+    }
+}
+
+%btn-style{
+    cursor: pointer;
+    transition: $trs;
+    text-align: center;
+    letter-spacing: 0.15em;
+    @include btnPadding(10, 50);
+    @include btnFont(700, 18);
+    &:disabled{
+        background: $clr_gray_L4;
+        color: $clr_gray_L2;
+    }
+}
+
+$btn-type:
+'blue', 'blue_2nd',
+'gold', 'gold_2nd';
+
+@each $type in $btn-type{
+    .btn-#{$type}{
+        @extend %btn-style;
+    }
+}
+
+// 前台按鈕:藍色
+.btn-blue{
+    background: $clr_blue_L1;
+    color: $clr_fff;
+    @include border(0, transparent, 10px);
+    &:hover{
+        background: $clr_blue_L2;
+        transition: $trs;
+    }
+    &:active{
+        background: $clr_blue_L0;
+    }
+    &:focus{
+        border-radius: 8px;
+        outline: 3px solid $clr_blue_L3;
+    }
+}
+
+// 前台按鈕:土色
+.btn-gold{
+    background: $clr_gold_L1;
+    color: $clr_fff;
+    @include border(0, transparent, 10px);
+    &:hover{
+        background: $clr_gold_L2;
+        transition: $trs;
+    }
+    &:active{
+        background: $clr_gold_L0;
+    }
+    &:focus{
+        border-radius: 8px;
+        outline: 3px solid $clr_gold_L3;
+    }
+}
+
+// 前台按鈕:白底藍框
+.btn-blue_2nd{
+    background: $clr_fff;
+    color: $clr_blue_L1;
+    @include border(1px, $clr_blue_L1, 10px);
+    &:hover{
+        background: $clr_blue_L1;
+        color: $clr_fff;
+        transition: $trs;
+    }
+    &:active{
+        background: $clr_blue_L0;
+    }
+    &:focus{
+        border: none;
+        border-radius: 8px;
+        outline: 3px solid $clr_blue_L3;
+    }
+}
+
+// 前台按鈕:白底土框
+.btn-gold_2nd{
+    background: $clr_fff;
+    color: $clr_gold_L1;
+    @include border(1px, $clr_gold_L1, 10px);
+    &:hover{
+        background: $clr_gold_L1;
+        color: $clr_fff;
+        transition: $trs;
+    }
+    &:active{
+        background: $clr_gold_L0;
+    }
+    &:focus{
+        border: none;
+        border-radius: 8px;
+        outline: 3px solid $clr_gold_L3;
+    }
+}
