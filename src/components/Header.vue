@@ -58,19 +58,19 @@ export default {
             align-items: center;
     }
     .h_list {
-        display: none;
-    }
-    .h_list.show{
-        left: 0;
+        transition: opacity 0.5s,left 0s 0.5s;
+        opacity: 0;
+        left: -100%;
         position: absolute;
         top: 100%;
         padding: 0;
         width: 100%;
         list-style: none;
-        display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        gap: 25px;
+        li {
+            padding-bottom: 50px;
+        }
         a{
             text-decoration: none;
             color: $color_444;
@@ -79,13 +79,17 @@ export default {
                 }
         }
     }
+    .h_list.show{
+        transition: opacity 0.5s,left 0s;
+        opacity: 1;
+        left: 0px;
+    }
     .h_feature {
         width: 112px;
         display: flex;
         align-items: center;
         justify-content: center;
         .hambur {
-            
             cursor: pointer;
             padding: 10px;
             width: 25px;
