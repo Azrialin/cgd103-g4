@@ -21,6 +21,13 @@
 // .btn-danger      按鈕:紅色
 // .btn-danger_2nd  按鈕:白底紅框
 
+// transition
+$trs: 0.2s;
+
+// 前台/後台，按鈕樣式切換
+$desk: front;
+// $desk: back;
+
 // 藍色系
 $clr_blue_L0: #2D3740;
 $clr_blue_L1: #0C3B59; // main
@@ -47,9 +54,6 @@ $clr_success: #6C9255; // 正確/成功
 $clr_warning: #EFA828; // 異常/警告
 $clr_danger:  #941111; // 錯誤/刪除
 
-// transition
-$trs: 0.2s;
-
 // border (寬度, 顏色, 圓角)
 @mixin border($bdrPx, $bdrClr, $bdrs) {
     border: $bdrPx solid $bdrClr;
@@ -72,7 +76,8 @@ $trs: 0.2s;
     }
 }
 
-%btn-style{
+// 前台按鈕樣式
+%btn-frontStyle{
     cursor: pointer;
     transition: $trs;
     text-align: center;
@@ -85,88 +90,183 @@ $trs: 0.2s;
     }
 }
 
+// 後台按鈕樣式
+%btn-backStyle{
+    cursor: pointer;
+    transition: $trs;
+    min-width: 80px;
+    text-align: center;
+    letter-spacing: 0.15em;
+    font: 500 16px/1.2em 'Noto Sans'; 
+    @include btnPadding(10, 20);
+}
+
 $btn-type:
 'blue', 'blue_2nd',
-'gold', 'gold_2nd';
+'gold', 'gold_2nd',
+'success', 'success_2nd',
+'danger' , 'danger_2nd' ;
 
 @each $type in $btn-type{
     .btn-#{$type}{
-        @extend %btn-style;
+        @if $desk == front{
+            @extend %btn-frontStyle;
+        }
+        @else if $desk == back{
+            @extend %btn-backStyle;
+        }
     }
 }
 
-// 前台按鈕:藍色
+
+
+// 變化色按鈕
+
+@mixin btn-vary_1st($main, $hover, $active, $focus){
+    background: $main;
+    color: $clr_fff;
+    @include border(0, transparent, 10px);
+    &:hover{
+        background: $hover;
+        transition: $trs;
+    }
+    &:active{
+        background: $active;
+    }
+    &:focus{
+        border-radius: 8px;
+        outline: 3px solid $focus;
+    }
+    &:disabled{
+        background: $clr_gray_L4;
+        color: $clr_gray_L2;
+    }
+}
+
+@mixin btn-vary_2nd($main, $active, $focus){
+    background: $clr_fff;
+    color: $main;
+    @include border(1px, $main, 10px);
+    &:hover{
+        background: $main;
+        color: $clr_fff;
+        transition: $trs;
+    }
+    &:active{
+        background: $active;
+    }
+    &:focus{
+        border: none;
+        border-radius: 8px;
+        outline: 3px solid $focus;
+    }
+    &:disabled{
+        background: $clr_gray_L4;
+        color: $clr_gray_L2;
+    }
+}
+
+// 按鈕:藍色
 .btn-blue{
-    background: $clr_blue_L1;
-    color: $clr_fff;
-    @include border(0, transparent, 10px);
-    &:hover{
-        background: $clr_blue_L2;
-        transition: $trs;
-    }
-    &:active{
-        background: $clr_blue_L0;
-    }
-    &:focus{
-        border-radius: 8px;
-        outline: 3px solid $clr_blue_L3;
-    }
+    @include btn-vary_1st(
+        $clr_blue_L1, // main
+        $clr_blue_L2, // hover
+        $clr_blue_L0, // active
+        $clr_blue_L3  // focus
+    );
 }
 
-// 前台按鈕:土色
+// 按鈕:土色
 .btn-gold{
-    background: $clr_gold_L1;
+    @include btn-vary_1st(
+        $clr_gold_L1, // main
+        $clr_gold_L2, // hover
+        $clr_gold_L0, // active
+        $clr_gold_L3  // focus
+    );
+}
+
+// 按鈕:白底藍框
+.btn-blue_2nd{
+    @include btn-vary_2nd(
+        $clr_blue_L1, // main/hover
+        $clr_blue_L0, // active
+        $clr_blue_L3  // focus
+    );
+}
+
+// 按鈕:白底土框
+.btn-gold_2nd{
+    @include btn-vary_2nd(
+        $clr_gold_L1, // main/hover
+        $clr_gold_L0, // active
+        $clr_gold_L3  // focus
+    );
+}
+
+
+
+// 系統提示按鈕
+// 綠色:正確/成功
+// 紅色:錯誤/刪除
+
+@mixin btn-plain_1st($btn-clr){
+    background: $btn-clr;
     color: $clr_fff;
     @include border(0, transparent, 10px);
     &:hover{
-        background: $clr_gold_L2;
+        background: darken($btn-clr, 10);
         transition: $trs;
     }
     &:active{
-        background: $clr_gold_L0;
+        background: $btn-clr;
     }
     &:focus{
         border-radius: 8px;
-        outline: 3px solid $clr_gold_L3;
+        outline: 3px solid $btn-clr;
     }
+    &:disabled{
+        background: $clr_gray_L4;
+        color: $clr_gray_L2;
+    }  
 }
 
-// 前台按鈕:白底藍框
-.btn-blue_2nd{
+@mixin btn-plain_2nd ($btn-clr){
     background: $clr_fff;
-    color: $clr_blue_L1;
-    @include border(1px, $clr_blue_L1, 10px);
+    color: $btn-clr;
+    @include border(1px, $btn-clr, 10px);
     &:hover{
-        background: $clr_blue_L1;
+        background: $btn-clr;
         color: $clr_fff;
         transition: $trs;
     }
     &:active{
-        background: $clr_blue_L0;
+        background: $btn-clr;
     }
     &:focus{
         border: none;
         border-radius: 8px;
-        outline: 3px solid $clr_blue_L3;
+        outline: 3px solid darken($btn-clr, 10);
     }
+    &:disabled{
+        background: $clr_gray_L4;
+        color: $clr_gray_L2;
+    } 
 }
 
-// 前台按鈕:白底土框
-.btn-gold_2nd{
-    background: $clr_fff;
-    color: $clr_gold_L1;
-    @include border(1px, $clr_gold_L1, 10px);
-    &:hover{
-        background: $clr_gold_L1;
-        color: $clr_fff;
-        transition: $trs;
-    }
-    &:active{
-        background: $clr_gold_L0;
-    }
-    &:focus{
-        border: none;
-        border-radius: 8px;
-        outline: 3px solid $clr_gold_L3;
-    }
+// 按鈕:綠色
+.btn-success{
+    @include btn-plain_1st($clr_success);
+}
+// 按鈕:紅色
+.btn-danger{
+    @include btn-plain_1st($clr_danger);
+}
+// 按鈕:白底綠框
+.btn-success_2nd{
+    @include btn-plain_2nd($clr_success);
+}
+// 按鈕:白底紅框
+.btn-danger_2nd{
+    @include btn-plain_2nd($clr_danger);
 }

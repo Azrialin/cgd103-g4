@@ -38,7 +38,7 @@ $font-size: 48, 36, 32, 28, 24, 20, 18, 14;
 $font-lh: 15, 24;
 @each $lh in $font-lh{
 	.font-16-#{$lh}em{
-		font: 500 16px/#{$lh} + em 'Noto Serif TC';
+		font: 500 16px / #{$lh/10} + em 'Noto Serif TC';
 		letter-spacing: 0.15em;
 		text-align: justify;
 	}
