@@ -21,6 +21,10 @@
 // .btn-danger      按鈕:紅色
 // .btn-danger_2nd  按鈕:白底紅框
 
+// 使用說明
+// 要用到按鈕的頁面引入這個(路徑可能要改) @import "./assets/sass/components/btn";
+// 然後直接套上面的 class 名稱就可以了
+
 // 藍色系
 $clr_blue_L0: #2D3740;
 $clr_blue_L1: #0C3B59; // main
