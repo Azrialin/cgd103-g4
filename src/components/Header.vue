@@ -6,7 +6,10 @@
                 <a href=""><img src="../assets/img/LOGO.svg" alt=""></a>
             </div>
                 <ul class="h_list" :class="toggle?'show':''">
-                    <li>
+                    <li v-for="item in items" :key="item">
+                        <!-- <router-link :to="{{item[sourc]}}">{{item['name']}}</router-link> -->
+                    </li>
+                    <!-- <li>
                         <router-link to="/train">列車介紹</router-link>
                     </li>
                     <li>
@@ -23,7 +26,7 @@
                     </li>
                     <li>
                         <router-link to="/about">關於我們</router-link>
-                    </li>
+                    </li> -->
                 </ul>
             <div class="h_feature">
                 <a href=""><i class="fa-regular fa-user"></i></a>
@@ -48,7 +51,7 @@ export default {
     },
     data(){
         return{
-            // items:["列車介紹","行程介紹","預約報名","消息專區","消息專區","關於我們"],
+            items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'預約報名',sourc:'sign'},{name:'消息專區',sourc:'news'},{name:'消息專區',sourc:'shop'},{name:'關於我們',sourc:'about'}],
             toggle: false,
         }
     }
