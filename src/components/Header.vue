@@ -33,7 +33,7 @@ export default {
     },
     data(){
         return{
-            items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'預約報名',sourc:'sign'},{name:'消息專區',sourc:'news'},{name:'消息專區',sourc:'shop'},{name:'關於我們',sourc:'about'}],
+            items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'預約報名',sourc:'sign'},{name:'消息專區',sourc:'news'},{name:'線上商城',sourc:'shop'},{name:'關於我們',sourc:'about'}],
             toggle: false,
         }
     }
@@ -53,7 +53,6 @@ export default {
     top: 0;
     z-index: 100;
     width: 100%;
-    margin: auto;
     background-color: #fff;
     nav {
         display: flex;

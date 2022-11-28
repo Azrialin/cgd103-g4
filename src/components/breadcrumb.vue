@@ -2,11 +2,8 @@
     <div class="container_bread">
         <div class="breadgroup">
             <ul class="bread">
-                <li class="breadlist font">
-                    <a href="" v-for="font in fonts" :key="font">{{font['name']}}</a>
-                    <!-- <a href="">首頁</a>
-                    <a href="">行程方案</a>
-                    <a href="">行程內文</a> -->
+                <li class="breadlist font" v-for="font in fonts" :key="font">
+                    <router-link class="breadin" :to="{path:font['source']}">{{font['name']}}</router-link>
                 </li>
             </ul>
         </div>
@@ -19,7 +16,7 @@ export default {
     },
     data(){
         return{
-            fonts:[{name:'首頁'},{name:'行程方案'},{name:'行程內文'}],
+            fonts:[{name:'首頁',source:'train'},{name:'行程方案',source:'train'},{name:'行程內文',source:'train'}],  // source各位自己輸入對應的router路徑^^
         }
     }
 }
@@ -32,15 +29,20 @@ export default {
         .breadgroup{
             .bread{
                 list-style: none;
-                a{
+                display: flex;
+                .breadlist{
                     text-decoration: none;
                     color: $color_444;
                     transition: 0.3s;
+                    .breadin{
+                        text-decoration: none;
+                        color: $color_444  ;
+                    }
                 }
-                a~a::before{
+                .breadlist~.breadlist::before{
                     content: " / ";
                 }
-                a:last-child{
+                .breadlist:last-child .breadin{
                     color: $front_color_main;
                 }
             }
