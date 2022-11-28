@@ -13,7 +13,6 @@
 import {ref, provide} from 'vue'
 export default {
     setup(props, {slots}){
-        const mySlot = ref(slots.default())
         const tabTitles = ref(slots.default().map((tab) =>tab.props.title))
         const selectedTitle = ref(tabTitles.value[0])
 
@@ -21,7 +20,6 @@ export default {
         return{
             selectedTitle,
             tabTitles,
-            mySlot,
         }
     }
 }
@@ -35,12 +33,10 @@ export default {
 }
 
 .tabs_header{
-  margin: 0;
+  margin: 0 0 -1px;
   list-style: none;
   padding: 0;
   display: flex;
-  position: relative;
-  z-index: 1;
 }
 
 .tabs_header li{
@@ -49,20 +45,18 @@ export default {
   padding: 10px 20px;
   /* margin-right: 10px; */
   border: 1px solid $front_color_active;
-  border-bottom:none;
   border-radius: 5px 5px 0 0;
   cursor: pointer;
   transition: 0.4s all ease-out;
   background: white;
   color: $color_888;
-  position: relative;
 }
 
 .tabs_header li.selected{
     border:1px solid $front_color_main;
-    border-bottom: none;
+    border-bottom: 1px solid white;
     color: $color_444;
-    position: relative;
+        position: relative;
     z-index: 3;
     &::after {
         content: '';
