@@ -1,4 +1,4 @@
-// 下為參考，具體應用依排版需求使用
+// 字型的class名稱
 // .font-48 		H1
 // .font-36 		H2
 // .font-32			H3
@@ -9,6 +9,12 @@
 // .font-16-15em	內文:窄行高
 // .font-16-24em	內文:寬行高
 // .font-14			輸入框下方提示字
+
+// 使用說明
+// 要用到字體規範的頁面引入這個(路徑可能要改) @import "./assets/sass/base/font";
+// 然後直接套上面的 class 名稱就可以了
+// H1~H6 為參考，實際狀況看排版需求使用
+// 內文請照格式 font-16-15em / font-16-24em
 
 // 前台:思源宋體
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
@@ -38,7 +44,7 @@ $font-size: 48, 36, 32, 28, 24, 20, 18, 14;
 $font-lh: 15, 24;
 @each $lh in $font-lh{
 	.font-16-#{$lh}em{
-		font: 500 16px/#{$lh} + em 'Noto Serif TC';
+		font: 500 16px / #{$lh/10} + em 'Noto Serif TC';
 		letter-spacing: 0.15em;
 		text-align: justify;
 	}
