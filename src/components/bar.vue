@@ -90,7 +90,7 @@
 
 <script>
 export default {
-  name: 'Sidebar',
+  name: 'bar',
   props: {
     
   }

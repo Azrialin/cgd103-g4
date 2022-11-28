@@ -6,10 +6,13 @@
 </template>
 <script>
     import Header from "@/components/Header.vue"
+    import bar from "@/components/bar.vue"
     export default {
         name: "HeaderView",
         components:{
-            Header
+            Header,
+            bar
         }
     }
+    
 </script>
