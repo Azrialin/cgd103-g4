@@ -1,8 +1,5 @@
 <template>
-  <Header/>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <Header/>
 </template>
 <script>
     import Header from "@/components/Header.vue"

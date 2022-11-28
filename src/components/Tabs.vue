@@ -25,15 +25,15 @@ export default {
 }
 </script>
 
-<style scoped >
-
+<style scoped lang="scss">
+@import "../assets/scss/base/color.scss";
 .tabs{
   max-width: 400px;
   margin: 0 auto;
 }
 
 .tabs_header{
-  margin-bottom: 10px;
+  margin: 0 0 -5px;
   list-style: none;
   padding: 0;
   display: flex;
@@ -43,16 +43,19 @@ export default {
   width: 80px;
   text-align:center;
   padding: 10px 20px;
-  margin-right: 10px;
-  border: 1px solid #BC955C;
-  border-radius: 5px;
+  /* margin-right: 10px; */
+  border: 1px solid $front_color_active;
+  border-radius: 5px 5px 0 0;
   cursor: pointer;
   transition: 0.4s all ease-out;
+  background: white;
+  color: $color_888;
 }
 
 .tabs_header li.selected{
-    background: #BC955C;
-    color: white;
+    border:1px solid $front_color_main;
+    border-bottom: 1px solid white;
+    color: $color_444;
 }
   
 </style>
