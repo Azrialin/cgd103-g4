@@ -33,7 +33,7 @@ export default {
 }
 
 .tabs_header{
-  margin: 0 0 -5px;
+  margin: 0 0 -1px;
   list-style: none;
   padding: 0;
   display: flex;
