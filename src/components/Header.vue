@@ -6,25 +6,8 @@
                 <a href=""><img src="../assets/img/LOGO.svg" alt=""></a>
             </div>
                 <ul class="h_list" :class="toggle?'show':''">
-                    <!-- <li v-for="item in items" :key="item"><router-link to = "/ :{{item['sourc']}} ">{{item['name']}}</router-link></li> -->
-
-                    <li>
-                        <router-link to="/train">列車介紹</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/travel">行程介紹</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/sign">預約報名</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/news">消息專區</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/shop">線上商城</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/about">關於我們</router-link>
+                    <li v-for="item in items" :key="item">
+                        <router-link :to ="{path:item['sourc']}">{{item['name']}}</router-link>
                     </li>
                 </ul>
             <div class="h_feature">
@@ -64,9 +47,7 @@ export default {
 // *{
 //     outline: solid 1px;
 // }
-#app{
-   padding-top: 70px;
-}
+
 .container {
     position: fixed;
     top: 0;
@@ -100,6 +81,7 @@ export default {
             list-style: none;
             flex-direction: column;
             justify-content: space-evenly;
+            background-color: #fff;
             li {
                 padding-bottom: 50px;
             }
