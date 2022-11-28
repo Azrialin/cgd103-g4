@@ -23,7 +23,10 @@ export default {
     .tab-content{
         min-height: 400px;
         padding: 20px;
-        border-radius: 5px;
+        border-radius:0 5px 5px;
         border:1px solid $front_color_main;
+        position: relative;
+        z-index: 2;
+        background: white;
     }
 </style>

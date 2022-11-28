@@ -56,6 +56,18 @@ export default {
     border:1px solid $front_color_main;
     border-bottom: 1px solid white;
     color: $color_444;
+        position: relative;
+    z-index: 3;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: white;
+        z-index: 1;
+    }
 }
   
 </style>
