@@ -6,9 +6,8 @@
                 <a href=""><img src="../assets/img/LOGO.svg" alt=""></a>
             </div>
                 <ul class="h_list" :class="toggle?'show':''">
-                    <!-- <li v-for="item in items" :key="item"> -->
-                        <!-- <router-link :to="{{item['sourc']}}">{{item['name']}}</router-link> -->
-                    <!-- </li> -->
+                    <!-- <li v-for="item in items" :key="item"><router-link to = "/ :{{item['sourc']}} ">{{item['name']}}</router-link></li> -->
+
                     <li>
                         <router-link to="/train">列車介紹</router-link>
                     </li>
@@ -65,10 +64,16 @@ export default {
 // *{
 //     outline: solid 1px;
 // }
+#app{
+   padding-top: 70px;
+}
 .container {
+    position: fixed;
+    top: 0;
+    z-index: 100;
     width: 100%;
-    max-width: 1400px;
     margin: auto;
+    background-color: #fff;
     nav {
         display: flex;
         position: relative;
