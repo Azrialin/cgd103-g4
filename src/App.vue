@@ -1,10 +1,12 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
+    <router-link to="/news">消息專區</router-link> |
     <router-link to="/about">About</router-link>|
     <router-link to="/membership">會員專區</router-link>|
     <router-link to="/header">頭區</router-link>
   </nav>
+  <Footer></Footer>
   <router-view/>
 </template>
 
@@ -30,3 +32,4 @@ nav {
   }
 }
 </style>
+
