@@ -25,6 +25,31 @@ const routes = [
     name: 'header',
     component: () => import('../views/HeaderView.vue')
   },
+  {
+    path: '/news',
+    name: 'news',
+    component: () => import('../views/NewsView.vue')
+  },
+  {
+    path: '/train',
+    name: 'train',
+    component: () => import('../views/TrainView.vue')
+  },
+  {
+    path: '/travel',
+    name: 'travel',
+    component: () => import('../views/TravelView.vue')
+  },
+  {
+    path: '/sign',
+    name: 'sign',
+    component: () => import('../views/SignView.vue')
+  },
+  {
+    path: '/shop',
+    name: 'shop',
+    component: () => import('../views/ShopView.vue')
+  },
 ]
 
 const router = createRouter({
