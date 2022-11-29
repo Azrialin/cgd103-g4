@@ -25,6 +25,16 @@ const routes = [
     name: 'header',
     component: () => import('../views/HeaderView.vue')
   },
+  {
+    path: '/select',
+    name: 'select',
+    component: () => import('../views/SelectView.vue')
+  },
+  {
+    path: '/Input',
+    name: 'Input',
+    component: () => import('../views/InputView.vue')
+  },
 ]
 
 const router = createRouter({
