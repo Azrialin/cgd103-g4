@@ -1,5 +1,7 @@
 <template>
   <Header/>
+  <bar/>
+  
   <div class="about">
     <h1>This is an shop page</h1>
   </div>
@@ -12,7 +14,8 @@
         components:{
             Header,
             bar
-        }
+        },
+        
     }
     
 </script>
