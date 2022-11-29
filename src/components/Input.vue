@@ -18,8 +18,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
-@import "../assets/Css/Reset.css";
+<style lang="scss" scoped>
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
     .Input{
