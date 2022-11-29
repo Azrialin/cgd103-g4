@@ -3,9 +3,8 @@
         尚未完成:
         ▪ hover效果?
         ▪ 文字顏色ffffff待調整(?
-        ▪ 換行文字不拘中、手機板背景圖調整
+        ▪ 換行文字不居中
         ▪ 手機板背景圖調整
-        ▪ 遇到問題: a的預設底線消不掉
         
     </pre>
     <div class="footer-bg">
@@ -122,7 +121,7 @@ export default {
     border-left: none ;
 }
 .footer-pages a{
-    direction: none;
+    text-decoration: none;
     color: #fff;
     writing-mode: vertical-lr;
   /* font-size: 24px; */ 
