@@ -2,9 +2,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <header class="container">
         <nav>
-            <div class="h_logo">
+            <h1 class="h_logo">
                 <a href=""><img src="../assets/img/LOGO.svg" alt=""></a>
-            </div>
+            </h1>
                 <ul class="h_list" :class="toggle?'show':''">
                     <li v-for="item in items" :key="item">
                         <router-link :to ="{path:item['sourc']}">{{item['name']}}</router-link>

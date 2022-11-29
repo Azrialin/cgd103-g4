@@ -50,3 +50,18 @@ $font-lh: 15, 24;
 	}
 }
 // font: font-weight font-size/line-height font-family;
+
+
+
+
+
+
+
+@mixin font($fz) {
+	font-size: $fz;
+	font-family: 'Noto Serif TC', 'Noto Sans', '微軟正黑體';
+	font-weight: 700;
+	line-height: 1.2em;
+	letter-spacing: 0.15em;
+	text-align: justify;
+}
