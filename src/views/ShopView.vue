@@ -16,7 +16,8 @@
             Header,
             breadcrumb,
             bar
-        }
+        },
+        
     }
     
 </script>
