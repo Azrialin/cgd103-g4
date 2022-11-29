@@ -5,11 +5,19 @@
     <router-link to="/about">About</router-link>|
     <router-link to="/membership">會員專區</router-link>|
     <router-link to="/shop">商城</router-link>|
-    <router-link to="/header">頭區</router-link>
+    <router-link to="/header">頭區</router-link>|
+    <router-link to="/select">下拉式選單</router-link>|
+    <router-link to="/Input">輸入框樣式</router-link>|
   </nav>
   <Footer></Footer>
   <router-view/>
 </template>
+
+<script>
+export default {
+  
+}
+</script>
 
 <style lang="scss">
 #app {
