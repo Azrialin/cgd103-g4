@@ -2,7 +2,7 @@
   <Header/>
   <Banner/>
   <breadcrumb/>
-  <p>Hello</p>
+  <p>這是消息內頁</p>
 
 
 

@@ -1,12 +1,5 @@
 <template>
-    <pre style="text-align:start">
-        尚未完成:
-        ▪ hover效果?
-        ▪ 文字顏色ffffff待調整(?
-        ▪ 換行文字不居中
-        ▪ 手機板背景圖調整
-        
-    </pre>
+
     <div class="footer-bg">
         <div class="container">
             <div class="footer-logo">

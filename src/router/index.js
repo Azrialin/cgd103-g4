@@ -82,6 +82,11 @@ const routes = [
     name: 'Input',
     component: () => import('../views/InputView.vue')
   },
+  {
+    path: '/newscontent',
+    name: 'newscontent',
+    component: () => import('../views/NewscontentView.vue')
+  },
 ]
 
 const router = createRouter({
