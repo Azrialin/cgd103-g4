@@ -34,18 +34,18 @@
   export default {
     name: "Pager",
     props:{
-      totalPage:Number,//資料總頁數
-      defaultCurrentPage:Number,//預設當前頁碼
+      totalPage:10,//資料總頁數
+      defaultCurrentPage:1,//預設當前頁碼
       centerSize:{
         type:Number,
         default(){
-          return 3;
+          return 5;
         }
       },
       jumpSize:{
         type:Number,
         default(){
-          return 3;
+          return 5;
         }
       }
     },
@@ -110,15 +110,16 @@
 @import "../../assets/scss/base/font.scss";
     ul{
         list-style: none;
-        height: 27px;
-        width: 304px;
-        margin-right: auto;
-        margin-left: auto;
+        height: 30px;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
     ul li{
         float: left;
         width:10px;
-        height:30px;
+        height:28px;
         line-height: 30px;
         margin:0 8px 0 0;
         padding:0 6px;
