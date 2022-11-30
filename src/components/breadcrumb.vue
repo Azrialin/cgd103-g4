@@ -26,8 +26,12 @@ export default {
 @import "@/assets/scss/base/base.scss";
 
     .container_bread{
+        box-sizing: border-box;
         padding: 20px;
+        width: 100%;
         .breadgroup{
+            max-width: 1200px;
+            margin: auto;
             .bread{
                 list-style: none;
                 display: flex;

@@ -53,7 +53,9 @@ export default {
     top: 0;
     z-index: 100;
     width: 100%;
+    height: 70px;
     background-color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
     nav {
         display: flex;
         position: relative;
@@ -61,10 +63,11 @@ export default {
         box-sizing: border-box;
         padding: 15px 30px;
         width: 100%;
+        max-width: 1200px;
+        margin: auto;
         height: 70px;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
         .h_logo { 
             display: flex;
             align-items: center;

@@ -8,7 +8,7 @@
           <li v-for="list in lists" :key="list">
             <div class="tra_card">
               <div class="tra_img">
-                <router-link to="/travelcontent"><img src="https://picsum.photos/300/200/?random=10" alt=""></router-link>
+                <router-link to="/travelcontent" class="aaa"><img src="https://picsum.photos/300/200/?random=10" alt=""></router-link>
               </div>
               <div class="tra_intro">
                 <h3>{{list['title']}}</h3>
@@ -56,26 +56,29 @@
     background-color: #fff;
     .content_tra{
       width: 100%;
+      max-width: 1200px;
+      margin: auto;
       .tra_group{
         padding: 0;
         list-style: none;
         .tra_card{
+          box-sizing: border-box;
           padding: 10px;
           width: 100%;
           .tra_img:hover{
             border-radius: 30px;
           }
           .tra_img{
+            box-sizing: border-box;
+            padding: 10px;
             border-radius: 10px;
-            overflow: hidden;
             box-sizing: border-box;
             width: 100%;
-            transition: 0.5s;
-            a img{
+            img{
               width: 100%;
-              transition: 0.5s;
+              border-radius: 10px;
               &:hover{
-                transform: scale(1.05);
+                border-radius: 20px;
               }
             }
           }
@@ -108,6 +111,7 @@
                 padding: 15px;
                 width: 30%;
                 border-radius: 10px;
+                box-sizing: border-box;
               }
               a{
                 @include font(16px);
@@ -120,11 +124,13 @@
                 text-decoration: none;
                 width: 30%;
                 padding: 15px;
+                box-sizing: border-box;
                 border-radius: 10px;
                 height: fit-content;
                 margin: 0px 20px;
                 &:hover{
                   background-color: $front_color_hover;
+                  color: $color_444;
                 }
               }
             }
@@ -150,22 +156,27 @@
           .tra_card{
             display: flex;
             .tra_img{
-              width: 60%;
+              padding: 0;
+              width: 55%;
+              overflow: hidden;
+              transition: 1s;
+              img{
+                transition: 1s;
+              }
+              img:hover{
+                transition: 1s;
+                transform: scale(1.01);
+              }
             }
             .tra_intro{
+              padding: 20px;
+              justify-content: center;
               display: flex;
               flex-direction: column;
-              justify-content: space-evenly;
-              width: 40%;
-              h4{
-                margin-bottom: 0;
-              }
-              .content{
-                margin-top: -30px;
-                margin-bottom: 0;
-              }
+              width: 45%;
               .tago{
                 p{
+                  white-space: nowrap;
                   width: 50%;
                 }
                 a{
