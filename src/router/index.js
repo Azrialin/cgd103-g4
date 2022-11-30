@@ -87,6 +87,11 @@ const routes = [
     name: 'newscontent',
     component: () => import('../views/NewscontentView.vue')
   },
+  {
+    path: '/QA',
+    name: 'QA',
+    component: () => import('../views/QAView.vue')
+  },
 ]
 
 const router = createRouter({
