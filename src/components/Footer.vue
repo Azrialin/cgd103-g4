@@ -28,8 +28,10 @@
                         <p class="link-note font-20">Contact</p>
                     </li>
                     <li>
-                        <a href="#" class="font-24">常見問題</a>
+                        <router-link to="/QA">
+                        <a href="javascript:void(0);" class="font-24">常見問題</a>
                         <p class="link-note font-20">Q&A</p>
+                        </router-link>
                     </li>
                 </ul>
                 <div class="footer-follow">

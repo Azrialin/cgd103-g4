@@ -1,10 +1,10 @@
 <template>
     <div id="pagination">
-        <!--前一頁按鈕-->
+        <!--上一頁按鈕-->
         <input class="btn-prev" type="button" value="< 上一頁" @click="setPage(current-1)">
         <!--分頁器-->
         <pager :total-page="totalPage" :default-current-page="current" @change="pageChange"></pager>
-        <!--後一頁按鈕-->
+        <!--下一頁按鈕-->
         <input class="btn-next" type="button" value="下一頁 >" @click="setPage(current+1)">
     </div>
 </template>
@@ -28,14 +28,14 @@
       defaultPageSize:{
         type:Number,
         default(){
-          return 5;
+          return 10;
         }
       },
       // 資料的總條數
       total:{
         type:Number,
         default(){
-          return 25;
+          return 100;
         }
       },
     },
@@ -76,17 +76,21 @@
 @import "../../assets/scss/base/font.scss";
   #pagination{
         display: flex;
+        justify-content: center;
   }
   .btn-prev, .btn-next{
     width:60px;
     height:30px;
     line-height: 30px;
-    margin:auto;
     padding:0;
     text-align: center;
     border:none;
     color: $color_444;
     background: #ffff;
-  }
 
+  }
+  input:hover{
+    color: $front_color_main ;
+    border-bottom: 2px solid $front_color_main;
+  }
 </style>
