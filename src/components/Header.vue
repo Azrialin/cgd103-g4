@@ -154,7 +154,7 @@ export default {
                 opacity: 1;
                 flex-direction: row;
                 li {
-                padding-bottom: 0px;
+                padding: 0px;
                 }
                 a {
                     text-decoration: none;

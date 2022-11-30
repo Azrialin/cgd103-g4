@@ -4,24 +4,7 @@
   <div class="about">
     <div class="container_tra">
       <div class="content_tra">
-        <ul class="tra_group">
-          <li v-for="list in lists" :key="list">
-            <div class="tra_card">
-              <div class="tra_img">
-                <router-link to="/travelcontent"><img src="https://picsum.photos/300/200/?random=10" alt=""></router-link>
-              </div>
-              <div class="tra_intro">
-                <h3>{{list['title']}}</h3>
-                <h4>{{list['subtitle']}}</h4>
-                <p class="content font-16-15em">{{list['content']}}</p>
-                <div class="tago">
-                  <p>{{list['tag']}}</p>
-                  <router-link to="/travelcontent">預約行程</router-link>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        123
       </div>
     </div>
   </div>
@@ -103,11 +86,11 @@
               p{
                 @include font(16px);
                 text-align: start;
-                background-color: $front_color_disable;
-                color: $color_444;
+                background-color: $front_color_main;
                 padding: 15px;
                 width: 30%;
                 border-radius: 10px;
+                color: $color_e6;
               }
               a{
                 @include font(16px);
