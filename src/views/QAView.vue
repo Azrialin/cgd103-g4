@@ -1,13 +1,13 @@
 <template>
     <div class="QA" style="max-width: 1200px; margin: auto;">
         <breadcrumb/>
-        <h2 class="font-32">Q&A</h2>
         <div class="container">
             <aside>
+                <h2 class="font-32">Q&A</h2>
                 <ul class="QA_menu">
-                    <li class="font-20" v-for="Q in QList" :key="Q">
+                    <h3 class="font-20" v-for="Q in QList" :key="Q">
                         {{Q.name}}
-                    </li>
+                    </h3>
                 </ul>
             </aside>
             <main>
@@ -105,7 +105,7 @@
             aside{
                 width: 20%;
                 .QA_menu{
-                    li{
+                    h3{
                         cursor: pointer;
                         padding: 15px;
                         color: $clr_gray_L1;
