@@ -7,7 +7,7 @@
             </h1>
                 <ul class="h_list" :class="toggle?'show':''">
                     <li v-for="item in items" :key="item">
-                        <router-link :to ="{path:item['sourc']}">{{item['name']}}</router-link>
+                        <router-link  class="go" :to ="{path:item['sourc']}">{{item['name']}}</router-link>
                     </li>
                 </ul>
             <div class="h_feature">
@@ -82,7 +82,7 @@ export default {
             justify-content: space-evenly;
             background-color: #fff;
             li {
-                padding-bottom: 50px;
+                padding: 40px;
             }
             a{
                 text-decoration: none;
@@ -94,9 +94,11 @@ export default {
         }
         .h_list.show{
             transition: opacity 0.3s,left 0s;
+            height: 100vh;
             opacity: 1;
             left: 0px;
         }
+        
         .h_feature {
             width: 112px;
             display: flex;

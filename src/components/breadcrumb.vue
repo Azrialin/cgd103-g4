@@ -26,6 +26,7 @@ export default {
 @import "@/assets/scss/base/base.scss";
 
     .container_bread{
+        padding: 20px;
         .breadgroup{
             .bread{
                 list-style: none;

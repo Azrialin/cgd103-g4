@@ -13,7 +13,7 @@
               <div class="tra_intro">
                 <h3>{{list['title']}}</h3>
                 <h4>{{list['subtitle']}}</h4>
-                <p class="font-16-15em">{{list['content']}}</p>
+                <p class="content font-16-15em">{{list['content']}}</p>
                 <div class="tago">
                   <p>{{list['tag']}}</p>
                   <a href="">預約行程</a>
@@ -37,10 +37,10 @@
         },
         data(){
           return{
-            lists:[{title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、活動、餐點"},
-            {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、活動、餐點"},
-            {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、活動、餐點"},
-            {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、活動、餐點"}],
+            lists:[{title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點"},
+            {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點"},
+            {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點"},
+            {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點"}],
           }
         }
     }
@@ -60,16 +60,27 @@
         padding: 0;
         list-style: none;
         .tra_card{
+          padding: 10px;
           width: 100%;
+          .tra_img:hover{
+            border-radius: 30px;
+          }
           .tra_img{
-            padding: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-sizing: border-box;
             width: 100%;
+            transition: 0.5s;
             a img{
               width: 100%;
-              border-radius:10px ;
+              transition: 0.5s;
+              &:hover{
+                transform: scale(1.05);
+              }
             }
           }
           .tra_intro{
+            box-sizing: border-box;
             padding: 10px;
             width: 100%;
             h3{
@@ -77,6 +88,14 @@
             }
             h4{
               @include font(20px);
+              padding-bottom: 30px;
+              margin-bottom: 30px;
+              border-bottom: 2px solid $color_ccc;
+            }
+            .content{
+              padding-bottom: 30px;
+              margin-bottom: 30px;
+              border-bottom: 2px solid $color_ccc;
             }
             .tago{
               display: flex;
@@ -92,6 +111,7 @@
               }
               a{
                 @include font(16px);
+                transition: 0.3s;
                 background-color: $front_color_main;
                 display: flex;
                 align-items: center;
@@ -103,6 +123,9 @@
                 border-radius: 10px;
                 height: fit-content;
                 margin: 0px 20px;
+                &:hover{
+                  background-color: $front_color_hover;
+                }
               }
             }
           }
@@ -115,7 +138,10 @@
       .content_tra{
         .tra_group{
           li{
-            padding-bottom: 20px;
+            padding: 20px 0px;
+          }
+          li:nth-child(2n){
+            background-color: #f8f8f8;
           }
           li:nth-child(2n) .tra_card{
             display: flex;
@@ -124,13 +150,20 @@
           .tra_card{
             display: flex;
             .tra_img{
-              width: 50%;
+              width: 60%;
             }
             .tra_intro{
               display: flex;
               flex-direction: column;
               justify-content: space-evenly;
-              width: 50%;
+              width: 40%;
+              h4{
+                margin-bottom: 0;
+              }
+              .content{
+                margin-top: -30px;
+                margin-bottom: 0;
+              }
               .tago{
                 p{
                   width: 50%;
