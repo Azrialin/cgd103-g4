@@ -30,7 +30,6 @@
     // @ is an alias to /src
     import breadcrumb from "@/components/breadcrumb.vue"
 
-
     export default {
         name: 'QAView',
         components: {
@@ -39,7 +38,8 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    @import "../assets/scss/components/btn.scss";
 	p{
 		color: $clr_gray_L1;
 	}

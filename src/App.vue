@@ -1,8 +1,6 @@
 <template>
 	<Header/>
-		<div class="main">
-			<router-view/>
-		</div>
+		<div class="main"><router-view/></div>
 	<Footer/>
 </template>
 
@@ -31,9 +29,9 @@
 	text-align: center;
 	color: #2c3e50;
 }
-.main{
-	max-width: 1200px;
-	margin: auto;
-}
+// .main{
+// 	max-width: 1200px;
+// 	margin: auto;
+// }
 </style>
 
