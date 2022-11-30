@@ -1,32 +1,22 @@
 <template>
+    <!-- 還未完成 -->
     <div class="top-banner">
         <!-- <img :src="src" alt="banner"> -->
         <img src="../assets/img/News/banner.jpg" alt="banner">
     </div>
-    <pre>
-        for首頁
-        高600px
-        for各分頁
-        高300px
-        
-        還沒寫好
-        -圖片設定變數
-    </pre>
+</template>
     
-
-    </template>
-    
-    <script>
+<script>
     // export default {
     //     name: 'Banner',
     //     props: {
     //     src: String
     // }
-    </script>
+</script>
     
     
     <!-- Add "scoped" attribute to limit CSS to this component only -->
-    <style scoped lang="scss">
+<style scoped lang="scss">
     .top-banner img{
         width: 100%;
         height: 100%;
@@ -48,4 +38,4 @@
         height: 300px;
         }
     }
-    </style>
+</style>
