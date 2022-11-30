@@ -7,17 +7,6 @@
         <!--後一頁按鈕-->
         <input class="btn-next" type="button" value="下一頁 >" @click="setPage(current+1)">
     </div>
-    <div
-    class="hover-view"
-    @mouseover="mouseover"
-    @mouseenter="mouseenter"
-    @mousemove="mousemove"
-    @mouseout="mouseout"
-    @mouseleave="mouseleave"
-    @mousedown="mousedown"
-    @mouseup="mouseup"
-    >
-    </div>
 </template>
 
 <script>
