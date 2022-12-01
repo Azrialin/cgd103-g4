@@ -7,8 +7,8 @@
     </div>
     <div class="card-txt">
         <router-link to="#">
-            <h4 class="card-title">九州干貝醬</h4>
-            <p class="card-price">$999</p>
+            <h4 class="card-title">{{title}}</h4>
+            <p class="card-price">${{price}}</p>
         </router-link>
     </div>
 </div>
@@ -20,17 +20,14 @@
 @import "../assets/scss/base/color.scss";
 
 .card{
-    width: 100%;
-    margin: 10px;
+    width: 90%;
+    margin: 5px 10px;
     a{
         text-decoration: none;
     }
-    // height: 257px;
-    // display: flex;
-    border: 1px solid #BC955C;
+    border: 1px solid $front_color_main;
     border-radius: 5px;
     .card-pic{
-        // width: 100%;
         overflow: hidden;
         padding: 15px;
         margin: auto;
@@ -43,12 +40,11 @@
         }
     }
     .card-txt{
-        // width: 100%;
         padding: 0px 15px;
         text-align: left;
         .card-title{
             @include font(20px);
-            // margin: 7px;
+            letter-spacing: 0px;
         }
         .card-price{
             @include font(20px);
@@ -61,6 +57,10 @@
 
 <script>
 export default {
-    
+    props:{
+        title:String,
+        price:Number,
+        
+    }
 }
 </script>

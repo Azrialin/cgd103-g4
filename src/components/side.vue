@@ -9,7 +9,7 @@
       <div class="title" @click="item.open=!item.open">
         {{item.title}}
       </div>
-      <baritem :list="item"/>
+      <sideitem :list="item"/>
       <hr class="hr-bar">
     </li>
   </ul>
@@ -28,7 +28,7 @@
     width: 170px;
     position: sticky;
     z-index: 20;
-    padding: 30px;
+    padding: 10px;
     h3{
       @include font(30px);
     }
@@ -57,7 +57,7 @@
 
 
 <script>
-import baritem from '@/components/baritem.vue'   
+import sideitem from '@/components/sideitem.vue'   
 export default {
   data:()=>{
     return {
@@ -87,7 +87,7 @@ export default {
     }
   },
   components:{
-    baritem
+    sideitem
   }
 };
 

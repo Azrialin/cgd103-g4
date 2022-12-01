@@ -1,20 +1,19 @@
 <template>
 <div class="shop-container">
+  <breadcrumb/>
+  <div class="select">
+    <Select/>
+  </div>
   <div class="shop-content">
-    <breadcrumb/>
-    <div class="bar">
-    <bar/>
+    <div class="side">
+      <side/>
     </div>
-    <div class="card-container .row-cols-2 > *">
-      <div class="card-content">
-          <productcard/>
-          <productcard/>
-          <productcard/>
-          <productcard/>
-        <!-- <li v-for="list in lists" :key="list">
-        </li> -->
+    <div class="row">
+      <div class="card-container ">
+        <div v-for="item in list" :key="item.id" class="card-box col-sm-6 col-lg-3">
+            <productcard :title="item.title" :price="item.price"/>
+        </div>
       </div>
-
     </div>
     
 
@@ -26,17 +25,44 @@
 <script>
     import Header from "@/components/Header.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
-    import bar from "@/components/bar.vue"
+    import side from "@/components/side.vue"
     import productcard from "@/components/ProductCard.vue"
+    import Select from "@/components/Select.vue"
     export default {
         name: "HeaderView",
         components:{
             Header,
             breadcrumb,
-            bar,
-            productcard
+            side,
+            productcard,
+            Select,
         },
-        
+        data(){
+          return{
+            list:[
+              {
+                id:1,
+                title:"九州干貝醬",
+                price:300,
+              },
+              {
+                id:2,
+                title:"長崎蛋糕",
+                price:460,
+              },
+              {
+                id:3,
+                title:"長崎蛋糕",
+                price:460,
+              },
+              {
+                id:4,
+                title:"長崎蛋糕",
+                price:460,
+              },
+            ]
+          }
+        }
     }
     
 </script>
@@ -46,27 +72,62 @@
   .shop-container{
     width: 100%;
     margin: auto;
-    padding: 0px;
-    margin: 0;
     outline: 1px solid red;
+    // .select{
+    //   display: block;
+    // }
     .shop-content{
-      // margin: auto;
-      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
       padding: 0px;
-      outline: 1px solid blue;
-      .bar{
-        display: none;
-      }
-      .card-content{
-        padding: 15px;
-        display: flex;
-      }
+      
     }
+    .card-container{
+      width: 90%;
+      display: flex;
+      flex-wrap: wrap;
+      .card-box{
+        // width: 48%;
+        margin: auto;
+      }
+      
+    }
+    
   }
 
-  @media screen and (min-width: 1024px){
-    .shop-content{
+  @media screen and (max-width:768px){
+    .side{
+      display: none;
+    }
+    .card-box{
+      width: 48%;
+    }
+  }
+  @media screen and (min-width: 769px){
+    .shop-container{
       max-width: 1200px;
+      margin: auto;
+      .shop-content{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .row{
+        width: 80%;
+        margin: auto;
+        justify-content: center;
+      }
+      .select{
+        display: none;
+      }
+      .bar{
+        display: block;
+      }
+      // .card-container{
+      //   width: 100%;
+      // }
+      .card-box{
+        width: 23%;
+      }
     }
   }
 
