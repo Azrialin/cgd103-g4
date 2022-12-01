@@ -110,6 +110,7 @@
         @include font(16px);
       }
       .bannerfa{
+        cursor: pointer;
         .banner{
           border-radius: 10px;
           padding: 10px;
