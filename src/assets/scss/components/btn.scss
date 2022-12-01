@@ -163,7 +163,7 @@ $btn-type:
         border-radius: 8px;
         outline: 3px solid $focus;
     }
-    :focus:not(:focus-visible){
+    &:focus:not(:focus-visible){
         outline: none;
     }
     &:disabled{
@@ -190,7 +190,7 @@ $btn-type:
         border-radius: 8px;
         outline: 3px solid $focus;
     }
-    :focus:not(:focus-visible){
+    &:focus:not(:focus-visible){
         outline: none;
     }
     &:disabled{
@@ -255,7 +255,7 @@ $btn-type:
         border-radius: 8px;
         outline: 3px solid darken($btn-clr, 10);
     }
-    :focus:not(:focus-visible){
+    &:focus:not(:focus-visible){
         outline: none;
     }
     &:disabled{
@@ -283,7 +283,7 @@ $btn-type:
         border-radius: 8px;
         outline: 3px solid darken($btn-clr, 10);
     }
-    :focus:not(:focus-visible){
+    &:focus:not(:focus-visible){
         outline: none;
     }
     &:disabled{

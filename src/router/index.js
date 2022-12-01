@@ -92,6 +92,11 @@ const routes = [
     name: 'QA',
     component: () => import('../views/QAView.vue')
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/loginView.vue')
+  },
 ]
 
 const router = createRouter({

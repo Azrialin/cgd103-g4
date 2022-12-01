@@ -27,9 +27,12 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/scss/base/color.scss";
+@import "../assets/scss/layout/grid.scss";
+@import "../assets/scss/base/font.scss";
+
 .tabs{
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 5% auto;
 }
 
 .tabs_header{
@@ -40,7 +43,7 @@ export default {
 }
 
 .tabs_header li{
-  width: 80px;
+  width: 100px;
   text-align:center;
   padding: 10px 20px;
   /* margin-right: 10px; */
@@ -50,13 +53,17 @@ export default {
   transition: 0.4s all ease-out;
   background: white;
   color: $color_888;
+  font-family: 'Noto Serif TC', 'Noto Sans', '微軟正黑體';
 }
 
 .tabs_header li.selected{
+     @include font(16px);
+    letter-spacing: 0;
     border:1px solid $front_color_main;
     border-bottom: 1px solid white;
     color: $color_444;
-        position: relative;
+    position: relative;
+    text-align: center;
     z-index: 3;
     &::after {
         content: '';
