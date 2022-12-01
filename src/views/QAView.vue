@@ -18,7 +18,7 @@
                 </ul>
             </main>
         </div>
-        <Pagination/>
+        <Pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="9" :total="30"/>
 
         <!-- <p class="font-48">測試文字font-48</p>
         <p class="font-36">測試文字font-36</p>
@@ -59,6 +59,7 @@
         },
         data(){
             return{
+                page:1,
                 QList:[
                     { id: 'Q001', name: '會員問題' },
                     { id: 'Q002', name: '行程訂單問題' },
