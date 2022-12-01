@@ -1,5 +1,4 @@
 <template>
-  <Header/>
   <Banner/>
   <breadcrumb :fonts="fonts"/>
   <div class="about">
@@ -29,13 +28,11 @@
 </template>
 <script>
     import Header from "@/components/Header.vue"
-    import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
     export default {
         name: "HeaderView",
         components:{
             Header,
-            Banner,
             breadcrumb
         },
         data(){

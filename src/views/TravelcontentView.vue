@@ -1,5 +1,4 @@
 <template>
-  <Header/>
   <Banner/>
   <breadcrumb :fonts="fonts"/>
   <div class="about">

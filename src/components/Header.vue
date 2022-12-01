@@ -3,7 +3,9 @@
     <header class="container">
         <nav>
             <h1 class="h_logo">
-                <a href=""><img src="../assets/img/LOGO.svg" alt=""></a>
+                <a href="/">
+                    <img src="../assets/img/LOGO.svg" alt="">
+                </a>
             </h1>
                 <ul class="h_list" :class="toggle?'show':''">
                     <li v-for="item in items" :key="item">
@@ -11,7 +13,8 @@
                     </li>
                 </ul>
             <div class="h_feature">
-                <router-link class="go" to ="/login"><i class="fa-regular fa-user"></i></router-link>
+                <a href=""><i class="fa-regular fa-user"></i></a>
+                <a href="/membership"><i class="fa-solid fa-list-ol"></i></a>
                 <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
                 <div id="hambur" class="hambur" @click="toggle = !toggle">
                     <div class="hambox"></div>
