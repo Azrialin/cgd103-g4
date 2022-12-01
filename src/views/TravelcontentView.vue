@@ -1,5 +1,4 @@
 <template>
-  <Header/>
   <breadcrumb/>
   <div class="about">
     <div class="container_tra">

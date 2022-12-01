@@ -1,5 +1,4 @@
 <template>
-  <Header/>
   <breadcrumb/>
   <bar/>
   <div class="about">

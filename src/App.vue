@@ -29,6 +29,9 @@
 	text-align: center;
 	color: #2c3e50;
 }
+section{
+	
+}
 // .main{
 // 	max-width: 1200px;
 // 	margin: auto;
