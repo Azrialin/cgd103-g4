@@ -1,7 +1,6 @@
 <template>
     <div class="news-card-img">
-        <!-- <img :src="link" alt=""> -->
-        <!-- <img src="../assets/img/News/1.jpg" alt=""> -->
+        <img :src="link" alt="">
         
     </div>
     <div class="news-card-txt">

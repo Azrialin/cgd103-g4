@@ -3,7 +3,9 @@
     <header class="container">
         <nav>
             <h1 class="h_logo">
-                <a href=""><img src="../assets/img/LOGO.svg" alt=""></a>
+                <a href="/">
+                    <img src="../assets/img/LOGO.svg" alt="">
+                </a>
             </h1>
                 <ul class="h_list" :class="toggle?'show':''">
                     <li v-for="item in items" :key="item">

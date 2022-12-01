@@ -13,12 +13,8 @@
 export default {
     props:{
         word:String,
+        fonts:Array,
     },
-    data(){
-        return{
-            fonts:[{name:'首頁',source:'train'},{name:'行程方案',source:'train'},{name:'行程內文',source:'train'}],  // source各位自己輸入對應的router路徑^^
-        }
-    }
 }
 </script>
 <style lang="scss" scoped>
