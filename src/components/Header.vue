@@ -12,6 +12,7 @@
                 </ul>
             <div class="h_feature">
                 <a href=""><i class="fa-regular fa-user"></i></a>
+                <a href="/membership"><i class="fa-solid fa-list-ol"></i></a>
                 <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
                 <div id="hambur" class="hambur" @click="toggle = !toggle">
                     <div class="hambox"></div>

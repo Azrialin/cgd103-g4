@@ -1,6 +1,6 @@
 <template>
 	<Header/>
-		<div class="main"><router-view/></div>
+		<div class="main col-10"><router-view/></div>
 	<Footer/>
 </template>
 
@@ -20,6 +20,7 @@
 @import "../src/assets/scss/base/color.scss";
 @import "../src/assets/scss/base/font.scss";
 @import "../src/assets/scss/components/btn.scss";
+@import "/src/assets/scss/layout/grid.scss";
 
 #app {
 	padding-top: 70px;
@@ -29,9 +30,8 @@
 	text-align: center;
 	color: #2c3e50;
 }
-// .main{
-// 	max-width: 1200px;
-// 	margin: auto;
-// }
+.main{
+	margin: auto;
+}
 </style>
 
