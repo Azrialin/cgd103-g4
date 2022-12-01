@@ -28,7 +28,7 @@
           </div>
           <div class="Js-Official">
             <div class="CovidText">
-              <p>【「JET SPEED」公式instergram</p>
+              <p>「JET SPEED」公式instergram</p>
             </div>
           </div>
         </div>
@@ -41,10 +41,22 @@
 <script>
 export default{
   data(){
-          return{
-            lists:[{},{},{},{}],
-          }
-        }
+    return{
+      lists:[{},{},{},{}],
+    }
+  },methods:{
+  getdata(){
+    fetch('https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=7c2b8cff562e02eb9fd32da3c4ff2ed9')
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(myJson){
+    console.log(myJson);
+    });
+  }
+  },mounted(){
+    this.getdata();
+  }
 }
 </script>
 

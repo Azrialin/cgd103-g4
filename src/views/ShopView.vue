@@ -1,10 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <breadcrumb/>
-  <bar/>
-  <div class="about">
-    <h1>This is an shop page</h1>
-=======
 <div class="shop-container">
   <div class="shop-content">
     <breadcrumb/>
@@ -25,7 +19,6 @@
     
 
 
->>>>>>> vivi
   </div>
 </div>
 
