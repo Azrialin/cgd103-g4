@@ -52,14 +52,16 @@
 <style lang="scss" scoped>
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
-// *{
-//   outline: solid 1px;
-// }
+*{
+  outline: solid 1px;
+}
   .container_tra{
     width: 100%;
     background-color: #fff;
     .content_tra{
       width: 100%;
+      max-width: 1200px;
+      margin: auto;
       h3{
         @include font(28px);
       }
@@ -72,6 +74,9 @@
   @media screen and (min-width: 1024px){
     .container_tra{
       .content_tra{
+        .contentmain{
+          padding: 15px;
+        }
       }
     }
   }
