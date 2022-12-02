@@ -21,11 +21,11 @@ export default {
 <style scoped lang="scss" >
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
-    :deep(.Input){
+    .Input{
         appearance: none;
         padding: 10px;
         border-radius: 10px;
-        border: 1px solid v-bind(BorderColor);
+        border: 1px solid v-bind(BorderColor) !important;
         outline:none;
     }
 </style>
