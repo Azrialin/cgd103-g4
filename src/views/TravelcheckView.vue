@@ -50,7 +50,7 @@
             console.log('slide change');
           };
           return{
-            imgs:["https://picsum.photos/300/200/?random=10","https://picsum.photos/300/200/?random=10","https://picsum.photos/300/200/?random=10","https://picsum.photos/300/200/?random=10","https://picsum.photos/300/200/?random=10"],
+            imgs:[require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`)],
             eats:[{alt:"超好吃食物",src:"https://picsum.photos/300/200/?random=10"},{alt:"超好吃食物",src:"https://picsum.photos/300/200/?random=10"},{alt:"超好吃食物",src:"https://picsum.photos/300/200/?random=10"}],
             fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'},{name:'預約行程',source:'travelcheck'}],  // source各位自己輸入對應的router路徑^^
             navigation: {
