@@ -2,7 +2,7 @@
 <div class="bar-container">
   <ul class="wrapper font-18">
   <h3>商品</h3>
-  <hr>
+  <hr class="hr-bar">
     <li v-for="(item,index) in list" :key="'item'+index">
       <i class="fa-solid fa-angle-down"
         :class="{'open':item.open}"></i>
@@ -37,6 +37,7 @@
       position: relative;
       cursor: pointer;
       color: $color_444;
+      margin: 20px 0px;
       
       i{
         position: absolute;
@@ -47,9 +48,9 @@
         }
       }
 
-      .hr-bar{
-        color:$front_color_main;
-      }
+    }
+    .hr-bar{
+      color:$front_color_main;
     }
   }
 }

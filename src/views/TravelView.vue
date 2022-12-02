@@ -16,7 +16,7 @@
                 <p class="content font-16-15em">{{list['content']}}</p>
                 <div class="tago">
                   <p>{{list['tag']}}</p>
-                  <router-link to="/travelcontent">預約行程</router-link>
+                  <router-link to="/travelcontent">行程詳情</router-link>
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
             {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
             {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
             {title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"}],
-            fonts:[{name:'首頁',source:'train'},{name:'行程方案',source:'train'}],  // source各位自己輸入對應的router路徑^^
+            fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'}],  // source各位自己輸入對應的router路徑^^
             
           }
         },
@@ -169,7 +169,7 @@
               }
               img:hover{
                 transition: 1s;
-                transform: scale(1.01);
+                transform: scale(1.05);
               }
             }
             .tra_intro{
