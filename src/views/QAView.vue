@@ -2,13 +2,13 @@
     <!-- <div class="QA"> -->
     <div class="QA" style="max-width: 1200px; margin: auto;">
         <breadcrumb :fonts="fonts"/>
-        <Input/>
+        <Input id="test" :InputDefault="`來測試ㄟ`"/>
+        <!-- <Input id="test"/> -->
         <Tabs>
-            <Tab title="會員資料"><MemberInfo/></Tab>
+            <Tab title="會員資料">來測試</Tab>
             <Tab title="行程訂單查詢">what's up </Tab>
             <Tab title="商品訂單查詢">大家加油~</Tab>
         </Tabs>
-        <!-- <Tabs/> -->
         <div class="container">
             <aside>
                 <h2 class="font-32">Q&A</h2>
@@ -56,6 +56,7 @@
   
 <script>
     // @ is an alias to /src
+    import QA from "@/assets/js/QA.js"
     import breadcrumb from "@/components/breadcrumb.vue"
     import Input from "@/components/Input.vue"
     import Tabs from "@/components/Tabs.vue"
@@ -63,6 +64,9 @@
     import Pagination from "@/components/pagination/Pagination.vue"
 
     export default {
+        props:{
+            InputDefault: String
+        },
         name: 'QAView',
         components: {
             breadcrumb,
@@ -104,12 +108,16 @@
 
 <style scoped lang="scss">
     @import "../assets/scss/components/btn.scss";
-    :deep(.Input){
-        width: 500px;
-    }
     // .Input{ width: 500px!important; }
     .QA{
+        #test.js-hd-shadow{
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+            transition: 0.5s;
+        }
         padding: 20px 0 50px;
+        :deep(.Input){
+            width: 600px;
+        }
         p{
             color: $clr_gray_L1;
         }
