@@ -1,6 +1,14 @@
 <template>
+    <!-- <div class="QA"> -->
     <div class="QA" style="max-width: 1200px; margin: auto;">
-        <breadcrumb/>
+        <breadcrumb :fonts="fonts"/>
+        <Input/>
+        <Tabs>
+            <Tab title="會員資料"><MemberInfo/></Tab>
+            <Tab title="行程訂單查詢">what's up </Tab>
+            <Tab title="商品訂單查詢">大家加油~</Tab>
+        </Tabs>
+        <!-- <Tabs/> -->
         <div class="container">
             <aside>
                 <h2 class="font-32">Q&A</h2>
@@ -49,16 +57,23 @@
 <script>
     // @ is an alias to /src
     import breadcrumb from "@/components/breadcrumb.vue"
+    import Input from "@/components/Input.vue"
+    import Tabs from "@/components/Tabs.vue"
+    import Tab from "@/components/Tab.vue"
     import Pagination from "@/components/pagination/Pagination.vue"
 
     export default {
         name: 'QAView',
         components: {
             breadcrumb,
+            Input,
+            Tabs,
+            Tab,
             Pagination
         },
         data(){
             return{
+                fonts:[{name:'首頁',source:'/'},{name:'Q&A',source:'QA'}],
                 page:1,
                 QList:[
                     { id: 'Q001', name: '會員問題' },
@@ -89,6 +104,10 @@
 
 <style scoped lang="scss">
     @import "../assets/scss/components/btn.scss";
+    :deep(.Input){
+        width: 500px;
+    }
+    // .Input{ width: 500px!important; }
     .QA{
         padding: 20px 0 50px;
         p{

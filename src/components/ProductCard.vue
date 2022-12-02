@@ -2,7 +2,7 @@
 <div class="card">
     <div class="card-pic">
         <router-link to="#">
-            <img src="../assets/img/products/pro.jpg" alt="">
+            <img :src="img">
         </router-link>
     </div>
     <div class="card-txt">
@@ -21,7 +21,7 @@
 
 .card{
     width: 90%;
-    margin: 5px 10px;
+    margin: 10px;
     a{
         text-decoration: none;
     }
@@ -43,11 +43,11 @@
         padding: 0px 15px;
         text-align: left;
         .card-title{
-            @include font(20px);
+            @include font(16px);
             letter-spacing: 0px;
         }
         .card-price{
-            @include font(20px);
+            @include font(16px);
             margin: 7px 0px;
         }
     }
@@ -58,6 +58,7 @@
 <script>
 export default {
     props:{
+        img:String,
         title:String,
         price:Number,
         
