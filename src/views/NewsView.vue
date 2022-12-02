@@ -1,5 +1,4 @@
 <template>
-  <Header/>
   <Banner/>
   <breadcrumb/>
   <div class="container">
@@ -9,15 +8,22 @@
             <!-- 組件 -->
             <!-- 1 -->
             <NewsCard 
-                link="require(`@/assets/img/1.jpg"
+                :link="require(`@/assets/img/News/4.jpg`)"
                 type="活動" 
                 date="2022/10/02" 
                 title="高千穗-夜神樂" 
                 des="高千穗知名祭典活動-夜神樂 ，將於今年的11月..." 
             />
-            
+            <!-- 2 -->
+            <NewsCard 
+                :link="require(`@/assets/img/News/1.jpg`)"
+                type="其他" 
+                date="2022/10/03" 
+                title="商城新商品" 
+                des="新商品上市囉..." 
+            />
 
-            
+
         </div>
   </div>
   <div class="news-next-page">

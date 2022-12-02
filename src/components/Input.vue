@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss" >
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
     .Input{
@@ -29,5 +29,6 @@ export default {
         border-radius: 10px;
         border: 1px solid v-bind(BorderColor) !important;
         outline:none;
+        font-family: 'Noto Serif TC', 'Noto Sans', '微軟正黑體';
     }
 </style>
