@@ -11,7 +11,7 @@
     <div class="row">
       <div class="card-container ">
         <div v-for="item in list" :key="item.id" class="card-box col-sm-6 col-lg-3">
-            <productcard :title="item.title" :price="item.price"/>
+            <productcard :title="item.title" :price="item.price" :img="item.img"/>
         </div>
       </div>
     </div>
@@ -42,21 +42,49 @@
             list:[
               {
                 id:1,
+                img:require(`@/assets/img/products/pro.jpg`),
                 title:"九州干貝醬",
                 price:300,
               },
               {
                 id:2,
+                img: require(`@/assets/img/products/Rectangle 467.png`),
                 title:"長崎蛋糕",
                 price:460,
               },
               {
                 id:3,
+                img: require(`@/assets/img/products/pro.jpg`),
                 title:"長崎蛋糕",
                 price:460,
               },
               {
                 id:4,
+                img: require(`@/assets/img/products/pro.jpg`),
+                title:"長崎蛋糕",
+                price:460,
+              },
+              {
+                id:5,
+                img: require(`@/assets/img/products/pro.jpg`),
+                title:"長崎蛋糕",
+                price:460,
+              },
+              {
+                id:6,
+                img: require(`@/assets/img/products/pro.jpg`),
+                title:"長崎蛋糕",
+                price:460,
+              },
+              {
+                id:7,
+                img: require(`@/assets/img/products/pro.jpg`),
+                title:"長崎蛋糕",
+                price:460,
+              },
+              {
+                id:8,
+                img: require(`@/assets/img/products/pro.jpg`),
                 title:"長崎蛋糕",
                 price:460,
               },
@@ -84,6 +112,7 @@
     }
     .card-container{
       width: 90%;
+      margin: auto;
       display: flex;
       flex-wrap: wrap;
       .card-box{
