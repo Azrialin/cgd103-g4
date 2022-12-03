@@ -1,6 +1,7 @@
 <template>
 <div class="card">
-    <router-link to="#">
+    <!-- <router-link to="/travelcheck"> -->
+    <router-link to="/ShopContent">
         <div class="card-pic">
             <img :src="img">
         </div>
