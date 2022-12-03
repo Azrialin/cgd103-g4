@@ -22,7 +22,7 @@ export default {
 @import "../assets/scss/base/color.scss";
     .tab-content{
         min-height: 400px;
-        padding: 20px;
+        padding: 20px 0px;
         border-radius:0 5px 5px;
         border:1px solid $front_color_main;
         position: relative;

@@ -14,17 +14,14 @@ $(function scroll(){
 $(function click(){
     $('.js-click').on('click', function (){
         $(this).toggleClass('on');
-
-        // MENU樣式改變
-        $('.QA_menu>h3').not(this).removeClass('on');
     });
 });
 
 // 選單 click
 $(function menuClick(){
-    $('.QA_menu li').on('click', function (){
-        $('.QA_menu li .at').remove();
-        $('.at').clone().appendTo(this);
+    $('.QA_menu li, .tabs .tab').on('click', function (){
+        $('.QA_menu li, .tabs .tab').not(this).removeClass('at');
+        $(this).addClass('at');
     });
 });
 

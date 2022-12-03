@@ -8,28 +8,32 @@
             <div class="footer-content">
                 <ul class="footer-pages">
                     <li class="desktop">
-                        <a href="#" class="font-24">預約行程</a>
+                        <router-link to="/Train" class="font-24">預約行程
                         <p class="link-note font-20">Booking</p>
+                        </router-link>
                     </li>
                     <li class="desktop">
-                        <a href="#" class="font-24">消息專區</a>
+                        <router-link to="/News" class="font-24">消息專區
                         <p class="link-note font-20">News</p>
+                        </router-link>
                     </li>
                     <li class="desktop">
-                        <a href="#" class="font-24">線上商城</a>
+                        <router-link to="/Shop" class="font-24">線上商城
                         <p class="link-note font-20">Online Shop</p>
+                        </router-link>
                     </li>
                     <li>
-                        <a href="#" class="font-24">關於我們</a>
+                        <router-link to="/About" class="font-24">關於我們
                         <p class="link-note font-20">About</p>
+                        </router-link>
                     </li>
                     <li>
-                        <a href="#" class="font-24">聯絡我們</a>
+                        <router-link to="/" class="font-24">聯絡我們
                         <p class="link-note font-20">Contact</p>
+                        </router-link>
                     </li>
                     <li>
-                        <router-link to="/QA">
-                        <a href="javascript:void(0);" class="font-24">常見問題</a>
+                        <router-link to="/QA" class="font-24">常見問題
                         <p class="link-note font-20">Q&A</p>
                         </router-link>
                     </li>

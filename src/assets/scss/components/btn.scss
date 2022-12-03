@@ -50,10 +50,14 @@ $maxWidth: 767px;
 $desk: front;
 // $desk: back;
 
-
-
-@mixin rwd($width){
+@mixin maxW($width){
     @media screen and (max-width: $width){
+        @content;
+    }
+}
+
+@mixin minW($width){
+    @media screen and (min-width: $width){
         @content;
     }
 }
@@ -68,7 +72,12 @@ $desk: front;
 // padding (上下, 左右)
 @mixin btnPadding($TB, $LR){
     padding: $TB+px $LR+px;
-    @include rwd($maxWidth){
+    @include maxW(480px){
+        padding: ($TB/5)*2+px ($LR/4)+px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    @include maxW($maxWidth){
         padding: ($TB/5)*4+px ($LR/2)+px;
     }
     @content;
@@ -299,15 +308,12 @@ $btn-type:
 
 
 
-// input(暫)
-.input{
+// input(暫時用)
+%input-style{
     vertical-align: top;
     appearance: none;
     outline: none;
-    @include btnPadding(10, 10);
-    @include border(1, $clr_gold_L1, 10px){
-        border: 1px solid $clr_gold_L3;
-    }
+    @include btnPadding(10, 20);
     @include btnFont(600, 16){
         font-family: 'Noto Serif TC';
         letter-spacing: 0.1em;
@@ -317,14 +323,58 @@ $btn-type:
         color: $clr_gray_L2;
         opacity: .8;
     }
-    &:active{
-        border-color: $clr_gold_L1;
-    }
-    &:focus{
-        border-color: $clr_gold_L1;
-    }
     &:disabled{
         background: $clr_gray_L4;
-        opacity: 0.5;
     }
+}
+
+@mixin inputClr($main, $hover){
+    @include border(1px, $main, 10px);
+    &:active{
+        border-color: $hover;
+    }
+    &:focus{
+        border-color: $hover;
+    }
+    @content;
+}
+
+$input-type: 'blue', 'gold', 'danger';
+
+@each $type in $input-type{
+    .input-#{$type}{
+        @extend %input-style;
+    }
+}
+
+.input-blue{
+    @include inputClr($clr_blue_L2, $clr_blue_L1);
+}
+.input-gold{
+    @include inputClr($clr_gold_L2, $clr_gold_L0);
+}
+.input-danger{
+    position: relative;
+    border: 1px solid $clr_danger;
+    border-radius: 10px;
+        &::placeholder{
+            color: $clr_danger;
+        }
+        &:active{
+            outline: 2px solid lighten($clr_danger, 10);
+        }
+        &:focus{
+            outline: 2px solid lighten($clr_danger, 10);
+        }
+        // input 不支持偽元素
+        // &::after{
+        //     content: '123';
+        //     display: block;
+        //     font-size: 14px;
+        //     font-family: 'Noto Serif TC', '微軟正黑體';
+        //     font-weight: 700;
+        //     line-height: 1.2em;
+        //     letter-spacing: 0.15em;
+        // }
+
 }
