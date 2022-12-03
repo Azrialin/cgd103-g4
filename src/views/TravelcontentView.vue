@@ -1,5 +1,5 @@
 <template>
-  <Banner/>
+  <Banner :src="require(`@/assets/img/Banner/banner_travel.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
   <div class="about">
     <!-- <div id="sidehead"></div> -->

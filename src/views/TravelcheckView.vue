@@ -1,5 +1,5 @@
 <template>
-  <Banner/>
+  <Banner :src="require(`@/assets/img/Banner/banner_travel.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
   <div class="container_form">
     <h2>行程預約</h2>

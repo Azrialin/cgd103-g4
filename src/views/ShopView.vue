@@ -1,6 +1,6 @@
 <template>
 <div class="shop-container">
-  <breadcrumb/>
+  <breadcrumb :fonts="fonts"/>
   <div class="select">
     <Select/>
   </div>
@@ -15,9 +15,9 @@
         </div>
       </div>
     </div>
-    
-
-
+  </div>
+  <div class="pagination">
+    <Pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="9" :total="30"/>
   </div>
 </div>
 
@@ -28,67 +28,94 @@
     import side from "@/components/side.vue"
     import productcard from "@/components/ProductCard.vue"
     import Select from "@/components/Select.vue"
+    import Pagination from "@/components/pagination/Pagination.vue"
     export default {
-        name: "HeaderView",
+        name: "ShopView",
         components:{
             Header,
             breadcrumb,
             side,
             productcard,
             Select,
+            Pagination,
         },
         data(){
           return{
             list:[
               {
                 id:1,
-                img:require(`@/assets/img/products/pro.jpg`),
-                title:"九州干貝醬",
-                price:300,
+                img:require(`@/assets/img/products/pro1.jpg`),
+                title:"JS怪奇薯條",
+                price:180,
               },
               {
                 id:2,
-                img: require(`@/assets/img/products/Rectangle 467.png`),
-                title:"長崎蛋糕",
-                price:460,
+                img: require(`@/assets/img/products/pro2.jpg`),
+                title:"曲奇餅乾",
+                price:280,
               },
               {
                 id:3,
-                img: require(`@/assets/img/products/pro.jpg`),
-                title:"長崎蛋糕",
-                price:460,
+                img: require(`@/assets/img/products/pro3.jpg`),
+                title:"透明醬油",
+                price:320,
               },
               {
                 id:4,
-                img: require(`@/assets/img/products/pro.jpg`),
+                img: require(`@/assets/img/products/pro4.jpg`),
                 title:"長崎蛋糕",
                 price:460,
               },
               {
                 id:5,
-                img: require(`@/assets/img/products/pro.jpg`),
-                title:"長崎蛋糕",
-                price:460,
+                img: require(`@/assets/img/products/pro5.jpg`),
+                title:"明太子醬",
+                price:480,
               },
               {
                 id:6,
-                img: require(`@/assets/img/products/pro.jpg`),
-                title:"長崎蛋糕",
-                price:460,
+                img: require(`@/assets/img/products/pro6.jpg`),
+                title:"九州昆布湯包",
+                price:320,
               },
               {
                 id:7,
-                img: require(`@/assets/img/products/pro.jpg`),
-                title:"長崎蛋糕",
-                price:460,
+                img: require(`@/assets/img/products/pro7.jpg`),
+                title:"旺旺仙貝",
+                price:150,
               },
               {
                 id:8,
-                img: require(`@/assets/img/products/pro.jpg`),
-                title:"長崎蛋糕",
-                price:460,
+                img: require(`@/assets/img/products/pro8.jpg`),
+                title:"七彩洋芋片",
+                price:280,
               },
-            ]
+              {
+                id:9,
+                img: require(`@/assets/img/products/pro9.jpg`),
+                title:"九州黑醋",
+                price:220,
+              },
+              {
+                id:10,
+                img: require(`@/assets/img/products/pro10.jpg`),
+                title:"JS可樂餅",
+                price:350,
+              },
+              {
+                id:11,
+                img: require(`@/assets/img/products/pro11.jpg`),
+                title:"柚子胡椒",
+                price:180,
+              },
+              {
+                id:12,
+                img: require(`@/assets/img/products/pro12.jpg`),
+                title:"鬼頭刀罐頭",
+                price:480,
+              },
+            ],
+            fonts:[{name:'首頁',source:'/'},{name:'線上商城',source:'shop'}], 
           }
         }
     }
@@ -96,18 +123,18 @@
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/base/font.scss";
+@import "../assets/scss/base/color.scss";
 @import "../assets/scss/layout/grid.scss";
   .shop-container{
     width: 100%;
     margin: auto;
-    outline: 1px solid red;
-    // .select{
-    //   display: block;
-    // }
+    
     .shop-content{
       display: flex;
       flex-wrap: wrap;
       padding: 0px;
+      position: relative;
       
     }
     .card-container{
@@ -121,7 +148,10 @@
       }
       
     }
-    
+  }
+  .pagination{
+    width: 100%;
+    margin: 20px 0px;
   }
 
   @media screen and (max-width:768px){
@@ -139,6 +169,7 @@
       .shop-content{
         display: flex;
         flex-wrap: wrap;
+        
       }
       .row{
         width: 80%;

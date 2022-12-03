@@ -2,7 +2,7 @@
     <div class="container_bread">
         <div class="breadgroup">
             <ul class="bread">
-                <li class="breadlist font" v-for="font in fonts" :key="font">
+                <li class="breadlist font-16" v-for="font in fonts" :key="font">
                     <router-link class="breadin" :to="{path:font['source']}">{{font['name']}}</router-link>
                 </li>
             </ul>
@@ -41,7 +41,7 @@ export default {
                     }
                 }
                 .breadlist~.breadlist::before{
-                    content: " / ";
+                    content: "／";
                 }
                 .breadlist:last-child .breadin{
                     color: $front_color_main;
