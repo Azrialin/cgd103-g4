@@ -82,11 +82,12 @@
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
 @import "../assets/scss/components/btn.scss";
-*{
-  outline: solid 1px;
-}
+// *{
+//   outline: solid 1px;
+// }
 .container_form{
-  background-color: #f0a;
+  // background-color: #f0a;
+  box-sizing: border-box;
   padding: 10px;
   width: 100%;
   h2{
@@ -95,6 +96,7 @@
     padding: 40px;
   }
   .content_form{
+    box-sizing: border-box;
     width: 100%;
     background-color: #f8f8f8;
     padding: 20px 20px;
@@ -171,6 +173,7 @@
         padding: 40px;
         text-align: center;
         a{
+          text-decoration: none;
           color: $front_color_main
         }
       }
@@ -179,6 +182,7 @@
         display: flex;
         justify-content: center;
         a{
+          text-decoration: none;
           background-color: #fff;
           padding: 15px;
           border-radius: 10px;
