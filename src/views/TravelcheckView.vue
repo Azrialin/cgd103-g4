@@ -31,7 +31,7 @@
     import Header from "@/components/Header.vue"
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
-    import { Swiper, SwiperSlide } from 'swiper/vue';
+    import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css';
     export default {
         name: "HeaderView",
