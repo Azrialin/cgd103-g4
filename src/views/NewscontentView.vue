@@ -1,5 +1,5 @@
 <template>
-  <Banner/>
+  <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
   <breadcrumb/>
   
   <div class="container">
