@@ -21,6 +21,7 @@
                 <option value="1">Taiwan</option>
                 <option value="2">Japan</option>
             </select>
+            
             <!-- <input  v-model="result.nationality"/> -->
 
         </form>
