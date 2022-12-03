@@ -4,8 +4,9 @@
 // .font-32			H3
 // .font-28 		H4
 // .font-24			H5
-// .font-20			H6/段落標題
-// .font-18			按鈕/麵包屑
+// .font-20			H6
+// .font-18			段落標題/按鈕
+// .font-16			按鈕/麵包屑
 // .font-16-15em	內文:窄行高
 // .font-16-24em	內文:寬行高
 // .font-14			輸入框下方提示字
@@ -32,7 +33,7 @@
 	text-align: justify;
 }
 
-$font-size: 48, 36, 32, 28, 24, 20, 18, 14;
+$font-size: 48, 36, 32, 28, 24, 20, 18, 16, 14;
 @each $size in $font-size{
 	.font-#{$size}{
 		@extend %font-style;

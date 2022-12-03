@@ -25,11 +25,6 @@
     </header>
 </template>
 <script>
-// let hambur = document.querySelector("#hambur");
-// console.log(ham);
-
-
-
 export default {
     props: {
 
