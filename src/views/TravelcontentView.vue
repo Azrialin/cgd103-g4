@@ -161,7 +161,9 @@
       }
       .bannerfa{
         cursor: pointer;
+        padding-right: 0px;
         .banner{
+          box-sizing: border-box;
           border-radius: 10px;
           padding: 10px;
           img{
@@ -192,6 +194,9 @@
         display: flex;
         justify-content: center;
         padding: 40px 0px;
+        a{
+          text-decoration: none;
+        }
         .back{
           @include font(20px);
           cursor: pointer;
