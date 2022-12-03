@@ -2,26 +2,36 @@
     <!-- <div class="QA"> -->
     <div class="QA" style="max-width: 1200px; margin: auto;">
         <breadcrumb :fonts="fonts"/>
-        <Input id="test" :InputDefault="`來測試ㄟ`"/>
+        <!-- <Input id="test" :InputDefault="`來測試ㄟ`"/> -->
         <!-- <Input id="test"/> -->
-        <Tabs>
+        <!-- <Tabs>
             <Tab title="會員資料">來測試</Tab>
             <Tab title="行程訂單查詢">what's up </Tab>
             <Tab title="商品訂單查詢">大家加油~</Tab>
-        </Tabs>
+        </Tabs> -->
         <div class="container">
             <aside>
                 <h2 class="font-32">Q&A</h2>
                 <ul class="QA_menu">
-                    <h3 class="font-20" v-for="Q in QList" :key="Q">
-                        {{Q.name}}
+                    <h3 class="font-20" v-for="QA in QA_menu" :key="QA" @click="tabChange" :data-id="QA['id']">
+                        {{QA.title}}
                     </h3>
                 </ul>
             </aside>
             <main>
-                <ul class="QA_list">
-                    <li class="font-16-24em" v-for="QA in QAList" :key="QA">
-                        Q：{{QA.Q}}<br>A：{{QA.A}}
+                <ul class="QA_list" v-show="tab=='Q001'">
+                    <li class="font-16-24em" v-for="QA_M in QA_M_list" :key="QA_M">
+                        Q：{{QA_M.Q}}<br>A：{{QA_M.A}}
+                    </li>
+                </ul>
+                <ul class="QA_list" v-show="tab=='Q002'">
+                    <li class="font-16-24em" v-for="QA_T in QA_T_list" :key="QA_T">
+                        Q：{{QA_T.Q}}<br>A：{{QA_T.A}}
+                    </li>
+                </ul>
+                <ul class="QA_list" v-show="tab=='Q003'">
+                    <li class="font-16-24em" v-for="QA_P in QA_P_list" :key="QA_P">
+                        Q：{{QA_P.Q}}<br>A：{{QA_P.A}}
                     </li>
                 </ul>
             </main>
@@ -64,9 +74,6 @@
     import Pagination from "@/components/pagination/Pagination.vue"
 
     export default {
-        props:{
-            InputDefault: String
-        },
         name: 'QAView',
         components: {
             breadcrumb,
@@ -75,50 +82,106 @@
             Tab,
             Pagination
         },
+        props:{
+            InputDefault: String
+        },
+        created(){
+
+        },
+        mounted() {
+            
+        },
         data(){
             return{
-                fonts:[{name:'首頁',source:'/'},{name:'Q&A',source:'QA'}],
+                tab:1,
                 page:1,
-                QList:[
-                    { id: 'Q001', name: '會員問題' },
-                    { id: 'Q002', name: '行程訂單問題' },
-                    { id: 'Q003', name: '商品訂單問題' }
+                fonts:[
+                    { name: '首頁', source: '/' },
+                    { name: 'Q&A', source: 'QA' }
                 ],
-                QAList:[
+                QA_menu:[
+                    { id: 'Q001', title: '會員問題' },
+                    { id: 'Q002', title: '行程訂單問題' },
+                    { id: 'Q003', title: '商品訂單問題' }
+                ],
+                QA_M_list:[
                     { 
                         id: 'M001',
                         Q:  '請問我忘記密碼了怎麼辦？',
                         A:  '請撥打客服電話，由專人為您服務。'
                     },
                     { 
-                        id: 'T001',
+                        id: 'M002',
                         Q: '請問客服電話是？我找不到。',
                         A: '您好，客服電話是：00-0000-0000。'
                     },
                     { 
-                        id: 'P001',
+                        id: 'M003',
                         Q:  '請問可以不要填寫LINE ID嗎？',
                         A:  '可以的，親。'
                     }
                 ],
+                QA_T_list:[
+                    { 
+                        id: 'T001',
+                        Q:  '我不小心訂錯行程了，請問要如何退訂？',
+                        A:  '請至【會員專區】>【行程訂單查詢】，點擊【取消行程】'
+                    },
+                    { 
+                        id: 'T002',
+                        Q: '我想要刷卡，但我不能填寫安全碼？',
+                        A: '請撥打客服電話，由專人為您服務。'
+                    },
+                    { 
+                        id: 'T003',
+                        Q:  '我請問我要如何查詢乘車座位？',
+                        A:  '您好，我們不提供劃位服務，建議您提早上車，先搶先贏。'
+                    },
+                    { 
+                        id: 'T004',
+                        Q:  '我購買了方案A，請問發車時間是？',
+                        A:  '請撥打客服電話，由專人為您服務。'
+                    },
+                ],
+                QA_P_list:[
+                    { 
+                        id: 'P001',
+                        Q:  '請問現貨商品多久會寄出？',
+                        A:  '請撥打客服電話，由專人為您服務。'
+                    },
+                    { 
+                        id: 'P002',
+                        Q: '請問我要如何查詢貨況呢？',
+                        A: '請撥打客服電話，由專人為您服務。'
+                    },
+                ],
             }
-        }
+        },
+        methods: {
+            tabChange:function(e){
+                let tabid = e.target.dataset.id
+                this.tab = tabid
+            }
+        },
     }
 </script>
 
 <style scoped lang="scss">
     @import "../assets/scss/components/btn.scss";
-    // .Input{ width: 500px!important; }
     .QA{
+        // ----------測試區----------
         #test.js-hd-shadow{
             box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
             transition: 0.5s;
         }
+        // :deep(.Input){ width: 600px; }
+        // ----------測試區----------
+            
+        min-height: calc(100vh - 70px);
         padding: 20px 0 50px;
-        :deep(.Input){
-            width: 600px;
-        }
-        p{
+        display: flex;
+        flex-direction: column;
+        p,a{
             color: $clr_gray_L1;
         }
         h2{
@@ -126,7 +189,10 @@
             color: $clr_gray_L1;
         }
         .container{
+            flex-grow: 1;
+            width: 100%;
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             margin: auto;
             padding-bottom: 50px;
