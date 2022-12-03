@@ -11,14 +11,14 @@
 import Header from '@/components/Header.vue'
 import Tabs from '@/components/Tabs.vue'
 import Tab from '@/components/Tab.vue'
-import Input from '@/components/Input.vue'
+// import Input from '@/components/Input.vue'
 import MemberInfo from '@/components/MemberInfo.vue'
   export default {
     components: {
       Tabs,
       Tab,
       Header,
-      Input,
+      // Input,
       MemberInfo,
     },
   }
