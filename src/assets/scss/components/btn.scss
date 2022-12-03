@@ -296,3 +296,35 @@ $btn-type:
 .btn-danger_2nd{
     @include btn-plain_2nd($clr_danger);
 }
+
+
+
+// input(暫)
+.input{
+    vertical-align: top;
+    appearance: none;
+    outline: none;
+    @include btnPadding(10, 10);
+    @include border(1, $clr_gold_L1, 10px){
+        border: 1px solid $clr_gold_L3;
+    }
+    @include btnFont(600, 16){
+        font-family: 'Noto Serif TC';
+        letter-spacing: 0.1em;
+        color: $clr_gray_L1;
+    }
+    &::placeholder{
+        color: $clr_gray_L2;
+        opacity: .8;
+    }
+    &:active{
+        border-color: $clr_gold_L1;
+    }
+    &:focus{
+        border-color: $clr_gold_L1;
+    }
+    &:disabled{
+        background: $clr_gray_L4;
+        opacity: 0.5;
+    }
+}
