@@ -43,7 +43,7 @@ export default {
 
 </style>
 
-<style lang="scss">
+<style scoped lang="scss">
     .Input{
     width: 80% !important;
     height: 10px!important;
