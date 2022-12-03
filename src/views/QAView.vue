@@ -2,24 +2,25 @@
     <!-- <div class="QA"> -->
     <div class="QA" style="max-width: 1200px; margin: auto;">
         <breadcrumb :fonts="fonts"/>
-        <!-- <Input id="test" :InputDefault="`來測試ㄟ`"/> -->
-        <!-- <Input id="test"/> -->
-        <!-- <Tabs>
-            <Tab title="會員資料">來測試</Tab>
-            <Tab title="行程訂單查詢">what's up </Tab>
-            <Tab title="商品訂單查詢">大家加油~</Tab>
-        </Tabs> -->
+        <div class="search">
+            <!-- <Input id="test" :InputDefault="`這不能用，我還不會寫搜尋吧`"/> -->
+        </div>
         <div class="container">
             <aside>
                 <h2 class="font-32">Q&A</h2>
                 <ul class="QA_menu">
-                    <h3 class="font-20" v-for="QA in QA_menu" :key="QA" @click="tabChange" :data-id="QA['id']">
-                        {{QA.title}}
+                    <span class="at"></span>
+                    <h3 class="font-18 js-click" 
+                        v-for="QA in QA_menu"
+                        :key="QA" @click="tabChange"
+                        :data-id="QA['id']">
+                        <span class="txt">{{QA.title}}</span>
                     </h3>
                 </ul>
             </aside>
             <main>
-                <ul class="QA_list" v-show="tab=='Q001'">
+                <Input class="js-click" :InputDefault="`這不能用，我還不會寫搜尋吧`"/>
+                <ul class="QA_list" v-show="tab!='Q002' && tab!='Q003'">
                     <li class="font-16-24em" v-for="QA_M in QA_M_list" :key="QA_M">
                         Q：{{QA_M.Q}}<br>A：{{QA_M.A}}
                     </li>
@@ -35,6 +36,10 @@
                     </li>
                 </ul>
             </main>
+        </div>
+        <div id="move-line-box" class="line-box">
+            <div id="move-line" class="short-line">測試</div>
+            <div class="long-line"></div>
         </div>
         <Pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="9" :total="30"/>
 
@@ -69,8 +74,6 @@
     import QA from "@/assets/js/QA.js"
     import breadcrumb from "@/components/breadcrumb.vue"
     import Input from "@/components/Input.vue"
-    import Tabs from "@/components/Tabs.vue"
-    import Tab from "@/components/Tab.vue"
     import Pagination from "@/components/pagination/Pagination.vue"
 
     export default {
@@ -78,8 +81,6 @@
         components: {
             breadcrumb,
             Input,
-            Tabs,
-            Tab,
             Pagination
         },
         props:{
@@ -102,7 +103,7 @@
                 QA_menu:[
                     { id: 'Q001', title: '會員問題' },
                     { id: 'Q002', title: '行程訂單問題' },
-                    { id: 'Q003', title: '商品訂單問題' }
+                    { id: 'Q003', title: '商品訂單問題' },
                 ],
                 QA_M_list:[
                     { 
@@ -159,8 +160,9 @@
         },
         methods: {
             tabChange:function(e){
-                let tabid = e.target.dataset.id
-                this.tab = tabid
+                let tabid = e.target.dataset.id;
+                this.tab = tabid;
+                // e.target.style.background = "#E2E9F2";
             }
         },
     }
@@ -168,15 +170,50 @@
 
 <style scoped lang="scss">
     @import "../assets/scss/components/btn.scss";
+    .QA_menu h3.active{ background: lightblue; }
     .QA{
         // ----------測試區----------
-        #test.js-hd-shadow{
-            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
-            transition: 0.5s;
+        #move-line-box{
+        padding: 30px;
+        position: relative;
         }
-        // :deep(.Input){ width: 600px; }
+        #move-line{
+        max-width: 100px;
+        position: absolute;
+        transition: 0.15s;
+        }
+        .line-box{
+            padding: 30px 0px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .long-line{
+            margin: 20px auto;
+            border-bottom: 1px solid #B3B3B3;
+        }
+        .short-line{
+            margin: auto;
+            width: 30%;
+            max-width: 200px;
+            height: 3px;
+            background-color: #00ADBB;
+        }
+        // .js-click.js-hd-shadow{
+        //     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+        //     transition: 0.5s;
+        // }
         // ----------測試區----------
-            
+        // .search{
+        //     h2,.Input{
+        //         display: inline-block;
+        //     }
+        //     // :deep(.Input){ width: 600px; }
+        // }
+        :deep(.Input){ 
+            // width: 600px;
+            width: 100%;
+            margin: 10px 0 30px;
+        }    
         min-height: calc(100vh - 70px);
         padding: 20px 0 50px;
         display: flex;
@@ -200,6 +237,7 @@
                 width: 20%;
                 .QA_menu{
                     h3{
+                        display: flex;
                         cursor: pointer;
                         padding: 15px;
                         color: $clr_gray_L1;
@@ -211,6 +249,15 @@
                         }
                         &:last-child{
                             border-bottom: 1px solid $clr_gray_L4;
+                        }
+                        .txt{
+                            order: 1;
+                        }
+                        .at{
+                            width: 5px;
+                            height: 22px;
+                            margin-right: 10px;
+                            background: $clr_blue_L2;
                         }
                     }
                 }
