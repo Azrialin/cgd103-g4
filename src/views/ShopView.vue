@@ -1,6 +1,6 @@
 <template>
 <div class="shop-container">
-  <breadcrumb/>
+  <breadcrumb :fonts="fonts"/>
   <div class="select">
     <Select/>
   </div>
@@ -114,7 +114,8 @@
                 title:"鬼頭刀罐頭",
                 price:480,
               },
-            ]
+            ],
+            fonts:[{name:'首頁',source:'/'},{name:'線上商城',source:'shop'}], 
           }
         }
     }
@@ -122,14 +123,19 @@
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/base/font.scss";
+@import "../assets/scss/base/color.scss";
 @import "../assets/scss/layout/grid.scss";
   .shop-container{
     width: 100%;
     margin: auto;
+    
     .shop-content{
       display: flex;
       flex-wrap: wrap;
       padding: 0px;
+      position: relative;
+      
     }
     .card-container{
       width: 90%;
@@ -163,6 +169,7 @@
       .shop-content{
         display: flex;
         flex-wrap: wrap;
+        
       }
       .row{
         width: 80%;
