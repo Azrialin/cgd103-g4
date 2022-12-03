@@ -1,16 +1,14 @@
 <template>
 <div class="card">
-    <div class="card-pic">
-        <router-link to="#">
+    <router-link to="#">
+        <div class="card-pic">
             <img :src="img">
-        </router-link>
-    </div>
-    <div class="card-txt">
-        <router-link to="#">
+        </div>
+        <div class="card-txt">
             <h4 class="card-title">{{title}}</h4>
             <p class="card-price">${{price}}</p>
-        </router-link>
-    </div>
+        </div>
+    </router-link>
 </div>
 </template>
 
@@ -22,14 +20,23 @@
 .card{
     width: 90%;
     margin: 10px;
+    &:hover{
+        box-shadow:4px 4px 4px 0px #dadada;
+
+    }
+    &:hover img{
+        transform: scale(1.05);
+        transition: 0.8s;
+    }
     a{
         text-decoration: none;
     }
     border: 1px solid $front_color_main;
     border-radius: 5px;
+    
     .card-pic{
         overflow: hidden;
-        padding: 15px;
+        padding: 10px;
         margin: auto;
         border-radius: 5px;
         img{
