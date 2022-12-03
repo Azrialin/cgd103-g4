@@ -88,7 +88,7 @@
 .container_form{
   // background-color: #f0a;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px 10px 100px 10px ;
   width: 100%;
   h2{
     @include font(32px);
@@ -118,7 +118,9 @@
     }
     .main_chu{
       .main_human{
+        padding: 20px 20px 50px 20px;
         .inputcompo{  
+          box-sizing: border-box;
           width: 100%;
           padding: 20px 10px;
           border: solid 1px $front_color_main;
@@ -137,7 +139,9 @@
         
       }
       .main_come{
+        padding: 20px 20px 50px 20px;
         .inputcompo{  
+          box-sizing: border-box;
           width: 100%;
           padding: 20px 10px;
           border: solid 1px $front_color_main;
@@ -157,7 +161,11 @@
       }
     }
     .main_online{
+      padding: 0px 20px;
+      border-top: 1px solid $front_color_main;
+      // margin-top: 30px;
       .inputcompo{  
+        box-sizing: border-box;
         width: 100%;
         padding: 20px 10px;
         border: solid 1px $front_color_main;
@@ -194,6 +202,17 @@
   }
 }
 @media screen and (min-width: 1024px){
-
+  .main_chu{
+    display: flex;
+    .main_human{
+      padding: 20px 20px 50px 20px;
+      width: 50%;
+    }
+    .main_come{
+      border-left: 1px solid $front_color_main;
+      padding: 20px 20px 50px 20px;
+      width: 50%;
+    }
+  }
 }
 </style>
