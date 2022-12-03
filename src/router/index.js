@@ -109,9 +109,18 @@ const routes = [
   },
 ]
 
+// router 跳轉畫面後，維持置頂
+const scrollBehavior = (to, from, savedPosition) => {
+	if(savedPosition && to.meta.keepAlive){
+		return savedPosition;
+	}
+	return {left: 0, top: 0}
+}
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior
 })
 
 export default router
