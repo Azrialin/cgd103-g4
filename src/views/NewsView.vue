@@ -1,5 +1,5 @@
 <template>
-  <Banner/>
+  <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
   <breadcrumb/>
   <div class="container">
     <div class="news-cards">
@@ -53,14 +53,16 @@
   import NewsCard from "@/components/news/NewsCard.vue"
   import Footer from "@/components/Footer.vue"
 
+
   export default {
       name: "NewsView",
       components:{
-          Header,
-          Banner,
-          breadcrumb,
-          NewsCard,
-          Footer
-      }
+    Header,
+    Banner,
+    breadcrumb,
+    NewsCard,
+    Footer,
+
+}
   }
 </script>

@@ -23,12 +23,9 @@ export default {
 @import "../assets/scss/base/color.scss";
     .Input{
         appearance: none;
-        width: fit-content;
-        height: 20px;
         padding: 10px;
         border-radius: 10px;
         border: 1px solid v-bind(BorderColor) !important;
         outline:none;
-        font-family: 'Noto Serif TC', 'Noto Sans', '微軟正黑體';
     }
 </style>

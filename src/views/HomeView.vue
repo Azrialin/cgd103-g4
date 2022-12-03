@@ -10,10 +10,10 @@
           <div class="HomeNew">
             <div class="TopicsCard">
               <div class="CardWrapper">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img class="col-5" :src="list.imageurl">
                 <div class="HomeNew-Text">
-                  <p class="HomeNew-Title">2022/12/01</p>
-                  <p class="HomeNew-Subtitle">｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。</p>
+                  <p class="HomeNew-Title">{{list.HomeNew_Title}}</p>
+                  <p class="HomeNew-Subtitle">{{list.HomeNew_Subtitle}}</p>
                 </div>
               </div>
             </div>
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="Js-Official">
-            <div class="CovidText">
+            <div class="Js-SocialMedia">
               <p>「JET SPEED」公式instergram</p>
             </div>
           </div>
@@ -42,11 +42,32 @@
 export default{
   data(){
     return{
-      lists:[{},{},{},{}],
+      lists:[
+        {
+          imageurl:require('@/assets/img/News/1.jpg'),
+          HomeNew_Title:'2022/11/06',
+          HomeNew_Subtitle:'｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。',
+        },
+        {
+          imageurl:require('@/assets/img/News/1.jpg'),
+          HomeNew_Title:'2022/11/06',
+          HomeNew_Subtitle:'｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。',
+        },
+        {
+          imageurl:require('@/assets/img/News/1.jpg'),
+          HomeNew_Title:'2022/11/06',
+          HomeNew_Subtitle:'｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。',
+        },
+        {
+          imageurl:require('@/assets/img/News/1.jpg'),
+          HomeNew_Title:'2022/11/06',
+          HomeNew_Subtitle:'｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。',
+        }
+      ],
     }
   },methods:{
   getdata(){
-    fetch('https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=7c2b8cff562e02eb9fd32da3c4ff2ed9')
+    fetch(process.env.VUE_APP_WEATHERAPI)
     .then(function(response){
       return response.json();
     })
@@ -60,19 +81,42 @@ export default{
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import "../assets/scss/layout/grid.scss";
-  .title{
-    margin: 20px;
+@import "../assets/scss/base/font.scss";
+  *{
+    font-style: font-style;
   }
-  .TopicsCard{
-
+  .title{
+    margin: 20px auto;
   }
   .CardWrapper{
     display: flex;
+    gap: 10px;
+    .HomeNew-Text{
+      text-align: start;
+    }
+  }
+  li{
+    margin-bottom: 30px;
   }
   .OtherNews{
     margin: 50px auto;
+    .Covid-19{
+      //font-size: nth($font-size,7)+px;
+      border: 1px solid black;
+      text-align: start;
+      .CovidText{
+        margin: 10px 20px;
+        button{
+          width: 100%;
+          margin: 10px;
+        }
+      }
+    }
+    .Js-Official{
+      .Js-SocialMedia{}
+    }
   }
 </style>
 

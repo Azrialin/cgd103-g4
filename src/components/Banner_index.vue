@@ -18,25 +18,25 @@ export default {
 <style scoped lang="scss">
     .top-banner img{
         width: 100%;
-        height: 100%;
         background-position: center bottom;
         background-size: cover;
         background-repeat: no-repeat;
+    
     }
     
     @media screen and (max-width:767px){
         .top-banner{
-        height: 150px;
+        height: 300px;
         }
     }
     @media screen and (min-width: 768px){
         .top-banner{
-        height: 220px;
+        height: 400px;
         }
     }
     @media screen and (min-width: 1024px){
         .top-banner{
-        height: 300px;
+        height: 600px;
         }
     }
 </style>
