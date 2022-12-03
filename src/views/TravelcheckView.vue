@@ -62,12 +62,7 @@
     import Header from "@/components/Header.vue"
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
-<<<<<<< HEAD
     import input from "@/components/Input.vue"
-=======
-    import { Swiper, SwiperSlide } from 'swiper/vue'
-    import 'swiper/css';
->>>>>>> Fishray
     export default {
       name: "HeaderView",
       components:{
