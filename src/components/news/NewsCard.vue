@@ -13,7 +13,7 @@
             <h3 class="news-title font-20">{{title}}</h3>
             <p class="news-des font-16-24em">{{des}}</p>
             <div class="news-btn">
-                <a href="#" class="news-btn-more font-18">more</a>
+                <router-link to="/Newscontent" class="news-btn-more font-18">more</router-link>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-    name: '[NewsCard]',
+    name: 'NewsCard',
     props: {
         type: String,
         date: String,
