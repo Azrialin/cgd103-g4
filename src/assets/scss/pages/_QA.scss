@@ -3,48 +3,6 @@
 @import "../base/font.scss";
 
 .QA{
-    // ----------測試區----------
-    #move-line-box{
-    padding: 30px;
-    position: relative;
-    }
-    #move-line{
-    max-width: 100px;
-    position: absolute;
-    transition: 0.15s;
-    }
-    .line-box{
-        padding: 30px 0px;
-        max-width: 800px;
-        margin: auto;
-    }
-    .long-line{
-        margin: 20px auto;
-        border-bottom: 1px solid #B3B3B3;
-    }
-    .short-line{
-        margin: auto;
-        width: 30%;
-        max-width: 200px;
-        height: 3px;
-        background-color: #00ADBB;
-    }
-    // .js-click.js-hd-shadow{
-    //     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
-    //     transition: 0.5s;
-    // }
-    // ----------測試區----------
-    // .search{
-    //     h2,.Input{
-    //         display: inline-block;
-    //     }
-    //     // :deep(.Input){ width: 600px; }
-    // }
-    :deep(.input){ 
-        // width: 600px;
-        width: 100%;
-        margin: 10px 0 30px;
-    }    
     min-height: calc(100vh - 70px);
     padding: 20px 0 50px;
     display: flex;
@@ -59,13 +17,18 @@
     .container{
         flex-grow: 1;
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: auto;
+        @include minW(1200px){
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
         padding-bottom: 50px;
         aside{
-            width: 20%;
+            display: none;
+            @include minW(1200px){
+                display: block;
+                width: 20%;
+            }
             .QA_menu{
                 li{
                     display: flex;
@@ -81,10 +44,11 @@
                     &:last-child{
                         border-bottom: 1px solid $clr_gray_L4;
                     }
-                    h3{
-                        order: 1;
-                    }
-                    .at{
+                }
+                li.at{
+                    &::before{
+                        content: '';
+                        display: block;
                         width: 5px;
                         height: 22px;
                         margin-right: 10px;
@@ -94,10 +58,83 @@
             }
         }
         main{
-            width: calc(80% - 100px);
+            width: 100%;
+            @include minW(1200px){
+                width: calc(80% - 100px);
+            }
+            .search{
+                display: flex;
+                align-items: center;
+                .input-gold{ 
+                    width: 100%;
+                    margin: 10px 0 30px;
+                }
+                button{
+                    border: none;
+                    background: none;
+                    color: $clr_gray_L1;
+                    &:hover{
+                        color: $clr_gold_L1;
+                        transition: $trs;
+                    }
+                    &:active{
+                        color: $clr_gold_L0;
+                    }
+                    &:focus-visible{
+                        outline: none;
+                        color: $clr_gold_L1;
+                    }
+                    &:focus:not(:focus-visible){
+                        outline: none;
+                    }
+                    i{
+                        cursor: pointer;
+                        margin: 10px 10px 30px;
+                    }
+                }
+            }
+            .tabs{
+                display: none;
+                @include maxW(1200px){
+                    display: block;
+                }
+                position: relative;
+                border-bottom: 3px solid $clr_blue_L1;
+                margin-bottom: 30px;
+                .tab{
+                    position: relative;
+                    top: 1px;
+                    cursor: pointer;
+                    display: inline-block;
+                    background: $clr_fff;
+                    color: $clr_gray_L1;
+                    margin: 0 -2px;
+                    border: 1px solid $clr_blue_L3;
+                    border-radius: 12px 12px 0px 0px;
+                    @include btnPadding(10, 30);
+                    &:hover{
+                        background: $clr_blue_L3;
+                        transition: $trs;
+                    }
+                    &:active{
+                        background: $clr_blue_L2;
+                    }
+                    &:focus-visible{
+                        border-radius: 8px;
+                    }
+                    &:focus:not(:focus-visible){
+                        outline: none;
+                    }
+                }
+                .tab.at{
+                    background: $clr_blue_L1;
+                    border-color: $clr_blue_L1;
+                    color: $clr_fff;
+                }
+            }
             .QA_list{
                 li{
-                    padding: 10px 30px;
+                    padding: 15px 30px;
                     color: $clr_gray_L1;
                     border-radius: 10px;
                     &:nth-child(odd){
