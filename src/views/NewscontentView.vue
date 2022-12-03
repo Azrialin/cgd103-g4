@@ -1,6 +1,6 @@
 <template>
   <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
-  <breadcrumb/>
+  <breadcrumb :fonts="fonts"/>
   
   <div class="container">
     <figure class="news-article-img">
@@ -64,12 +64,36 @@
   import Footer from "@/components/Footer.vue"
 
   export default {
-      name: "NewsView",
+      name: "NewscontentView",
       components:{
-          Header,
-          breadcrumb,
-          Banner,
-          Footer
+    Header,
+    Banner,
+    breadcrumb,
+    Footer,
+    },
+    created(){
+    
+    },
+    mounted() {
+
+    },
+    data(){
+      return{
+        tab:1,
+        page:1,
+        fonts:[
+            { name: '首頁', source: '/' },
+            { name: '消息專區', source: 'News' },
+            { name: '消息內文', source: 'Newscontent' },
+        ],
       }
+    },
+    methods:{
+
+    }
+
+
+
+
   }
 </script>
