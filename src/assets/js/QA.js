@@ -2,10 +2,10 @@
 $(function scroll(){
     $(window).on('scroll', function (){
         if( $(window).scrollTop() > 0){
-            $('.js-click').addClass('js-hd-shadow');
+            $('.hd').addClass('hd-shadow');
         }
         else{
-            $('.js-click').removeClass('js-hd-shadow');
+            $('.hd').removeClass('hd-shadow');
         }
     });
 });
@@ -19,8 +19,8 @@ $(function click(){
 
 // 選單 click
 $(function menuClick(){
-    $('.QA_menu li, .tabs .tab').on('click', function (){
-        $('.QA_menu li, .tabs .tab').not(this).removeClass('at');
+    $('.QA_menu h3, .tabs .tab').on('click', function (){
+        $('.QA_menu h3, .tabs .tab').not(this).removeClass('at');
         $(this).addClass('at');
     });
 });

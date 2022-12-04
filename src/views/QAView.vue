@@ -6,15 +6,16 @@
         <div class="container">
             <aside>
                 <h2 class="font-32">Q&A</h2>
-                <ul class="QA_menu">
-                    <span class="at"></span>
-                    <li class="font-18" 
+                <div class="QA_menu">
+                    <h3 class="font-18"
                         v-for="QA in QA_menu"
-                        :key="QA" @click="tabChange"
-                        :data-id="QA['id']">
+                        :key="QA" 
+                        :data-id="QA['id']"
+                        @click="tabChange"
+                    >
                         {{QA.title}}
-                    </li>
-                </ul>
+                    </h3>
+                </div>
             </aside>
             <main>
                 <label class="search">
@@ -23,10 +24,12 @@
                 </label>
                 
                 <ul class="tabs">
-                    <li class="font-18 tab" 
+                    <li class="tab font-18"
                         v-for="QA in QA_menu"
-                        :key="QA" @click="tabChange"
-                        :data-id="QA['id']">
+                        :key="QA"
+                        :data-id="QA['id']"
+                        @click="tabChange"
+                    >
                         {{QA.title}}
                     </li>
                 </ul>
@@ -154,10 +157,15 @@
         },
         methods: {
             tabChange:function(e){
-                console.log (e.target);
+                // console.log (e.target);
+                // console.log (e.target.previousSibling);
+                // console.log (e.target.nextSibling);
+                // console.log (e.target.parentNode.childNodes);
                 let tabid = e.target.dataset.id;
                 this.tab = tabid;
-                // e.target.style.background = "#E2E9F2";
+                // e.target.classList.add('at');
+                // e.target.sibling.classList.remove('at');
+                // e.target.parentNode.childNodes.classList.remove('at');
             }
         },
     }
