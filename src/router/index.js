@@ -112,6 +112,16 @@ const routes = [
     name: 'login',
     component: () => import('../views/loginView.vue')
   },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import('../views/SignupView.vue')
+  },
+  {
+    path: '/forgotpassword',
+    name: 'forgotpassword',
+    component: () => import('../views/ForgotpasswordView.vue')
+  },
 ]
 
 // router 跳轉畫面後，維持置頂

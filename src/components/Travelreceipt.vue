@@ -1,58 +1,17 @@
 <template>
     <div>
-        <form>
+        <div>
+            <div class="paid"><p>已付款</p></div>
             <h3 class="top">基本資料設定</h3>
             <hr class="underline">
-            <div class="form-wrapper">
-              <p class="must">*為必填欄位</p>
+            <div class="receipt-wrapper">
+              <div class="receipt-frame">
 
-              <div class="try col-xl-6">
-                <h3 class="info">姓名<span>*</span></h3>
-                <input  v-model="result.id"/>
               </div>
-              <div class="try col-xl-6">
-                <h3 class="info">英文名</h3>
-                <input v-model="result.englishName"/>
-              </div>
-
-              <h3 class="info">密碼<span>*</span></h3>
-              <input class="unchangeable"  v-model="result.psw" disabled/>
-              <h3 class="info">電子信箱<span>*</span></h3>
-              <input class="unchangeable"  v-model="result.email" disabled/>
-              <h3 class="info">地址</h3>
-              <input  v-model="result.address"/>
-
-              <div class="try col-xl-6">
-                <h3 class="info ">電話號碼<span>*</span></h3>
-                <input  v-model="result.phone"/>
-                <h3 class="info ">國籍</h3>
-                <select  name="" id="">
-                    <option value="1">Taiwan</option>
-                    <option value="2">Japan</option>
-                </select>
-              </div>
-
-              <div class="try col-xl-6">
-                <h3 class="info ">性別</h3>
-                <select  name="" id="">
-                    <option value="1">-女-</option>
-                    <option value="2">-男-</option>
-                </select>
-
-                <h3 class="info ">護照號碼</h3>
-                <input  v-model="result.passport"/>
-              </div>
-
-              <div class="button-section">
-                <button class="btn-gold_2nd">取消修改</button>
-
-                <button class="btn-gold">儲存修改</button>
-              </div>
-              <!-- <input  v-model="result.nationality"/> -->
             </div>
 
 
-        </form>
+        </div>
     </div>
 </template>
 
@@ -100,9 +59,23 @@ export default {
 </style>
 
 <style scoped lang="scss">
-  .form-wrapper{
+  .receipt-wrapper{
     padding: 10%;
     padding-top: 20px;
+  }
+  .paid{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .paid p{
+    background: #BC955C;
+    box-sizing: border-box;
+    margin-right: 5%;
+    position: relative;
+    padding: 10px;
+    top:-30px;
+    color: white;
   }
   .top{
     padding-bottom: 10px;
