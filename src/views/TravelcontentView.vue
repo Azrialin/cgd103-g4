@@ -127,6 +127,7 @@
       h2{
         @include font(32px);
         text-align: center;
+        padding: 40px 0px;
       }
       .backc.backct{
         position: sticky;
@@ -155,6 +156,7 @@
       }
       h3{
         @include font(28px);
+        padding: 15px 0px;
       }
       p{
         @include font(16px);
@@ -162,6 +164,7 @@
       .bannerfa{
         cursor: pointer;
         padding-right: 0px;
+        margin-bottom: 40px;
         .banner{
           box-sizing: border-box;
           border-radius: 10px;
@@ -186,6 +189,7 @@
             }
             p{
               text-align: center;
+              padding: 5px 0px;
             }
           }
         }
@@ -217,22 +221,10 @@
       .content_tra{
         .contentmain{
           padding: 15px;
-          h3{
-            padding: 15px 0px;
-          }
-          p{
-            padding: 5px 0px;
-          }
-        }
-        h2{
-          padding: 40px 0px;
         }
         .bannerfa{
-          margin-bottom: 40px;
           padding-right: 150px;
           .banner{
-            border-radius: 10px;
-            padding: 10px;
             img{
               width: 100%;
             }
