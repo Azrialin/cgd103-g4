@@ -4,41 +4,45 @@
   <div class="container_form">
     <h2>行程預約</h2>
     <div class="content_form">
-      <div class="title_name">
-        <h4>2023/01/01</h4>
-        <h3>山口圓舞曲，三世界遺產</h3>
-        <h4>行程代號:JTR05221122A</h4>
-        <h4>費用:100000/人</h4>
+      <div class="title_name" v-for="title in titles" :key="title">
+        <h4>{{title['date']}}</h4>
+        <h3>{{title['name']}}</h3>
+        <h4>行程代號:{{title['code']}}</h4>
+        <h4>費用:{{title['price']}}/人</h4>
       </div>
       <div class="main_chu">
         <div class="main_human">
           <h3>主要聯絡人</h3>
           <div class="person">
             <p>聯絡人*</p>
-            <input class="inputcompo"/>
+            <input class="inputcompo" disabled/>
           </div>
           <div class="phone">
             <p>聯絡電話*</p>
-            <input class="inputcompo"/>
+            <input class="inputcompo" disabled/>
           </div>
           <div class="email">
             <p>E-Mail</p>
-            <input class="inputcompo"/>
+            <input class="inputcompo" disabled/>
           </div>
           <div class="say">
             <p>備註</p>
-            <input class="inputcompo"/>
+            <textarea class="inputcompo tetxcompo"></textarea>
           </div>
         </div>
         <div class="main_come">
           <h3>旅客資料</h3>
           <div class="country">
             <p>國籍*</p>
-            <input class="inputcompo"/>
+            <input class="inputcompo" disabled/>
           </div>
           <div class="many">
             <p>旅行人數*</p>
-            <input class="inputcompo"/>
+            <div class="count">
+              <input class="inputcompo inmany" v-model.number=number />
+              <div class="minus" @click="minus">-</div>
+              <div class="plus" @click="add">+</div>
+            </div>
           </div>
           <div class="card">
             <p>信用卡號碼*</p>
@@ -74,6 +78,17 @@
       data(){
         return{
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'},{name:'預約行程',source:'travelcheck'}],
+          titles:[{date:"2023/01/01",name:"山口圓舞曲，三世界遺產",code:"JTR05221122A",price:"100000"}],
+          number:1,
+        }
+      },
+      methods:{
+        add(){
+          this.number++;
+        },
+        minus(){
+          if(this.number>1)
+          this.number--;
         }
       },
     }
@@ -127,6 +142,10 @@
           border-radius: 10px;
           font-size: 24px;
         }
+        .inputcompo.tetxcompo{
+          resize: none;
+          height: 300px;
+        }
         p{
           @include font(16px);
           padding: 20px 0px;
@@ -140,6 +159,29 @@
       }
       .main_come{
         padding: 20px 20px 50px 20px;
+        .count{
+          position: relative;
+          .minus,.plus{
+            position: absolute;
+            top: 0;
+            @include font(36px);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+            color: $front_color_main;
+            user-select: none;
+          }
+          .plus{
+            right: 0;
+          }
+        }
+        .inputcompo.inmany{
+          text-align: center;
+          color: $front_color_main;
+        }
         .inputcompo{  
           box-sizing: border-box;
           width: 100%;
@@ -191,11 +233,16 @@
         justify-content: center;
         a{
           text-decoration: none;
-          background-color: #fff;
+          background-color: $front_color_main;
           padding: 15px;
           border-radius: 10px;
           border: solid 1px $front_color_main;
-          color: $front_color_main;
+          color: $color_e6;
+          transition: 0.3s;
+          &:hover{
+            background-color: #f8f8f8;
+            color: $front_color_main;
+          }
         }
       }
     }
