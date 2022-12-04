@@ -17,6 +17,7 @@
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/base.scss";
 @import "../assets/scss/base/color.scss";
+@import "../assets/scss/components/btn.scss";
 
 .card{
     width: 90%;
@@ -31,6 +32,7 @@
     }
     a{
         text-decoration: none;
+        color: $clr_gray_L1;
     }
     border: 1px solid $front_color_main;
     border-radius: 5px;

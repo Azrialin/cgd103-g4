@@ -61,6 +61,26 @@
                     
                 </ul>
             </div>
+            <div class="pro-more">
+                <h3>瀏覽更多商品</h3>
+                <div class="swip-container desk">
+                    <swiper class="bannerfa-desk" :slides-per-view="4" :pagination="{ clickable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
+                        <swiper-slide class="swiper-pro-desk" v-for="item in list" :key="item.id" >
+                            <productcard :title="item.title" :price="item.price" :img="item.img" class="more-pro-card"/>
+                        </swiper-slide>
+                    </swiper>
+                </div>
+                <div class="swip-container mob">
+                    <swiper class="bannerfa-mob" :slides-per-view="2" :pagination="{ clickable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
+                        <swiper-slide class="swiper-pro-mob" v-for="item in list" :key="item.id" >
+                            <productcard :title="item.title" :price="item.price" :img="item.img" class="more-pro-card"/>
+                        </swiper-slide>
+                    </swiper>
+                </div>
+            </div>
+            <button class="back btn-gold" @click="back">
+                返回商品列表
+            </button>
         </div>
     </div>
 </template>
@@ -68,21 +88,90 @@
 <script>
     import Header from "@/components/Header.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
+    import { Swiper, SwiperSlide } from 'swiper/vue';
+    import { Pagination } from 'swiper';
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+    import productcard from "@/components/ProductCard.vue";
 
-    import Pagination from "@/components/pagination/Pagination.vue"
+    // import Pagination from "@/components/pagination/Pagination.vue"
 
     export default {
         name: "ShopContent",
         components:{
             Header,
             breadcrumb,
-            Pagination,
+            Swiper,
+            SwiperSlide,
+            productcard,
         },
+        
         data(){
-          return{
-            fonts:[{name:'首頁',source:'/'},{name:'線上商城',source:'shop'},
-            {name:'商品詳情',source:'shopcontent'}], 
-          }
+            const onSwiper = (swiper) => {
+                console.log(swiper);
+            };
+            const onSlideChange = () => {
+                console.log('slide change');
+            };
+            const isshock = true;
+            return{
+                fonts:[{name:'首頁',source:'/'},{name:'線上商城',source:'shop'},
+                {name:'商品詳情',source:'shopcontent'}],
+                onSwiper,
+                onSlideChange,
+                modules: Pagination, 
+                list:[
+                    {
+                        id:1,
+                        img:require(`@/assets/img/products/pro1.jpg`),
+                        title:"JS怪奇薯條",
+                        price:180,
+                    },
+                    {
+                        id:2,
+                        img: require(`@/assets/img/products/pro2.jpg`),
+                        title:"曲奇餅乾",
+                        price:280,
+                    },
+                    {
+                        id:3,
+                        img: require(`@/assets/img/products/pro3.jpg`),
+                        title:"透明醬油",
+                        price:320,
+                    },
+                    {
+                        id:4,
+                        img: require(`@/assets/img/products/pro4.jpg`),
+                        title:"長崎蛋糕",
+                        price:460,
+                    },
+                    {
+                        id:5,
+                        img: require(`@/assets/img/products/pro5.jpg`),
+                        title:"明太子醬",
+                        price:480,
+                    },
+                    {
+                        id:6,
+                        img: require(`@/assets/img/products/pro6.jpg`),
+                        title:"九州昆布湯包",
+                        price:320,
+                    },
+                    {
+                        id:7,
+                        img: require(`@/assets/img/products/pro7.jpg`),
+                        title:"旺旺仙貝",
+                        price:150,
+                    },
+                    {
+                        id:8,
+                        img: require(`@/assets/img/products/pro8.jpg`),
+                        title:"七彩洋芋片",
+                        price:280,
+                    },
+                ]
+            }
         },
         methods: {
             cart(){
@@ -90,6 +179,9 @@
             },
             buy(){
                 this.$router.push('/shoppayment')
+            },
+            back(){
+                this.$router.push('/shop')
             }
         },
     }
@@ -189,6 +281,7 @@
             }
             .pro-warn{
                 margin: auto;
+                width: 100%;
                 h3{
                     width: 100%;
                     margin: 20px 0px;
@@ -197,8 +290,11 @@
                     // outline: 1px solid red;
                 }
                 .pro-warn-txt{
+                    
                     text-align: left;
+                    margin: auto;
                     color: $clr_gray_L2;
+                    // outline: 1px solid red;
                     li{
                         margin: 10px 0px;
                     }
@@ -206,6 +302,26 @@
                         color: $clr_gold_L2;
                     }
                 }
+            }
+            .pro-more{
+                margin: auto;
+                margin-top: 50px;
+                width: 100%;
+                h3{
+                    width: 100%;
+                    margin: 20px 0px;
+                    color: $clr_gray_L2;
+                    text-align: center;
+                    // outline: 1px solid red;
+                }
+                .swip-container{
+                    width: 100%;
+                }
+            }
+            .back{
+                margin: auto;
+                margin-top: 50px;
+                margin-bottom: 50px;
             }
 
         }
@@ -225,13 +341,13 @@
         .pro-txt{
             width: 100%;
             .pro-txt-title{
-                @include font(32px);
+                @include font(28px);
             }
             .pro-price{
                 @include font(18px);
             }
             .pro-price-num{
-                @include font(28px);
+                @include font(22px);
             }
             .pro-amount-btn{
                 width: 60%;
@@ -246,7 +362,7 @@
         }
         .pro-produce{
             width: 100%;
-            @include font(18px);
+            @include font(14px);
             .produce-more{
                 display: none;
             }
@@ -260,7 +376,27 @@
                 @include font(20px)
             }
             .pro-warn-txt{
+                width: 90%;
                 @include font(14px)
+            }
+        }
+        .pro-more{
+            // display: flex;
+            h3{
+                @include font(20px)
+            }
+            .desk{
+                display: none;
+            }
+            .bannerfa-mob{
+                cursor: pointer;
+                width: 100%;
+                // padding-right: 0px;
+                .swiper-pro-mob{
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    padding: 10px;
+                }
             }
         }
     }
@@ -278,13 +414,13 @@
         justify-content: center;
         margin-left: 50px;
         .pro-txt-title{
-            @include font(38px);
+            @include font(34px);
         }
         .pro-price{
-            @include font(24px);
+            @include font(20px);
         }
         .pro-price-num{
-            @include font(34px);
+            @include font(30px);
         }
         .pro-amount-btn{
             width: 50%;
@@ -299,17 +435,39 @@
     }
     .pro-produce{
         width: 70%;
-        @include font(24px);
+        @include font(18px);
     }
     .pro-pic-big{
         width: 45%;
     }
     .pro-warn{
         h3{
-            @include font(32px)
+            @include font(28px)
         }
         .pro-warn-txt{
-            @include font(24px)
+            width: 65%;
+            @include font(18px)
+        }
+    }
+    .pro-more{
+        h3{
+            @include font(28px)
+        }
+        .mob{
+            display: none;
+        }
+        .bannerfa-desk{
+            width: 100%;
+            cursor: pointer;
+            padding-right: 100px;
+          .swiper-pro-desk{
+            // width: 80%;
+            border-radius: 10px;
+            padding: 10px;
+            img{
+                width: 50%;
+            }
+          }
         }
     }
 
