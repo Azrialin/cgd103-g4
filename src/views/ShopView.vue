@@ -2,7 +2,7 @@
 <div class="shop-container">
   <breadcrumb :fonts="fonts"/>
   <div class="select">
-    <Select/>
+    <select/>
   </div>
   <div class="shop-content">
     <div class="side">
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="pagination">
-    <Pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="9" :total="30"/>
+    <pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="9" :total="30"/>
   </div>
 </div>
 

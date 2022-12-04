@@ -58,7 +58,7 @@
 <script>
 import sideitem from '@/components/sideitem.vue'   
 export default {
-  data:()=>{
+  data(){
     return {
       list:[
         {
