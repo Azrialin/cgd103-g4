@@ -23,7 +23,6 @@
 
 </template>
 <script>
-    import Header from "@/components/Header.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
     import side from "@/components/side.vue"
     import productcard from "@/components/ProductCard.vue"
@@ -32,7 +31,6 @@
     export default {
         name: "ShopView",
         components:{
-            Header,
             breadcrumb,
             side,
             productcard,

@@ -86,7 +86,6 @@
 </template>
 
 <script>
-    import Header from "@/components/Header.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import { Pagination } from 'swiper';
@@ -100,7 +99,6 @@
     export default {
         name: "ShopContent",
         components:{
-            Header,
             breadcrumb,
             Swiper,
             SwiperSlide,
