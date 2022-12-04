@@ -1,20 +1,17 @@
 <template>
     <breadcrumb :fonts="fonts"/>
-    <div class="login" style="max-width: 1200px; margin: auto;">
+    <div class="forgotpassword" style="max-width: 1200px; margin: auto;">
         <div class="container">
             <div class="main">
                 <form action="">
-                    <h2>登入</h2>
+                    <h2>忘記密碼</h2>
                     <hr>
-                    <h3>電子信箱</h3>
+                    <h3>請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
                     <Input/>
-                    <h3>密碼</h3>
-                    <Input/>
-                    <a href="">忘記密碼了嗎?</a>
+                    <button class="btn-gold_2nd">取消</button>
+                    <button class="btn-gold">確認送出</button>
                 </form>
-                <button class="btn-gold_2nd">登入</button>
             </div>
-            <button class="btn-gold">註冊</button>
         </div>
     </div>
 </template>
@@ -24,7 +21,7 @@
     import Input from "@/components/Input.vue"
 
     export default {
-        name: 'loginView',
+        name: 'forgotpassword',
         components: {
             breadcrumb,
             Input
@@ -42,14 +39,15 @@
 @import "../assets/scss/base/color.scss";
 @import "../assets/scss/components/btn.scss";
 
-.login{
+.forgotpassword{
     .main{
         @include minW(1200px){
-                width: calc(60% - 100px);
+                width: calc(50% - 100px);
         }
-        height: 610px;
+        height: 450px;
         margin: 10%;
         margin: auto;
+        margin-bottom: 50px;
         border-radius: 10px;
         border: 1px solid $front_color_main;
         box-shadow: 0 8px 10px -5px rgb(198, 198, 198);
@@ -78,31 +76,32 @@
                 @include font(18px);
                 color: $color_444;
                 font-weight: 300;
-                padding: 10px 0;
+                padding: 15px 0;
+
+                span{
+                @include font(18px);
+                color: #941111;
+                }
             }
 
             Input{
                 width: 300px !important;
                 margin-bottom: 30px;
             }
-            a{
-                @include font(15px);
-                font-weight: 300;
-                color:$color_444;
-                text-decoration:none;
 
-                &:hover {
-                text-decoration:none;
-                color:$front_color_main;
-                }
+            .btn-gold_2nd{
+                width: 100px;
+                padding: 10px 15px;
+                margin-right: 30px;
+                margin-top: 40px;
+            }
+
+            .btn-gold{
+                width: 150px;
+                padding: 10px 15px;
+                margin-top: 40px;
             }
         }
-    }
-    button{
-        margin-top: 60px;
-    }
-    .btn-gold{
-        margin-bottom: 60px;
     }
 }
 
