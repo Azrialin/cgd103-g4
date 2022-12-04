@@ -5,32 +5,43 @@
             <hr class="underline">
             <div class="form-wrapper">
               <p class="must">*為必填欄位</p>
-              <h3 class="info">姓名<span>*</span></h3>
-              <input  v-model="result.id"/>
-              <h3 class="info">英文名</h3>
-              <input  v-model="result.englishName"/>
+
+              <div class="try col-xl-6">
+                <h3 class="info">姓名<span>*</span></h3>
+                <input  v-model="result.id"/>
+              </div>
+              <div class="try col-xl-6">
+                <h3 class="info">英文名</h3>
+                <input v-model="result.englishName"/>
+              </div>
+
               <h3 class="info">密碼<span>*</span></h3>
               <input class="unchangeable"  v-model="result.psw" disabled/>
               <h3 class="info">電子信箱<span>*</span></h3>
               <input class="unchangeable"  v-model="result.email" disabled/>
               <h3 class="info">地址</h3>
               <input  v-model="result.address"/>
-              <h3 class="info">電話號碼<span>*</span></h3>
-              <input  v-model="result.phone"/>
 
-              <h3 class="info">國籍</h3>
-              <select name="" id="">
-                  <option value="1">Taiwan</option>
-                  <option value="2">Japan</option>
-              </select>
-              <h3 class="info">性別</h3>
-              <select name="" id="">
-                  <option value="1">-女-</option>
-                  <option value="2">-男-</option>
-              </select>
+              <div class="try col-xl-6">
+                <h3 class="info ">電話號碼<span>*</span></h3>
+                <input  v-model="result.phone"/>
+                <h3 class="info ">國籍</h3>
+                <select  name="" id="">
+                    <option value="1">Taiwan</option>
+                    <option value="2">Japan</option>
+                </select>
+              </div>
 
-              <h3 class="info">護照號碼</h3>
-              <input  v-model="result.passport"/>
+              <div class="try col-xl-6">
+                <h3 class="info ">性別</h3>
+                <select  name="" id="">
+                    <option value="1">-女-</option>
+                    <option value="2">-男-</option>
+                </select>
+
+                <h3 class="info ">護照號碼</h3>
+                <input  v-model="result.passport"/>
+              </div>
 
               <div class="button-section">
                 <button class="btn-gold_2nd">取消修改</button>
@@ -117,6 +128,7 @@ export default {
   .info{
     // margin-left: 10%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
   }
   
@@ -129,6 +141,9 @@ export default {
     border: 1px solid #BC955C ;
     outline:none;
     text-align: left;
+    box-sizing: border-box;
+    // display: flex;
+    // flex-wrap: wrap;
   }
   select{
     width: 100%;
@@ -149,7 +164,16 @@ export default {
     flex-direction: row-reverse;
   }
   .button-section .btn-gold_2nd{
-    margin-right: 10px;
+    margin-left: 20px;
   }
+
+@media (min-width:1200px) {
+  
+  .try{
+    display: inline-block;
+    justify-content: start;
+    // box-sizing: border-box;
+  }
+}
 
 </style>

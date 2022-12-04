@@ -109,25 +109,19 @@
 @import "../../assets/scss/base/color.scss";
 @import "../../assets/scss/base/font.scss";
     ul{
-        list-style: none;
-        height: 30px;
-        width: 300px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
+      list-style: none;
+      width: fit-content;
+      display: flex;
+      padding: 0 15px;
     }
     ul li{
-        float: left;
-        width:10px;
-        height:28px;
-        line-height: 30px;
-        margin:0 8px 0 0;
-        padding:0 6px;
-        text-align: center;
-        border:none;
-        color: $color_444;
+      cursor: pointer;
+      line-height: 24px;
+      margin: 0 5px;
+      padding: 0 5px;
+      color: $color_444;
     }
     .active{
-        border-bottom:2px solid $front_color_main;
+      border-bottom:2px solid $front_color_main;
     }
 </style>
