@@ -116,7 +116,7 @@
     }
     ul li{
       cursor: pointer;
-      line-height: 24px;
+      line-height: 28px;
       margin: 0 5px;
       padding: 0 5px;
       color: $color_444;
