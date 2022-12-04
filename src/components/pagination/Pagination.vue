@@ -79,6 +79,7 @@
         justify-content: center;
   }
   .btn-prev, .btn-next{
+    cursor: pointer;
     width:60px;
     height:30px;
     line-height: 30px;
