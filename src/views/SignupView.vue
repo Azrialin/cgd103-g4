@@ -7,20 +7,30 @@
                     <h2>註冊會員</h2>
                     <hr>
                     <p>*為必填欄位</p>
-                    <h3>姓名<span>*</span></h3>
-                    <Input/>
-                    <h3>密碼<span>*</span></h3>
-                    <Input/>
-                    <h3>電子信箱<span>*</span></h3>
-                    <Input/>
-                    <h3>電話號碼<span>*</span></h3>
-                    <Input/>
+                    <div class="inputfield">
+                        <h3 class="title">姓名<span>*</span></h3>
+                        <input type="text" placeholder="請輸入姓名">
+                    </div>  
+                    <div class="inputfield">
+                        <h3 class="title">密碼<span>*</span></h3>
+                        <input type="password" placeholder="請輸入密碼">
+                    </div>
+                    <div class="inputfield">
+                        <h3 class="title">電子信箱<span>*</span></h3>
+                        <input type="email" placeholder="請輸入Email">
+                    </div> 
+                    <div class="inputfield">
+                        <h3 class="title">電話號碼<span>*</span></h3>
+                        <input type="tel" placeholder="請輸入手機號碼">
+                    </div> 
                     <div class="box">
                       <input type="checkbox" id="agreebox" name="agreebox" value="ok"/>
                       <label for="agreebox">同意我們的<a href="">使用條款</a>和<a href="">隱私政策</a></label>
                     </div>
-                    <button class="btn-gold">註冊為會員</button>
-                    <a class="back" href="">回上一頁</a>
+                    <div class="signup-article-btn">
+                        <router-link to="/Membership" class="btn-gold">註冊為會員</router-link>
+                        <router-link to="/login" class="back">回上一頁</router-link>
+                    </div>
                 </form>
             </div>
         </div>
@@ -39,13 +49,17 @@
         },
         data() {
             return {
-            email: "",
-            password: "",
+                email: "",
+                password: "",
+                fonts:[
+                    { name: '首頁', source: '/' },
+                    { name: '註冊會員', source: 'Signup' }
+                ],
             };
         },
     };
   </script>
-  <style lang="scss">
+  <style scoped lang="scss">
   @import "../assets/scss/base/font.scss";
   @import "../assets/scss/base/color.scss";
   @import "../assets/scss/components/btn.scss";
@@ -55,7 +69,7 @@
           @include minW(1200px){
                   width: calc(60% - 100px);
           }
-          height: 1000px;
+          height: 900px;
           margin: 10%;
           margin: auto;
           // border-radius: 10px;
@@ -86,7 +100,7 @@
                   @include font(18px);
                   color: $color_444;
                   font-weight: 300;
-                  padding: 20px 0;
+                  padding: 15px 0;
               }
   
               p{
@@ -99,9 +113,17 @@
                 color: #941111;
               }
   
-              Input{
-                  width: 300px !important;
-                  margin-bottom: 20px;
+              input{
+                box-sizing: border-box;
+                width: 320px;
+                padding: 10px 10px;
+                border: solid 1px $front_color_main;
+                border-radius: 10px;
+                font-size: 24px;
+                margin-bottom: 20px;
+                font-size: 16px;
+                text-align: left;
+                outline:none;
               }
   
               .box{
@@ -123,19 +145,18 @@
                     }
                   }
               }
-  
-              button{
-                width: 170px !important;
-                padding: 10px 10px !important;
-                margin-bottom: 100px;
-                margin-top: 80px;
-                margin-right: 80px;
+              
+              .signup-article-btn{
+                width: 310px;
+                margin-top: 60px;
               }
+
               .back{
                 @include font(15px);
                   font-weight: 300;
                   color:$color_444;
                   text-decoration:none;
+                  margin-left: 85px;
             
                   &:hover {
                   text-decoration:none;

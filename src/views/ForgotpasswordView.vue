@@ -6,8 +6,10 @@
                 <form action="">
                     <h2>忘記密碼</h2>
                     <hr>
-                    <h3>請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
-                    <Input/>
+                    <div class="inputfield">
+                        <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
+                        <input type="email" placeholder="請輸入Email">
+                    </div> 
                     <button class="btn-gold_2nd">取消</button>
                     <button class="btn-gold">確認送出</button>
                 </form>
@@ -28,13 +30,18 @@
         },
         data() {
             return {
-            email: "",
-            password: "",
+                email: "",
+                password: "",
+                fonts:[
+                    { name: '首頁', source: '/' },
+                    { name: '會員登入', source: 'login' },
+                    { name: '忘記密碼', source: 'forgotpassword' }
+                ],
             };
         },
     };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
 @import "../assets/scss/components/btn.scss";
@@ -84,9 +91,17 @@
                 }
             }
 
-            Input{
-                width: 300px !important;
-                margin-bottom: 30px;
+            input{
+                box-sizing: border-box;
+                width: 320px;
+                padding: 10px 10px;
+                border: solid 1px $front_color_main;
+                border-radius: 10px;
+                font-size: 24px;
+                margin-bottom: 20px;
+                font-size: 16px;
+                text-align: left;
+                outline:none;
             }
 
             .btn-gold_2nd{
