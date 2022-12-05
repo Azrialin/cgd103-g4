@@ -125,7 +125,7 @@
       max-width: 1200px;
       margin: auto;
       h2{
-        @include font(32px);
+        @include font(26px);
         text-align: center;
         padding: 40px 0px;
       }
@@ -140,7 +140,7 @@
           cursor: pointer;
           text-align: center;
           background-color: $front_color_main;
-          color: $color_e6;
+          color: #fff;
           padding: 15px 30px;
           border: solid 1px $clr_gold_L1;
           border-radius: 10px;
@@ -155,11 +155,11 @@
         }
       }
       h3{
-        @include font(28px);
+        @include font(22px);
         padding: 15px 0px;
       }
       p{
-        @include font(16px);
+        @include font(14px);
       }
       .bannerfa{
         cursor: pointer;
@@ -188,6 +188,7 @@
             width: 100%;
             padding: 10px;
             img{
+              cursor: pointer;
               width: 100%;
               border-radius: 10px;
               box-shadow: 0px 3px 7px rgba(#444,0.3);
@@ -234,6 +235,16 @@
               width: 100%;
             }
           }
+        }
+        h2{
+          @include font(28px);
+          text-align: center;
+        }
+        h3{
+          @include font(28px);
+        }
+        p{
+          @include font(16px);
         }
         .goodeat{
           width: 100%;
