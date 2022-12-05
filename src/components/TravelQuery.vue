@@ -1,8 +1,10 @@
 <template>
     <div>
         <div>
-            <h3 class="top">行程訂單列表</h3>
-            <hr class="underline">
+            <h3 class="top" v-show="!hide">行程訂單列表</h3>
+            <hr class="underline" v-show="!hide">
+
+            <!-- rwd -->
             <div class="travel-wrapper">
               <div class="travel-detail">
                     <div class="travel-info">
@@ -35,7 +37,7 @@
                         <span>{{result.paymentStatus}}</span>
                     </div>
               </div>
-              <a href="" class="bottom">查看詳情</a>
+              <router-link to="" class="bottom">查看詳情</router-link>
             </div>
 
             <div class="travel-wrapper">
@@ -70,7 +72,7 @@
                         <span>{{result.paymentStatus}}</span>
                     </div>
               </div>
-              <a href="" class="bottom">查看詳情</a>
+              <router-link to="" class="bottom">查看詳情</router-link>
             </div>
 
             <div class="travel-wrapper">
@@ -105,7 +107,7 @@
                         <span>{{result.paymentStatus}}</span>
                     </div>
               </div>
-              <a href="" class="bottom">查看詳情</a>
+              <router-link to="" class="bottom">查看詳情</router-link>
             </div>
 
             <div class="travel-wrapper">
@@ -140,10 +142,12 @@
                         <span>{{result.paymentStatus}}</span>
                     </div>
               </div>
-              <a href="" class="bottom">查看詳情</a>
+              <router-link to="" class="bottom">查看詳情</router-link>
             </div>
+            <!-- rwd -->
 
-            <div class="travel-wrapper-xl">
+            <!-- pc version -->
+            <div class="travel-wrapper-xl" v-show="!hide">
               <!-- <div class="travel-detail"> -->
                 <div class="travel-info-xl">
                     <h3>訂單編號</h3>
@@ -161,7 +165,7 @@
                     <h3>{{result.noOfTraveler}}</h3>
                     <h3>{{result.total}}</h3>
                     <h3>{{result.paymentStatus}}</h3>
-                    <a href="">查看詳情</a>
+                    <a @click="showdetail">查看詳情</a>
                 </div>
                 <div class="travel-info-status">
                     <h3>{{result.orderNo}}</h3>
@@ -170,7 +174,7 @@
                     <h3>{{result.noOfTraveler}}</h3>
                     <h3>{{result.total}}</h3>
                     <h3>{{result.paymentStatus}}</h3>
-                    <a href="">查看詳情</a>
+                    <a>查看詳情</a>
                 </div>
                 <div class="travel-info-status">
                     <h3>{{result.orderNo}}</h3>
@@ -179,7 +183,7 @@
                     <h3>{{result.noOfTraveler}}</h3>
                     <h3>{{result.total}}</h3>
                     <h3>{{result.paymentStatus}}</h3>
-                    <a href="">查看詳情</a>
+                    <a>查看詳情</a>
                 </div>
                 <div class="travel-info-status">
                     <h3>{{result.orderNo}}</h3>
@@ -188,14 +192,19 @@
                     <h3>{{result.noOfTraveler}}</h3>
                     <h3>{{result.total}}</h3>
                     <h3>{{result.paymentStatus}}</h3>
-                    <a href="">查看詳情</a>
+                    <a>查看詳情</a>
                 </div>
               <!-- </div> -->
+            </div>
+
+            <div v-show="show">
+              <Travelreceipt/>
             </div>
             
 
             <!-- 返回button -->
-            <button class="btn-gold_2nd">返回</button>
+            <button class="btn-gold_2nd" v-show="!hide">返回</button>
+            <button class="btn-gold_2nd" v-show="hide" @click="reverse">返回</button>
 
             
 
@@ -205,7 +214,7 @@
 </template>
 
 <script>
-
+import Travelreceipt from '@/components/Travelreceipt.vue'
 const result = {
     orderNo:"T12345",
     package:"方案A",
@@ -217,11 +226,13 @@ const result = {
 
 export default {
     components: {
-
+      Travelreceipt,
     },
     data(){
         return{
-            result:{}
+          result:{},
+          show:false,
+          hide:false,
         }
     },
     created(){
@@ -230,6 +241,14 @@ export default {
     methods:{
         getData(){
             this.result = result;
+        },
+        showdetail(){
+          this.show = true;
+          this.hide = true;
+        },
+        reverse(){
+          this.show = false;
+          this.hide = false;
         }
     }
 }
@@ -321,6 +340,7 @@ export default {
   .travel-info-status a{
     color: #BC955C;
     text-decoration-line: underline;
+    cursor: pointer;
   }
 
 
