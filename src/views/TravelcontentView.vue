@@ -94,8 +94,8 @@
           const isshock = true;
 
           return{
-            imgs:[require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`),require(`@/assets/img/products/pro.jpg`)],
-            eats:[{alt:"超好吃食物",src:"https://picsum.photos/300/200/?random=10"},{alt:"超好吃食物",src:"https://picsum.photos/300/200/?random=10"},{alt:"超好吃食物",src:"https://picsum.photos/300/200/?random=10"}],
+            imgs:[require(`@/assets/img/products/pro1.jpg`),require(`@/assets/img/products/pro2.jpg`),require(`@/assets/img/products/pro3.jpg`),require(`@/assets/img/products/pro4.jpg`),require(`@/assets/img/products/pro5.jpg`)],
+            eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
             fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
             onSwiper,
             onSlideChange,
@@ -148,8 +148,8 @@
           margin: 0px auto;
           transition: 0.3s;
           &:hover{
-            background-color: $front_color_hover;
-            color: $color_444;
+            background-color: #fff;
+            color: $front_color_main;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
           }
         }
@@ -169,9 +169,13 @@
           box-sizing: border-box;
           border-radius: 10px;
           padding: 10px;
+          p{
+            padding: 10px;
+          }
           img{
             border-radius: 10px;
             width: 100%;
+            box-shadow: 0px 3px 7px rgba(#444,0.3);
           }
         }
       }
@@ -186,6 +190,7 @@
             img{
               width: 100%;
               border-radius: 10px;
+              box-shadow: 0px 3px 7px rgba(#444,0.3);
             }
             p{
               text-align: center;
