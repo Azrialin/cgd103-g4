@@ -2,7 +2,7 @@
 <div class="shop-container">
   <breadcrumb :fonts="fonts"/>
   <div class="select">
-    <select/>
+    <Select/>
   </div>
   <div class="shop-content">
     <div class="side">

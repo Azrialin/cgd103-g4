@@ -17,6 +17,8 @@
 // H1~H6 為參考，實際狀況看排版需求使用
 // 內文請照格式 font-16-15em / font-16-24em
 
+@import "../components/btn.scss";
+
 // 前台:思源宋體
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
 
@@ -38,6 +40,9 @@ $font-size: 48, 36, 32, 28, 24, 20, 18, 16, 14;
 	.font-#{$size}{
 		@extend %font-style;
 		font-size: $size + px;
+		@include maxW(767px){
+			font-size: ($size - 2) + px;
+		}
 	}
 }
 

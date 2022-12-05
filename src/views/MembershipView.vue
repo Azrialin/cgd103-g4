@@ -2,7 +2,10 @@
   <div>
     <Tabs>
       <Tab title="會員資料"><MemberInfo/></Tab>
-      <Tab title="行程訂單查詢"><TravelQuery/></Tab>
+      <Tab title="行程訂單查詢">
+        <TravelQuery/>
+        
+        </Tab>
       <Tab title="商品訂單查詢">大家加油~</Tab>
     </Tabs>
   </div>

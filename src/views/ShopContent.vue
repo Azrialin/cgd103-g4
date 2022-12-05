@@ -12,9 +12,9 @@
                 </div>
                 <div class="pro-price">購買數量:
                     <span class="pro-amount-btn">
-                        <input type="button" class="btnMinus" value="-">
-                        <input type="text" class="qty" size="4" value="0">
-                        <input type="button" class="btnPlus" value="+">	 
+                        <button @click="reduceCount" class="minus">-</button>
+                        <input type="text" v-model.number="count" class="input" >
+                        <button @click="addCount" class="minus">+</button>	 
                     </span>
                 </div>
                 <div class="pro-btn">
@@ -114,6 +114,7 @@
             };
             const isshock = true;
             return{
+                count:1,
                 fonts:[{name:'首頁',source:'/'},{name:'線上商城',source:'shop'},
                 {name:'商品詳情',source:'shopcontent'}],
                 onSwiper,
@@ -172,6 +173,13 @@
             }
         },
         methods: {
+            addCount(){
+                this.count+=1
+            },
+            reduceCount(){
+                if(this.count<=0) return
+                this.count -=1
+            },
             cart(){
                 this.$router.push('/shopcart')
             },
@@ -223,23 +231,22 @@
                     margin: auto;
                 }
                 .pro-amount-btn{
+                    width: 30%;
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-around;
                     align-items: center;
                     margin: auto;
                     border: 1px solid $front_color_main;
                     border-radius: 10px;
-                    input{
-                        text-align: center;
+                    button{
                         border: none;
                         background-color: transparent;
-                        margin: 7px 5px;
-                        .btnMinus & .btnPlus{
-                            text-align: center;
-                            
-                            
-                        }
                     }
+                    input{
+                        border: none;
+                        background-color: transparent;
+                        text-align: center;
+                    }     
                 }
             }
             .pro-btn{
@@ -348,13 +355,14 @@
                 @include font(22px);
             }
             .pro-amount-btn{
-                width: 60%;
+                // width: 60%;
+                text-align: center;
                 input{
-                    width: 50%;
+                    width: 25%;
+                    @include font(20px);
+                }
+                button{
                     @include font(18px);
-                    .btnMinus & .btnPlus{
-                        @include font(24px);
-                    }
                 }
             }
         }
@@ -421,13 +429,13 @@
             @include font(30px);
         }
         .pro-amount-btn{
-            width: 50%;
+            // width: 60%;
             input{
-                width: 50%;
+                width: 20%;
+                @include font(20px);
+            }
+            button{
                 @include font(26px);
-                .btnMinus & .btnPlus{
-                    @include font(30px);
-                }
             }
         }
     }
