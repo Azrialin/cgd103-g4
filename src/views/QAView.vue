@@ -7,11 +7,12 @@
             <aside>
                 <h2 class="font-32">Q&A</h2>
                 <div class="QA_menu">
-                    <h3 class="font-18"
+                    <h3 class="font-18 js-click"
                         v-for="QA in QA_menu"
                         :key="QA" 
                         :data-id="QA['id']"
-                        @click="tabChange"
+                        :class="{at: QA['id'] == active.id}"
+                        @click="tabChange(QA)"
                     >
                         {{QA.title}}
                     </h3>
@@ -24,30 +25,21 @@
                 </label>
                 
                 <ul class="tabs">
-                    <li class="tab font-18"
+                    <li class="tab font-18 js-click"
                         v-for="QA in QA_menu"
-                        :key="QA"
-                        :data-id="QA['id']"
-                        @click="tabChange"
+                        :key="QA.id"
+                        :data-id="QA.id"
+                        :class="{at: QA.id == active.id}"
+                        @click="tabChange(QA)"
                     >
                         {{QA.title}}
                     </li>
                 </ul>
-
-                <ul class="QA_list" v-show="tab!='Q002' && tab!='Q003'">
-                    <li class="font-16-24em" v-for="QA_M in QA_M_list" :key="QA_M">
-                        Q：{{QA_M.Q}}<br>A：{{QA_M.A}}
+                <ul class="QA_list">
+                    <li class="font-16-24em" v-for="QA_list in activeList" :key="QA_list">
+                        Q：{{QA_list.Q}}<br>A：{{QA_list.A}}
                     </li>
-                </ul>
-                <ul class="QA_list" v-show="tab=='Q002'">
-                    <li class="font-16-24em" v-for="QA_T in QA_T_list" :key="QA_T">
-                        Q：{{QA_T.Q}}<br>A：{{QA_T.A}}
-                    </li>
-                </ul>
-                <ul class="QA_list" v-show="tab=='Q003'">
-                    <li class="font-16-24em" v-for="QA_P in QA_P_list" :key="QA_P">
-                        Q：{{QA_P.Q}}<br>A：{{QA_P.A}}
-                    </li>
+                  
                 </ul>
             </main>
         </div>
@@ -102,70 +94,73 @@
                     { id: 'Q002', title: '行程訂單問題' },
                     { id: 'Q003', title: '商品訂單問題' },
                 ],
-                QA_M_list:[
+                QA_list:[
                     { 
                         id: 'M001',
                         Q:  '請問我忘記密碼了怎麼辦？',
-                        A:  '請撥打客服電話，由專人為您服務。'
+                        A:  '請撥打客服電話，由專人為您服務。',
+                        type: 'Q001'
                     },
                     { 
                         id: 'M002',
                         Q: '請問客服電話是？我找不到。',
-                        A: '您好，客服電話是：00-0000-0000。'
+                        A: '您好，客服電話是：00-0000-0000。',
+                        type: 'Q001'
                     },
                     { 
                         id: 'M003',
                         Q:  '請問可以不要填寫LINE ID嗎？',
-                        A:  '可以的，親。'
-                    }
-                ],
-                QA_T_list:[
+                        A:  '可以的，親。',
+                        type: 'Q001'
+                    },
                     { 
                         id: 'T001',
                         Q:  '我不小心訂錯行程了，請問要如何退訂？',
-                        A:  '請至【會員專區】>【行程訂單查詢】，點擊【取消行程】'
+                        A:  '請至【會員專區】>【行程訂單查詢】，點擊【取消行程】',
+                        type: 'Q002'
                     },
                     { 
                         id: 'T002',
                         Q: '我想要刷卡，但我不能填寫安全碼？',
-                        A: '請撥打客服電話，由專人為您服務。'
+                        A: '請撥打客服電話，由專人為您服務。',
+                        type: 'Q002'
                     },
                     { 
                         id: 'T003',
                         Q:  '我請問我要如何查詢乘車座位？',
-                        A:  '您好，我們不提供劃位服務，建議您提早上車，先搶先贏。'
+                        A:  '您好，我們不提供劃位服務，建議您提早上車，先搶先贏。',
+                        type: 'Q002'
                     },
                     { 
                         id: 'T004',
                         Q:  '我購買了方案A，請問發車時間是？',
-                        A:  '請撥打客服電話，由專人為您服務。'
+                        A:  '請撥打客服電話，由專人為您服務。',
+                        type: 'Q002'
                     },
-                ],
-                QA_P_list:[
                     { 
                         id: 'P001',
                         Q:  '請問現貨商品多久會寄出？',
-                        A:  '請撥打客服電話，由專人為您服務。'
+                        A:  '請撥打客服電話，由專人為您服務。',
+                        type: 'Q003'
                     },
                     { 
                         id: 'P002',
                         Q: '請問我要如何查詢貨況呢？',
-                        A: '請撥打客服電話，由專人為您服務。'
+                        A: '請撥打客服電話，由專人為您服務。',
+                        type: 'Q003'
                     },
                 ],
+                active: '',
+                activeList: []
             }
         },
         methods: {
-            tabChange:function(e){
-                // console.log (e.target);
-                // console.log (e.target.previousSibling);
-                // console.log (e.target.nextSibling);
-                // console.log (e.target.parentNode.childNodes);
-                let tabid = e.target.dataset.id;
-                this.tab = tabid;
-                // e.target.classList.add('at');
-                // e.target.sibling.classList.remove('at');
-                // e.target.parentNode.childNodes.classList.remove('at');
+            tabChange(tab){
+                this.active = tab;
+                this.activeList = this.QA_list.filter(item => {
+                    return item.type === tab.id;
+                });
+                console.log( this.activeList);
             }
         },
     }
