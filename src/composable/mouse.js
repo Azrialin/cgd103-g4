@@ -1,9 +1,9 @@
-let x = 0;
-let y = 0;
-let sss = document.getElementById("sidehead");
-window.addEventListener("mousemove",(e)=>{
-    x = e.pageX;
-    y = e.pageY;
+// let x = 0;
+// let y = 0;
+// let sss = document.getElementById("sidehead");
+// window.addEventListener("mousemove",(e)=>{
+//     x = e.pageX;
+//     y = e.pageY;
     // let x = pagex - eatgroup.getBoundingClientRect().left;
     // let y = pagey - eatgroup.getBoundingClientRect().top;
 
@@ -13,9 +13,9 @@ window.addEventListener("mousemove",(e)=>{
     //     document.getElementById("sidehead").style.opacity="1";
     // }
 
-    sss.style.left = x+"px";
-    sss.style.top = y+"px";
-});
+//     sss.style.left = x+"px";
+//     sss.style.top = y+"px";
+// });
 
 
 
