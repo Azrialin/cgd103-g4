@@ -41,7 +41,7 @@
             </div>
           </CarouselItem>
         </Carousel> -->
-        <swiper class="bannerfa" :slides-per-view="2" :pagination="{ clickable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
+        <swiper class="bannerfa" :modules="modules" :navigation="true" :slides-per-view="2" @swiper="onSwiper" @slideChange="onSlideChange">
           <swiper-slide class="banner" v-for="(img,index) in imgs" :key="img">
             <p>行程{{index+1}}</p>
             <img :src="img" alt="">
@@ -70,7 +70,7 @@
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
     import { Swiper, SwiperSlide } from 'swiper/vue';
-    import { Pagination } from 'swiper';
+    import { Pagination,Navigation } from 'swiper';
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
@@ -99,7 +99,7 @@
             fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
             onSwiper,
             onSlideChange,
-            modules: Pagination,
+            modules: [Pagination,Navigation],
           }
         },
     }
