@@ -72,14 +72,14 @@ $desk: front;
 // padding (上下, 左右)
 @mixin btnPadding($TB, $LR){
     padding: $TB+px $LR+px;
-    @include maxW(480px){
-        padding: ($TB/5)*2+px ($LR/4)+px;
-        font-size: 14px;
-        font-weight: 500;
-    }
     @include maxW($maxWidth){
         padding: ($TB/5)*4+px ($LR/2)+px;
     }
+    // @include maxW(480px){
+    //     padding: ($TB/5)*3+px ($LR/2)+px;
+    //     font-size: 12px;
+    //     font-weight: 500;
+    // }
     @content;
 }
 
@@ -102,14 +102,14 @@ $desk: front;
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.08em;
     transition: $trs;
 }
 
 // 按鈕樣式:前台
 %btn-frontStyle{
-    @include btnPadding(10, 50);
-    @include btnFont(700, 18){
+    @include btnPadding(8, 30);
+    @include btnFont(700, 16){
         font-family: 'Noto Serif TC';
     }
 }
@@ -117,8 +117,8 @@ $desk: front;
 // 按鈕樣式:後台
 %btn-backStyle{
     min-width: 80px;
-    @include btnPadding(10, 20);
-    @include btnFont(500, 16){
+    @include btnPadding(4, 10);
+    @include btnFont(500, 14){
         font-family: 'Noto Sans';
     }
 }
