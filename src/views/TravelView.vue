@@ -9,7 +9,7 @@
             <div class="tra_card">
               <div class="tra_img">
                 <router-link to="/travelcontent" class="aaa">
-                  <div class="boxb">${{list['price']}}</div>
+                  <div class="boxb">${{list['price']}} 起</div>
                   <img :src="list['src']" alt="">
                 </router-link>
               </div>
