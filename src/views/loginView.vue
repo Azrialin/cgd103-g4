@@ -14,7 +14,7 @@
                         <h3 class="title">密碼</h3>
                         <input type="password" placeholder="請輸入密碼">
                     </div>   
-                    <a href="">忘記密碼了嗎?</a>
+                    <router-link to="/Forgotpassword" class="forgotpassword">忘記密碼了嗎?</router-link>
                 </form>
                 <div class="login-article-btn">
                     <router-link to="/Membership" class="btn-gold_2nd">登入</router-link>
@@ -91,21 +91,22 @@
                 @include font(18px);
                 color: $color_444;
                 font-weight: 300;
-                padding: 10px 0;
+                padding: 15px 0;
             }
 
             Input{
                 box-sizing: border-box;
                 width: 320px;
-                padding: 15px 10px;
+                padding: 10px 10px;
                 border: solid 1px $front_color_main;
                 border-radius: 10px;
                 font-size: 24px;
                 margin-bottom: 20px;
                 font-size: 16px;
                 text-align: left;
+                outline:none;
             }
-            a{
+            .forgotpassword{
                 @include font(15px);
                 font-weight: 300;
                 color:$color_444;
