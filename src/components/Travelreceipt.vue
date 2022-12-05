@@ -2,7 +2,7 @@
     <div>
         <div>
             <div class="paid"><p>已付款</p></div>
-            <h3 class="top">基本資料設定</h3>
+            <h3 class="top">訂單詳情</h3>
             <hr class="underline">
             <div class="receipt-wrapper">
               <div class="receipt-frame">
@@ -10,6 +10,7 @@
               </div>
             </div>
 
+            <!-- <button class="btn-gold_2nd" @click="showdetail">返回</button> -->
 
         </div>
     </div>
@@ -35,7 +36,8 @@ export default {
     },
     data(){
         return{
-            result:{}
+            result:{},
+            hide:false,
         }
     },
     created(){
@@ -44,6 +46,10 @@ export default {
     methods:{
         getData(){
             this.result = result;
+        },
+        showdetail(){
+          this.show = true;
+          this.hide = true;
         }
     }
 }
@@ -136,8 +142,10 @@ export default {
     display:flex;
     flex-direction: row-reverse;
   }
-  .button-section .btn-gold_2nd{
-    margin-left: 20px;
+  .btn-gold_2nd{
+    display:flex;
+    justify-content: flex-start;
+    margin: 0 10%;
   }
 
 @media (min-width:1200px) {
