@@ -15,7 +15,7 @@
                     </li>
                 </ul>
             <div class="h_feature">
-                <router-link to="/membership"><i class="fa-regular fa-user"></i></router-link>
+                <router-link to="/login"><i class="fa-regular fa-user"></i></router-link>
                 <!-- <router-link to="/membership"><i class="fa-solid fa-list-ol"></i></router-link> -->
                 <router-link to=""><i class="fa-solid fa-cart-shopping"></i></router-link>
                 <div id="hambur" class="hambur" @click="toggle = !toggle">

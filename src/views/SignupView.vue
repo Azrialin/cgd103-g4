@@ -19,7 +19,7 @@
                       <input type="checkbox" id="agreebox" name="agreebox" value="ok"/>
                       <label for="agreebox">同意我們的<a href="">使用條款</a>和<a href="">隱私政策</a></label>
                     </div>
-                    <button class="btn-gold">註冊為會員</button>
+                    <router-link to="/Membership" class="btn-gold">註冊為會員</router-link>
                     <a class="back" href="">回上一頁</a>
                 </form>
             </div>
@@ -39,8 +39,12 @@
         },
         data() {
             return {
-            email: "",
-            password: "",
+                email: "",
+                password: "",
+                fonts:[
+                    { name: '首頁', source: '/' },
+                    { name: '註冊會員', source: 'Signup' }
+                ],
             };
         },
     };
@@ -124,12 +128,12 @@
                   }
               }
   
-              button{
-                width: 170px !important;
-                padding: 10px 10px !important;
+              .btn-gold{
+                width: 200px !important;
+                padding: 10px 20px !important;
                 margin-bottom: 100px;
-                margin-top: 80px;
-                margin-right: 80px;
+                margin-top: 150px;
+                margin-right: 175px;
               }
               .back{
                 @include font(15px);
