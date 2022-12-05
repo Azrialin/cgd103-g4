@@ -8,7 +8,10 @@
           <li v-for="list in lists" :key="list">
             <div class="tra_card">
               <div class="tra_img">
-                <router-link to="/travelcontent" class="aaa"><img :src="list['src']" alt=""></router-link>
+                <router-link to="/travelcontent" class="aaa">
+                  <div class="boxb">${{list['price']}}</div>
+                  <img :src="list['src']" alt="">
+                </router-link>
               </div>
               <div class="tra_intro">
                 <h3>{{list['title']}}</h3>
@@ -69,21 +72,30 @@
           box-sizing: border-box;
           padding: 10px;
           width: 100%;
-          .tra_img:hover{
-            border-radius: 30px;
-          }
           .tra_img{
+            position: relative;
             box-sizing: border-box;
             padding: 10px;
             border-radius: 10px;
             box-sizing: border-box;
             width: 100%;
+            .boxb{
+              @include font(20px);
+              width: 150px;
+              height: 70px;
+              border-radius: 10px 0px 0px 0px;
+              background-color: #fff;
+              position: absolute;
+              right: 0px;
+              bottom: 0px;
+              z-index: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
             img{
               width: 100%;
               border-radius: 10px;
-              &:hover{
-                border-radius: 20px;
-              }
             }
           }
           .tra_intro{
@@ -157,6 +169,11 @@
           li:nth-child(2n) .tra_card{
             display: flex;
             flex-direction: row-reverse;
+          }
+          li:nth-child(2n) .tra_card .tra_img .boxb{
+            background-color: #f8f8f8;
+            left: 0;
+            border-radius: 0px 10px 0px 0px;
           }
           .tra_card{
             display: flex;
