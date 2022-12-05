@@ -41,7 +41,7 @@
             </div>
           </CarouselItem>
         </Carousel> -->
-        <swiper class="bannerfa" :modules="modules" :navigation="true" :slides-per-view="2" @swiper="onSwiper" @slideChange="onSlideChange">
+        <swiper class="bannerfa" :pagination="{'clickable': true}" :modules="modules" :navigation="{nextEl,prevEl}" :slides-per-view="2" @swiper="onSwiper" @slideChange="onSlideChange">
           <swiper-slide class="banner" v-for="(img,index) in imgs" :key="img">
             <p>行程{{index+1}}</p>
             <img :src="img" alt="">
@@ -84,23 +84,17 @@
           Banner,
           breadcrumb,
         },
-        setup() {
-          const onSwiper = (swiper) => {
-            console.log(swiper);
-          };
-          const onSlideChange = () => {
-            console.log('slide change');
-          };
-          const isshock = true;
-
+        data() {
           return{
             imgs:[require(`@/assets/img/products/pro1.jpg`),require(`@/assets/img/products/pro2.jpg`),require(`@/assets/img/products/pro3.jpg`),require(`@/assets/img/products/pro4.jpg`),require(`@/assets/img/products/pro5.jpg`)],
             eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
             fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
-            onSwiper,
-            onSlideChange,
             modules: [Pagination,Navigation],
           }
+        },
+        navigation: {
+          nextEl: ".swiper-button-next", // 上一頁按鈕物件
+          prevEl: ".swiper-button-prev", // 下一頁按鈕物件
         },
     }
 </script>
@@ -128,6 +122,12 @@
         @include font(26px);
         text-align: center;
         padding: 40px 0px;
+      }
+      .swiper{
+        --swiper-theme-color: #D7BF9D;
+        --swiper-navigation-color: #D7BF9D;
+        --swiper-navigation-size: 40px;
+        --swiper-navigation-border-radius:100%;
       }
       .backc.backct{
         position: sticky;
@@ -161,10 +161,16 @@
       p{
         @include font(14px);
       }
+
       .bannerfa{
         cursor: pointer;
         padding-right: 0px;
         margin-bottom: 40px;
+        .swiper-button-next,.swiper-button-prev{
+          color: #fff;
+          background-color: rgba(#000,0.5);
+          padding: 10px;
+        }
         .banner{
           box-sizing: border-box;
           border-radius: 10px;
