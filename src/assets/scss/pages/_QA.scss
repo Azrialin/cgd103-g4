@@ -1,13 +1,12 @@
-// @import "../assets/scss/components/btn.scss";
 @import "../components/btn.scss";
 @import "../base/font.scss";
 
 .QA{
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 140px);
     padding: 20px 0 50px;
     display: flex;
     flex-direction: column;
-    p,a{
+    p, a{
         color: $clr_gray_L1;
     }
     h2{
@@ -17,22 +16,22 @@
     .container{
         flex-grow: 1;
         width: 100%;
+        padding-bottom: 50px;
         @include minW(1200px){
             display: flex;
             flex-direction: row;
             justify-content: space-between;
         }
-        padding-bottom: 50px;
         aside{
             display: none;
             @include minW(1200px){
                 display: block;
                 width: 20%;
             }
-            .QA_menu{
-                h3{
-                    display: flex;
+            .categoryList{
+                .category{
                     cursor: pointer;
+                    display: flex;
                     padding: 15px;
                     color: $clr_gray_L1;
                     border-top: 1px solid $clr_gray_L4;
@@ -45,7 +44,7 @@
                         border-bottom: 1px solid $clr_gray_L4;
                     }
                 }
-                h3.at{
+                .category.on{
                     &::before{
                         content: '';
                         display: block;
@@ -95,20 +94,20 @@
             }
             .tabs{
                 display: none;
-                @include maxW(1200px){
-                    display: block;
-                }
                 position: relative;
                 border-bottom: 3px solid $clr_blue_L1;
                 margin-bottom: 30px;
+                @include maxW(1200px){
+                    display: block;
+                }
                 .tab{
+                    cursor: pointer;
                     position: relative;
                     top: 1px;
-                    cursor: pointer;
                     display: inline-block;
+                    margin: 0 -2px;
                     background: $clr_fff;
                     color: $clr_gray_L1;
-                    margin: 0 -2px;
                     border: 1px solid $clr_blue_L3;
                     border-radius: 12px 12px 0px 0px;
                     @include btnPadding(10, 30);
@@ -126,14 +125,14 @@
                         outline: none;
                     }
                 }
-                .tab.at{
+                .tab.on{
                     background: $clr_blue_L1;
                     border-color: $clr_blue_L1;
                     color: $clr_fff;
                 }
             }
-            .QA_list{
-                li{
+            .faqList{
+                .faq{
                     padding: 15px 30px;
                     color: $clr_gray_L1;
                     border-radius: 10px;
