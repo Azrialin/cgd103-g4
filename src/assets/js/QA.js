@@ -1,5 +1,3 @@
-
-// header 捲動出現影子
 $(function scroll(){
     $(window).on('scroll', function (){
         if( $(window).scrollTop() > 0){
@@ -11,21 +9,21 @@ $(function scroll(){
     });
 });
 
-// click 事件
-// $(function click(){
+// $(function menuClick(){
 //     $('.js-click').on('click', function (){
-//         $(this).toggleClass('on');
+//         $('.js-click').not(this).removeClass('at');
+//         $(this).addClass('at');
 //     });
 // });
 
-// 選單 click
-$(function menuClick(){
-    $('.QA_menu h3, .tabs .tab').on('click', function (){
-        $('.QA_menu h3, .tabs .tab').not(this).removeClass('at');
-        $(this).addClass('at');
-        console.log(this);
-    });
-});
+// $(function menuClick(){
+//     $('.QA_menu h3, .tabs .tab').on('click', function (){
+//         $('.QA_menu h3, .tabs .tab').not(this).removeClass('at');
+//         $(this).addClass('at');
+//         console.log(this);
+//     });
+// });
+
 
 // 底線跟隨滑鼠
 // function mousemove(event){
