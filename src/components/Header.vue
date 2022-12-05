@@ -1,7 +1,7 @@
 <template>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <header class="container hd">
-        <nav>
+        <div class="nav">
             <h1 class="h_logo">
                 <router-link to="/" style="font-size:0;">JET SPEED
                     <svg width="108" height="40" viewBox="0 0 108 40" xmlns="http://www.w3.org/2000/svg">
@@ -15,15 +15,15 @@
                     </li>
                 </ul>
             <div class="h_feature">
-                <a href="/membership"><i class="fa-regular fa-user"></i></a>
-                <!-- <a href="/membership"><i class="fa-solid fa-list-ol"></i></a> -->
-                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                <router-link to="/membership"><i class="fa-regular fa-user"></i></router-link>
+                <!-- <router-link to="/membership"><i class="fa-solid fa-list-ol"></i></router-link> -->
+                <router-link to=""><i class="fa-solid fa-cart-shopping"></i></router-link>
                 <div id="hambur" class="hambur" @click="toggle = !toggle">
                     <div class="hambox"></div>
                     <div class="hambox"></div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
 </template>
 <script>
@@ -34,7 +34,7 @@ export default {
     },
     data(){
         return{
-            items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'預約報名',sourc:'sign'},{name:'消息專區',sourc:'news'},{name:'線上商城',sourc:'shop'},{name:'關於我們',sourc:'about'}],
+            items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'消息專區',sourc:'news'},{name:'線上商城',sourc:'shop'},{name:'關於我們',sourc:'about'}],
             toggle: false,
         }
     }
@@ -56,7 +56,7 @@ export default {
     height: 70px;
     background-color: #fff;
     transition: 1s;
-    nav {
+    .nav {
         display: flex;
         position: relative;
         box-sizing: border-box;
@@ -136,10 +136,10 @@ export default {
     
 @media screen and (min-width: 1024px) {
     .container {
-        nav{
+        .nav{
             .h_list {
                 padding: 0;
-                max-width: 800px;
+                max-width: 700px;
                 list-style: none;
                 display: flex;
                 height: 70px;
