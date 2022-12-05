@@ -1,3 +1,4 @@
+
 // header 捲動出現影子
 $(function scroll(){
     $(window).on('scroll', function (){
@@ -11,17 +12,18 @@ $(function scroll(){
 });
 
 // click 事件
-$(function click(){
-    $('.js-click').on('click', function (){
-        $(this).toggleClass('on');
-    });
-});
+// $(function click(){
+//     $('.js-click').on('click', function (){
+//         $(this).toggleClass('on');
+//     });
+// });
 
 // 選單 click
 $(function menuClick(){
     $('.QA_menu h3, .tabs .tab').on('click', function (){
         $('.QA_menu h3, .tabs .tab').not(this).removeClass('at');
         $(this).addClass('at');
+        console.log(this);
     });
 });
 
