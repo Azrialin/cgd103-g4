@@ -98,7 +98,7 @@
       data() {
         return{
           xyz:3,
-          open: true,
+          open: false,
           imgs:[require(`@/assets/img/products/pro1.jpg`),require(`@/assets/img/products/pro2.jpg`),require(`@/assets/img/products/pro3.jpg`),require(`@/assets/img/products/pro4.jpg`),require(`@/assets/img/products/pro5.jpg`)],
           eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
