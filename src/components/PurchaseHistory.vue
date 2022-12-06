@@ -1,40 +1,40 @@
 <template>
     <div>
         <div>
-            <h3 class="top" v-show="!hide">行程訂單列表</h3>
+            <h3 class="top" v-show="!hide">交易紀錄列表</h3>
             <hr class="underline" v-show="!hide">
 
             <!-- rwd -->
-            <div class="travel-wrapper" v-show="!hide" v-for="purchase in result" :key="purchase.orderNo">
-              <div class="travel-detail">
-                    <div class="travel-info">
+            <div class="merchandise-wrapper" v-show="!hide" v-for="merchandise in result" :key="merchandise.orderNo">
+              <div class="merchandise-detail">
+                    <div class="merchandise-info">
                         <h3>訂單編號 </h3>
-                        <span>{{purchase.orderNo}}</span>
+                        <span>{{merchandise.orderNo}}</span>
                     </div>
                  <hr>
-                    <div class="travel-info">
-                        <h3>行程方案 </h3>
-                        <span>{{purchase.package}}</span>
+                    <div class="merchandise-info">
+                        <h3>會員編號 </h3>
+                        <span>{{merchandise.memId}}</span>
                     </div>
                  <hr>
-                    <div class="travel-info">
-                        <h3>行程日期 </h3>
-                        <span>{{purchase.departureDate}}</span>
+                    <div class="merchandise-info">
+                        <h3>訂購日期 </h3>
+                        <span>{{merchandise.purchaseDate}}</span>
                     </div>
                  <hr>
-                    <div class="travel-info">
-                        <h3>報名人數 </h3>
-                        <span>{{purchase.noOfTraveler}}</span>
+                    <div class="merchandise-info">
+                        <h3>訂單金額 </h3>
+                        <span>{{merchandise.orderTotal}}</span>
                     </div>
                  <hr>
-                    <div class="travel-info">
-                        <h3>總計金額 </h3>
-                        <span>{{purchase.total}}</span>
-                    </div>
-                 <hr>
-                    <div class="travel-info">
+                    <div class="merchandise-info">
                         <h3>訂單狀態 </h3>
-                        <span>{{purchase.paymentStatus}}</span>
+                        <span>{{merchandise.orderStatus}}</span>
+                    </div>
+                 <hr>
+                    <div class="merchandise-info">
+                        <h3>出貨狀態 </h3>
+                        <span>{{merchandise.shippingStatus}}</span>
                     </div>
               </div>
               <a @click="showdetail" class="bottom">查看詳情</a>
@@ -43,31 +43,31 @@
             <!-- rwd -->
 
             <!-- pc version -->
-            <div class="travel-wrapper-xl" v-show="!hide" >
-              <!-- <div class="travel-detail"> -->
-                <div class="travel-info-xl">
+            <div class="merchandise-wrapper-xl" v-show="!hide" >
+              <!-- <div class="merchandise-detail"> -->
+                <div class="merchandise-info-xl">
                     <h3>訂單編號</h3>
-                    <h3>行程方案</h3>
-                    <h3>行程日期</h3>
-                    <h3>報名人數</h3>
-                    <h3>總計金額</h3>
+                    <h3>會員編號</h3>
+                    <h3>訂購日期</h3>
+                    <h3>訂單金額</h3>
                     <h3>訂單狀態</h3>
+                    <h3>出貨狀態</h3>
                     <h3>訂單詳情</h3>
                 </div>
-                <div class="travel-info-status" v-for="purchase in result" :key="purchase.orderNo">
-                    <h3>{{purchase.orderNo}}</h3>
-                    <h3>{{purchase.package}}</h3>
-                    <h3>{{purchase.departureDate}}</h3>
-                    <h3>{{purchase.noOfTraveler}}</h3>
-                    <h3>{{purchase.total}}</h3>
-                    <h3>{{purchase.paymentStatus}}</h3>
+                <div class="merchandise-info-status" v-for="merchandise in result" :key="merchandise.orderNo">
+                    <h3>{{merchandise.orderNo}}</h3>
+                    <h3>{{merchandise.memId}}</h3>
+                    <h3>{{merchandise.purchaseDate}}</h3>
+                    <h3>{{merchandise.orderTotal}}</h3>
+                    <h3>{{merchandise.orderStatus}}</h3>
+                    <h3>{{merchandise.shippingStatus}}</h3>
                     <a @click="showdetail">查看詳情</a>
                 </div>
 
             </div>
 
             <!-- <div v-show="show"> -->
-              <Travelreceipt v-show="show"/>
+              <Merchandisereceipt v-show="show"/>
             <!-- </div> -->
             
 
@@ -83,33 +83,33 @@
 </template>
 
 <script>
-import Travelreceipt from '@/components/Travelreceipt.vue'
+import Merchandisereceipt from '@/components/Merchandisereceipt.vue'
 const result = [{
     orderNo:"T12345",
-    package:"方案A",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄70,000",
-    paymentStatus: "已付款",
+    memId:123,
+    purchaseDate:"2023/01/01",
+    orderTotal: "＄70,000",
+    orderStatus : "已付款",
+    shippingStatus: "已出貨",
 },{
     orderNo:"T12346",
-    package:"方案B",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄75,000",
-    paymentStatus: "已付款",
+    memId:124,
+    purchaseDate:"2023/01/01",
+    orderTotal: "＄70,000",
+    orderStatus : "已付款",
+    shippingStatus: "已出貨",
 },{
     orderNo:"T12347",
-    package:"方案C",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄80,000",
-    paymentStatus: "已付款",
+    memId:125,
+    purchaseDate:"2023/01/01",
+    orderTotal: "＄70,000",
+    orderStatus : "已付款",
+    shippingStatus: "已出貨",
 }]
 
 export default {
     components: {
-      Travelreceipt,
+      Merchandisereceipt,
     },
     data(){
         return{
@@ -164,23 +164,23 @@ export default {
     background: #BC955C;
     border: none;
   }
-  .travel-wrapper{
+  .merchandise-wrapper{
     padding: 10%;
     padding-top: 20px;
   }
-  .travel-detail{
+  .merchandise-detail{
     border: 1px solid #BC955C;
     border-radius: 10px 10px 0 0;
   }
-  .travel-info{
+  .merchandise-info{
     display: flex;
     justify-content: flex-start;
   }
-  .travel-info h3,.travel-info span{
+  .merchandise-info h3,.merchandise-info span{
     display: inline-block;
     margin: 20px;
   }
-  .travel-detail hr{
+  .merchandise-detail hr{
     height: 1px;
     background: #BC955C;
     border: none;
@@ -200,12 +200,12 @@ export default {
     margin: 0 10%;
   }
 
-  .travel-wrapper-xl{
+  .merchandise-wrapper-xl{
     padding: 10%;
     padding-top: 20px;
     display: none;
   }
-  .travel-info-xl{
+  .merchandise-info-xl{
         border-radius: 10px 10px 0 0;
         background: #BC955C;
         display: flex;
@@ -214,14 +214,14 @@ export default {
         padding: 20px;
   }
 
-  .travel-info-status{
+  .merchandise-info-status{
     display: flex;
     justify-content: space-evenly;
     border: 1px solid #BC955C;
     padding: 20px;
     text-align: center; //沒辦法對齊
   }
-  .travel-info-status a{
+  .merchandise-info-status a{
     color: #BC955C;
     text-decoration-line: underline;
     cursor: pointer;
@@ -230,10 +230,10 @@ export default {
 
 @media (min-width:1200px) {
   
-  .travel-wrapper{
+  .merchandise-wrapper{
     display: none;
   }
-  .travel-wrapper-xl{
+  .merchandise-wrapper-xl{
     display: block;
   }
   .btn-gold_2nd{
