@@ -8,7 +8,7 @@
 
               <div class="try col-xl-6">
                 <h3 class="info">姓名<span>*</span></h3>
-                <input  v-model="result.id"/>
+                <input  v-model="result.name"/>
               </div>
               <div class="try col-xl-6">
                 <h3 class="info">英文名</h3>
@@ -46,7 +46,7 @@
               <div class="button-section">
                 <button class="btn-gold_2nd">取消修改</button>
 
-                <button class="btn-gold">儲存修改</button>
+                <button class="btn-gold" @click="saveData" type="button">儲存修改</button>
               </div>
               <!-- <input  v-model="result.nationality"/> -->
             </div>
@@ -59,7 +59,7 @@
 <script>
 
 const result = {
-    id:123,
+    name:"123",
     englishName:"Eric",
     psw:"########",
     email: "Y123@gmail.com",
@@ -85,6 +85,9 @@ export default {
     methods:{
         getData(){
             this.result = result;
+        },
+        saveData(){
+          console.log(this.result);
         }
     }
 }
