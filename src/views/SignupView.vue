@@ -9,19 +9,19 @@
                     <p>*為必填欄位</p>
                     <div class="inputfield">
                         <h3 class="title">姓名<span>*</span></h3>
-                        <input type="text" placeholder="請輸入姓名">
+                        <input class="input-gold" type="text" placeholder="請輸入姓名">
                     </div>  
                     <div class="inputfield">
                         <h3 class="title">密碼<span>*</span></h3>
-                        <input type="password" placeholder="請輸入密碼">
+                        <input class="input-gold" type="password" placeholder="請輸入密碼">
                     </div>
                     <div class="inputfield">
                         <h3 class="title">電子信箱<span>*</span></h3>
-                        <input type="email" placeholder="請輸入Email">
+                        <input class="input-gold" type="email" placeholder="請輸入Email">
                     </div> 
                     <div class="inputfield">
                         <h3 class="title">電話號碼<span>*</span></h3>
-                        <input type="tel" placeholder="請輸入手機號碼">
+                        <input class="input-gold" type="tel" placeholder="請輸入手機號碼">
                     </div> 
                     <div class="box">
                       <input type="checkbox" id="agreebox" name="agreebox" value="ok"/>
@@ -117,7 +117,6 @@
                 box-sizing: border-box;
                 width: 320px;
                 padding: 10px 10px;
-                border: solid 1px $front_color_main;
                 border-radius: 10px;
                 font-size: 24px;
                 margin-bottom: 20px;
@@ -149,6 +148,7 @@
               .signup-article-btn{
                 width: 310px;
                 margin-top: 60px;
+                text-align: left;
               }
 
               .back{
@@ -156,7 +156,7 @@
                   font-weight: 300;
                   color:$color_444;
                   text-decoration:none;
-                  margin-left: 85px;
+                  margin-left: 90px;
             
                   &:hover {
                   text-decoration:none;
