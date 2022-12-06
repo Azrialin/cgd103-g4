@@ -82,8 +82,8 @@
                 ],
                 categoryList:[
                     { id: 'Q01', title: '會員問題' },
-                    { id: 'Q02', title: '行程訂單問題' },
-                    { id: 'Q03', title: '商品訂單問題' },
+                    { id: 'Q02', title: '行程問題' },
+                    { id: 'Q03', title: '商品問題' },
                 ],
                 faq:[
                     { 
