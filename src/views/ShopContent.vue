@@ -208,13 +208,13 @@
             flex-wrap: wrap;
             // outline: 1px solid #fa0;
             .pro-pic{
-                // outline: 1px solid red;
+                
                 img{
                     width: 100%;
                 }
             }
             .pro-txt{
-                // outline: 1px solid red;
+                
                 color: $clr_gray_L1;
                 .pro-txt-title{
                     letter-spacing: 0px;
@@ -224,18 +224,18 @@
                 .pro-price{
                     margin: 20px;
                     display: flex;
-                    justify-content: center;
+                    // justify-content: center;
                     align-items: center;
                 }
                 .pro-price-num{
-                    margin: auto;
+                    // margin: auto;
                 }
                 .pro-amount-btn{
                     width: 30%;
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
-                    margin: auto;
+                    // margin: auto;
                     border: 1px solid $front_color_main;
                     border-radius: 10px;
                     button{
@@ -293,13 +293,13 @@
                     margin: 20px 0px;
                     color: $clr_gray_L2;
                     text-align: center;
-                    // outline: 1px solid red;
+                    
                 }
                 .pro-warn-txt{
                     text-align: left;
                     margin: auto;
                     color: $clr_gray_L2;
-                    // outline: 1px solid red;
+                    
                     li{
                         margin: 10px 0px;
                     }
@@ -317,7 +317,7 @@
                     margin: 20px 0px;
                     color: $clr_gray_L2;
                     text-align: center;
-                    // outline: 1px solid red;
+                    
                 }
                 .swip-container{
                     width: 100%;
@@ -353,10 +353,12 @@
             }
             .pro-price-num{
                 @include font(22px);
+                margin: auto;
             }
             .pro-amount-btn{
                 // width: 60%;
                 text-align: center;
+                margin: auto;
                 input{
                     width: 25%;
                     @include font(20px);
@@ -419,6 +421,7 @@
         width: 50%;
     }
     .pro-txt{
+        
         width: 45%;
         display: flex;
         flex-direction: column;
@@ -426,14 +429,18 @@
         margin-left: 50px;
         .pro-txt-title{
             @include font(34px);
+            
         }
         .pro-price{
             @include font(20px);
+            
         }
         .pro-price-num{
             @include font(30px);
+            margin-left: 30px;
         }
         .pro-amount-btn{
+            margin-left: 30px;
             // width: 60%;
             input{
                 width: 20%;
