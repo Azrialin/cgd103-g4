@@ -2,7 +2,10 @@
   <Banner :src="require(`@/assets/img/Banner/banner_travel.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
   <div class="about">
-    <!-- <div id="sidehead"></div> -->
+    <div id="circle" :style="{top:y+'px',left:x+'px'}">
+      <div class="left"><i class="fa-solid fa-angle-up"></i></div>
+      <div class="right"><i class="fa-solid fa-angle-up"></i></div>
+    </div>
     <div class="container_tra">
       <div class="content_tra">
         <div class="backc backct">
@@ -41,7 +44,7 @@
             </div>
           </CarouselItem>
         </Carousel> -->
-        <swiper class="bannerfa" :pagination="{'clickable': true}" :modules="modules" :navigation="{nextEl,prevEl}" :slides-per-view="2" @swiper="onSwiper" @slideChange="onSlideChange">
+        <swiper class="bannerfa" :pagination="{'clickable': true}" :modules="modules" :navigation="{nextEl,prevEl}" :slides-per-view="2" @swiper="onSwiper" @slideChange="onSlideChange" @mousemove="move" @mouseleave="leave">
           <swiper-slide class="banner" v-for="(img,index) in imgs" :key="img">
             <p>行程{{index+1}}</p>
             <img :src="img" alt="">
@@ -90,11 +93,27 @@
             eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
             fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
             modules: [Pagination,Navigation],
+            x:0,
+            y:0,
           }
         },
         navigation: {
           nextEl: ".swiper-button-next", // 上一頁按鈕物件
           prevEl: ".swiper-button-prev", // 下一頁按鈕物件
+        },
+        methods: {
+          move(e){
+            let circle = document.getElementById("circle");
+            this.x = e.pageX;
+            this.y = e.pageY;
+            circle.style.opacity = 1;
+          },
+          leave(e){
+            let circle = document.getElementById("circle");
+            this.x = e.pageX;
+            this.y = e.pageY;
+            circle.style.opacity = 0;
+          }
         },
     }
 </script>
@@ -105,12 +124,27 @@
 // *{
 //   outline: solid 1px;
 // }
-  // #sidehead{
-  //   position: absolute;
-  //   width: 100px;
-  //   height: 100px;
-  //   background-color: #f0a;
-  // }
+  #circle{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: rgba(#fff,0.7);
+    border: solid 1px rgba(#000,0.3);
+    z-index: 999;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    display: flex;
+    justify-content: space-evenly;
+    .left{
+      transform: rotate(90deg);
+    }
+    .right{
+      transform: rotate(-90deg);
+    }
+  }
   .container_tra{
     width: 100%;
     background-color: #fff;

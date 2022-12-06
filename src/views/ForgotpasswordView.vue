@@ -8,7 +8,7 @@
                     <hr>
                     <div class="inputfield">
                         <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
-                        <input type="email" placeholder="請輸入Email">
+                        <input class="input-gold" type="email" placeholder="請輸入Email">
                     </div> 
                     <button class="btn-gold_2nd">取消</button>
                     <button class="btn-gold">確認送出</button>
@@ -60,7 +60,7 @@
         box-shadow: 0 8px 10px -5px rgb(198, 198, 198);
 
         form{
-            width: 320px;
+            width: 70%;
             margin: auto;
             margin-top: 50px;
             text-align: right;
@@ -93,9 +93,8 @@
 
             input{
                 box-sizing: border-box;
-                width: 320px;
+                width: 100%;
                 padding: 10px 10px;
-                border: solid 1px $front_color_main;
                 border-radius: 10px;
                 font-size: 24px;
                 margin-bottom: 20px;
@@ -105,14 +104,14 @@
             }
 
             .btn-gold_2nd{
-                width: 100px;
+                width: 30%;
                 padding: 10px 15px;
                 margin-right: 30px;
                 margin-top: 40px;
             }
 
             .btn-gold{
-                width: 150px;
+                width: 40%;
                 padding: 10px 15px;
                 margin-top: 40px;
             }
