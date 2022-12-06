@@ -91,6 +91,10 @@
           this.number--;
         }
       },
+      
+      mounted() {
+        console.log(this.$route.query.date)
+      }
     }
 </script>
 <style lang="scss" scoped>
