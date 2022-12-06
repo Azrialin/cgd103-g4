@@ -23,10 +23,10 @@
         <div class="OtherNews">
           <div class="HomeNew-Pc col-xl-4">
             <div class="HomeNew-Pc-Card">
-              <img src="https://picsum.photos/300/200/?random=10" />
+              <img src="../assets/img/Scape/21.jpg" />
               <div class="HomeNew-Pc-Text">
                 <p>2022/11/06</p>
-                <p>｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。</p>
+                <p>｢JET SPEED｣雙世界遺產/超值一日遊開放預約中。</p>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@
           <div class="Js-Official col-xl-4">
             <div class="Js-SocialMedia">
               <img src="../assets/img/instagram.jpg" alt="" />
-              <p>「JET SPEED」公式instergram</p>
+              <p>「JET SPEED」官方instergram</p>
             </div>
           </div>
         </div>
@@ -81,12 +81,9 @@
               有豐富的品質， <br />只有在火車上才能體驗的特殊空間。
             </p>
             <p class="HomeTrain-Text-SubTitle">
-              有一個可以精確傳遞的視圖，因為它是一個精緻的一流空間。
-              休息室陳設著來自日本東部各地的代代相傳的手工藝品。
-              您可以在別具一格的吊燈下享用我們廚師烹製的美味佳餚。
-              可以欣賞動感列車窗的觀景車廂。
-              以及可以度過高品質的悠閒時光的客房。
-              所有這些都將創造你一生中從未體驗過的全新火車旅程。
+              JETSPEED觀光列車的設計概念為「新時代、新文化、新希望」，內裝巧妙融入明治時期元素，成就了一台擁有與眾不同「空想氛圍」彩繪觀光列車，因為融入高知獨特歷史文化的美麗外觀，讓鐵道迷們不斷爭相詢問。
+              您可以在獨特的氛圍下享用我們的 特色佳餚。
+              將為您創造一生中從未體驗過的新火車之旅。
             </p>
             <div class="MoreButton">
               <button>more</button>
@@ -100,15 +97,15 @@
           <p class="Home-Carousal-Second">____旅遊行程介紹</p>
           <swiper :navigation="true" :modules="modules" class="mySwiper">
             <swiper-slide>
-              <img src="../assets/img/Scape/01.jpg" alt="" />
+              <img src="../assets/img/Scape/11.jpg" alt="" />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/02.jpg" alt="" />
+              <img src="../assets/img/Scape/13.jpg" alt="" />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/03.jpg" alt="" />
+              <img src="../assets/img/Scape/17.jpg" alt="" />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
@@ -132,7 +129,7 @@
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/09.jpg" alt="" />
+              <img src="../assets/img/Scape/10.jpg" alt="" />
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
           </swiper>
@@ -145,7 +142,6 @@
 
 <script>
 import Banner from "@/components/Banner.vue";
-
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -172,42 +168,36 @@ export default {
           imageurl: require("@/assets/img/News/1.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
-            "｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。",
+            "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
         },
         {
           imageurl: require("@/assets/img/News/1.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
-            "｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。",
+            "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
         },
         {
           imageurl: require("@/assets/img/News/1.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
-            "｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。",
-        },
-        {
-          imageurl: require("@/assets/img/News/1.jpg"),
-          HomeNew_Title: "2022/11/06",
-          HomeNew_Subtitle:
-            "｢TRAIN SUITE 四季島｣2晚3天課程/冬季額外招聘已經開始。",
+            "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
         },
       ],
       articles: [
         {
           imageurl: require("@/assets/img/News/1.jpg"),
-          Title: "－旅遊行程介紹",
-          SubTitle: "介紹當前推薦的旅遊行程",
+          Title: "-列車旅遊行程介紹",
+          SubTitle: "推薦給您最優質的列車旅行",
         },
         {
           imageurl: require("@/assets/img/News/1.jpg"),
-          Title: "－商品系列",
-          SubTitle: "介紹當前推薦的旅遊行程",
+          Title: "-特色產品介紹",
+          SubTitle: "當地特產及紀念週邊推薦",
         },
         {
           imageurl: require("@/assets/img/News/1.jpg"),
-          Title: "－列車介紹",
-          SubTitle: "介紹當前推薦的旅遊行程",
+          Title: "-列車介紹",
+          SubTitle: "列車環境簡介",
         },
       ],
     };
@@ -257,13 +247,10 @@ li {
     }
   }
   .OtherNews {
-    .HomeNew-Pc {
-      display: none;
-    }
-    .HomeNew-Pc {
-      display: none;
-    }
     margin: 30px auto;
+    .HomeNew-Pc {
+      display: none;
+    }
     .Covid-19 {
       //font-size: nth($font-size,7)+px;
       border: 1px solid #bc955c;
@@ -354,12 +341,13 @@ li {
     .mySwiper {
       img {
         height: 250px;
+        object-fit: cover;
       }
       p {
         @include font(24px);
         color: #444;
         text-align: center;
-        margin-bottom: 30px
+        margin-bottom: 30px;
       }
     }
     .Home-Carousal-First {
@@ -393,12 +381,18 @@ li {
           margin: 20px 10px;
           img {
             width: 25%;
+            object-fit: cover;
           }
           .HomeNew-Pc-Text {
             @include font(14px);
             text-align: left;
             padding: 10px;
           }
+        }
+      }
+      .Covid-19 {
+        .CovidText {
+          margin: 20px;
         }
       }
       .Js-Official {
