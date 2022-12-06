@@ -180,10 +180,10 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 5px 20px 2px rgba(#000,0.3);
-    width: 30%;
-    padding: 50px;
+    width: 50%;
+    padding: 40px 50px;
     .choose{
-      @include font(18px);
+      @include font(16px);
       color: $color_444;
       text-align: center;
       height: 60px;
@@ -332,6 +332,16 @@
     }
   }
   @media screen and (min-width: 1024px){
+  .bbix{
+    .choosearea{
+      width: 30%;
+      padding: 50px;
+      .choose{
+        @include font(18px);
+        text-align: center;
+      }
+    }
+  }
     .container_tra{
       .content_tra{
         .contentmain{
