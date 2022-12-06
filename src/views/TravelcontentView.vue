@@ -1,6 +1,20 @@
 <template>
   <Banner :src="require(`@/assets/img/Banner/banner_travel.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
+  <transition name="bang">
+    <div class="bbix" v-show="open" @click.self="dbcheck">
+      <div class="choosearea">
+        <select class="choose" v-model="choose">
+          <option value="" disabled>-選擇日期-</option>
+          <option :value="option" v-for="option in options" :key="option">{{option}}</option>
+          <!-- <option value="2023/03/10">2023/03/10</option>
+          <option value="2023/03/11">2023/03/11</option>
+          <option value="2023/03/12">2023/03/12</option>
+          <option value="2023/03/13">2023/03/13</option> -->
+        </select>
+      </div>
+    </div>
+  </transition>
   <div class="about">
     <div id="circle" :style="{top:y+'px',left:x+'px'}">
       <div class="left"><i class="fa-solid fa-angle-up"></i></div>
@@ -9,10 +23,13 @@
     <div class="container_tra">
       <div class="content_tra">
         <div class="backc backct">
-          <router-link to="/travelcheck">
-            <div class="trcheck">預約行程</div>
-          </router-link>
+
+          <!-- <router-link :to="`/travelcheck?date=${choose}`"> -->
+            <div class="trcheck" @click="open=!open">預約行程</div>
+          <!-- </router-link> -->
+
         </div>
+
         <div class="contentmain">
           <h3>★ 3世界遺產＋3日本名勝</h3>
           <p>『銀燭秋光冷畫屏，輕羅小扇撲流螢。天階夜色涼如水，臥看牽牛織女星。』秋天代表豐收的喜悅，橘紅色柿子高掛樹頭。旅遊！是輕鬆的、是寫意的，以一壺清酒邀明月共舞，何等愜意逍遙遊！</p>
@@ -36,15 +53,7 @@
           <p>3. 主廚創作套餐：<span>傳統與現代的光影流動，藝術與美感的交織融合；從主廚的創意與巧思中，從一皿皿餐盤方寸之間，「五感食藝」不再只是名詞，發現優雅卻帶點自傲的…料理職人心中「堅持」。</span></p>
         </div>
         <h2>行程介紹</h2>
-        <!-- <Carousel class="bannerfa">
-          <CarouselItem class="banner" v-for="img in imgs" :key="img" v-model="value">
-            <div class="demo-carousel" v-for="(sub,index) in img.pic" :key="sub">
-              <p class="wch">行程{{index+1}}</p>
-              <img :src="sub" alt="">
-            </div>
-          </CarouselItem>
-        </Carousel> -->
-        <swiper class="bannerfa" :pagination="{'clickable': true}" :modules="modules" :navigation="{nextEl,prevEl}" :slides-per-view="2" @swiper="onSwiper" @slideChange="onSlideChange" @mousemove="move" @mouseleave="leave">
+        <swiper class="bannerfa" :pagination="{'clickable': true}" :modules="modules" :navigation="{nextEl,prevEl}" :slides-per-view="xyz" @swiper="onSwiper" @slideChange="onSlideChange" @mousemove="move" @mouseleave="leave">
           <swiper-slide class="banner" v-for="(img,index) in imgs" :key="img">
             <p>行程{{index+1}}</p>
             <img :src="img" alt="">
@@ -77,44 +86,67 @@
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
-    import mouse from "@/composable/mouse.js"
     export default {
-        name: "HeaderView",
-        components:{
-          Swiper,
-          SwiperSlide,
-          Header,
-          Banner,
-          breadcrumb,
+      name: "HeaderView",
+      components:{
+        Swiper,
+        SwiperSlide,
+        Header,
+        Banner,
+        breadcrumb,
+      },
+      data() {
+        return{
+          xyz:3,
+          open: false,
+          imgs:[require(`@/assets/img/products/pro1.jpg`),require(`@/assets/img/products/pro2.jpg`),require(`@/assets/img/products/pro3.jpg`),require(`@/assets/img/products/pro4.jpg`),require(`@/assets/img/products/pro5.jpg`)],
+          eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
+          fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
+          options:["2023 / 03 / 04","2023 / 03 / 13","2023 / 03 / 24","2023 / 03 / 30","2023 / 04 / 07","2023 / 04 / 12","2023 / 04 / 20"],
+          modules: [Pagination,Navigation],
+          x:0,
+          y:0,
+          choose:'',
+        }
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      methods: {
+        move(e){
+          let circle = document.getElementById("circle");
+          this.x = e.pageX;
+          this.y = e.pageY;
+          circle.style.opacity = 1;
         },
-        data() {
-          return{
-            imgs:[require(`@/assets/img/products/pro1.jpg`),require(`@/assets/img/products/pro2.jpg`),require(`@/assets/img/products/pro3.jpg`),require(`@/assets/img/products/pro4.jpg`),require(`@/assets/img/products/pro5.jpg`)],
-            eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
-            fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
-            modules: [Pagination,Navigation],
-            x:0,
-            y:0,
+        leave(e){
+          let circle = document.getElementById("circle");
+          this.x = e.pageX;
+          this.y = e.pageY;
+          circle.style.opacity = 0;
+        },
+        dbcheck(){
+          if(this.open == true){
+            this.open = false;
+            return this.open;
           }
+        }
+      },
+      watch:{
+        choose(nVal) {
+          this.$router.push(`/travelcheck?date=${nVal}`)
         },
-        navigation: {
-          nextEl: ".swiper-button-next", // 上一頁按鈕物件
-          prevEl: ".swiper-button-prev", // 下一頁按鈕物件
-        },
-        methods: {
-          move(e){
-            let circle = document.getElementById("circle");
-            this.x = e.pageX;
-            this.y = e.pageY;
-            circle.style.opacity = 1;
-          },
-          leave(e){
-            let circle = document.getElementById("circle");
-            this.x = e.pageX;
-            this.y = e.pageY;
-            circle.style.opacity = 0;
-          }
-        },
+
+      },
+      created() {
+        let windowidth = window.innerWidth;
+        if(windowidth < 1024){
+          this.xyz = 1;
+        }else{
+          this.xyz = 3;
+        }
+      },
     }
 </script>
 <style lang="scss" scoped>
@@ -124,6 +156,45 @@
 // *{
 //   outline: solid 1px;
 // }
+.bang-leave-active,.bang-enter-active{
+  transition: 0.5s;
+}
+.bang-enter-from,.bang-leave-to{
+  opacity: 0;
+}
+.bang-enter-to,.bang-leave-from{
+  opacity: 1;
+}
+.bbix{
+  z-index: 998;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(#000,0.5);
+  .choosearea{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px 2px rgba(#000,0.3);
+    width: 50%;
+    padding: 40px 50px;
+    .choose{
+      @include font(16px);
+      color: $color_444;
+      text-align: center;
+      height: 60px;
+      width: 100%;
+      border-radius: 5px;
+      option{
+        color: $color_444;
+      }
+    }
+  }
+}
   #circle{
     position: absolute;
     width: 100px;
@@ -179,12 +250,10 @@
           border: solid 1px $clr_gold_L1;
           border-radius: 10px;
           box-sizing: border-box;
-          margin: 0px auto;
           transition: 0.3s;
           &:hover{
             background-color: #fff;
             color: $front_color_main;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
           }
         }
       }
@@ -263,13 +332,23 @@
     }
   }
   @media screen and (min-width: 1024px){
+  .bbix{
+    .choosearea{
+      width: 30%;
+      padding: 50px;
+      .choose{
+        @include font(18px);
+        text-align: center;
+      }
+    }
+  }
     .container_tra{
       .content_tra{
         .contentmain{
           padding: 15px;
         }
         .bannerfa{
-          padding-right: 150px;
+          // padding-right: 150px;
           .banner{
             img{
               width: 100%;
