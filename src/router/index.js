@@ -37,11 +37,6 @@ const routes = [
     component: () => import('../views/TrainView.vue')
   },
   {
-    path: '/travel',
-    name: 'travel',
-    component: () => import('../views/TravelView.vue')
-  },
-  {
     path: '/travelcontent',
     name: 'travelcontent',
     component: () => import('../views/TravelcontentView.vue')
@@ -126,6 +121,11 @@ const routes = [
     path: '/forgotpassword',
     name: 'forgotpassword',
     component: () => import('../views/ForgotpasswordView.vue')
+  },
+  {
+    path: '/Contactus',
+    name: 'Contactus',
+    component: () => import('../views/ContactusView.vue')
   },
 ]
 
