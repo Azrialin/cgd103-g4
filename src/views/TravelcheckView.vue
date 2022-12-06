@@ -77,7 +77,7 @@
       },
       data(){
         return{
-          fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'},{name:'預約行程',source:'travelcheck'}],
+          fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
           titles:[{date:"2023/01/01",name:"山口圓舞曲，三世界遺產",code:"JTR05221122A",price:"100000"}],
           number:1,
         }
@@ -103,10 +103,10 @@
 .container_form{
   // background-color: #f0a;
   box-sizing: border-box;
-  padding: 10px 10px 100px 10px ;
+  padding: 0px 0px 100px 0px ;
   width: 100%;
   h2{
-    @include font(32px);
+    @include font(26px);
     text-align: center;
     padding: 40px;
   }
@@ -121,19 +121,19 @@
       border-bottom: solid 1px $front_color_main;
       padding: 0px 20px 20px 20px;
       h3{
-        @include font(32px);
+        @include font(24px);
         text-align: center;
         padding: 10px;
       }
       h4{
-        @include font(16px);
+        @include font(12px);
         text-align: center;
         padding: 10px;
       }
     }
     .main_chu{
       .main_human{
-        padding: 20px 20px 50px 20px;
+        padding: 0px 0px 50px 0px;
         .inputcompo{  
           box-sizing: border-box;
           width: 100%;
@@ -147,24 +147,24 @@
           height: 300px;
         }
         p{
-          @include font(16px);
+          @include font(14px);
           padding: 20px 0px;
         }
         h3{
-          @include font(24px);
+          @include font(20px);
           padding: 20px 0px;
         }
         
         
       }
       .main_come{
-        padding: 20px 20px 50px 20px;
+        padding: 0px 0px 50px 0px;
         .count{
           position: relative;
           .minus,.plus{
             position: absolute;
             top: 0;
-            @include font(36px);
+            @include font(26px);
             cursor: pointer;
             height: 100%;
             display: flex;
@@ -195,7 +195,7 @@
           padding: 20px 0px;
         }
         h3{
-          @include font(24px);
+          @include font(20px);
           padding: 20px 0px;
         }
         
@@ -203,7 +203,6 @@
       }
     }
     .main_online{
-      padding: 0px 20px;
       border-top: 1px solid $front_color_main;
       // margin-top: 30px;
       .inputcompo{  
@@ -215,11 +214,11 @@
         font-size: 24px;
       }
       h3{
-        @include font(24px);
+        @include font(20px);
         padding-top: 40px;
       }
       .okay{
-        @include font(16px);
+        @include font(14px);
         padding: 40px;
         text-align: center;
         a{
@@ -237,7 +236,7 @@
           padding: 15px;
           border-radius: 10px;
           border: solid 1px $front_color_main;
-          color: $color_e6;
+          color: #fff;
           transition: 0.3s;
           &:hover{
             background-color: #f8f8f8;
@@ -249,16 +248,75 @@
   }
 }
 @media screen and (min-width: 1024px){
-  .main_chu{
-    display: flex;
-    .main_human{
-      padding: 20px 20px 50px 20px;
-      width: 50%;
+  .container_form{
+    h2{
+      @include font(32px);
     }
-    .main_come{
-      border-left: 1px solid $front_color_main;
-      padding: 20px 20px 50px 20px;
-      width: 50%;
+    .content_form{
+      .title_name{
+        h3{
+          @include font(32px);
+          text-align: center;
+        }
+        h4{
+          @include font(16px);
+          text-align: center;
+        }
+      }
+      .main_chu{
+        display: flex;
+        .main_human{
+          padding: 20px 20px 50px 20px;
+          width: 50%;
+          .inputcompo{  
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px 10px;
+            border: solid 1px $front_color_main;
+            border-radius: 10px;
+            font-size: 24px;
+          }
+          .inputcompo.tetxcompo{
+            resize: none;
+            height: 300px;
+          }
+          p{
+            @include font(16px);
+            padding: 20px 0px;
+          }
+          h3{
+            @include font(24px);
+            padding: 20px 0px;
+          }
+        }
+        .main_come{
+          border-left: 1px solid $front_color_main;
+          padding: 20px 20px 50px 20px;
+          width: 50%;
+          .count{
+            position: relative;
+            .minus,.plus{
+              position: absolute;
+              top: 0;
+              @include font(36px);
+            }
+          }
+          h3{
+            @include font(24px);
+          }
+        }
+      }
+      .main_online{
+        padding: 0px 20px;
+        border-top: 1px solid $front_color_main;
+        h3{
+          @include font(24px);
+        }
+        .okay{
+          @include font(16px);
+          text-align: center;
+        }
+      }
     }
   }
 }

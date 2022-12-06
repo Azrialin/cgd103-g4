@@ -9,7 +9,7 @@
             <div class="tra_card">
               <div class="tra_img">
                 <router-link to="/travelcontent" class="aaa">
-                  <div class="boxb">${{list['price']}}</div>
+                  <div class="boxb">${{list['price']}} 起</div>
                   <img :src="list['src']" alt="">
                 </router-link>
               </div>
@@ -80,9 +80,9 @@
             box-sizing: border-box;
             width: 100%;
             .boxb{
-              @include font(20px);
-              width: 150px;
-              height: 70px;
+              @include font(14px);
+              width: 100px;
+              height: 40px;
               border-radius: 10px 0px 0px 0px;
               background-color: #fff;
               position: absolute;
@@ -103,21 +103,23 @@
             padding: 10px;
             width: 100%;
             h3{
-              @include font(36px);
+              @include font(20px);
             }
             h4{
-              @include font(20px);
+              @include font(16px);
               padding-bottom: 30px;
               margin-bottom: 30px;
               border-bottom: 2px solid $color_ccc;
             }
             .content{
+              font-size: 14px;
               padding-bottom: 30px;
               margin-bottom: 30px;
               border-bottom: 2px solid $color_ccc;
             }
             .tago{
               display: flex;
+              flex-direction: column;
               align-items: center;
               p{
                 @include font(16px);
@@ -125,9 +127,10 @@
                 background-color: $front_color_disable;
                 color: $color_444;
                 padding: 15px;
-                width: 30%;
+                width: 100%;
                 border-radius: 10px;
                 box-sizing: border-box;
+                margin-bottom: 10px;
               }
               a{
                 @include font(16px);
@@ -136,9 +139,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: $color_e6;
+                color: #fff;
                 text-decoration: none;
-                width: 30%;
+                width: 100%;
                 padding: 15px;
                 box-sizing: border-box;
                 border-radius: 10px;
@@ -182,6 +185,11 @@
               width: 55%;
               overflow: hidden;
               transition: 1s;
+              .boxb{
+                @include font(20px);
+                width: 150px;
+                height: 70px;
+              }
               img{
                 transition: 1s;
               }
@@ -196,10 +204,21 @@
               display: flex;
               flex-direction: column;
               width: 45%;
+              h3{
+                @include font(36px);
+              }
+              h4{
+                @include font(20px);
+              }
+              .content{
+                font-size: initial;
+              }
               .tago{
+                flex-direction: row;
                 p{
                   white-space: nowrap;
                   width: 50%;
+                margin-bottom: 0px;
                 }
                 a{
                   width: 50%;
