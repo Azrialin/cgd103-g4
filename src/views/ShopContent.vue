@@ -154,7 +154,7 @@
                     {
                         id:6,
                         img: require(`@/assets/img/products/pro6.jpg`),
-                        title:"九州昆布湯包",
+                        title:"昆布湯包",
                         price:320,
                     },
                     {
@@ -259,6 +259,7 @@
                 margin: 20px 0px;
                 // margin: auto;
                 .pro-btn-btn{
+                    // width: 90%;
                     margin: 0px 10px; 
                     // width: 46%;
                 }
@@ -295,7 +296,6 @@
                     // outline: 1px solid red;
                 }
                 .pro-warn-txt{
-                    
                     text-align: left;
                     margin: auto;
                     color: $clr_gray_L2;
@@ -365,6 +365,11 @@
                     @include font(18px);
                 }
             }
+            .pro-btn-btn{
+                // width: 43%;
+                @include font(12px);
+                text-align: center;
+            }
         }
         .pro-produce{
             width: 100%;
@@ -382,8 +387,8 @@
                 @include font(20px)
             }
             .pro-warn-txt{
-                width: 90%;
-                @include font(14px)
+                width: 95%;
+                @include font(12px)
             }
         }
         .pro-more{

@@ -10,7 +10,7 @@
             <p>${{price}}</p>
         </div>
         <div class="cart-amount">
-            <button @click="reduceCount" class="minus">-</button>
+            <button @click="reduceCount(index)" class="minus">-</button>
             <input type="text" v-model.number="count" class="input" >
             <button @click="addCount" class="minus">+</button>
         </div>
@@ -35,7 +35,6 @@ export default {
         return{
             count:1,
             total:this.price,
-            
         }
     },
     methods: {
@@ -50,6 +49,7 @@ export default {
         },
         sumTotal(){
             this.total=this.count*this.price
+            
         },
         
         
