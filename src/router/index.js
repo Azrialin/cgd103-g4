@@ -59,8 +59,15 @@ const routes = [
   {
     path: '/news',
     name: 'news',
-    component: () => import('../views/NewsView.vue')
+    component: () => import('../views/NewsView.vue'),
   },
+  // ------TEST--------
+  {
+    path: '/newsInfo',
+    name: 'newsInfo',
+    component: () => import('../views/NewsInfoView.vue'),
+  },
+  // ----------------
   {
     path: '/shop',
     name: 'shop',
