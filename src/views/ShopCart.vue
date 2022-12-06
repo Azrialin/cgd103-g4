@@ -15,11 +15,11 @@
       <hr />
       <div class="shopcart-item" v-for="item in list" :key="item.id" col-sm-12>
         <cartitem
-        :id="item.id"
-          :img="item.img"
-          :title="item.title"
-          :price="item.price"
-          :amount="item.amount"
+            :id="item.id"
+            :img="item.img"
+            :title="item.title"
+            :price="item.price"
+            :amount="item.amount"
         />
         <span class="del" @click="delitem(index)">
           <i class="fa-regular fa-trash-can"></i>
@@ -36,6 +36,10 @@
         <button class="pro-btn-btn btn-gold" @click="next">下一步</button>
       </div>
     </div>
+
+    <div v-show="step===1">
+        <p>hello</p>
+    </div>
   </div>
 </template>
 
@@ -51,6 +55,7 @@ export default {
   data() {
     return {
       step: 0,
+      
     };
   },
   computed: {

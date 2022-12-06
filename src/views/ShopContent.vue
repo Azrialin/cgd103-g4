@@ -181,7 +181,7 @@
                 this.count -=1
             },
             cart(){
-                this.$router.push('/shopcart')
+                this.$router.push('/shopcart?step=0')
             },
             buy(){
                 this.$router.push('/shoppayment')
