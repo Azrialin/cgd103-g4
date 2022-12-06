@@ -227,9 +227,7 @@
                     // justify-content: center;
                     align-items: center;
                 }
-                .pro-price-num{
-                    // margin: auto;
-                }
+
                 .pro-amount-btn{
                     width: 30%;
                     display: flex;

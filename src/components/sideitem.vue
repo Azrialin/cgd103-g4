@@ -1,7 +1,7 @@
 <template>
     <ul v-show="list.open" class="list-item">
         <li class="sub-items" 
-        v-for="(item, index) in list.sublist" :key="index">
+        v-for="(item, index) in list.sublist" :key="index" @click="handleRoute(item)">
         {{item}}
             
         </li>
@@ -12,7 +12,16 @@
     export default {
         props:[
             'list'
-        ]
+        ],
+        methods:{
+            handleRoute(item){
+                this.$router.push({
+                    query:{
+                        filter:item
+                    }
+                })
+            }
+        }
     };
 </script>
 
