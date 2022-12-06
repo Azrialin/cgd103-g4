@@ -8,11 +8,11 @@
                     <hr>
                     <div class="inputfield">
                         <h3 class="title">電子信箱</h3>
-                        <input type="email" placeholder="請輸入Email">
+                        <input class="input-gold" type="email" placeholder="請輸入Email">
                     </div>  
                     <div class="inputfield">
                         <h3 class="title">密碼</h3>
-                        <input type="password" placeholder="請輸入密碼">
+                        <input class="input-gold" type="password" placeholder="請輸入密碼">
                     </div>   
                     <router-link to="/Forgotpassword" class="forgotpassword">忘記密碼了嗎?</router-link>
                 </form>
@@ -56,10 +56,11 @@
 
 .login{
     .main{
+        width: 100%;
         @include minW(1200px){
-                width: calc(60% - 100px);
+                width: calc(50% - 150px);
         }
-        height: 580px;
+        height: 560px;
         margin: 10%;
         margin: auto;
         margin-bottom: 150px;
@@ -68,7 +69,7 @@
         box-shadow: 0 8px 10px -5px rgb(198, 198, 198);
 
         form{
-            width: 320px;
+            width: calc(90% - 100px);
             margin: auto;
             margin-top: 50px;
             text-align: right;
@@ -96,9 +97,8 @@
 
             Input{
                 box-sizing: border-box;
-                width: 320px;
+                width: 100%;
                 padding: 10px 10px;
-                border: solid 1px $front_color_main;
                 border-radius: 10px;
                 font-size: 24px;
                 margin-bottom: 20px;
@@ -120,10 +120,10 @@
         }
     }
     .login-article-btn{
-        margin-top: 80px;
+        margin-top: 60px;
     }
     .login-article-signup{
-        margin-top: 150px;
+        margin-top: 130px;
     }
 }
 
