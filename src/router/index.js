@@ -34,7 +34,7 @@ const routes = [
     //----------Header--------------------
     path: '/train',
     name: 'train',
-    component: () => import('../views/TrainView.vue')
+    component: () => import('../views/AboutView.vue')
   },
   {
     path: '/travelcontent',
