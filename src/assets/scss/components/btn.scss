@@ -72,9 +72,9 @@ $desk: front;
 // padding (上下, 左右)
 @mixin btnPadding($TB, $LR){
     padding: $TB+px $LR+px;
-    @include maxW($maxWidth){
-        padding: ($TB/5)*4+px ($LR/2)+px;
-    }
+    // @include maxW($maxWidth){
+    //     padding: ($TB/5)*4+px ($LR/2)+px;
+    // }
     // @include maxW(480px){
     //     padding: ($TB/5)*3+px ($LR/2)+px;
     //     font-size: 12px;
@@ -87,10 +87,10 @@ $desk: front;
 @mixin btnFont($weight, $size) {
     font-weight: $weight;
     font-size: $size+px;
-    @media (max-width: 767px){
-        font-weight: $weight;
-        font-size: ($size - 2)+px;
-    }
+    // @media (max-width: 767px){
+    //     font-weight: $weight;
+    //     font-size: ($size - 2)+px;
+    // }
     @content;
 }
 

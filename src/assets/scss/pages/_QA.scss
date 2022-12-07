@@ -111,6 +111,12 @@
                     border: 1px solid $clr_blue_L3;
                     border-radius: 12px 12px 0px 0px;
                     @include btnPadding(10, 30);
+                    @include maxW(767px){
+                        @include btnPadding(8, 20);
+                    }
+                    @include maxW(480px){
+                        @include btnPadding(8, 10);
+                    }
                     &:hover{
                         background: $clr_blue_L3;
                         transition: $trs;
