@@ -69,8 +69,8 @@
         </div>
         <div class="HomeTrain-Graphic">
           <div class="HomeTrain-Pic">
-            <img src="../assets/img/Train/461565832_78ffb91acb_b.webp" alt="" />
-            <img src="../assets/img/Train/461565832_78ffb91acb_b.webp" alt="" />
+            <img src="../assets/img/Train/outside/img_602dfce09a61b.png" alt="" />
+            <img src="../assets/img/Train/outside/img_602e12443ccb7.jpeg" alt="" />
           </div>
           <div class="HomeTrain-Text">
             <div class="HomeTrain-Title-Pc">
@@ -98,39 +98,30 @@
           <swiper :navigation="true" :modules="modules" class="mySwiper">
             <swiper-slide>
               <img src="../assets/img/Scape/11.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/13.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/17.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/04.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/05.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/06.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/07.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/08.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
             <swiper-slide>
               <img src="../assets/img/Scape/10.jpg" alt="" />
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             </swiper-slide>
           </swiper>
         </div>
@@ -165,37 +156,37 @@ export default {
       modules: [Navigation],
       lists: [
         {
-          imageurl: require("@/assets/img/News/1.jpg"),
+          imageurl: require("@/assets/img/Scape/08.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
             "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
         },
         {
-          imageurl: require("@/assets/img/News/1.jpg"),
+          imageurl: require("@/assets/img/Scape/01.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
-            "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
+            "JET SPEED成立5周年紀念特展將於2022年5月5日舉行紀念遊行活動...",
         },
         {
-          imageurl: require("@/assets/img/News/1.jpg"),
+          imageurl: require("@/assets/img/News/3.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
-            "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
+            "高千穗知名祭典活動-夜神樂 ，將於今年的11月...",
         },
       ],
       articles: [
         {
-          imageurl: require("@/assets/img/News/1.jpg"),
+          imageurl: require("../assets/img/Scape/01.jpg"),
           Title: "-列車旅遊行程介紹",
           SubTitle: "推薦給您最優質的列車旅行",
         },
         {
-          imageurl: require("@/assets/img/News/1.jpg"),
+          imageurl: require("@/assets/img/products/pro-b-1.jpg"),
           Title: "-特色產品介紹",
           SubTitle: "當地特產及紀念週邊推薦",
         },
         {
-          imageurl: require("@/assets/img/News/1.jpg"),
+          imageurl: require("../assets/img/Train/outside/img_602dfce09a61b.png"),
           Title: "-列車介紹",
           SubTitle: "列車環境簡介",
         },
@@ -216,7 +207,7 @@ export default {
   mounted() {
     this.getdata();
   },
-};
+}
 </script>
 
 <style scoped lang="scss">
@@ -224,6 +215,7 @@ export default {
 @import "../assets/scss/base/font.scss";
 img {
   width: 100%;
+  object-fit: cover;
 }
 .title {
   margin: 20px auto;
@@ -239,6 +231,7 @@ li {
     .TopicsCard {
       display: flex;
       gap: 10px;
+      height: 80px;
       .HomeNew-Text {
         text-align: start;
         @include font(12px);
@@ -421,8 +414,11 @@ li {
         flex-grow: 1;
         .HomeArticle-Item {
           display: block;
-          .HomeArticle-Text {
-            padding: 0 30px;
+          width: 400px;
+          gap: 20px;
+          margin: auto;
+          img{
+           width: 100%; 
           }
         }
         .MoreButton {
@@ -474,8 +470,6 @@ li {
       .mySwiper {
         img {
           height: 600px;
-        }
-        p {
         }
       }
     }

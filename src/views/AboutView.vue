@@ -18,13 +18,13 @@
               </div>
               <img
                 class="About-Img"
-                src="https://picsum.photos/1920/1080/?random=10"
+                src="../assets/img/Scape/08.jpg"
               />
             </div>
             <div class="About-Cherish AboutSeaction">
               <img
                 class="About-Img"
-                src="https://picsum.photos/1920/1080/?random=10"
+                src="../assets/img/Scape/09.jpg"
               />
               <div class="Cherish-Text Text">
                 <p class="Cherish-Text-Title Title">珍惜再相遇，珍惜再相遇</p>
@@ -39,7 +39,7 @@
             <div class="Business-Scope AboutSeaction">
               <img
                 class="About-Img"
-                src="https://picsum.photos/1920/1080/?random=10"
+                src="../assets/img/Scape/24.jpg"
               />
               <div class="BusinessScope-Text Text">
                 <p class="BusinessScope-Text-Title Title">企業理念</p>
@@ -69,7 +69,34 @@
         </div>
       </Tab>
       <Tab title="觀光列車介紹">
-        <div></div>
+        <div>
+          <div class="Train-Introduce">
+            <div class="Introduce-Header">
+              <p></p>
+            </div>
+            <div class="Introduce-Card">
+              <div class="Introduce-Text">
+                <p class="Introduce-Title">關於我們</p>
+                <p class="Introduce-SubTitle">「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。</p>
+              </div>
+              <img src="../assets/img/Scape/01.jpg" alt="">
+            </div>
+            <div class="Introduce-Card">
+              <div class="Introduce-Text">
+                <p class="Introduce-Title">珍惜再相遇，珍惜再相遇</p>
+                <p class="Introduce-SubTitle">「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。</p>
+              </div>
+              <img src="../assets/img/Scape/01.jpg" alt="">
+            </div>
+            <div class="Introduce-Card">
+              <div class="Introduce-Text">
+                <p class="Introduce-Title">業務範圍</p>
+                <p class="Introduce-SubTitle">「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。</p>
+              </div>
+              <img src="../assets/img/Scape/01.jpg" alt="">
+            </div>
+          </div>
+        </div>
       </Tab>
     </Tabs>
   </div>
@@ -101,6 +128,7 @@ export default {
 <style lang="scss" scope>
 @import "../assets/scss/layout/grid.scss";
 @import "../assets/scss/base/font.scss";
+// ----pc about us-----
 .tabs[data-v-bdda1ea4] {
   margin: 0;
   max-width: 100%;
@@ -121,6 +149,7 @@ p {
 }
 img {
   width: 100%;
+  object-fit: cover;
 }
 .Text {
   margin: 30px;
@@ -143,7 +172,10 @@ img {
 .JSTravel-Text-Title-PC {
   display: none;
 }
+
+// -----Train Introduce-----
 @media (min-width: 1200px) {
+// ----pc about us-----
   .Title {
     @include font(32px);
     margin: 20px auto;
@@ -196,4 +228,15 @@ img {
     }
   }
 }
+
+Train-Introduce{
+	.Introduce-Header{}
+	.Introduce-Card{
+		.Introduce-Text{
+			.Introduce-Title{}
+			.Introduce-SubTitle{}
+		}
+	}
+}
+// -----pc Train Introduce-----
 </style>
