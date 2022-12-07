@@ -1,19 +1,25 @@
 <template>
     <div class="bodyy">
         <ol class="listt">
-            <li>
+            <li :class="{step:step==0}">
                 <i class="fa-solid fa-cart-shopping"></i>購物車
             </li>
-            <li>
+            <li :class="{step:step==1}">
                 <i class="fa-regular fa-credit-card"></i>付款頁面
             </li>
-            <li>
+            <li :class="{step:step==2}">
                 <i class="fa-solid fa-check"></i>付款成功
             </li>
         </ol>
     </div>
 </template>
-
+<script>
+export default {
+    props:{
+        step:Number
+    }
+}
+</script>
 <style lang="scss" scoped>
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/base.scss";

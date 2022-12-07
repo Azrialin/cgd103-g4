@@ -181,7 +181,7 @@
                 this.count -=1
             },
             cart(){
-                this.$router.push('/shopcart')
+                this.$router.push('/shopcart?step=0')
             },
             buy(){
                 this.$router.push('/shoppayment')
@@ -227,9 +227,7 @@
                     // justify-content: center;
                     align-items: center;
                 }
-                .pro-price-num{
-                    // margin: auto;
-                }
+
                 .pro-amount-btn{
                     width: 30%;
                     display: flex;

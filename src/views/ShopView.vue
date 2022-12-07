@@ -115,7 +115,18 @@
             ],
             fonts:[{name:'首頁',source:'/'},{name:'線上商城',source:'shop'}], 
           }
-        }
+        },
+        computed: {
+          filter() {
+            return this.$route.query?.filter ?? "";
+          },
+        },
+        watch: {
+          filter(nVal) {
+            console.log(nVal)
+            // this.getList()
+          },
+        },
     }
     
 </script>

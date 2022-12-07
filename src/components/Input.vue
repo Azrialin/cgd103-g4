@@ -1,20 +1,26 @@
 <template>
     <div>
-        <input class="Input font-16-15em" v-model="Text" v-bind:placeholder="InputDefault"/>
+        <input class="Input" 
+        @focus="InputFocus" 
+        :type="InputType" 
+        :placeholder="InputDefault
+        "/>
     </div>
 </template>
 
 <script>
 export default {
-    props : ['title'],
+    props:{
+        InputDefault:String,
+    },
     setup (){
-        const InputDefault = '輸入框：提示字';
         return {
-            InputDefault,
             Text:'',
-            BorderColor:'#BC955C',
+            BorderColor:'#EBDFCE',
+            BorderColorActive:'#BC955C',
+            InputType : 'text',
         }
-    }
+    },
 }
 </script>
 
@@ -22,10 +28,16 @@ export default {
 @import "../assets/scss/base/font.scss";
 @import "../assets/scss/base/color.scss";
     .Input{
+        @include font(14px);
         appearance: none;
         padding: 10px;
-        border-radius: 10px;
-        border: 1px solid v-bind(BorderColor) !important;
+        border-radius: 5px;
+        border: 1px solid v-bind(BorderColor);
         outline:none;
+    }
+    .Input[type="text"]:focus{
+        border: 1px solid v-bind(BorderColorActive) ;
+    }
+    input[type="password"]{
     }
 </style>

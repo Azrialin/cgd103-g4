@@ -37,11 +37,6 @@ const routes = [
     component: () => import('../views/TrainView.vue')
   },
   {
-    path: '/travel',
-    name: 'travel',
-    component: () => import('../views/TravelView.vue')
-  },
-  {
     path: '/travelcontent',
     name: 'travelcontent',
     component: () => import('../views/TravelcontentView.vue')
@@ -89,6 +84,11 @@ const routes = [
     component: () => import('../views/ShopPayment.vue')
   },
   {
+    path: '/shoppaysuccess',
+    name: 'shoppaysuccess',
+    component: () => import('../views/ShopPaySuccess.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutView.vue')
@@ -128,6 +128,11 @@ const routes = [
     path: '/forgotpassword',
     name: 'forgotpassword',
     component: () => import('../views/ForgotpasswordView.vue')
+  },
+  {
+    path: '/Contactus',
+    name: 'Contactus',
+    component: () => import('../views/ContactusView.vue')
   },
 ]
 

@@ -28,7 +28,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="/" class="font-24">聯絡我們
+                        <router-link to="/Contactus" class="font-24">聯絡我們
                         <p class="link-note font-20">Contact</p>
                         </router-link>
                     </li>
