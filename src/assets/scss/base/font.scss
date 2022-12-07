@@ -40,9 +40,9 @@ $font-size: 48, 36, 32, 28, 24, 20, 18, 16, 14;
 	.font-#{$size}{
 		@extend %font-style;
 		font-size: $size + px;
-		@include maxW(767px){
-			font-size: ($size - 2) + px;
-		}
+		// @include maxW(767px){
+		// 	font-size: ($size - 2) + px;
+		// }
 	}
 }
 
