@@ -54,10 +54,11 @@
         height: 450px;
         margin: 10%;
         margin: auto;
-        margin-bottom: 50px;
+        margin-top: 80px;
+        margin-bottom: 100px;
         border-radius: 10px;
         border: 1px solid $front_color_main;
-        box-shadow: 0 8px 10px -5px rgb(198, 198, 198);
+        box-shadow: 0 8px 10px -5px rgb(223, 221, 221);
 
         form{
             width: 70%;
@@ -111,7 +112,7 @@
             }
 
             .btn-gold{
-                width: 40%;
+                width: 50%;
                 padding: 10px 15px;
                 margin-top: 40px;
             }

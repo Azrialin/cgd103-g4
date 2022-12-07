@@ -17,10 +17,10 @@
                     <router-link to="/Forgotpassword" class="forgotpassword">忘記密碼了嗎?</router-link>
                 </form>
                 <div class="login-article-btn">
-                    <router-link to="/Membership" class="btn-gold_2nd">登入</router-link>
+                    <router-link to="/Membership" class="btn-gold">登入</router-link>
                 </div>
                 <div class="login-article-signup">
-                    <router-link to="/Signup" class="btn-gold">註冊</router-link>
+                    <router-link to="/Signup" class="btn-gold_2nd">註冊</router-link>
                 </div>
             </div>
         </div>
@@ -60,13 +60,13 @@
         @include minW(1200px){
                 width: calc(50% - 150px);
         }
-        height: 560px;
+        height: 600px;
         margin: 10%;
         margin: auto;
         margin-bottom: 150px;
         border-radius: 10px;
         border: 1px solid $front_color_main;
-        box-shadow: 0 8px 10px -5px rgb(198, 198, 198);
+        box-shadow: 0 8px 10px -5px rgb(223, 221, 221);
 
         form{
             width: calc(90% - 100px);
@@ -119,11 +119,11 @@
             }
         }
     }
-    .login-article-btn{
+    .login-article-signup{
         margin-top: 60px;
     }
-    .login-article-signup{
-        margin-top: 130px;
+    .login-article-btn{
+        margin-top: 50px;
     }
 }
 

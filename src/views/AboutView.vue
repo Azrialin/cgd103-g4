@@ -1,17 +1,199 @@
-<template>
-  <breadcrumb/>
+<template >
   <div class="about">
-    <h1>This is an about page</h1>
+    <Banner
+      class="col"
+      :src="require(`@/assets/img/Banner/banner_index.jpg`)"
+    />
+    <breadcrumb :fonts="fonts" />
+    <Tabs>
+      <Tab title="關於我們">
+        <div>
+          <div class="About-Head">
+            <div class="AboutUs AboutSeaction">
+              <div class="Aboutus-Text Text">
+                <h1 class="Aboutus-Text-Title Title">關於我們</h1>
+                <p class="Content">
+                  「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
+                </p>
+              </div>
+              <img
+                class="About-Img"
+                src="https://picsum.photos/1920/1080/?random=10"
+              />
+            </div>
+            <div class="About-Cherish AboutSeaction">
+              <img
+                class="About-Img"
+                src="https://picsum.photos/1920/1080/?random=10"
+              />
+              <div class="Cherish-Text Text">
+                <p class="Cherish-Text-Title Title">珍惜再相遇，珍惜再相遇</p>
+                <p class="Content">
+                  在過往，我們總是把火車，當成了移動的載具、接駁景點的工具，但如今JET
+                  SPEED觀光列車的登場，它將不是配角，不是載具，而是一個備受注目的主角。我們將迎來高規格的服務，將五星級酒店、商務頭等艙無為不至的服務細節，帶進列車以內，也透過這樣的理面，將服務再轉化為五感體驗，重新帶領車上的乘客，深刻感受九州獨特秘境風光的美好！
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="About-Footer">
+            <div class="Business-Scope AboutSeaction">
+              <img
+                class="About-Img"
+                src="https://picsum.photos/1920/1080/?random=10"
+              />
+              <div class="BusinessScope-Text Text">
+                <p class="BusinessScope-Text-Title Title">企業理念</p>
+                <p class="Content">
+                  JET SPEED是由董事長—小林先生，於2016年成立。
+                  路線定位為『中高階豪華團』到『高階頂級奢華團』；不走競價路線，以創意、質感、美學為概念出發。體會旅遊多元的同時，期望也能在同團貴賓中交到許多與自己各方面契合的夥伴。
+                </p>
+              </div>
+            </div>
+            <div class="Jetspeed-Travel AboutSeaction">
+              <p class="JSTravel-Text-Title-PC Title">Jetspeed旅遊</p>
+              <img
+                class="About-Img"
+                src="https://picsum.photos/1920/1080/?random=10"
+              />
+              <div class="JSTravel-Text Text">
+                <p class="JSTravel-Text-Title Title">Jetspeed旅遊</p>
+                <p class="Content">
+                  繁花茂盛的季節，自然萃取的體感，令人感到幸福。
+                  遍布九州的鐵路，總是將記憶一個個拾起。
+                  我們將持續為您提供品味季節、採擷在地、新歲攜來的鐵路旅程。 JET
+                  SPEED鐵道旅遊的體驗，將會不斷地為您調整與更新，一如季節嬗遞的美好，將會反覆轉動、持續為旅人的每一刻細細打造。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Tab>
+      <Tab title="觀光列車介紹">
+        <div></div>
+      </Tab>
+    </Tabs>
   </div>
 </template>
 <script>
-    import Header from "@/components/Header.vue"
-    import breadcrumb from "@/components/breadcrumb.vue"
-    export default {
-        name: "HeaderView",
-        components:{
-            Header,
-            breadcrumb
-        }
-    }
+import breadcrumb from "@/components/breadcrumb.vue";
+import Banner from "@/components/Banner.vue";
+import Tabs from "@/components/Tabs.vue";
+import Tab from "@/components/Tab.vue";
+export default {
+  name: "HeaderView",
+  components: {
+    breadcrumb,
+    Tabs,
+    Tab,
+    Banner,
+  },
+  data() {
+    return {
+      fonts: [
+        { name: "首頁", source: "/" },
+        { name: "關於我們", source: "about" },
+      ],
+    };
+  },
+};
 </script>
+
+<style lang="scss" scope>
+@import "../assets/scss/layout/grid.scss";
+@import "../assets/scss/base/font.scss";
+.tabs[data-v-bdda1ea4] {
+  margin: 0;
+  max-width: 100%;
+  .tabs_header[data-v-bdda1ea4] {
+    justify-content: right;
+    li {
+      border: none;
+    }
+  }
+}
+.tab-content[data-v-bc09d9d6] {
+  border: none;
+}
+h1,
+p {
+  text-align: left;
+  color: #444;
+}
+img {
+  width: 100%;
+}
+.Text {
+  margin: 30px;
+}
+.Title {
+  @include font(18px);
+  margin: 10px;
+}
+.Content {
+  @include font(14px);
+  font-weight: 500;
+}
+.AboutSeaction {
+  margin: 60px auto;
+}
+.AboutUs {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.JSTravel-Text-Title-PC {
+  display: none;
+}
+@media (min-width: 1200px) {
+  .Title {
+    @include font(32px);
+    margin: 20px auto;
+  }
+  .Content {
+    @include font(20px);
+    font-weight: 500;
+  }
+  .About-Head {
+    display: flex;
+    gap: 80px;
+    .AboutUs {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      img {
+        flex-grow: 1;
+      }
+    }
+    .About-Cherish {
+      width: 50%;
+      img {
+        margin-right: 0;
+      }
+    }
+  }
+  .About-Footer {
+    .Business-Scope {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      .About-Img {
+        width: 40%;
+        object-fit: contain;
+      }
+      .BusinessScope-Text {
+        width: 50%;
+      }
+    }
+    .Jetspeed-Travel {
+      .JSTravel-Text {
+        .JSTravel-Text-Title {
+          display: none;
+        }
+      }
+      .JSTravel-Text-Title-PC {
+        display: inherit;
+        text-align: center;
+      }
+    }
+  }
+}
+</style>

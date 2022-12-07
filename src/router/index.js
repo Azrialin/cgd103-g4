@@ -37,11 +37,6 @@ const routes = [
     component: () => import('../views/TrainView.vue')
   },
   {
-    path: '/travel',
-    name: 'travel',
-    component: () => import('../views/TravelView.vue')
-  },
-  {
     path: '/travelcontent',
     name: 'travelcontent',
     component: () => import('../views/TravelcontentView.vue')
@@ -52,6 +47,11 @@ const routes = [
     component: () => import('../views/TravelcheckView.vue')
   },
   {
+    path: '/travel',
+    name: 'travel',
+    component: () => import('../views/TravelView.vue')
+  },
+  {
     path: '/sign',
     name: 'sign',
     component: () => import('../views/SignView.vue')
@@ -59,8 +59,15 @@ const routes = [
   {
     path: '/news',
     name: 'news',
-    component: () => import('../views/NewsView.vue')
+    component: () => import('../views/NewsView.vue'),
   },
+  // ------TEST--------
+  {
+    path: '/newsInfo',
+    name: 'newsInfo',
+    component: () => import('../views/NewsInfoView.vue'),
+  },
+  // ----------------
   {
     path: '/shop',
     name: 'shop',
@@ -116,6 +123,11 @@ const routes = [
     path: '/forgotpassword',
     name: 'forgotpassword',
     component: () => import('../views/ForgotpasswordView.vue')
+  },
+  {
+    path: '/Contactus',
+    name: 'Contactus',
+    component: () => import('../views/ContactusView.vue')
   },
 ]
 
