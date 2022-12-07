@@ -42,12 +42,14 @@ export default {
   },
   methods: {
     handleAmount(amount) {
-        
+      if(amount<0) return 
       this.$store.dispatch("updateItem", {
         id: this.id,
         amount: amount,
       });
     },
+    
+    
   },
 };
 </script>
