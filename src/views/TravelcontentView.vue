@@ -115,16 +115,26 @@
       },
       methods: {
         move(e){
+          let windowidth = window.innerWidth;
           let circle = document.getElementById("circle");
-          this.x = e.pageX;
-          this.y = e.pageY;
-          circle.style.opacity = 1;
+          if(windowidth > 1024){
+            this.x = e.pageX;
+            this.y = e.pageY;
+            circle.style.opacity = 1;
+          }
         },
         leave(e){
+          let windowidth = window.innerWidth;
           let circle = document.getElementById("circle");
-          this.x = e.pageX;
-          this.y = e.pageY;
-          circle.style.opacity = 0;
+          if(windowidth < 1024){
+            this.x = e.pageX;
+            this.y = e.pageY;
+            circle.style.opacity = 0;
+          }else{
+            this.x = e.pageX;
+            this.y = e.pageY;
+            circle.style.opacity = 0; 
+          }
         },
         dbcheck(){
           if(this.open == true){

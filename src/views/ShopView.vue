@@ -2,7 +2,7 @@
 <div class="shop-container">
   <breadcrumb :fonts="fonts"/>
   <div class="select">
-    <Select/>
+  <Select :option="options" DefaultText="商品分類"></Select>
   </div>
   <div class="shop-content">
     <div class="side">
@@ -39,6 +39,20 @@
         },
         data(){
           return{
+            options:[
+              {
+                value:"1",
+                label:"所有商品",
+              },
+              {
+                value:"2",
+                label:"紀念品系列",
+              },
+              {
+                value:"3",
+                label:"特產系列",
+              },
+            ],
             list:[
               {
                 id:1,

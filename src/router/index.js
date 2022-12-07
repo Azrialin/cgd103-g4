@@ -47,6 +47,11 @@ const routes = [
     component: () => import('../views/TravelcheckView.vue')
   },
   {
+    path: '/travel',
+    name: 'travel',
+    component: () => import('../views/TravelView.vue')
+  },
+  {
     path: '/sign',
     name: 'sign',
     component: () => import('../views/SignView.vue')
@@ -54,8 +59,15 @@ const routes = [
   {
     path: '/news',
     name: 'news',
-    component: () => import('../views/NewsView.vue')
+    component: () => import('../views/NewsView.vue'),
   },
+  // ------TEST--------
+  {
+    path: '/newsInfo',
+    name: 'newsInfo',
+    component: () => import('../views/NewsInfoView.vue'),
+  },
+  // ----------------
   {
     path: '/shop',
     name: 'shop',
@@ -70,16 +82,6 @@ const routes = [
     path: '/shopcart',
     name: 'shopcart',
     component: () => import('../views/ShopCart.vue')
-  },
-  {
-    path: '/shoppayment',
-    name: 'shoppayment',
-    component: () => import('../views/ShopPayment.vue')
-  },
-  {
-    path: '/shoppaysuccess',
-    name: 'shoppaysuccess',
-    component: () => import('../views/ShopPaySuccess.vue')
   },
   {
     path: '/about',

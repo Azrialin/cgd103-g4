@@ -184,7 +184,7 @@
                 this.$router.push('/shopcart?step=0')
             },
             buy(){
-                this.$router.push('/shoppayment')
+                this.$router.push('/shopcart?step=0')
             },
             back(){
                 this.$router.push('/shop')
