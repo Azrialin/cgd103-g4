@@ -3,7 +3,7 @@
     <div class="process">
       <stepbar :step="step" />
     </div>
-    <div v-show="step===0">
+    <div v-show="step === 0">
       <div class="cart-title">
         <p class="item-title">商品資訊</p>
         <p></p>
@@ -15,11 +15,11 @@
       <hr />
       <div class="shopcart-item" v-for="item in list" :key="item.id" col-sm-12>
         <cartitem
-            :id="item.id"
-            :img="item.img"
-            :title="item.title"
-            :price="item.price"
-            :amount="item.amount"
+          :id="item.id"
+          :img="item.img"
+          :title="item.title"
+          :price="item.price"
+          :amount="item.amount"
         />
         <span class="del" @click="delitem(index)">
           <i class="fa-regular fa-trash-can"></i>
@@ -27,18 +27,132 @@
       </div>
       <hr />
       <div class="cart-total">
-        <p>總計：${{total}}</p>
+        <p>總計：${{ total }}</p>
       </div>
       <div class="cart-btn">
         <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="shopping">
           繼續購物
         </button>
-        <button class="pro-btn-btn btn-gold" @click="next">下一步</button>
+        <button class="pro-btn-btn btn-gold" @click="add">下一步</button>
       </div>
     </div>
 
-    <div v-show="step===1">
-        <p>hello</p>
+    <div v-show="step === 1">
+      <div>
+        <div class="pay">
+          <div class="pay-method">
+            <div class="pay-title">
+              <h3>配送方式</h3>
+            </div>
+            <div class="pay-txt">
+              <p>郵寄到府</p>
+            </div>
+          </div>
+          <div class="pay-people">
+            <div class="pay-title">
+              <h3>收件人資料</h3>
+            </div>
+            <div class="pay-txt">
+              <p>姓名</p>
+              <div><Input /></div>
+            </div>
+            <div class="pay-txt">
+              <p>電話</p>
+              <div><Input /></div>
+            </div>
+            <div class="pay-txt">
+              <p>信箱</p>
+              <div><Input /></div>
+            </div>
+            <div class="pay-txt">
+              <p>地址</p>
+              <div><Input /></div>
+            </div>
+          </div>
+          <div class="pay-card">
+            <div class="pay-title">
+              <h3>信用卡資料</h3>
+            </div>
+            <div class="pay-txt">
+              <p class="card-txt">信用卡卡號</p>
+              <div class="card">
+                <input type="text" maxlength="4" class="pay-input" />
+                <input type="text" maxlength="4" class="pay-input" />
+                <input type="text" maxlength="4" class="pay-input" />
+                <input type="text" maxlength="4" class="pay-input" />
+              </div>
+            </div>
+            <div class="pay-txt">
+              <p class="card-txt">有效年月</p>
+              <div class="card">
+                <input
+                  type="text"
+                  name="month"
+                  placeholder="MM"
+                  maxlength="2"
+                  class="pay-input"
+                />
+                <span class="slash">/</span>
+                <input
+                  type="text"
+                  name="year"
+                  placeholder="YY"
+                  maxlength="2"
+                  class="pay-input"
+                />
+              </div>
+            </div>
+            <div class="pay-txt">
+              <p class="card-txt-time">卡片背面末三碼</p>
+              <div>
+                <div class="card">
+                  <input
+                    type="text"
+                    name="code"
+                    placeholder="XXX"
+                    maxlength="3"
+                    class="pay-input"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pay-check">
+            <input type="checkbox" class="agree-txt" id="agree" />
+            <label for="agree">
+              點選結帳即為同意此 <span class="buylaw">購買條款</span>
+            </label>
+          </div>
+          <div class="pay-btn">
+            <button
+              class="pro-btn-btn btn-gold_2nd $clr_gold_L1"
+              @click="reduce"
+            >
+              回上一步
+            </button>
+            <button class="pro-btn-btn btn-gold" @click="add">確定結帳</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-show="step === 2">
+      <div class="pay-success">
+        <div class="pay-icon">
+          <i class="fa-regular fa-circle-check"></i>
+        </div>
+        <div class="pay-success-txt">
+          <p>感謝購買！我們已經收到您的訂單</p>
+          <p>訂單編號:A000001</p>
+        </div>
+        <div class="pay-success-btn">
+          <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="member">
+            前往會員專區
+          </button>
+          <button class="pro-btn-btn btn-gold_2nd" @click="shopping">
+            繼續選購
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,27 +160,28 @@
 <script>
 import cartitem from "@/components/CartItem.vue";
 import stepbar from "@/components/stepbar.vue";
+import Input from "@/components/Input.vue";
 export default {
   name: "ShopCart",
   components: {
     cartitem,
     stepbar,
+    Input,
   },
   data() {
     return {
       step: 0,
-      
     };
   },
   computed: {
     list() {
       return this.$store.state.cart;
     },
-    total(){
-        return this.list.reduce((acc,cur)=>{
-            return acc+=cur.price*cur.amount
-        },0)
-    }
+    total() {
+      return this.list.reduce((acc, cur) => {
+        return (acc += cur.price * cur.amount);
+      }, 0);
+    },
   },
   methods: {
     delitem: function (index) {
@@ -78,9 +193,17 @@ export default {
     next() {
       this.$router.push("/shoppayment");
     },
+    add() {
+      this.step++;
+    },
+    reduce() {
+      this.step--;
+    },
+    member() {
+      this.$router.push("/membership");
+    },
   },
   mounted() {
-
     // this.$store.dispatch("addCart", {
     //   id: 10,
     //   img: require(`@/assets/img/products/pro4.jpg`),
@@ -97,6 +220,7 @@ export default {
 @import "../assets/scss/layout/grid.scss";
 @import "../assets/scss/components/btn.scss";
 
+// ===========step0
 .cart {
   .cart-title {
     display: flex;
@@ -138,7 +262,129 @@ export default {
   }
 }
 
+// ======================step1
+.pay {
+  width: 100%;
+  margin: auto;
+  max-width: 1200px;
+  .pay-method {
+    margin-top: 20px;
+    p {
+      width: 20%;
+      margin-right: 20px;
+      margin-left: 10px;
+      letter-spacing: 0;
+    }
+  }
+  .pay-people {
+    margin-top: 20px;
+    p {
+      width: 20%;
+      margin-right: 20px;
+      margin-left: 10px;
+    }
+  }
+  .pay-title {
+    @include font(20px);
+    // margin: 5px;
+  }
+  .pay-txt {
+    width: 100%;
+    @include font(14px);
+    margin: 10px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    :deep(Input) {
+      width: 90%;
+    }
+  }
+
+  .pay-card {
+    width: 100%;
+    margin-top: 20px;
+    // .pay-txt{
+    //     width: 100%;
+    // }
+  }
+  .card-txt {
+    width: 42%;
+    letter-spacing: 0;
+    text-align: start;
+    margin-left: 10px;
+  }
+  .card-txt-time {
+    width: 34.5%;
+    letter-spacing: 0;
+    margin-left: 8px;
+  }
+  .card {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .slash {
+      @include font(18px);
+    }
+    .pay-input {
+      text-align: center;
+      width: 20%;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid $clr_gold_L1;
+    }
+  }
+  .pay-check {
+    width: 100%;
+    @include font(14px);
+    margin: 10px;
+    .buylaw {
+      color: $clr_gold_L1;
+    }
+  }
+  .pay-btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .pro-btn-btn {
+      margin: 10px;
+      @include font(12px);
+    }
+  }
+}
+
+// ======================step2
+.pay-success {
+  width: 100%;
+  margin: auto;
+  max-width: 1200px;
+  .pay-icon {
+    width: 100%;
+    i {
+      font-size: 500%;
+      color: $clr_gold_L1;
+    }
+  }
+  .pay-success-txt {
+    width: 100%;
+    p{
+      @include font(14px);
+      text-align: center;
+      margin: 10px;
+    }
+  }
+  .pay-success-btn{
+    width: 100%;
+    .pro-btn-btn{
+      @include font(12px);
+      margin: 10px;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
+  // ===========step0
   .cart {
     .cart-title {
       width: 90%;
@@ -174,6 +420,7 @@ export default {
 }
 
 @media screen and (min-width: 769px) {
+  // ===========step0
   .cart {
     .cart-title {
       // padding-right: 40px;
@@ -202,6 +449,61 @@ export default {
       .pro-btn-btn {
         // @include font(12px);
         text-align: center;
+      }
+    }
+  }
+
+  // ===============step1
+  .pay {
+    margin: auto;
+    width: 50%;
+    .pay-title {
+      @include font(28px);
+      // margin: 5px;
+    }
+    .pay-txt {
+      // width: 20%;
+      @include font(20px);
+      margin: 20px 0px;
+      :deep(Input) {
+        width: 150%;
+      }
+    }
+    .card-txt {
+      width: 30%;
+    }
+    .card-txt-time {
+      width: 27%;
+    }
+    .pay-check {
+      @include font(18px);
+    }
+    .pay-btn {
+      width: 100%;
+      .pro-btn-btn {
+        margin: 40px 10px;
+        @include font(16px);
+      }
+    }
+  }
+
+  // ======================step2
+  .pay-success {
+    .pay-icon {
+      i{
+        font-size: 800%;
+      }
+    }
+    .pay-success-txt {
+      p{
+        @include font(20px);
+        margin: 20px;
+        text-align: center;
+      }
+    }
+    .pay-success-btn{
+      .pro-btn-btn{
+        @include font(16px);
       }
     }
   }
