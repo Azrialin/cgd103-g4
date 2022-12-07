@@ -6,23 +6,25 @@
             <hr class="underline">
             <div class="receipt-wrapper">
                 
-              <div class="receipt-frame">
-                <!-- <div class="paid">
-                    <div>
-                        <p>已付款</p>
-                    </div>
-                </div> -->
+              <div class="receipt-frame" v-for="product in result" :key="product.orderNo">
 
                 <div class="productImg">
                   <img src="../assets/img/products/pro-b.jpg" alt="">
                 </div>
-                <!-- <div class="img-des col-xl-7">
-                  <h3>九州線｜豪華觀光列車單日遊</h3>
-                  <h4>訂單編號: {{result.orderNo}}</h4>
-                  <h4>行程日期: {{result.departureDate}}</h4>
-                  <h4>報名人數: {{result.noOfTraveler}}</h4>
-                  <h2>TWD{{result.total}}</h2>
-                </div> -->
+
+                <div class="product-des">
+                    <h3>{{product.productType}}</h3>
+                    <h3>{{product.productName}}</h3>
+                    <h3>{{product.productStatus}}X{{product.noOfProduct}}</h3>
+                    <h3>{{product.productPrice}}</h3>
+                    
+                </div>
+                  
+                  <div class="paid">
+                      <div>
+                          <p>已出貨</p>
+                      </div>
+                  </div>
 
               </div>
               <div class="button-section">
@@ -38,7 +40,32 @@
 
 <script>
 
-const result = {
+const result = [{
+    orderNo:"T12345",
+    memId:123,
+    productType:"當地特產",
+    productName:"和菓子禮盒",
+    noOfProduct: 1,
+    productPrice: "＄1999",
+    productStatus: "現貨",
+    orderStatus : "已付款",
+    shippingStatus: "已出貨",
+    totalPrice:"$5997",
+},
+{
+    orderNo:"T12345",
+    memId:123,
+    productType:"當地特產",
+    productName:"和菓子禮盒",
+    noOfProduct: 1,
+    productPrice: "＄1999",
+    productStatus: "現貨",
+    orderStatus : "已付款",
+    shippingStatus: "已出貨",
+    totalPrice:"$5997",
+},{
+    orderNo:"T12345",
+    memId:123,
     productType:"當地特產",
     productName:"和菓子禮盒",
     noOfProduct: 1,
@@ -48,6 +75,7 @@ const result = {
     shippingStatus: "已出貨",
     totalPrice:"$5997",
 }
+]
 
 export default {
     components: {
@@ -55,7 +83,7 @@ export default {
     },
     data(){
         return{
-            result:{},
+            result:[],
             // hide:false,
         }
     },
@@ -94,34 +122,29 @@ export default {
     display: flex;
     justify-content: flex-end;
     position: relative;
+    // width: 100%;
     
   }
   .paid div{
-    width: 100px;
-    // height: 30px;
+    width: 60px;
     background: #BC955C;
     box-sizing: border-box;
-    // margin-right: 3%;
     position: relative;
-    // padding: 1px;
-    top:-30px;
+    top:-10px;
     right:5%;
     color: white;
-
-    border-top: 20px solid;
-    border-bottom: 20px solid;
-
-    border-left: 50px solid;
-    border-right: 50px solid;
-    // border: 50px solid;
-    border-color: #BC955C #BC955C white #BC955C ;
+    height: 40px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
   }
   .paid  p{
-    width: 100px;
+    width: 60px;
     position: absolute;
     color: white;
-    left: -50px;
-    top:-15px
+    left: 0;
+    top:10px;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
   }
   .top{
     padding-bottom: 10px;
@@ -142,31 +165,35 @@ export default {
     border:1px solid #BC955C;
     // padding: 50px;
     display: flex;
+    border-radius: 10px;
     // flex-wrap: wrap;
   }
   .receipt-frame img{
-    text-align: start;
+    // text-align: start;
     width: 30%;
-    border-radius: 10px;
   }
-  .img-des{
-    margin-top: 50px;
-    text-align: left;
-    line-height: 2;
-    color: #444444;
+  .productImg{
+    display: flex;
+    // justify-content: flex-start;
+    padding: 20px;
+    width: 30%;
+  }
+  .productImg img{
+    width: 100%;
+  }
+  .product-des{
+    padding: 10px;
+    width: 100%;
+    text-align: start;
+    // position: relative;
+  }
+  .product-des h3{
+    margin: 10px;
+  }
 
-  }
-  .img-des h2{
-    text-align: right;
-  }
-  
-  .unchangeable{
-     border: 1px solid #CCC ;
-     background: #e6e6e6;
-     color: #888;
-  }
   .button-section{
     margin-top: 5%;
+    margin-bottom: -7%;
     display:flex;
     justify-content: end;
 
@@ -175,78 +202,28 @@ export default {
     display:flex;
     justify-content: flex-start;
     margin: 0 5%;
-    // order: 1;
   }
-  // .btn-gold{
-  //   // order: 2;
-  // }
-  .precautions{
-    margin-top: 50px;
-    display: flex;
-    
-  }
-  .des-header{
-    color: #BC955C;
-    // text-decoration: underline;
-    position: relative;
-    // border: #444444 1px solid;
-    .des-title{
-      width: fit-content;
-      position: relative;
-      // border: 1px sienna solid;
-      &::after{
-        content: "";
-        background-color:#BC955C;
-        width: 100%;
-        position: absolute;
-        display: block;
-        bottom: 0px;
-        height: 1.5px;
-        left: 0;
-        
-      }
-    }
-  }
-  .trip-des,.notification{
-    text-align: left;
-    line-height: 1.5;
-    margin: 10px;
-  }
+
 
 @media (min-width:1200px) {
   
-  .try{
-    display: inline-block;
-    justify-content: start;
-    // box-sizing: border-box;
-  }
   .receipt-frame{
     display: flex;
     flex-wrap: wrap;
-  }
-  .img-des{
-    margin-top: 0;
-    margin-left: 50px;
-
-  }
-  .precautions{
-    order: 1;
   }
   .button-section{
     order: 2;
     width: 100%;
     margin-top: -50px;
   }
-  .button-section{
-
-  }
 }
 
 @media (max-width:500px) {
-  
-//   .paid div{
-//     right:0px;
-//   }
+
+  .product-des h3{
+    margin: 10px;
+    font-size: 14px;
+  }
 }
 
 </style>

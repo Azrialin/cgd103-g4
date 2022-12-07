@@ -23,7 +23,6 @@
                 </div>
 
                 <div class="button-section">
-                  <button class="btn-gold_2nd">取消預定</button>
                   <button class="btn-gold">聯絡客服</button>
                 </div>
 
