@@ -2,11 +2,7 @@
 <div class="shop-container">
   <breadcrumb :fonts="fonts"/>
   <div class="select">
-    <select name="" id="">
-      <option value="1">所有商品</option>
-      <option value="2">紀念品系列</option>
-      <option value="3">特產系列</option>
-    </select>
+  <Select :option="options" DefaultText="商品分類"></Select>
   </div>
   <div class="shop-content">
     <div class="side">
@@ -43,6 +39,20 @@
         },
         data(){
           return{
+            options:[
+              {
+                value:"1",
+                label:"所有商品",
+              },
+              {
+                value:"2",
+                label:"紀念品系列",
+              },
+              {
+                value:"3",
+                label:"特產系列",
+              },
+            ],
             list:[
               {
                 id:1,
@@ -142,33 +152,7 @@
   .shop-container{
     width: 100%;
     margin: auto;
-    .select{
-      width: 50%;
-      border: 1px solid $front_color_main;
-      border-radius: 10px;
-      padding: 10px;
-      margin: auto;
-      
-      select{
-        width: 100%;
-        border: 0;
-        @include font(14px);
-      text-align: center;
-      margin: auto;
-      font-weight:normal;
-      /*移除箭頭樣式*/
-      appearance:none;
-      -moz-appearance:none;
-      -webkit-appearance:none;
-      /*改變右邊箭頭樣式*/
-      background: url("../assets/img/🦆 icon _chevron-down_.svg")100% 50% no-repeat scroll #fff;
-
-      }
-      // option{
-      //   outline: transparent;
-      // border: 0px;
-      // }
-    }
+    
     .shop-content{
       display: flex;
       flex-wrap: wrap;
