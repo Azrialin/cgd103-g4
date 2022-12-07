@@ -147,7 +147,6 @@
                 border-radius: 10px;
                 height: fit-content;
                 margin: 0px 20px;
-                outline: solid 1px $front_color_main;
                 &:hover{
                   background-color: #fff;
                   color: $front_color_main;
