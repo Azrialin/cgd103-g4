@@ -3,12 +3,12 @@
         <breadcrumb :fonts="fonts"/>
         <div class="pro-main">
             <div class="pro-pic">
-                <img src="../assets/img/products/pro-b.jpg" alt="">
+                <img :src="content['src1']" alt="">
             </div>
             <div class="pro-txt">
-                <h2 class="pro-txt-title">福砂屋九州長崎蛋糕</h2>
+                <h2 class="pro-txt-title">{{content['title']}}</h2>
                 <div class="pro-price">販售價格:
-                    <span class="pro-price-num">$460</span>
+                    <span class="pro-price-num">${{content['price']}}</span>
                 </div>
                 <div class="pro-price">購買數量:
                     <span class="pro-amount-btn">
@@ -28,19 +28,17 @@
             </div>
             <div class="produce-intro">
                 <div class="pro-produce">
-                    採用精選雞蛋、砂糖、糖漿和小麥粉的簡單材料，全程不用攪拌機，完全靠師傅手感攪拌，製作出口味道地且香甜綿潤的蛋糕點心。長崎蛋糕底砂糖結晶顆粒的粗糖，是攪拌蛋糕材料時留下來的，也是福砂屋長崎蛋糕的特徵。
-                    <span class="produce-more">
-                        作為長崎蛋糕的傑作，特製五三燒長崎蛋糕的風味更濃，且香氣更濃郁。它由技術熟練的糕點師傅以高超技術製成，生量數量少，是福砂屋的特製長崎蛋糕，廣受長崎 蛋糕饕客們喜愛。
-                    </span>
+                    {{content["txt"]}}
+                    
                 </div>
 
             </div>
             <div class="pro-pro-pic">
                 <div class="pro-pic-big">
-                    <img src="../assets/img/products/pro-b-1.jpg" alt="">
+                    <img :src="content['src2']" alt="">
                 </div>
                 <div class="pro-pic-big">
-                    <img src="../assets/img/products/pro-b-2.jpg" alt="">
+                    <img :src="content['src3']" alt="">
                 </div>
             </div>
             <div class="pro-warn">
@@ -120,6 +118,16 @@
                 onSwiper,
                 onSlideChange,
                 modules: Pagination, 
+                content:
+                    {
+                        title:"福砂屋九州長崎蛋糕",
+                        price:"460",
+                        txt:"採用精選雞蛋、砂糖、糖漿和小麥粉的簡單材料，全程不用攪拌機，完全靠師傅手感攪拌，製作出口味道地且香甜綿潤的蛋糕點心。長崎蛋糕底砂糖結晶顆粒的粗糖，是攪拌蛋糕材料時留下來的，也是福砂屋長崎蛋糕的特徵。作為長崎蛋糕的傑作，特製五三燒長崎蛋糕的風味更濃，且香氣更濃郁。它由技術熟練的糕點師傅以高超技術製成，生量數量少，是福砂屋的特製長崎蛋糕，廣受長崎 蛋糕饕客們喜愛。",
+                        src1:require(`@/assets/img/products/pro-b.jpg`),
+                        src2:require(`@/assets/img/products/pro-b-1.jpg`),
+                        src3:require(`@/assets/img/products/pro-b-2.jpg`),
+                    },
+                
                 list:[
                     {
                         id:1,
@@ -374,9 +382,7 @@
         .pro-produce{
             width: 100%;
             @include font(14px);
-            .produce-more{
-                display: none;
-            }
+            
 
         }
         .pro-pic-big{
