@@ -258,7 +258,7 @@
                 // margin: auto;
                 .pro-btn-btn{
                     // width: 90%;
-                    margin: 0px 10px; 
+                    margin: 0px 5px; 
                     // width: 46%;
                 }
             }
