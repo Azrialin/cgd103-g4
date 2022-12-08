@@ -150,13 +150,16 @@
                 margin-top: 60px;
                 text-align: left;
               }
+              .btn-gold{
+                padding: 10px 50px
+              }
 
               .back{
                 @include font(15px);
                   font-weight: 300;
                   color:$color_444;
                   text-decoration:none;
-                  margin-left: 90px;
+                  margin-left: 50px;
             
                   &:hover {
                   text-decoration:none;
