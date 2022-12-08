@@ -119,11 +119,17 @@
             }
         }
     }
-    .login-article-signup{
-        margin-top: 60px;
-    }
     .login-article-btn{
         margin-top: 50px;
+    }
+    .btn-gold{
+        padding: 10px 76px;
+    }
+    .login-article-signup{
+        margin-top: 50px;
+    }
+    .btn-gold_2nd{
+        padding: 10px 76px;
     }
 }
 
