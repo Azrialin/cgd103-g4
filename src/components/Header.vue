@@ -27,7 +27,7 @@
     </header>
 </template>
 <script>
-import QA from "@/assets/js/QA.js"
+import faq from "@/assets/js/faq.js"
 export default {
     props: {
 

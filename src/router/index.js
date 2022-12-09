@@ -105,9 +105,9 @@ const routes = [
     component: () => import('../views/NewscontentView.vue')
   },
   {
-    path: '/QA',
-    name: 'QA',
-    component: () => import('../views/QAView.vue')
+    path: '/faq',
+    name: 'faq',
+    component: () => import('../views/FaqView.vue')
   },
   {
     path: '/login',
