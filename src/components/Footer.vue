@@ -33,8 +33,8 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="/QA" class="font-24">常見問題
-                        <p class="link-note font-20">Q&A</p>
+                        <router-link to="/Faq" class="font-24">常見問題
+                        <p class="link-note font-20">FAQ</p>
                         </router-link>
                     </li>
                 </ul>
