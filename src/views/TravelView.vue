@@ -86,8 +86,8 @@
               border-radius: 10px 0px 0px 0px;
               background-color: #fff;
               position: absolute;
-              right: 0px;
-              bottom: 0px;
+              right: 10px;
+              bottom: 10px;
               z-index: 1;
               display: flex;
               align-items: center;
@@ -124,13 +124,12 @@
               p{
                 @include font(16px);
                 text-align: start;
-                background-color: $front_color_disable;
-                color: $color_444;
-                padding: 15px;
+                color: $front_color_main;
                 width: 100%;
-                border-radius: 10px;
+                border-bottom: 1px solid $front_color_main;
                 box-sizing: border-box;
-                margin-bottom: 10px;
+                margin-top: 20px;
+                order: 3;
               }
               a{
                 @include font(16px);
@@ -150,6 +149,7 @@
                 &:hover{
                   background-color: #fff;
                   color: $front_color_main;
+                  outline: solid 1px $front_color_main;
                 }
               }
             }
@@ -188,6 +188,8 @@
                 @include font(20px);
                 width: 150px;
                 height: 70px;
+                right: 0px;
+                bottom: 0px;
               }
               img{
                 transition: 1s;
@@ -215,9 +217,11 @@
               .tago{
                 flex-direction: row;
                 p{
+                  text-align: center;
                   white-space: nowrap;
-                  width: 50%;
-                margin-bottom: 0px;
+                  width: fit-content;
+                  margin-bottom: 0px;
+                  order: 0;
                 }
                 a{
                   width: 50%;

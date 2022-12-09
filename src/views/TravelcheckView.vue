@@ -33,7 +33,7 @@
         <div class="main_come">
           <h3>旅客資料</h3>
           <div class="country">
-            <p>國籍*</p>
+            <p>旅客國籍*</p>
             <input class="inputcompo" disabled/>
           </div>
           <div class="many">
