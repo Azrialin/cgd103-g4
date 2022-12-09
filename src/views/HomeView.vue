@@ -354,6 +354,13 @@ li {
 }
 
 @media (min-width: 1200px) {
+  .top-banner{
+    height: 680px;
+    overflow: hidden;
+    :deep(img){
+      object-fit: cover;
+    }
+  }
   .title {
     display: none;
   }
