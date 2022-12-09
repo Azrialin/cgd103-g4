@@ -44,6 +44,7 @@ export default {
 @import "../assets/scss/base/base.scss";
 @import "../assets/scss/base/color.scss";
 // *{ outline: solid 1px; }
+
 .hd.hd-shadow{
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.08);
     transition: 0.5s;
@@ -69,6 +70,9 @@ export default {
         a{
             color: $color_444;
             transition: 0.3s;
+            &.router-link-exact-active{
+                border-bottom: 1px solid $back_color_hover;
+            }
             &:hover{
                 color: $back_color_hover;
                 transition: 0.3s;
