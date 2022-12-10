@@ -78,9 +78,6 @@ export default {
         a{
             color: $color_444;
             transition: 0.3s;
-            &.router-link-exact-active{
-                border-bottom: 1px solid $back_color_hover;
-            }
             &:hover{
                 color: $back_color_hover;
                 transition: 0.3s;
@@ -110,6 +107,12 @@ export default {
             justify-content: space-evenly;
             align-items: center;
             background-color: #fff;
+            a{
+                &.router-link-exact-active{
+                    border-bottom: 1px solid rgba($back_color_hover,0.5);
+                    color: $back_color_hover;
+                }
+            }
         }
         .h_list.show{
             transition: opacity 0.3s,left 0s;
