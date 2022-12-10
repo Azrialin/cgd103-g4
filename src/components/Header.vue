@@ -94,7 +94,7 @@ export default {
             }
         }
         .h_list {
-            transition: opacity 0.3s,left 0s 0.3s;
+            transition: opacity 0.4s,left 0s 0.4s;
             opacity: 0;
             left: -100%;
             position: absolute;
@@ -107,6 +107,7 @@ export default {
             justify-content: space-evenly;
             align-items: center;
             background-color: #fff;
+            height: calc(100vh - 70px);
             a{
                 &.router-link-exact-active{
                     padding-bottom: 5px;
