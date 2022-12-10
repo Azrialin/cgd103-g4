@@ -109,6 +109,7 @@ export default {
             background-color: #fff;
             a{
                 &.router-link-exact-active{
+                    padding-bottom: 5px;
                     border-bottom: 1px solid rgba($back_color_hover,0.5);
                     color: $back_color_hover;
                 }
