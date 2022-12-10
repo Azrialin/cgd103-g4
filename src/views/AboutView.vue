@@ -16,16 +16,10 @@
                   「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
                 </p>
               </div>
-              <img
-                class="About-Img"
-                src="../assets/img/Scape/08.jpg"
-              />
+              <img class="About-Img" src="../assets/img/Scape/08.jpg" />
             </div>
             <div class="About-Cherish AboutSeaction">
-              <img
-                class="About-Img"
-                src="../assets/img/Scape/09.jpg"
-              />
+              <img class="About-Img" src="../assets/img/Scape/09.jpg" />
               <div class="Cherish-Text Text">
                 <p class="Cherish-Text-Title Title">珍惜再相遇，珍惜再相遇</p>
                 <p class="Content">
@@ -37,10 +31,7 @@
           </div>
           <div class="About-Footer">
             <div class="Business-Scope AboutSeaction">
-              <img
-                class="About-Img"
-                src="../assets/img/Scape/24.jpg"
-              />
+              <img class="About-Img" src="../assets/img/Scape/24.jpg" />
               <div class="BusinessScope-Text Text">
                 <p class="BusinessScope-Text-Title Title">企業理念</p>
                 <p class="Content">
@@ -71,29 +62,48 @@
       <Tab title="觀光列車介紹">
         <div>
           <div class="Train-Introduce">
-            <div class="Introduce-Header">
-              <p></p>
+            <div class="Introduce-Card">
+              <div class="Introduce-Text Text">
+                <p class="Introduce-Title Title">關於我們</p>
+                <p class="Introduce-SubTitle Content">
+                  「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
+                </p>
+              </div>
+              <img src="../assets/img/Scape/01.jpg" alt="" />
             </div>
             <div class="Introduce-Card">
-              <div class="Introduce-Text">
-                <p class="Introduce-Title">關於我們</p>
-                <p class="Introduce-SubTitle">「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。</p>
+              <div class="Introduce-Text Text">
+                <p class="Introduce-Title Title">珍惜再相遇，珍惜再相遇</p>
+                <p class="Introduce-SubTitle Content">
+                  「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
+                </p>
               </div>
-              <img src="../assets/img/Scape/01.jpg" alt="">
+              <img src="../assets/img/Scape/01.jpg" alt="" />
             </div>
             <div class="Introduce-Card">
-              <div class="Introduce-Text">
-                <p class="Introduce-Title">珍惜再相遇，珍惜再相遇</p>
-                <p class="Introduce-SubTitle">「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。</p>
+              <div class="Introduce-Text Text">
+                <p class="Introduce-Title Title">業務範圍</p>
+                <p class="Introduce-SubTitle Content">
+                  「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
+                </p>
               </div>
-              <img src="../assets/img/Scape/01.jpg" alt="">
+              <img src="../assets/img/Scape/01.jpg" alt="" />
             </div>
-            <div class="Introduce-Card">
+            <div class="Train-Card">
               <div class="Introduce-Text">
-                <p class="Introduce-Title">業務範圍</p>
-                <p class="Introduce-SubTitle">「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。</p>
+                <p class="Introduce-Title Title">JetSpeed</p>
+                <img src="../assets/img/Scape/01.jpg" alt="" />
+                <img src="../assets/img/Scape/01.jpg" alt="" />
+                <img src="../assets/img/Scape/01.jpg" alt="" />
+                <div class="row-cols-2 row-cols-xl-3">
+                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                </div>
               </div>
-              <img src="../assets/img/Scape/01.jpg" alt="">
             </div>
           </div>
         </div>
@@ -128,7 +138,7 @@ export default {
 <style lang="scss" scope>
 @import "../assets/scss/layout/grid.scss";
 @import "../assets/scss/base/font.scss";
-// ----pc about us-----
+// ----mobile about us-----
 .tabs[data-v-bdda1ea4] {
   margin: 0;
   max-width: 100%;
@@ -155,7 +165,7 @@ img {
   margin: 30px;
 }
 .Title {
-  @include font(18px);
+  @include font(20px);
   margin: 10px;
 }
 .Content {
@@ -173,9 +183,8 @@ img {
   display: none;
 }
 
-// -----Train Introduce-----
 @media (min-width: 1200px) {
-// ----pc about us-----
+  // ----pc about us-----
   .Title {
     @include font(32px);
     margin: 20px auto;
@@ -228,15 +237,21 @@ img {
     }
   }
 }
-
-Train-Introduce{
-	.Introduce-Header{}
-	.Introduce-Card{
-		.Introduce-Text{
-			.Introduce-Title{}
-			.Introduce-SubTitle{}
-		}
-	}
-}
 // -----pc Train Introduce-----
+  .Introduce-Card {
+    display: flex;
+    margin: 40px auto;
+    .Introduce-Text {
+      .Introduce-Title {
+      }
+      .Introduce-SubTitle {
+      }
+    }
+    img{
+      width: 50%;
+    }
+  }
+  .Introduce-Card:nth-child(2n){
+    flex-direction: row-reverse;
+  }
 </style>
