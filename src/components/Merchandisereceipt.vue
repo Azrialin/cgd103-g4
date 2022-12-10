@@ -6,6 +6,18 @@
             <hr class="underline">
             <div class="receipt-wrapper">
                 
+
+               <div class="receipt-details-xl">
+                  <h3 class="invisibleBlock">商品圖片</h3>
+                  <h3>商品類別</h3>
+                  <h3>商品名稱</h3>
+                  <h3>數量</h3>
+                  <h3>售價</h3>
+                  <h3>商品狀態</h3>
+                  <h3>訂單狀態</h3>
+                  <h3>出貨狀態</h3>
+               </div>
+
               <div class="receipt-frame" v-for="product in result" :key="product.orderNo">
 
                 <div class="productImg">
@@ -15,8 +27,12 @@
                 <div class="product-des">
                     <h3>{{product.productType}}</h3>
                     <h3>{{product.productName}}</h3>
-                    <h3>{{product.productStatus}}X{{product.noOfProduct}}</h3>
+                    <h3 class="prodStatusWithNum">{{product.productStatus}}X{{product.noOfProduct}}</h3>
+                    <h3>{{product.noOfProduct}}</h3>
                     <h3>{{product.productPrice}}</h3>
+                    <h3 class="prodStatus">{{product.productStatus}}</h3>
+                    <h3 class="orderSta">{{product.orderStatus}}</h3>
+                    <h3 class="shippingSta">{{product.shippingStatus}}</h3>
                     
                 </div>
                   
@@ -27,6 +43,10 @@
                   </div>
 
               </div>
+
+              <!-- <div class="total-section" v-for="product in result" :key="product.orderNo">
+                <h3>{{product.productPrice}}+{{product.productPrice}}</h3>
+              </div> -->
               <div class="button-section">
                   <button class="btn-gold">聯絡客服</button>
               </div>
@@ -203,18 +223,60 @@ export default {
     justify-content: flex-start;
     margin: 0 5%;
   }
+  .receipt-details-xl{
+    border-radius: 10px 10px 0 0;
+    background: #BC955C;
+    color: white;
+    padding: 20px;
+    display: none;
+  }
+  .prodStatus,.shippingSta,.orderSta{
+    display: none;
+  }
+  .invisibleBlock{
+    width: 10%;
+    visibility: hidden;
+  }
 
 
 @media (min-width:1200px) {
   
   .receipt-frame{
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    border-radius: 0;
+
   }
   .button-section{
     order: 2;
     width: 100%;
-    margin-top: -50px;
+    margin-top: 100px;
+  }
+  .paid{
+    display: none;
+  }
+  .receipt-details-xl{
+    display: flex;
+    justify-content: space-between;
+  }
+  .productImg{
+    width: 10%;
+  }
+  .product-des{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: end;
+    padding: 0 10px;
+  }
+  .product-des img{
+    width: 10%;
+  }
+  .prodStatusWithNum{
+    display: none;
+  }
+  .prodStatus,.shippingSta,.orderSta{
+    display: flex;
   }
 }
 
