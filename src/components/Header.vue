@@ -9,16 +9,16 @@
                     </svg>
                 </router-link>
             </h1>
-                <ul class="h_list font-16-15em" :class="toggle?'show':''">
+                <ul id="h_list" class="h_list font-16-15em" :class="toggle?'show':''">
                     <li v-for="item in items" :key="item">
-                        <router-link  class="go" :to ="{path:item['sourc']}">{{item['name']}}</router-link>
+                        <router-link @click="check" class="go" :to ="{path:item['sourc']}">{{item['name']}}</router-link>
                     </li>
                 </ul>
             <div class="h_feature">
                 <router-link to="/login"><i class="fa-regular fa-user"></i></router-link>
                 <!-- <router-link to="/membership"><i class="fa-solid fa-list-ol"></i></router-link> -->
                 <router-link to="/shopcart"><i class="fa-solid fa-cart-shopping"></i></router-link>
-                <div id="hambur" class="hambur" @click="toggle = !toggle">
+                <div id="hambur" class="hambur" @click="toggle=!toggle">
                     <div class="hambox"></div>
                     <div class="hambox"></div>
                 </div>
@@ -30,14 +30,22 @@
 import faq from "@/assets/js/faq.js"
 export default {
     props: {
-
     },
     data(){
         return{
             items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'消息專區',sourc:'news'},{name:'線上商城',sourc:'shop'},{name:'關於我們',sourc:'about'}],
             toggle: false,
         }
-    }
+    },
+    methods: {
+        check(){
+            let h_list = document.getElementById("h_list");
+            if(this.toggle == true){
+                h_list.classList.remove("show");
+                this.toggle = false;
+            }      
+        },
+    },
 }
 </script>
 <style lang="scss" scoped>
