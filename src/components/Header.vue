@@ -11,7 +11,7 @@
             </h1>
                 <ul id="h_list" class="h_list font-16-15em" :class="toggle?'show':''">
                     <li v-for="item in items" :key="item">
-                        <router-link class="go" :to ="{path:item['sourc']}">{{item['name']}}</router-link>
+                        <router-link @click="check" class="go" :to ="{path:item['sourc']}">{{item['name']}}</router-link>
                     </li>
                 </ul>
             <div class="h_feature">
