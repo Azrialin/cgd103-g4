@@ -15,11 +15,11 @@
                   <img src="../assets/img/Scape/22.jpg" alt="">
                 </div>
                 <div class="img-des col-xl-7">
-                  <h3>九州線｜豪華觀光列車單日遊</h3>
-                  <h4>訂單編號: {{result.orderNo}}</h4>
-                  <h4>行程日期: {{result.departureDate}}</h4>
-                  <h4>報名人數: {{result.noOfTraveler}}</h4>
-                  <h2>TWD{{result.total}}</h2>
+                  <h3>九州線｜豪華觀光列車單日遊</h3> 
+                  <h4>訂單編號: {{result2?.package_order_no}}</h4><!-- 問學長為什麼套了問號就ok瞭了 -->
+                  <h4>行程日期: {{result2?.departure_date}}</h4><!-- 問學長為什麼套了問號就ok瞭了 -->
+                  <h4>報名人數: {{result2?.package_ticket_amount}}</h4><!-- 問學長為什麼套了問號就ok瞭了 -->
+                  <h2>TWD{{result2?.package_total}}</h2><!-- 問學長為什麼套了問號就ok瞭了 -->
                 </div>
 
                 <div class="button-section">
@@ -50,7 +50,6 @@
                 </div>
               </div>
             </div>
-
             <!-- <button class="btn-gold_2nd" @click="showdetail">返回</button> -->
 
         </div>
@@ -59,32 +58,35 @@
 
 <script>
 
-const result = {
-    orderNo:"T12345",
-    package:"方案A",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄70,000",
-    paymentStatus: "已付款",
-}
+// const result2 = {
+//     // orderNo:"T12345",
+//     // package:"方案A",
+//     // departureDate:"2023/01/01",
+//     // noOfTraveler: "2人",
+//     // total: "＄70,000",
+//     // paymentStatus: "已付款",
+// }
 
 export default {
+    props:{
+      result2:Object
+    },
     components: {
 
     },
     data(){
         return{
-            result:{},
+            // result1:{},
             // hide:false,
         }
     },
-    created(){
-        this.getData();
-    },
+    // created(){
+    //     this.getData();
+    // },
     methods:{
-        getData(){
-            this.result = result;
-        },
+        // getData(){
+        //     this.result1 = this.result;
+        // },
         // showdetail(){
         //   this.show = true;
         //   this.hide = true;

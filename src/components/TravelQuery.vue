@@ -5,39 +5,39 @@
             <hr class="underline" v-show="!hide">
 
             <!-- rwd -->
-            <div class="travel-wrapper" v-show="!hide" v-for="purchase in result" :key="purchase.orderNo">
+            <div class="travel-wrapper" v-show="!hide" v-for="(purchase,index) in result" :key="purchase.package_order_no">
               <div class="travel-detail">
                     <div class="travel-info">
                         <h3>訂單編號 </h3>
-                        <span>{{purchase.orderNo}}</span>
+                        <span>{{purchase.package_order_no}}</span>
                     </div>
                  <hr>
                     <div class="travel-info">
                         <h3>行程方案 </h3>
-                        <span>{{purchase.package}}</span>
+                        <span>{{purchase.package_no}}</span>
                     </div>
                  <hr>
                     <div class="travel-info">
                         <h3>行程日期 </h3>
-                        <span>{{purchase.departureDate}}</span>
+                        <span>{{purchase.package_order_date}}</span>
                     </div>
                  <hr>
                     <div class="travel-info">
                         <h3>報名人數 </h3>
-                        <span>{{purchase.noOfTraveler}}</span>
+                        <span>{{purchase.package_ticket_amount}}</span>
                     </div>
                  <hr>
                     <div class="travel-info">
                         <h3>總計金額 </h3>
-                        <span>{{purchase.total}}</span>
+                        <span>{{purchase.package_total}}</span>
                     </div>
                  <hr>
                     <div class="travel-info">
                         <h3>訂單狀態 </h3>
-                        <span>{{purchase.paymentStatus}}</span>
+                        <span>{{purchase.package_pay_status}}</span>
                     </div>
               </div>
-              <a @click="showdetail" class="bottom">查看詳情</a>
+              <a @click="showdetail(index)" class="bottom">查看詳情</a>
             </div>
 
             <!-- rwd -->
@@ -54,22 +54,19 @@
                     <h3>訂單狀態</h3>
                     <h3>訂單詳情</h3>
                 </div>
-                <div class="travel-info-status" v-for="purchase in result" :key="purchase.orderNo">
-                    <h3>{{purchase.orderNo}}</h3>
-                    <h3>{{purchase.package}}</h3>
-                    <h3>{{purchase.departureDate}}</h3>
-                    <h3>{{purchase.noOfTraveler}}</h3>
-                    <h3>{{purchase.total}}</h3>
-                    <h3>{{purchase.paymentStatus}}</h3>
-                    <a @click="showdetail">查看詳情</a>
+                <div class="travel-info-status" v-for="(purchase,index) in result" :key="purchase.orderNo">
+                    <h3>{{purchase.package_order_no}}</h3>
+                    <h3>{{purchase.package_no}}</h3>
+                    <h3>{{purchase.package_order_date}}</h3>
+                    <h3>{{purchase.package_ticket_amount}}</h3>
+                    <h3>{{purchase.package_total}}</h3>
+                    <h3>{{purchase.package_pay_status}}</h3>
+                    <a @click="showdetail(index)">查看詳情</a>
                 </div>
-
             </div>
-
             <!-- <div v-show="show"> -->
-              <Travelreceipt v-show="show"/>
+              <Travelreceipt v-show="show" :result2="result[showdetailIndex]"/>
             <!-- </div> -->
-            
 
             <!-- 返回button -->
             <button class="btn-gold_2nd" v-show="!hide">返回</button>
@@ -84,28 +81,9 @@
 
 <script>
 import Travelreceipt from '@/components/Travelreceipt.vue'
-const result = [{
-    orderNo:"T12345",
-    package:"方案A",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄70,000",
-    paymentStatus: "已付款",
-},{
-    orderNo:"T12346",
-    package:"方案B",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄75,000",
-    paymentStatus: "已付款",
-},{
-    orderNo:"T12347",
-    package:"方案C",
-    departureDate:"2023/01/01",
-    noOfTraveler: "2人",
-    total: "＄80,000",
-    paymentStatus: "已付款",
-}]
+const result = [
+
+]
 
 export default {
     components: {
@@ -117,16 +95,25 @@ export default {
           show:false,
           hide:false,
           itineryOrder:[],
+          showdetailIndex:0
         }
     },
     created(){
         this.getData();
     },
     methods:{
+
         getData(){
-            this.result = result;
+            /* this.result = result; */
+            fetch('http://localhost/cgd103-g4/public/phpfiles/getTravelQuery.php')
+              .then((res)=>res.json())
+              .then((json)=> {
+                this.result = json;
+                console.log(this.result);
+              })
         },
-        showdetail(){
+        showdetail(index){
+          this.showdetailIndex=index
           this.show = true;
           this.hide = true;
         },
