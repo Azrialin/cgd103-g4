@@ -1,6 +1,10 @@
 .DS_Store
 node_modules
 /dist
+<<<<<<< HEAD
+=======
+
+>>>>>>> tangtang1b1b
 # php
 phpfiles
 
