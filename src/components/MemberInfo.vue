@@ -5,42 +5,41 @@
             <hr class="underline">
             <div class="form-wrapper">
               <p class="must">*為必填欄位</p>
-
               <div class="try col-xl-6">
                 <h3 class="info">姓名<span>*</span></h3>
-                <input  v-model="result.name"/>
+                <input  v-model="result.mem_name"/>
               </div>
               <div class="try col-xl-6">
                 <h3 class="info">英文名</h3>
-                <input v-model="result.englishName"/>
+                <input v-model="result.mem_e_name"/>
               </div>
 
               <h3 class="info">密碼<span>*</span></h3>
-              <input class="unchangeable"  v-model="result.psw" disabled/>
+              <input class="unchangeable"  v-model="result.mem_psw" disabled/>
               <h3 class="info">電子信箱<span>*</span></h3>
-              <input class="unchangeable"  v-model="result.email" disabled/>
+              <input class="unchangeable"  v-model="result.mem_email" disabled/>
               <h3 class="info">地址</h3>
-              <input  v-model="result.address"/>
+              <input  v-model="result.mem_address"/>
 
               <div class="try col-xl-6">
                 <h3 class="info ">電話號碼<span>*</span></h3>
-                <input  v-model="result.phone"/>
+                <input  v-model="result.mem_phone"/>
                 <h3 class="info ">國籍</h3>
-                <select  name="" id="">
-                    <option value="1">Taiwan</option>
-                    <option value="2">Japan</option>
+                <select  name="" id="" v-model="result.mem_nation">
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Japan">Japan</option>
                 </select>
               </div>
 
               <div class="try col-xl-6">
-                <h3 class="info ">性別</h3>
+                <!-- <h3 class="info ">性別</h3>
                 <select  name="" id="">
                     <option value="1">-女-</option>
                     <option value="2">-男-</option>
-                </select>
+                </select> -->
 
                 <h3 class="info ">護照號碼</h3>
-                <input  v-model="result.passport"/>
+                <input  v-model="result.mem_passport_no"/>
               </div>
 
               <div class="button-section">
@@ -59,15 +58,15 @@
 <script>
 
 const result = {
-    name:"123",
-    englishName:"Eric",
-    psw:"########",
-    email: "Y123@gmail.com",
-    address: "桃園市中壢區復興路46號",
-    phone: "0912345678",
-    nationality: "",
-    gender: "-女-",
-    passport: ""
+    // name:"123",
+    // englishName:"Eric",
+    // psw:"########",
+    // email: "Y123@gmail.com",
+    // address: "桃園市中壢區復興路46號",
+    // phone: "0912345678",
+    // nationality: "",
+    // gender: "-女-",
+    // passport: ""
 }
 
 export default {
@@ -85,6 +84,12 @@ export default {
     methods:{
         getData(){
             this.result = result;
+            fetch('http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php')
+                  .then((res) => res.json())
+                  .then((json) =>{
+                    this.result = json[0];
+                    console.log(this.result);
+                  })
         },
         saveData(){
           console.log(this.result);

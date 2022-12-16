@@ -42,6 +42,7 @@
         },
         data(){
           return{
+            // results:{},
             lists:[{src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
             {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
             {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
@@ -50,6 +51,22 @@
             
           }
         },
+        // created(){
+        //   this.getData();
+        // },
+        // methods: {
+        //   getData(){
+        //     const myurl = new URL(
+        //       'http://localhost/cgd103-g4/public/phpfiles/getTravelView.php'
+        //     );
+        //     fetch(myurl)
+        //       .then((res) => res.json())
+        //       .then((json) =>{
+        //         this.results=json;
+        //         console.log(this.results);
+        //       })
+        //     },
+        // },
     }
 </script>
 <style lang="scss" scoped>
@@ -184,12 +201,15 @@
               width: 55%;
               overflow: hidden;
               transition: 1s;
-              .boxb{
-                @include font(20px);
-                width: 150px;
-                height: 70px;
-                right: 0px;
-                bottom: 0px;
+              .aaa{
+                position: relative;
+                .boxb{
+                  @include font(20px);
+                  width: 150px;
+                  height: 70px;
+                  right: -5px;
+                  bottom: -5px;
+                }
               }
               img{
                 transition: 1s;
