@@ -14,25 +14,25 @@
                   <h3>數量</h3>
                   <h3>售價</h3>
                   <h3>商品狀態</h3>
-                  <h3>訂單狀態</h3>
+                  <!-- <h3>訂單狀態</h3> -->
                   <h3>出貨狀態</h3>
                </div>
 
-              <div class="receipt-frame" v-for="product in result" :key="product.orderNo">
-
+              <div class="receipt-frame" v-for="result in result2" :key="result.product_orders_id"><!-- v-for丟進去會壞掉 -->
+                <!--  -->
                 <div class="productImg">
                   <img src="../assets/img/products/pro-b.jpg" alt="">
                 </div>
 
                 <div class="product-des">
-                    <h3>{{product.productType}}</h3>
-                    <h3>{{product.productName}}</h3>
-                    <h3 class="prodStatusWithNum">{{product.productStatus}}X{{product.noOfProduct}}</h3>
-                    <h3>{{product.noOfProduct}}</h3>
-                    <h3>{{product.productPrice}}</h3>
-                    <h3 class="prodStatus">{{product.productStatus}}</h3>
-                    <h3 class="orderSta">{{product.orderStatus}}</h3>
-                    <h3 class="shippingSta">{{product.shippingStatus}}</h3>
+                    <h3>{{result.prod_type_id}}</h3>
+                    <h3>{{result.prod_name}}</h3>
+                    <h3 class="prodStatusWithNum">{{result.prod_status}}X{{result.order_item_qty}}</h3>
+                    <h3>{{result.order_item_qty}}</h3>
+                    <h3>{{result.per_prod_price}}</h3>
+                    <h3 class="prodStatus">{{result.prod_status}}</h3>
+                    <h3 class="orderSta">{{result.product_orders_status}}</h3>
+                    <!-- <h3 class="shippingSta">{{result2?.shippingStatus}}</h3> -->
                     
                 </div>
                   
@@ -60,60 +60,64 @@
 
 <script>
 
-const result = [{
-    orderNo:"T12345",
-    memId:123,
-    productType:"當地特產",
-    productName:"和菓子禮盒",
-    noOfProduct: 1,
-    productPrice: "＄1999",
-    productStatus: "現貨",
-    orderStatus : "已付款",
-    shippingStatus: "已出貨",
-    totalPrice:"$5997",
-},
-{
-    orderNo:"T12345",
-    memId:123,
-    productType:"當地特產",
-    productName:"和菓子禮盒",
-    noOfProduct: 1,
-    productPrice: "＄1999",
-    productStatus: "現貨",
-    orderStatus : "已付款",
-    shippingStatus: "已出貨",
-    totalPrice:"$5997",
-},{
-    orderNo:"T12345",
-    memId:123,
-    productType:"當地特產",
-    productName:"和菓子禮盒",
-    noOfProduct: 1,
-    productPrice: "＄1999",
-    productStatus: "現貨",
-    orderStatus : "已付款",
-    shippingStatus: "已出貨",
-    totalPrice:"$5997",
-}
-]
+// const result = [
+// //   {
+// //     orderNo:"T12345",
+// //     memId:123,
+// //     productType:"當地特產",
+// //     productName:"和菓子禮盒",
+// //     noOfProduct: 1,
+// //     productPrice: "＄1999",
+// //     productStatus: "現貨",
+// //     orderStatus : "已付款",
+// //     shippingStatus: "已出貨",
+// //     totalPrice:"$5997",
+// // },
+// // {
+// //     orderNo:"T12345",
+// //     memId:123,
+// //     productType:"當地特產",
+// //     productName:"和菓子禮盒",
+// //     noOfProduct: 1,
+// //     productPrice: "＄1999",
+// //     productStatus: "現貨",
+// //     orderStatus : "已付款",
+// //     shippingStatus: "已出貨",
+// //     totalPrice:"$5997",
+// // },{
+// //     orderNo:"T12345",
+// //     memId:123,
+// //     productType:"當地特產",
+// //     productName:"和菓子禮盒",
+// //     noOfProduct: 1,
+// //     productPrice: "＄1999",
+// //     productStatus: "現貨",
+// //     orderStatus : "已付款",
+// //     shippingStatus: "已出貨",
+// //     totalPrice:"$5997",
+// // }
+// ]
 
 export default {
+    props:{
+      result2:Array
+    },
     components: {
 
     },
     data(){
         return{
-            result:[],
+            // result:[],
             // hide:false,
         }
     },
-    created(){
-        this.getData();
-    },
+    // created(){
+    //     this.getData();
+    // },
     methods:{
-        getData(){
-            this.result = result;
-        },
+        // getData(){
+        //     this.result = result;
+        // },
         // showdetail(){
         //   this.show = true;
         //   this.hide = true;
