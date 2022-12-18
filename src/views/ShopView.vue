@@ -11,15 +11,17 @@
       <div class="row">
         <div class="card-container">
           <div
-            v-for="item in list"
+            v-for="item in vv"
             :key="item.id"
             class="card-box col-sm-6 col-lg-3"
           >
+          
             <productcard
-              :title="item.title"
-              :price="item.price"
-              :img="item.img"
+              :title="item.prod_name"
+              :price="item.prod_price"
+              :img="`/img/${item.prod_pic_main}`"
             />
+
           </div>
         </div>
       </div>
@@ -67,79 +69,79 @@ export default {
           label: "特產系列",
         },
       ],
-      list: [
-        {
-          id: 1,
-          img: require(`@/assets/img/products/pro1.jpg`),
-          title: "JS怪奇薯條",
-          price: 180,
-        },
-        {
-          id: 2,
-          img: require(`@/assets/img/products/pro2.jpg`),
-          title: "曲奇餅乾",
-          price: 280,
-        },
-        {
-          id: 3,
-          img: require(`@/assets/img/products/pro3.jpg`),
-          title: "透明醬油",
-          price: 320,
-        },
-        {
-          id: 4,
-          img: require(`@/assets/img/products/pro4.jpg`),
-          title: "長崎蛋糕",
-          price: 460,
-        },
-        {
-          id: 5,
-          img: require(`@/assets/img/products/pro5.jpg`),
-          title: "明太子醬",
-          price: 480,
-        },
-        {
-          id: 6,
-          img: require(`@/assets/img/products/pro6.jpg`),
-          title: "九州昆布湯包",
-          price: 320,
-        },
-        {
-          id: 7,
-          img: require(`@/assets/img/products/pro7.jpg`),
-          title: "旺旺仙貝",
-          price: 150,
-        },
-        {
-          id: 8,
-          img: require(`@/assets/img/products/pro8.jpg`),
-          title: "七彩洋芋片",
-          price: 280,
-        },
-        {
-          id: 9,
-          img: require(`@/assets/img/products/pro9.jpg`),
-          title: "九州黑醋",
-          price: 220,
-        },
-        {
-          id: 10,
-          img: require(`@/assets/img/products/pro10.jpg`),
-          title: "JS可樂餅",
-          price: 350,
-        },
-        {
-          id: 11,
-          img: require(`@/assets/img/products/pro11.jpg`),
-          title: "柚子胡椒",
-          price: 180,
-        },
-        {
-          id: 12,
-          img: require(`@/assets/img/products/pro12.jpg`),
-          title: "鬼頭刀罐頭",
-          price: 480,
-        },
+      vv: [
+        // {
+        //   id: 1,
+        //   img: require(`@/assets/img/products/pro1.jpg`),
+        //   title: "JS怪奇薯條",
+        //   price: 180,
+        // },
+        // {
+        //   id: 2,
+        //   img: require(`@/assets/img/products/pro2.jpg`),
+        //   title: "曲奇餅乾",
+        //   price: 280,
+        // },
+        // {
+        //   id: 3,
+        //   img: require(`@/assets/img/products/pro3.jpg`),
+        //   title: "透明醬油",
+        //   price: 320,
+        // },
+        // {
+        //   id: 4,
+        //   img: require(`@/assets/img/products/pro4.jpg`),
+        //   title: "長崎蛋糕",
+        //   price: 460,
+        // },
+        // {
+        //   id: 5,
+        //   img: require(`@/assets/img/products/pro5.jpg`),
+        //   title: "明太子醬",
+        //   price: 480,
+        // },
+        // {
+        //   id: 6,
+        //   img: require(`@/assets/img/products/pro6.jpg`),
+        //   title: "九州昆布湯包",
+        //   price: 320,
+        // },
+        // {
+        //   id: 7,
+        //   img: require(`@/assets/img/products/pro7.jpg`),
+        //   title: "旺旺仙貝",
+        //   price: 150,
+        // },
+        // {
+        //   id: 8,
+        //   img: require(`@/assets/img/products/pro8.jpg`),
+        //   title: "七彩洋芋片",
+        //   price: 280,
+        // },
+        // {
+        //   id: 9,
+        //   img: require(`@/assets/img/products/pro9.jpg`),
+        //   title: "九州黑醋",
+        //   price: 220,
+        // },
+        // {
+        //   id: 10,
+        //   img: require(`@/assets/img/products/pro10.jpg`),
+        //   title: "JS可樂餅",
+        //   price: 350,
+        // },
+        // {
+        //   id: 11,
+        //   img: require(`@/assets/img/products/pro11.jpg`),
+        //   title: "柚子胡椒",
+        //   price: 180,
+        // },
+        // {
+        //   id: 12,
+        //   img: require(`@/assets/img/products/pro12.jpg`),
+        //   title: "鬼頭刀罐頭",
+        //   price: 480,
+        // },
       ],
       fonts: [
         { name: "首頁", source: "/" },
@@ -156,12 +158,12 @@ export default {
       fetch("http://localhost/g4/public/phpfiles/getProducts.php")
         .then((res) => res.json())
         .then((json) => {
-          this.result = json[2];
-          console.log(this.result);
+          this.vv = json;
+          console.log(this.vv);
         });
     },
     saveData() {
-      console.log(this.result);
+      console.log(this.vv);
     },
   },
   computed: {
