@@ -1,17 +1,17 @@
 <template>
     <div>
-        <form>
+        <form method="post" enctype="multipart/form-data">
             <h3 class="top">基本資料設定</h3>
             <hr class="underline">
             <div class="form-wrapper">
               <p class="must">*為必填欄位</p>
               <div class="try col-xl-6">
                 <h3 class="info">姓名<span>*</span></h3>
-                <input  v-model="result.mem_name"/>
+                <input v-model="result.mem_name"/>
               </div>
               <div class="try col-xl-6">
                 <h3 class="info">英文名</h3>
-                <input v-model="result.mem_e_name"/>
+                <input name="mem_e_name" v-model="result.mem_e_name"/>
               </div>
 
               <h3 class="info">密碼<span>*</span></h3>
@@ -26,8 +26,8 @@
                 <input  v-model="result.mem_phone"/>
                 <h3 class="info ">國籍</h3>
                 <select  name="" id="" v-model="result.mem_nation">
-                    <option value="Taiwan">Taiwan</option>
-                    <option value="Japan">Japan</option>
+                    <option  value="TAIWAN">Taiwan</option>
+                    <option value="JAPAN">Japan</option>
                 </select>
               </div>
 
@@ -75,7 +75,8 @@ export default {
     },
     data(){
         return{
-            result:{}
+            result:{},
+            
         }
     },
     created(){
@@ -92,9 +93,20 @@ export default {
                   })
         },
         saveData(){
-          console.log(this.result);
+          // console.log(this.result);
+          fetch('http://localhost/cgd103-g4/public/phpfiles/prod_update.php', {
+            method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
+          })
+          .then((res)=>res.json())
+          .then((result)=>{
+            console.log(result);
+          })
+
         }
-    }
+    },
+    watch: {
+
+    },
 }
 </script>
 

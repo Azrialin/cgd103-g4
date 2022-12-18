@@ -69,7 +69,7 @@
 
 export default {
     props:{
-      result2:Object
+      result2:Array
     },
     components: {
 
