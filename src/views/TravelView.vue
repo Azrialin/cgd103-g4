@@ -198,7 +198,7 @@
           }
           li:nth-child(2n) .tra_card .tra_img .boxb{
             background-color: #f8f8f8;
-            left: 0;
+            left: -10px;
             border-radius: 0px 10px 0px 0px;
           }
           .tra_card{
@@ -214,8 +214,8 @@
                   @include font(20px);
                   width: 150px;
                   height: 70px;
-                  right: -5px;
-                  bottom: -5px;
+                  right: -10px;
+                  bottom: -10px;
                 }
               }
               img{

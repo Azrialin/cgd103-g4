@@ -2,9 +2,11 @@
   <Banner :src="require(`@/assets/img/Banner/banner_travel.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
   <div class="container_form">
-    <h2>行程預約</h2>
+    <h2 class="gg">行程預約</h2>
     <div class="content_form">
       <div class="title_name" v-for="title in titles" :key="title">
+      <!-- <div class="title_name" v-for="result in results" :key="result"> -->
+        <!-- <h4>{{title['date']}}</h4> -->
         <h4>{{title['date']}}</h4>
         <h3>{{title['name']}}</h3>
         <h4>行程代號:{{title['code']}}</h4>
@@ -15,15 +17,15 @@
           <h3>主要聯絡人</h3>
           <div class="person">
             <p>聯絡人*</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" v-model="results['mem_name']" disabled/>
           </div>
           <div class="phone">
             <p>聯絡電話*</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" v-model="results['mem_phone']" disabled/>
           </div>
           <div class="email">
             <p>E-Mail</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" v-model="results['mem_email']" disabled/>
           </div>
           <div class="say">
             <p>備註</p>
@@ -34,7 +36,7 @@
           <h3>旅客資料</h3>
           <div class="country">
             <p>旅客國籍*</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" v-model="results['mem_nation']" disabled/>
           </div>
           <div class="many">
             <p>旅行人數*</p>
@@ -77,12 +79,25 @@
       },
       data(){
         return{
+          results:[],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
           titles:[{date:`${this.$route.query.date}`,name:"山口圓舞曲，三世界遺產",code:"JTR05221122A",price:"100000"}],
           number:1,
         }
       },
+      created() {
+        this.getData();
+      },
       methods:{
+        getData(){
+          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getmember.php');
+          fetch(myurl)
+          .then((res)=>res.json())
+          .then((json)=>{
+            this.results=json[0];
+            console.log(this.results);
+          })
+        },
         add(){
           this.number++;
         },
@@ -255,6 +270,7 @@
   .container_form{
     h2{
       @include font(32px);
+      text-align: center;
     }
     .content_form{
       .title_name{
