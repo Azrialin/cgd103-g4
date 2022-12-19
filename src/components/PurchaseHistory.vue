@@ -14,22 +14,22 @@
         <div class="merchandise-detail">
           <div class="merchandise-info">
             <h3>訂單編號</h3>
-            <span>{{ merchandise.product_orders_id }}</span>
+            <span>{{ merchandise[0].product_orders_id }}</span>
           </div>
           <hr />
           <div class="merchandise-info">
             <h3>會員編號</h3>
-            <span>{{ merchandise.mem_num }}</span>
+            <span>{{ merchandise[0].mem_num }}</span>
           </div>
           <hr />
           <div class="merchandise-info">
             <h3>訂購日期</h3>
-            <span>{{ merchandise.product_orders_date }}</span>
+            <span>{{ merchandise[0].product_orders_date }}</span>
           </div>
           <hr />
           <div class="merchandise-info">
             <h3>訂單金額</h3>
-            <span>{{ merchandise.product_orders_total }}</span>
+            <span>{{ merchandise[0].product_orders_total }}</span>
           </div>
           <hr />
           <!-- <div class="merchandise-info">
@@ -39,7 +39,7 @@
                  <hr> -->
           <div class="merchandise-info">
             <h3>出貨狀態</h3>
-            <span>{{ merchandise.product_orders_status }}</span>
+            <span>{{ merchandise[0].product_orders_status }}</span>
           </div>
         </div>
         <a @click="showdetail(index)" class="bottom">查看詳情</a>
