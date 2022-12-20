@@ -21,7 +21,8 @@
               <div class="receipt-frame" v-for="result in result2" :key="result.product_orders_id"><!-- v-for丟進去會壞掉 -->
                 <!--  -->
                 <div class="productImg">
-                  <img src="../assets/img/products/pro-b.jpg" alt="">
+
+                  <img :src="`/img/${result.prod_pic_main}`" alt="">
                 </div>
 
                 <div class="product-des">
