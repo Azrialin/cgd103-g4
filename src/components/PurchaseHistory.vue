@@ -74,10 +74,7 @@
         </div>
       </div>
 
-      <!-- <div v-show="show"> -->
       <Merchandisereceipt v-show="show" :result2="getResult2" />
-      <!-- <Merchandisereceipt v-show="show" :result2="result[showdetailIndex]"/> -->
-      <!-- </div> -->
 
       <!-- 返回button -->
       <button class="btn-gold_2nd" v-show="!hide">返回</button>
