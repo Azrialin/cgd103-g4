@@ -1,30 +1,77 @@
 <template>
   <!---------------------尚未完成------------------------
-  🔹  列表v-for (資料已建立好，目前註解中)
-  🔹  tab (先完成其他大概再回頭)
-  🔹  more按鈕 (對應的??進入該內容分頁、內文待產生)
-  🔹  上下頁連動 (待理解如何與內容連動)
-  🔹  page top可以再增加動畫效果
+  🔹  tab 
+    tab 的css
+    v-if抓的filter
+    一進來的預設
+  🔹  more按鈕 (動態路由)
+  🔹  type顯示對應的文字資訊(1.重要 2.活動 3.其他)
+問題: 要寫在component 還是此頁面
+    type顯示對應的文字(1.重要 2.活動 3.其他) 
+    使用 v-if、v-else-if? 元件、與這裡的資料連動
+    {{ detail.news_type }}
+    <span v-if="detail.news_type === '1'">重要</span>
+    <span v-else-if="detail.news_type === '2'">活動</span>
+    <span v-else-if="detail.news_type === '3'">其他</span>
   ------------------------------------------------------->
   <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
   <div class="container">
     <div class="news-cards">
       <!--  tab -->
-      <!-- <ul class="tab-news ">
-        <li>所有公告</li>
-        <li>重要公告</li>
-        <li>活動公告</li>
-        <li>其他公告</li>
-      </ul> -->
+      <!-- 顯示OK之後，把下面p link 刪掉 -->
+        <p>{{ navLink }}</p>
+        <nav class="nav-bar">
+          <a class="nav-tab font-18" :class="{'active' : navLink ==='所有公告'}" href="#" @click="navLink='所有公告'">所有公告</a>
+          <a class="nav-tab font-18 " :class="{'active' : navLink ==='重要'}" href="#" @click="navLink='重要'">重要</a>
+          <a class="nav-tab font-18" :class="{'active' : navLink ==='活動'}" href="#" @click="navLink='活動'">活動</a>
+          <a class="nav-tab font-18" :class="{'active' : navLink ==='其他'}" href="#" @click="navLink='其他'">其他</a>
+        </nav>
         <div class="news-card">
-            <NewsCard v-for="detail in news" :key="detail.news_no"
-            :link="require(`@/assets/img/News/${detail.news_img}`)"
-            :type="detail.news_type" 
-            :date="detail.news_time" 
-            :title="detail.news_title" 
-            :des="detail.news_text_start" 
-            />
+          <!-- 所有公告顯示 -->
+            <div v-if="navLink === '所有公告'">
+              <NewsCard
+              v-for="detail in news" :key="detail.news_no"
+              :link="require(`@/assets/img/News/${detail.news_img}`)"
+              :type="detail.news_type"
+              :date="detail.news_time"
+              :title="detail.news_title"
+              :des="detail.news_text_start"
+              />
+            </div>
+          <!-- 重要顯示 -->
+            <div v-else-if="navLink === '重要'">
+              <NewsCard
+              v-for="detail in news" :key="detail.news_no"
+              :link="require(`@/assets/img/News/${detail.news_img}`)"
+              :type="detail.news_type === '1' "
+              :date="detail.news_time"
+              :title="detail.news_title"
+              :des="detail.news_text_start"
+              />
+            </div>
+          <!-- 活動顯示 -->
+            <div v-else-if="navLink === '活動'">
+              <NewsCard
+              v-for="detail in news" :key="detail.news_no"
+              :link="require(`@/assets/img/News/${detail.news_img}`)"
+              :type="detail.news_type === '2' "
+              :date="detail.news_time"
+              :title="detail.news_title"
+              :des="detail.news_text_start"
+              />
+            </div>
+          <!-- 其他顯示 -->
+            <div v-else-if="navLink === '其他'">
+              <NewsCard
+              v-for="detail in news" :key="detail.news_no"
+              :link="require(`@/assets/img/News/${detail.news_img}`)"
+              :type="detail.news_type === '3' "
+              :date="detail.news_time"
+              :title="detail.news_title"
+              :des="detail.news_text_start"
+              />
+            </div>
         </div>
   </div>
   <div class="news-next-page">
@@ -91,6 +138,7 @@
       return{
         tab:1,
         page:1,
+        navLink: '所有公告',
         fonts:[
             { name: '首頁', source: '/' },
             { name: '消息專區', source: 'News' }
@@ -249,3 +297,22 @@
 
   }
 </script>
+<style scoped lang="scss">
+.nav-bar{
+  margin-bottom: 10px;
+  border-bottom:#BC955C 1px solid;
+}
+.nav-tab{
+  display: inline-block;
+  color: #BC955C;
+  padding: 5px 10px;
+  margin: 0 10px;
+  border: #BC955C 1px solid;
+  border-radius: 5px 5px 0 0;
+  
+}
+.active{
+  color: #fff;
+  background-color: #BC955C;
+}
+</style>
