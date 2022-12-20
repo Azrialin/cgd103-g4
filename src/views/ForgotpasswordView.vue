@@ -10,7 +10,7 @@
                         <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
                         <input class="input-gold" type="email" placeholder="請輸入Email">
                     </div> 
-                    <button class="btn-gold_2nd">取消</button>
+                    <button class="btn-gold_2nd" @click="logins">取消</button>
                     <button class="btn-gold">確認送出</button>
                 </form>
             </div>
@@ -38,6 +38,11 @@
                     { name: '忘記密碼', source: 'forgotpassword' }
                 ],
             };
+        },
+        methods: {
+            logins(){
+                this.$router.push("/login");
+            },
         },
     };
 </script>

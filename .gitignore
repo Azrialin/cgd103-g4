@@ -3,6 +3,7 @@ node_modules
 /dist
 # php
 phpfiles
+/public/php
 
 # local env files
 .env.local

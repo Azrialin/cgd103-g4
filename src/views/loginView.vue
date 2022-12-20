@@ -1,26 +1,69 @@
 <template>
     <breadcrumb :fonts="fonts"/>
     <div class="login" style="max-width: 1200px; margin: auto;">
-        <div class="container">
-            <div class="main">
-                <form action="">
-                    <h2>登入</h2>
-                    <hr>
-                    <div class="inputfield">
-                        <h3 class="title">電子信箱</h3>
-                        <input class="input-gold" type="email" placeholder="請輸入Email">
-                    </div>  
-                    <div class="inputfield">
-                        <h3 class="title">密碼</h3>
-                        <input class="input-gold" type="password" placeholder="請輸入密碼">
-                    </div>   
-                    <router-link to="/Forgotpassword" class="forgotpassword">忘記密碼了嗎?</router-link>
-                </form>
-                <div class="login-article-btn">
-                    <router-link to="/Membership" class="btn-gold">登入</router-link>
+        <div class="wrap">
+            <div class="signup-card">
+                <!-- 歡迎回來 -->
+                <div class="panel overlay-left">
+                    <div class="overlay-card-left">
+                        <h3>歡迎回來</h3>
+                        <p>快速登入，開始預訂你的新旅程！</p>
+                        <img src="../assets/img/Login/signin.svg" class="image" alt="signup">
+                        <button class="btn-blue_2nd" @click="isLogin =! isLogin">登入</button>
+                    </div>
                 </div>
-                <div class="login-article-signup">
-                    <router-link to="/Signup" class="btn-gold_2nd">註冊</router-link>
+            </div>
+            <div class="signin-card" :class="{'isMove' : isLogin == false}">
+                <!------------------ 登入頁 ---------------->
+                <div class="main form-sign_in">
+                    <!-- 註冊 -->
+                    <form class="signupform" autocomplete="off" v-show="isLogin == false">
+                        <h2 class="title">註冊</h2>
+                        <div class="inputfield-right">
+                            <div class="signup-name">
+                                <label class="title-text">姓名</label>
+                                <input class="input-gold" type="text" placeholder="請輸入姓名">
+                            </div> 
+                            <div class="signup-email">
+                                <label class="title-text">電子信箱</label>
+                                <input class="input-gold" type="email" placeholder="請輸入Email">
+                            </div>  
+                            <div class="signup-password">
+                                <label class="title-text">密碼</label>
+                                <input class="input-gold" type="password" placeholder="半形英數共10碼">
+                            </div>   
+                            <div class="signup-tel">
+                                <label class="title-text">聯絡電話</label>
+                                <input class="input-gold" type="tel" placeholder="請輸入手機號碼">
+                            </div> 
+                        </div>
+                        <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
+                    </form>
+                    <!-- 登入 -->
+                    <form class="signinform" autocomplete="off" v-show="isLogin">
+                        <h2 class="title">登入</h2>
+                        <div class="inputfield-left">
+                            <div class="signin-email">
+                                <label class="title-text">電子信箱</label>
+                                <input class="input-gold" type="email" placeholder="請輸入Email">
+                            </div>  
+                            <div class="signin-password">
+                                <label class="title-text">密碼</label>
+                                <input class="input-gold" type="password" placeholder="半形英數共10碼">
+                            </div>   
+                            <router-link to="/Forgotpassword" class="forgot_password">忘記密碼了嗎?</router-link>
+                        </div>
+                        <button type="button" class="btn-gold" @click="members">登入</button>
+                    </form>
+                </div>
+                <!---------------- 還不是會員 -------------->
+                <div class="panel overlay-right">
+                    <div class="overlay-card-right">
+                        <h3>還不是會員？</h3>
+                        <p>加入JET SPEED，開始預訂你的新旅程！</p>
+                        <img src="../assets/img/Login/signup.svg" class="image" alt="signup">
+                        <button class="btn-gold_2nd" @click="isLogin =! isLogin">註冊</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,7 +88,16 @@
                     { name: '首頁', source: '/' },
                     { name: '會員登入', source: 'login' }
                 ],
+                isLogin: true,
             };
+        },
+        methods: {
+            members() {
+                this.$router.push("/Signin_suc");
+            },
+            signups(){
+                this.$router.push("/Signup_suc");
+            },
         },
     };
 </script>
@@ -55,82 +107,206 @@
 @import "../assets/scss/components/btn.scss";
 
 .login{
-    .main{
-        width: 100%;
-        @include minW(1200px){
-                width: calc(50% - 150px);
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .wrap{
+        width: 800px;
+        position: relative;
+        overflow: hidden;
+    }
+   .panel,
+   .main{
+    width: 400px;
+    height: 550px;
+    margin-top: 1px;
+    margin-bottom: 100px;
+   }
+   .image{
+    width: 60%;
+    margin: auto;
+    display: block;
+   }
+    .signin-card{
+    display: flex;
+    position: relative;
+    transition: .3s;
+    left: 0;
+    z-index: 3;
+    top: -652px;
+
+    &.isMove{
+        transition: .3s;
+        // opacity: 0;
+        left: 400px;
+        .main{
+            border: 1px solid $back_color_active;
+            border-radius: 0 10px 10px 0;
         }
-        height: 600px;
-        margin: 10%;
-        margin: auto;
-        margin-bottom: 150px;
-        border-radius: 10px;
+    }
+
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 10px 0 0 10px;
+        background-color: #fff;
         border: 1px solid $front_color_main;
-        box-shadow: 0 8px 10px -5px rgb(223, 221, 221);
-
-        form{
-            width: calc(90% - 100px);
-            margin: auto;
-            margin-top: 50px;
-            text-align: right;
-
-            h2{
+    }
+    // ---------- 註冊 ------------
+    .signupform{ 
+            .title{
                 @include font(32px);
                 color: $color_444;
-                padding: 5px 0;
+                text-align: center;
+                margin: 15px;
             }
-
-            hr{
-                width: 100%;
-                height: 0.5px;
-                margin-bottom: 50px;
-                background: #BC955C;
-                border: none;
+            .inputfield-right{
+                width: 260px;
+                margin: auto;
             }
-
-            h3{
-                @include font(18px);
+            .title-text{
+                @include font(16px);
                 color: $color_444;
                 font-weight: 300;
-                padding: 15px 0;
-            }
-
-            Input{
-                box-sizing: border-box;
-                width: 100%;
-                padding: 10px 10px;
-                border-radius: 10px;
-                font-size: 24px;
-                margin-bottom: 20px;
-                font-size: 16px;
+                display: flex;
                 text-align: left;
-                outline:none;
+                line-height: 2.2;
+                margin-top: 10px;
             }
-            .forgotpassword{
-                @include font(15px);
-                font-weight: 300;
-                color:$color_444;
-                text-decoration:none;
-
-                &:hover {
-                text-decoration:none;
-                color:$front_color_main;
+            .input-gold{
+                display: flex;
+                text-align: left;
+                width: 220px;
+                border: 1px solid $back_color_hover;
+                &:focus{
+                    border: 1px solid $back_color_main;
                 }
             }
+            .btn-blue{
+                margin: 30px;
+            }
+    }
+    // ---------- 登入 ------------
+    .signinform{ 
+            .title{
+                @include font(32px);
+                color: $color_444;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            .inputfield-left{
+                width: 260px;
+                margin: auto;
+            }
+            .title-text{
+                @include font(16px);
+                color: $color_444;
+                font-weight: 300;
+                display: flex;
+                text-align: left;
+                line-height: 2.2;
+                margin-top: 10px;
+            }
+            .input-gold{
+                display: flex;
+                text-align: left;
+                width: 220px;
+            }
+            .forgot_password{
+                @include font(16px);
+                color: $front_color_main;
+                font-weight: 300;
+                display: flex;
+                justify-content: end;
+                line-height: 2.2;
+                &:hover{
+                    color: $front_color_active;
+                }
+            }
+            .btn-gold{
+                margin-top: 40px;
+            }
+    }
+   }
+   .signup-card{
+    width: 800px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: center;
+    // z-index: -1;
+   }
+   // ---------- 歡迎回來 ------------
+   .overlay-left{
+    // display: none;
+        position: relative;
+        right: 200px;
+        // opacity:0;
+        // z-index: 1;
+        border-radius: 10px 0 0 10px;
+        background-color: $back_color_active;
+        display: flex;
+        
+        .overlay-card-left{
+            margin: auto;
+            text-align: center;
+            h3{
+                @include font(28px);
+                color: #fff;
+                text-align: center;
+                line-height: 2.2;
+                margin-bottom: 20px;
+            }
+            p{
+                @include font(16px);
+                color: #fff;
+                font-weight: 300;
+                text-align: center;
+                line-height: 2.2;
+                margin-bottom: 60px;
+            }
+            .btn-blue_2nd{
+                margin-top: 90px;
+            }
         }
-    }
-    .login-article-btn{
-        margin-top: 50px;
-    }
-    .btn-gold{
-        padding: 10px 76px;
-    }
-    .login-article-signup{
-        margin-top: 50px;
-    }
-    .btn-gold_2nd{
-        padding: 10px 76px;
-    }
+   }
+   // ---------- 還不是會員 ------------
+   .overlay-right{  
+        opacity: 1;
+        background-color: $front_color_active;
+        border: 1px solid $front_color_active;
+        border-radius: 0 10px 10px 0;
+        display: flex;
+        .overlay-card-right{
+            margin: auto;
+            text-align: center;
+            h3{
+                @include font(28px);
+                color: #fff;
+                text-align: center;
+                line-height: 2.2;
+            }
+            p{
+                @include font(16px);
+                color: #fff;
+                font-weight: 300;
+                text-align: center;
+                line-height: 2.2;
+                margin: 10px;
+            }
+            .btn-gold_2nd{
+                margin-top: 40px;
+            }
+        }
+        
+   }
+   
+
+    
+    
 }
 
 </style>
