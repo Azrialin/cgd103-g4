@@ -125,6 +125,16 @@ const routes = [
     component: () => import('../views/ForgotpasswordView.vue')
   },
   {
+    path: '/Signin_suc',
+    name: 'Signin_suc',
+    component: () => import('../views/Signin_sucView.vue')
+  },
+  {
+    path: '/Signup_suc',
+    name: 'Signup_suc',
+    component: () => import('../views/Signup_sucView.vue')
+  },
+  {
     path: '/Contactus',
     name: 'Contactus',
     component: () => import('../views/ContactusView.vue')
