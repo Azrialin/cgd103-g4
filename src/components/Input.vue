@@ -1,11 +1,9 @@
 <template>
-    <div>
         <input class="Input" 
         @focus="InputFocus" 
         :type="InputType" 
         :placeholder="InputDefault
         "/>
-    </div>
 </template>
 
 <script>
@@ -18,7 +16,6 @@ export default {
             Text:'',
             BorderColor:'#EBDFCE',
             BorderColorActive:'#BC955C',
-            InputType : 'text',
         }
     },
 }
@@ -37,7 +34,5 @@ export default {
     }
     .Input[type="text"]:focus{
         border: 1px solid v-bind(BorderColorActive) ;
-    }
-    input[type="password"]{
     }
 </style>

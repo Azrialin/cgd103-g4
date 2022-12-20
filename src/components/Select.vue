@@ -1,5 +1,5 @@
 <template>
-    <select id="Select_DropDown" :selected="selected" :option="options">
+    <select id="Select_DropDown">
         <option disabled selected value="0">{{DefaultText}}</option>
         <option class="options" v-for="item in option" :key="item.value" :label="item.label" :value="item.value"></option>
     </select>
