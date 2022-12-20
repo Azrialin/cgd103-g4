@@ -65,7 +65,7 @@
 
         },
         created(){
-
+            this.getFaqData_Fetch();
         },
         mounted(){
             
@@ -85,62 +85,7 @@
                     { faq_type: '行程問題' },
                     { faq_type: '商品問題' },
                 ],
-                faqList:[
-                    { 
-                        faq_type: '會員問題',
-                        faq_no: '001',
-                        faq_q:  '請問我忘記密碼了怎麼辦？',
-                        faq_a:  '請撥打客服電話，由專人為您服務。',
-                    },
-                    { 
-                        faq_type: '會員問題',
-                        faq_no: '002',
-                        faq_q: '請問客服電話是？我找不到。',
-                        faq_a: '您好，客服電話是：00-0000-0000。',
-                    },
-                    { 
-                        faq_type: '會員問題',
-                        faq_no: '003',
-                        faq_q:  '請問可以不要填寫LINE ID嗎？',
-                        faq_a:  '可以的，親。',
-                    },
-                    { 
-                        faq_type: '行程問題',
-                        faq_no: '004',
-                        faq_q:  '我不小心訂錯行程了，請問要如何退訂？',
-                        faq_a:  '請至【會員專區】>【行程訂單查詢】，點擊【取消行程】',
-                    },
-                    { 
-                        faq_type: '行程問題',
-                        faq_no: '005',
-                        faq_q: '我想要刷卡，但我不能填寫安全碼？',
-                        faq_a: '請撥打客服電話，由專人為您服務。',
-                    },
-                    { 
-                        faq_type: '行程問題',
-                        faq_no: '006',
-                        faq_q:  '我請問我要如何查詢乘車座位？',
-                        faq_a:  '您好，我們不提供劃位服務，建議您提早上車，先搶先贏。',
-                    },
-                    { 
-                        faq_type: '行程問題',
-                        faq_no: '007',
-                        faq_q:  '我購買了方案A，請問發車時間是？',
-                        faq_a:  '請撥打客服電話，由專人為您服務。',
-                    },
-                    { 
-                        faq_type: '商品問題',
-                        faq_no: '008',
-                        faq_q:  '請問現貨商品多久會寄出？',
-                        faq_a:  '請撥打客服電話，由專人為您服務。',
-                    },
-                    { 
-                        faq_type: '商品問題',
-                        faq_no: '009',
-                        faq_q: '請問我要如何查詢貨況呢？',
-                        faq_a: '請撥打客服電話，由專人為您服務。',
-                    },
-                ],
+                faqList:[],
             }
         },
         methods: {
@@ -149,7 +94,15 @@
                 this.activeList = this.faqList.filter(item => {
                     return item.faq_type === tab.faq_type;
                 });
-            }
+            },
+            getFaqData_Fetch(){
+                fetch('http://localhost/CGD103_G4_front/public/php/Faq_getData.php')
+                .then(res=>res.json())
+                .then(json=>{
+                    this.faqList = json;
+                    this.activeList = this.faqList;
+            })
+		},
         },
     }
 </script>
