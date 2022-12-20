@@ -2,15 +2,15 @@
   <div class="pro-content">
     <breadcrumb :fonts="fonts" />
     <div class="pro-main">
-      <div class="pro-up" v-for="(product,index) in content" :key="product.prod_id">
+      <!-- <div class="pro-up" v-for="(product,index) in content" :key="product.prod_id"> -->
         <div class="pro-pic">
-          <img :src="`/img/${product.prod_pic_main}`" />
+          <!-- <img :src="$route.params.pic1" alt="" /> -->
         </div>
         <div class="pro-txt">
-          <h2 class="pro-txt-title">{{ product.prod_name }}</h2>
+          <h2 class="pro-txt-title">{{ $route.params.name }}</h2>
           <div class="pro-price">
             販售價格:
-            <span class="pro-price-num">${{ content["price"] }}</span>
+            <span class="pro-price-num">${{ $route.params.price }}</span>
           </div>
           <div class="pro-price">
             購買數量:
@@ -31,7 +31,7 @@
         </div>
         <div class="produce-intro">
           <div class="pro-produce">
-            {{ content["txt"] }}
+            {{ $route.params.intro }}
           </div>
         </div>
         <div class="pro-pro-pic">
@@ -42,7 +42,7 @@
             <img :src="content['src3']" alt="" />
           </div>
         </div>
-      </div>
+      <!-- </div> -->
       <div class="pro-warn">
         <h3>訂購須知</h3>
         <ul class="pro-warn-txt">
@@ -114,6 +114,9 @@ import productcard from "@/components/ProductCard.vue";
 
 export default {
   name: "ShopContent",
+  // props:{
+  //   id:Number,
+  //   },
   components: {
     breadcrumb,
     Swiper,

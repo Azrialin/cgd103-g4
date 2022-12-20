@@ -169,7 +169,8 @@ export default {
       console.log(this.list);
     },
     goItem(item){
-      this.$router.push({path:`/shop/:${item.prod_id}`})
+      this.$router.push({path:`/shop/${item.prod_id}/${item.prod_name}/${item.prod_price}/${item.prod_intro}`})
+      // /${item.prod_pic_main}
     },
   },
   computed: {

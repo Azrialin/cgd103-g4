@@ -74,9 +74,10 @@ const routes = [
     component: () => import('../views/ShopView.vue')
   },
   {
-    path: '/shop/:id',
+    path: '/shop/:id/:name/:price/:intro',
     name: 'shopcontent',
-    component: () => import('../views/ShopContent.vue')
+    component: () => import('../views/ShopContent.vue'),
+    // props:true
   },
   {
     path: '/shopcart',
