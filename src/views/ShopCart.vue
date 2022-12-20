@@ -16,9 +16,9 @@
       <div class="shopcart-item" v-for="item in list" :key="item.id" col-sm-12>
         <cartitem
           :id="item.id"
-          :img="item.img"
-          :title="item.title"
-          :price="item.price"
+          :img="`/img/${item.prod_pic_main}`"
+          :title="item.prod_name"
+          :price="item.prod_price"
           :amount="item.amount"
         />
         <span class="del" @click="delitem(index)">
@@ -195,6 +195,7 @@ export default {
     },
     add() {
       this.step++;
+      this.target.backgroundColor = "#fa0";
     },
     reduce() {
       this.step--;

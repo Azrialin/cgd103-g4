@@ -14,27 +14,13 @@
         },
 		mounted() {
 			 this.$store.dispatch("setCart", [
-      {
-        id: 1,
-        img: require(`@/assets/img/products/pro4.jpg`),
-        title: "長崎蛋糕",
-        price: 460,
-        amount:1
-      },
-      {
-        id: 2,
-        img: require(`@/assets/img/products/pro2.jpg`),
-        title: "曲奇餅乾",
-        price: 280,
-        amount:1
-      },
-      {
-        id: 3,
-        img: require(`@/assets/img/products/pro3.jpg`),
-        title: "透明醬油",
-        price: 320,
-        amount:1
-      },
+      // {
+      //   id: 1,
+      //   img: require(`@/assets/img/products/pro4.jpg`),
+      //   title: "長崎蛋糕",
+      //   price: 460,
+      //   amount:1
+      // },
     ]);
 
 		},

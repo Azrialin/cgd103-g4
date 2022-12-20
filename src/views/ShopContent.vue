@@ -2,43 +2,45 @@
   <div class="pro-content">
     <breadcrumb :fonts="fonts" />
     <div class="pro-main">
-      <div class="pro-pic">
-        <img :src="content['src1']" alt="" />
-      </div>
-      <div class="pro-txt">
-        <h2 class="pro-txt-title">{{ content["title"] }}</h2>
-        <div class="pro-price">
-          販售價格:
-          <span class="pro-price-num">${{ content["price"] }}</span>
+      <div class="pro-up" v-for="(product,index) in content" :key="product.prod_id">
+        <div class="pro-pic">
+          <img :src="`/img/${product.prod_pic_main}`" />
         </div>
-        <div class="pro-price">
-          購買數量:
-          <span class="pro-amount-btn">
-            <button @click="reduceCount" class="minus">-</button>
-            <input type="text" v-model.number="count" class="input" />
-            <button @click="addCount" class="minus">+</button>
-          </span>
+        <div class="pro-txt">
+          <h2 class="pro-txt-title">{{ product.prod_name }}</h2>
+          <div class="pro-price">
+            販售價格:
+            <span class="pro-price-num">${{ content["price"] }}</span>
+          </div>
+          <div class="pro-price">
+            購買數量:
+            <span class="pro-amount-btn">
+              <button @click="reduceCount" class="minus">-</button>
+              <input type="text" v-model.number="count" class="input" />
+              <button @click="addCount" class="minus">+</button>
+            </span>
+          </div>
+          <div class="pro-btn">
+            <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="cart">
+              <i class="fa-solid fa-plus"></i>加入購物車
+            </button>
+            <button class="pro-btn-btn btn-gold" @click="buy">
+              <i class="fa-solid fa-bag-shopping"></i>立即購買
+            </button>
+          </div>
         </div>
-        <div class="pro-btn">
-          <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="cart">
-            <i class="fa-solid fa-plus"></i>加入購物車
-          </button>
-          <button class="pro-btn-btn btn-gold" @click="buy">
-            <i class="fa-solid fa-bag-shopping"></i>立即購買
-          </button>
+        <div class="produce-intro">
+          <div class="pro-produce">
+            {{ content["txt"] }}
+          </div>
         </div>
-      </div>
-      <div class="produce-intro">
-        <div class="pro-produce">
-          {{ content["txt"] }}
-        </div>
-      </div>
-      <div class="pro-pro-pic">
-        <div class="pro-pic-big">
-          <img :src="content['src2']" alt="" />
-        </div>
-        <div class="pro-pic-big">
-          <img :src="content['src3']" alt="" />
+        <div class="pro-pro-pic">
+          <div class="pro-pic-big">
+            <img :src="content['src2']" alt="" />
+          </div>
+          <div class="pro-pic-big">
+            <img :src="content['src3']" alt="" />
+          </div>
         </div>
       </div>
       <div class="pro-warn">
@@ -72,7 +74,8 @@
           <swiper
             class="bannerfa"
             :pagination="{ clickable: true }"
-            :modules="modules" :navigation="{nextEl,prevEl}" 
+            :modules="modules"
+            :navigation="{ nextEl, prevEl }"
             :slides-per-view="xyz"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
@@ -85,10 +88,9 @@
               :key="item.id"
             >
               <productcard
-                :title="item.title"
-                :price="item.price"
-                :img="item.img"
-                class="more-pro-card"
+                :title="item.prod_name"
+                :price="item.prod_price"
+                :img="`/img/${item.prod_pic_main}`"
               />
             </swiper-slide>
           </swiper>
@@ -128,74 +130,75 @@ export default {
     };
     const isshock = true;
     return {
+      // cardContext2: { list : []}, 鴻銘寫的先留著
       xyz: 4,
       count: 1,
       fonts: [
         { name: "首頁", source: "/" },
         { name: "線上商城", source: "shop" },
-        { name: "商品詳情", source: "shopcontent" },
+        // { name: "商品詳情", source: `shop:${id}` },
       ],
       onSwiper,
       onSlideChange,
       modules: Pagination,
-      content: {
-        title: "福砂屋九州長崎蛋糕",
-        price: "460",
-        txt: "採用精選雞蛋、砂糖、糖漿和小麥粉的簡單材料，全程不用攪拌機，完全靠師傅手感攪拌，製作出口味道地且香甜綿潤的蛋糕點心。長崎蛋糕底砂糖結晶顆粒的粗糖，是攪拌蛋糕材料時留下來的，也是福砂屋長崎蛋糕的特徵。作為長崎蛋糕的傑作，特製五三燒長崎蛋糕的風味更濃，且香氣更濃郁。它由技術熟練的糕點師傅以高超技術製成，生量數量少，是福砂屋的特製長崎蛋糕，廣受長崎 蛋糕饕客們喜愛。",
-        src1: require(`@/assets/img/products/pro-b.jpg`),
-        src2: require(`@/assets/img/products/pro-b-1.jpg`),
-        src3: require(`@/assets/img/products/pro-b-2.jpg`),
-      },
+      content: [
+        // title: "福砂屋九州長崎蛋糕",
+        // price: "460",
+        // txt: "採用精選雞蛋、砂糖、糖漿和小麥粉的簡單材料，全程不用攪拌機，完全靠師傅手感攪拌，製作出口味道地且香甜綿潤的蛋糕點心。長崎蛋糕底砂糖結晶顆粒的粗糖，是攪拌蛋糕材料時留下來的，也是福砂屋長崎蛋糕的特徵。作為長崎蛋糕的傑作，特製五三燒長崎蛋糕的風味更濃，且香氣更濃郁。它由技術熟練的糕點師傅以高超技術製成，生量數量少，是福砂屋的特製長崎蛋糕，廣受長崎 蛋糕饕客們喜愛。",
+        // src1: require(`@/assets/img/products/pro-b.jpg`),
+        // src2: require(`@/assets/img/products/pro-b-1.jpg`),
+        // src3: require(`@/assets/img/products/pro-b-2.jpg`),
+      ],
 
       list: [
-        {
-          id: 1,
-          img: require(`@/assets/img/products/pro1.jpg`),
-          title: "JS怪奇薯條",
-          price: 180,
-        },
-        {
-          id: 2,
-          img: require(`@/assets/img/products/pro2.jpg`),
-          title: "曲奇餅乾",
-          price: 280,
-        },
-        {
-          id: 3,
-          img: require(`@/assets/img/products/pro3.jpg`),
-          title: "透明醬油",
-          price: 320,
-        },
-        {
-          id: 4,
-          img: require(`@/assets/img/products/pro4.jpg`),
-          title: "長崎蛋糕",
-          price: 460,
-        },
-        {
-          id: 5,
-          img: require(`@/assets/img/products/pro5.jpg`),
-          title: "明太子醬",
-          price: 480,
-        },
-        {
-          id: 6,
-          img: require(`@/assets/img/products/pro6.jpg`),
-          title: "昆布湯包",
-          price: 320,
-        },
-        {
-          id: 7,
-          img: require(`@/assets/img/products/pro7.jpg`),
-          title: "旺旺仙貝",
-          price: 150,
-        },
-        {
-          id: 8,
-          img: require(`@/assets/img/products/pro8.jpg`),
-          title: "七彩洋芋片",
-          price: 280,
-        },
+        // {
+        //   id: 1,
+        //   img: require(`@/assets/img/products/pro1.jpg`),
+        //   title: "JS怪奇薯條",
+        //   price: 180,
+        // },
+        // {
+        //   id: 2,
+        //   img: require(`@/assets/img/products/pro2.jpg`),
+        //   title: "曲奇餅乾",
+        //   price: 280,
+        // },
+        // {
+        //   id: 3,
+        //   img: require(`@/assets/img/products/pro3.jpg`),
+        //   title: "透明醬油",
+        //   price: 320,
+        // },
+        // {
+        //   id: 4,
+        //   img: require(`@/assets/img/products/pro4.jpg`),
+        //   title: "長崎蛋糕",
+        //   price: 460,
+        // },
+        // {
+        //   id: 5,
+        //   img: require(`@/assets/img/products/pro5.jpg`),
+        //   title: "明太子醬",
+        //   price: 480,
+        // },
+        // {
+        //   id: 6,
+        //   img: require(`@/assets/img/products/pro6.jpg`),
+        //   title: "昆布湯包",
+        //   price: 320,
+        // },
+        // {
+        //   id: 7,
+        //   img: require(`@/assets/img/products/pro7.jpg`),
+        //   title: "旺旺仙貝",
+        //   price: 150,
+        // },
+        // {
+        //   id: 8,
+        //   img: require(`@/assets/img/products/pro8.jpg`),
+        //   title: "七彩洋芋片",
+        //   price: 280,
+        // },
       ],
       modules: [Pagination, Navigation],
       x: 0,
@@ -206,6 +209,10 @@ export default {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  created() {},
+  mounted() {
+    this.getData();
+  },
   methods: {
     addCount() {
       this.count += 1;
@@ -214,9 +221,7 @@ export default {
       if (this.count <= 0) return;
       this.count -= 1;
     },
-    cart() {
-      this.$router.push("/shopcart?step=0");
-    },
+    cart() {},
     buy() {
       this.$router.push("/shopcart?step=0");
     },
@@ -245,6 +250,18 @@ export default {
         circle.style.opacity = 0;
       }
     },
+    getData() {
+      // this.result = result;
+      fetch("http://localhost/g4/public/phpfiles/getProducts.php")
+        .then((res) => res.json())
+        .then((vv) => {
+          this.list = vv;
+          console.log(this.list);
+        });
+    },
+    saveData() {
+      console.log(this.list);
+    },
   },
   created() {
     let windowidth = window.innerWidth;
@@ -254,6 +271,11 @@ export default {
       this.xyz = 4;
     }
   },
+  // computed: {
+  //   cart() {
+  //     return this.$store.getters.cart;
+  //   },
+  // },
 };
 </script>
 
@@ -363,11 +385,11 @@ export default {
       margin: auto;
       margin-top: 50px;
       width: 100%;
-      .swiper{
-        --swiper-theme-color: #D7BF9D;
-        --swiper-navigation-color: #D7BF9D;
+      .swiper {
+        --swiper-theme-color: #d7bf9d;
+        --swiper-navigation-color: #d7bf9d;
         --swiper-navigation-size: 40px;
-        --swiper-navigation-border-radius:100%;
+        --swiper-navigation-border-radius: 100%;
       }
       #circle {
         position: absolute;
