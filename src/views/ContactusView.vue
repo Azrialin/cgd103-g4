@@ -14,38 +14,51 @@
           </p>
         </div>
       </div>
-      <div class="Contact-Table">
-        <div class="Contact-Table-Item">
-          <p>聯絡主題*</p>
-          <CSelect :option="options" DefaultText="請選擇相關聯絡主題"> </CSelect>
+      <form method="post" enctype="multipart/form-data">
+        <div class="Contact-Table">
+          <div class="Contact-Table-Item">
+            <p>聯絡主題*</p>
+            <CSelect
+              name="opinion_selecttopic"
+              v-model="opinionselecttopic"
+              :option="options"
+              DefaultText="請選擇相關聯絡主題"
+            >
+            </CSelect>
+          </div>
+          <div class="Contact-Table-Item">
+            <p>聯絡人*</p>
+            <Input name="opinion_name" v-model="opinionname" />
+          </div>
+          <div class="Contact-Table-Item">
+            <p>Line ID</p>
+            <Input />
+          </div>
+          <div class="Contact-Table-Item">
+            <p>連絡電話*</p>
+            <Input
+              name="opinion_tel"
+              v-model="opiniontel"
+              InputDefault="請以手機為主"
+            />
+          </div>
+          <div class="Contact-Table-Item">
+            <p>Email</p>
+            <Input name="opinion_mail" v-model="opinionmail" />
+          </div>
+          <div class="Contact-Table-Item">
+            <p>需求說明</p>
+            <textarea
+              name="opinion_detail"
+              id=""
+              cols="30"
+              rows="10"
+              v-model="opiniondetail"
+            ></textarea>
+          </div>
+          <div @click="submit">送出表單</div>
         </div>
-        <div class="Contact-Table-Item">
-          <p>聯絡人*</p>
-          <Input/>
-        </div>
-        <div class="Contact-Table-Item">
-          <p>Line ID</p>
-          <Input/>
-        </div>
-        <div class="Contact-Table-Item">
-          <p>連絡電話*</p>
-          <Input InputDefault="請以手機為主"/>
-        </div>
-        <div class="Contact-Table-Item">
-          <p>Email</p>
-          <Input/>
-        </div>
-        <div class="Contact-Table-Item">
-          <p>需求說明</p>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
-        <button>送出表單</button>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -63,29 +76,55 @@ export default {
   },
   data() {
     return {
+      opinionname: "",
+      opinionmail: "",
+      opiniontel: "",
+      opiniondetail: "",
+      opinionselecttopic: "",
       fonts: [
         { name: "首頁", source: "/" },
         { name: "聯絡我們", source: "Contactus" },
       ],
       options: [
         {
-          value: "1",
+          value: "行程諮詢",
           label: "行程諮詢",
         },
         {
-          value: "2",
+          value: "量身訂做",
           label: "量身訂做",
         },
         {
-          value: "3",
+          value: "旅遊建議",
           label: "旅遊建議",
         },
         {
-          value: "4",
+          value: "其他問題",
           label: "其他問題",
         },
       ],
     };
+  },
+  methods: {
+    submit() {
+      const myURL = new URL(
+        "http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php"
+      );
+      fetch("http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php", {
+        method: "POST",
+        body: new URLSearchParams({
+          opinion_name: this.opinionname,
+          opinion_tel: this.opiniontel,
+          opinion_mail: this.opinionmail,
+          opinion_detail: this.opiniondetail,
+          opinion_selecttopic: this.opinionselecttopic,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+        });
+    },
   },
 };
 </script>
@@ -176,8 +215,8 @@ export default {
 
 @media (min-width: 1200px) {
   #Select_DropDown {
-    background: url("../assets/img/🦆 icon _chevron-down_.svg") 98% 50% no-repeat
-    scroll #fff;
+    background: url("../assets/img/🦆 icon _chevron-down_.svg") 98% 50%
+      no-repeat scroll #fff;
   }
   .Contact-Seaction {
     display: flex;
@@ -188,7 +227,7 @@ export default {
         justify-content: center;
       }
     }
-    .Contact-Table{
+    .Contact-Table {
       width: 60%;
     }
   }

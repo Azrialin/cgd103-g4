@@ -5,6 +5,8 @@
     <h2>行程預約</h2>
     <div class="content_form">
       <div class="title_name" v-for="title in titles" :key="title">
+      <!-- <div class="title_name" v-for="result in results" :key="result"> -->
+        <!-- <h4>{{title['date']}}</h4> -->
         <h4>{{title['date']}}</h4>
         <h3>{{title['name']}}</h3>
         <h4>行程代號:{{title['code']}}</h4>
@@ -15,15 +17,15 @@
           <h3>主要聯絡人</h3>
           <div class="person">
             <p>聯絡人*</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" name="mem_name" v-model="results['mem_name']" disabled/>
           </div>
           <div class="phone">
             <p>聯絡電話*</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" name="mem_phone" v-model="results['mem_phone']" disabled/>
           </div>
           <div class="email">
             <p>E-Mail</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" name="mem_email" v-model="results['mem_email']" disabled/>
           </div>
           <div class="say">
             <p>備註</p>
@@ -34,19 +36,19 @@
           <h3>旅客資料</h3>
           <div class="country">
             <p>旅客國籍*</p>
-            <input class="inputcompo" disabled/>
+            <input class="inputcompo" name="mem_nation" v-model="results['mem_nation']" disabled/>
           </div>
           <div class="many">
             <p>旅行人數*</p>
             <div class="count">
-              <input class="inputcompo inmany" v-model.number=number />
+              <input class="inputcompo inmany" name="package_ticket_amount" v-model.number=number />
               <div class="minus" @click="minus">-</div>
               <div class="plus" @click="add">+</div>
             </div>
           </div>
           <div class="card">
             <p>信用卡號碼*</p>
-            <input class="inputcompo"/>
+            <input class="inputcompo" name="credit_card" v-model="results['credit_card']"/>
           </div>
         </div>
       </div>
@@ -56,7 +58,7 @@
           <input type="checkbox">同意我們的<a href="">使用條款</a>和<a href="">隱私政策</a>
         </div>
         <div class="checksub">
-          <a href=""><p>確認送出</p></a>
+          <div @click="setData"><p>確認送出</p></div>
         </div>
       </div>
     </div>
@@ -77,12 +79,38 @@
       },
       data(){
         return{
+          results:[],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
           titles:[{date:`${this.$route.query.date}`,name:"山口圓舞曲，三世界遺產",code:"JTR05221122A",price:"100000"}],
           number:1,
         }
       },
+      created() {
+        this.getData();
+      },
       methods:{
+        setData(){
+          const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setcheck.php');
+          fetch(seturl,{
+            method:'POST',
+            body: new URLSearchParams({
+              credit_card:this.results['credit_card'],
+              package_ticket_amount:this.number,
+            })})
+            .then((res)=>res.json())
+            .then((result)=>{
+              console.log(result)
+          })
+        },
+        getData(){
+          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getmember.php');
+          fetch(myurl)
+          .then((rs)=>rs.json())
+          .then((json)=>{
+            this.results=json[0];
+            console.log(this.results);
+          })
+        },
         add(){
           this.number++;
         },
@@ -234,8 +262,8 @@
         @include font(16px);
         display: flex;
         justify-content: center;
-        a{
-          text-decoration: none;
+        div{
+          cursor: pointer;
           background-color: $front_color_main;
           padding: 15px;
           border-radius: 10px;
@@ -255,6 +283,7 @@
   .container_form{
     h2{
       @include font(32px);
+      text-align: center;
     }
     .content_form{
       .title_name{

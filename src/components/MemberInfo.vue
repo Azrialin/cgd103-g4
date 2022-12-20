@@ -7,7 +7,7 @@
               <p class="must">*為必填欄位</p>
               <div class="try col-xl-6">
                 <h3 class="info">姓名<span>*</span></h3>
-                <input v-model="result.mem_name"/>
+                <input name="mem_name" v-model="result.mem_name"/>
               </div>
               <div class="try col-xl-6">
                 <h3 class="info">英文名</h3>
@@ -15,17 +15,17 @@
               </div>
 
               <h3 class="info">密碼<span>*</span></h3>
-              <input class="unchangeable"  v-model="result.mem_psw" disabled/>
+              <input class="unchangeable" name="mem_psw" v-model="result.mem_psw" />
               <h3 class="info">電子信箱<span>*</span></h3>
-              <input class="unchangeable"  v-model="result.mem_email" disabled/>
+              <input class="unchangeable" name="mem_email" v-model="result.mem_email" />
               <h3 class="info">地址</h3>
-              <input  v-model="result.mem_address"/>
+              <input name="mem_address" v-model="result.mem_address"/>
 
               <div class="try col-xl-6">
                 <h3 class="info ">電話號碼<span>*</span></h3>
-                <input  v-model="result.mem_phone"/>
+                <input name="mem_phone" v-model="result.mem_phone"/>
                 <h3 class="info ">國籍</h3>
-                <select  name="" id="" v-model="result.mem_nation">
+                <select  name="mem_nation" id="" v-model="result.mem_nation">
                     <option  value="TAIWAN">Taiwan</option>
                     <option value="JAPAN">Japan</option>
                 </select>
@@ -39,7 +39,7 @@
                 </select> -->
 
                 <h3 class="info ">護照號碼</h3>
-                <input  v-model="result.mem_passport_no"/>
+                <input name="mem_passport_no" v-model="result.mem_passport_no"/>
               </div>
 
               <div class="button-section">
@@ -68,7 +68,7 @@ const result = {
     // gender: "-女-",
     // passport: ""
 }
-
+// import {BASE_URL} from '@/assets/js/commom.js'
 export default {
     components: {
 
@@ -86,6 +86,8 @@ export default {
         getData(){
             this.result = result;
             fetch('http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php')
+            // fetch(`{BASE_URL}/getMemberInfo.php`)
+
                   .then((res) => res.json())
                   .then((json) =>{
                     this.result = json[0];
@@ -94,6 +96,7 @@ export default {
         },
         saveData(){
           // console.log(this.result);
+          // fetch(`{BASE_URL}/prod_update.php`)
           fetch('http://localhost/cgd103-g4/public/phpfiles/prod_update.php', {
             method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
           })
@@ -101,7 +104,7 @@ export default {
           .then((result)=>{
             console.log(result);
           })
-
+           alert("更改成功");
         }
     },
     watch: {
