@@ -65,21 +65,21 @@ export default {
           title:"所有商品",
           open:false,
           sublist:[
-            "子系列","子系列",
+            "水壺","便當盒","零食","調味料"
           ]
         },
         {
           title:"紀念品系列",
           open:false,
           sublist:[
-            "子系列","子系列",
+            "水壺","便當盒",
           ]
         },
         {
           title:"特產系列",
           open:false,
           sublist:[
-            "子系列","子系列",
+            "零食","調味料",
           ]
         }
       ]

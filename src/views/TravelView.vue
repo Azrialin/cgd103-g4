@@ -5,20 +5,27 @@
     <div class="container_tra">
       <div class="content_tra">
         <ul class="tra_group">
-          <li v-for="list in lists" :key="list">
+          <!-- <li v-for="list in lists" :key="list"> -->
+          <li v-for="result in results" :key="result">
             <div class="tra_card">
               <div class="tra_img">
                 <router-link to="/travelcontent" class="aaa">
-                  <div class="boxb">${{list['price']}} 起</div>
-                  <img :src="list['src']" alt="">
+                  <!-- <div class="boxb">${{list['price']}} 起</div> -->
+                  <div class="boxb">${{result['package_price']}} 起</div>
+                  <!-- <img :src="list['src']" alt=""> -->
+                  <img :src='require(`@/assets/img/News/6.jpg`)' alt="">
                 </router-link>
               </div>
               <div class="tra_intro">
-                <h3>{{list['title']}}</h3>
-                <h4>{{list['subtitle']}}</h4>
-                <p class="content font-16-15em">{{list['content']}}</p>
+                <!-- <h3>{{list['title']}}</h3> -->
+                <h3>{{result['package_title']}}</h3>
+                <!-- <h4>{{list['subtitle']}}</h4> -->
+                <h4>{{result['package_name']}}</h4>
+                <!-- <p class="content font-16-15em">{{list['content']}}</p> -->
+                <p class="content font-16-15em">{{result['package_des']}}</p>
                 <div class="tago">
-                  <p>{{list['tag']}}</p>
+                  <!-- <p>{{list['tag']}}</p> -->
+                  <p>{{result['package_no']}}</p>
                   <router-link to="/travelcontent">行程詳情</router-link>
                 </div>
               </div>
@@ -42,31 +49,31 @@
         },
         data(){
           return{
-            // results:{},
-            lists:[{src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
-            {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
-            {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
-            {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"}],
+            results:[],
+            // lists:[{src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
+            // {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
+            // {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
+            // {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"}],
             fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'}],  // source各位自己輸入對應的router路徑^^
             
           }
         },
-        // created(){
-        //   this.getData();
-        // },
-        // methods: {
-        //   getData(){
-        //     const myurl = new URL(
-        //       'http://localhost/cgd103-g4/public/phpfiles/getTravelView.php'
-        //     );
-        //     fetch(myurl)
-        //       .then((res) => res.json())
-        //       .then((json) =>{
-        //         this.results=json;
-        //         console.log(this.results);
-        //       })
-        //     },
-        // },
+        created(){
+          this.getData();
+        },
+        methods: {
+          getData(){
+            const myurl = new URL(
+              'http://localhost/cgd103-g4/public/phpfiles/getTravelView.php'
+            );
+            fetch(myurl)
+              .then((res) => res.json())
+              .then((json) =>{
+                this.results=json;
+                console.log(this.results);
+              })
+            },
+        },
     }
 </script>
 <style lang="scss" scoped>
@@ -191,7 +198,7 @@
           }
           li:nth-child(2n) .tra_card .tra_img .boxb{
             background-color: #f8f8f8;
-            left: 0;
+            left: -10px;
             border-radius: 0px 10px 0px 0px;
           }
           .tra_card{
@@ -207,8 +214,8 @@
                   @include font(20px);
                   width: 150px;
                   height: 70px;
-                  right: -5px;
-                  bottom: -5px;
+                  right: -10px;
+                  bottom: -10px;
                 }
               }
               img{

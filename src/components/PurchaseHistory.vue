@@ -14,22 +14,22 @@
         <div class="merchandise-detail">
           <div class="merchandise-info">
             <h3>訂單編號</h3>
-            <span>{{ merchandise.product_orders_id }}</span>
+            <span>{{ merchandise[0].product_orders_id }}</span>
           </div>
           <hr />
           <div class="merchandise-info">
             <h3>會員編號</h3>
-            <span>{{ merchandise.mem_num }}</span>
+            <span>{{ merchandise[0].mem_num }}</span>
           </div>
           <hr />
           <div class="merchandise-info">
             <h3>訂購日期</h3>
-            <span>{{ merchandise.product_orders_date }}</span>
+            <span>{{ merchandise[0].product_orders_date }}</span>
           </div>
           <hr />
           <div class="merchandise-info">
             <h3>訂單金額</h3>
-            <span>{{ merchandise.product_orders_total }}</span>
+            <span>{{ merchandise[0].product_orders_total }}</span>
           </div>
           <hr />
           <!-- <div class="merchandise-info">
@@ -39,7 +39,7 @@
                  <hr> -->
           <div class="merchandise-info">
             <h3>出貨狀態</h3>
-            <span>{{ merchandise.product_orders_status }}</span>
+            <span>{{ merchandise[0].product_orders_status }}</span>
           </div>
         </div>
         <a @click="showdetail(index)" class="bottom">查看詳情</a>
@@ -74,10 +74,7 @@
         </div>
       </div>
 
-      <!-- <div v-show="show"> -->
       <Merchandisereceipt v-show="show" :result2="getResult2" />
-      <!-- <Merchandisereceipt v-show="show" :result2="result[showdetailIndex]"/> -->
-      <!-- </div> -->
 
       <!-- 返回button -->
       <button class="btn-gold_2nd" v-show="!hide">返回</button>
@@ -87,6 +84,7 @@
 </template>
 
 <script>
+// import {BASE_URL} from '@/assets/js/commom.js'
 import Merchandisereceipt from "@/components/Merchandisereceipt.vue";
 const result = [
   //   {
@@ -137,6 +135,7 @@ export default {
     // },
     getData() {
       // this.result = result;
+      // fetch(`{BASE_URL}/getPurchaseHistory.php`)
       fetch("http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php")
         .then((res) => res.json())
         .then((json) => {
