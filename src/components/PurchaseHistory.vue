@@ -84,6 +84,7 @@
 </template>
 
 <script>
+// import {BASE_URL} from '@/assets/js/commom.js'
 import Merchandisereceipt from "@/components/Merchandisereceipt.vue";
 const result = [
   //   {
@@ -134,6 +135,7 @@ export default {
     // },
     getData() {
       // this.result = result;
+      // fetch(`{BASE_URL}/getPurchaseHistory.php`)
       fetch("http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php")
         .then((res) => res.json())
         .then((json) => {

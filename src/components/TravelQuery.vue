@@ -80,6 +80,7 @@
 </template>
 
 <script>
+// import {BASE_URL} from '@/assets/js/commom.js'
 import Travelreceipt from '@/components/Travelreceipt.vue'
 const result = [
 
@@ -105,6 +106,7 @@ export default {
 
         getData(){
             /* this.result = result; */
+            // fetch(`{BASE_URL}/getTravelQuery.php`)
             fetch('http://localhost/cgd103-g4/public/phpfiles/getTravelQuery.php')
               .then((res)=>res.json())
               .then((json)=> {

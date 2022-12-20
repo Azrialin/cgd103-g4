@@ -68,7 +68,7 @@ const result = {
     // gender: "-女-",
     // passport: ""
 }
-
+// import {BASE_URL} from '@/assets/js/commom.js'
 export default {
     components: {
 
@@ -86,6 +86,8 @@ export default {
         getData(){
             this.result = result;
             fetch('http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php')
+            // fetch(`{BASE_URL}/getMemberInfo.php`)
+
                   .then((res) => res.json())
                   .then((json) =>{
                     this.result = json[0];
@@ -94,6 +96,7 @@ export default {
         },
         saveData(){
           // console.log(this.result);
+          // fetch(`{BASE_URL}/prod_update.php`)
           fetch('http://localhost/cgd103-g4/public/phpfiles/prod_update.php', {
             method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
           })
