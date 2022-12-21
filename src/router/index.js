@@ -60,13 +60,22 @@ const routes = [
     path: '/news',
     name: 'news',
     component: () => import('../views/NewsView.vue'),
+    children:[
+      {
+        path:'newsInfo',
+        component:() => import('../views/NewsInfoView.vue'),
+      },
+    ],
   },
   // ------TEST--------
-  {
-    path: '/newsInfo',
-    name: 'newsInfo',
-    component: () => import('../views/NewsInfoView.vue'),
-  },
+  // {//動態路由 //動態顯示內文
+  //   path: '/newsInfo/:newsId',
+  //   name: 'newsInfo',
+  //   component: () => import('../views/NewsInfoView.vue'),
+  //   // props : ()=> ({
+  //   //   newsId:''
+  //   // })
+  // },
   // ----------------
   {
     path: '/shop',
