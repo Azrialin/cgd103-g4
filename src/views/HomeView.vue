@@ -2,6 +2,7 @@
   <Banner class="col" :src="require(`@/assets/img/Banner/banner_index.jpg`)" />
   <div class="Home">
     <div>
+        <p>{{ temperature }}</p>
       <div class="title">
         <h1>Topic 最新消息</h1>
       </div>
@@ -69,8 +70,14 @@
         </div>
         <div class="HomeTrain-Graphic">
           <div class="HomeTrain-Pic">
-            <img src="../assets/img/Train/outside/img_602dfce09a61b.png" alt="" />
-            <img src="../assets/img/Train/outside/img_602e12443ccb7.jpeg" alt="" />
+            <img
+              src="../assets/img/Train/outside/img_602dfce09a61b.png"
+              alt=""
+            />
+            <img
+              src="../assets/img/Train/outside/img_602e12443ccb7.jpeg"
+              alt=""
+            />
           </div>
           <div class="HomeTrain-Text">
             <div class="HomeTrain-Title-Pc">
@@ -153,6 +160,7 @@ export default {
   },
   data() {
     return {
+      temperature: "",
       modules: [Navigation],
       lists: [
         {
@@ -170,8 +178,7 @@ export default {
         {
           imageurl: require("@/assets/img/News/3.jpg"),
           HomeNew_Title: "2022/11/06",
-          HomeNew_Subtitle:
-            "高千穗知名祭典活動-夜神樂 ，將於今年的11月...",
+          HomeNew_Subtitle: "高千穗知名祭典活動-夜神樂 ，將於今年的11月...",
         },
       ],
       articles: [
@@ -194,20 +201,23 @@ export default {
     };
   },
   methods: {
-    getdata() {
-      fetch(process.env.VUE_APP_WEATHERAPI)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (myJson) {
-          console.log(myJson);
-        });
-    },
+    // async getdata() {
+    //   const response = await fetch(process.env.VUE_APP_WEATHERAPI, {
+    //     method: "GET",
+    //     mode: "cors",
+    //   });
+    //   const data = await response.json();
+    //   this.temperature = data.main.temp + "°C";
+    //   console.log(data);
+    // },
   },
-  mounted() {
-    this.getdata();
+  created() {
+    // this.getdata();
+    //設定計時器
+    // setInterval(()=>{
+    // },3600*1000)
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -354,10 +364,10 @@ li {
 }
 
 @media (min-width: 1200px) {
-  .top-banner{
+  .top-banner {
     height: 680px;
     overflow: hidden;
-    :deep(img){
+    :deep(img) {
       object-fit: cover;
     }
   }
@@ -424,8 +434,8 @@ li {
           width: 400px;
           gap: 20px;
           margin: auto;
-          img{
-           width: 100%; 
+          img {
+            width: 100%;
           }
         }
         .MoreButton {
