@@ -13,19 +13,19 @@
                   <!-- <div class="boxb">${{list['price']}} 起</div> -->
                   <div class="boxb">${{result['package_price']}} 起</div>
                   <!-- <img :src="list['src']" alt=""> -->
-                  <img :src='require(`@/assets/img/News/6.jpg`)' alt="">
+                  <img :src="`/img/Scape/${result['package_pic']}`">
                 </router-link>
               </div>
               <div class="tra_intro">
                 <!-- <h3>{{list['title']}}</h3> -->
                 <h3>{{result['package_title']}}</h3>
                 <!-- <h4>{{list['subtitle']}}</h4> -->
-                <h4>{{result['package_name']}}</h4>
+                <h4>{{result['package_subtitle']}}</h4>
                 <!-- <p class="content font-16-15em">{{list['content']}}</p> -->
                 <p class="content font-16-15em">{{result['package_des']}}</p>
                 <div class="tago">
                   <!-- <p>{{list['tag']}}</p> -->
-                  <p>{{result['package_no']}}</p>
+                  <p>{{result['package_tag']}}</p>
                   <router-link to="/travelcontent">行程詳情</router-link>
                 </div>
               </div>

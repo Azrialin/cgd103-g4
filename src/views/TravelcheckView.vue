@@ -3,6 +3,7 @@
   <breadcrumb :fonts="fonts"/>
   <div class="container_form">
     <h2>行程預約</h2>
+    <form method="post" enctype="multipart/form-data">
     <div class="content_form">
       <div class="title_name" v-for="title in titles" :key="title">
       <!-- <div class="title_name" v-for="result in results" :key="result"> -->
@@ -29,7 +30,7 @@
           </div>
           <div class="say">
             <p>備註</p>
-            <textarea class="inputcompo tetxcompo"></textarea>
+            <textarea name="package_said" v-model="packagesaid" class="inputcompo tetxcompo"></textarea>
           </div>
         </div>
         <div class="main_come">
@@ -62,6 +63,7 @@
         </div>
       </div>
     </div>
+    </form>
   </div>
 </template>
 <script>
@@ -83,6 +85,7 @@
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
           titles:[{date:`${this.$route.query.date}`,name:"山口圓舞曲，三世界遺產",code:"JTR05221122A",price:"100000"}],
           number:1,
+          packagesaid:"",
         }
       },
       created() {
@@ -96,10 +99,11 @@
             body: new URLSearchParams({
               credit_card:this.results['credit_card'],
               package_ticket_amount:this.number,
+              package_said:this.packagesaid,
             })})
             .then((res)=>res.json())
             .then((result)=>{
-              console.log(result)
+              console.log(result);
           })
         },
         getData(){
