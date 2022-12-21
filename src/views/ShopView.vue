@@ -20,7 +20,7 @@
               :title="item.prod_name"
               :price="item.prod_price"
               :img="`/img/${item.prod_pic_main}`"
-              @click="goItem(item,index)"
+              @click="goItem(item)"
             />
 
           </div>
@@ -155,7 +155,12 @@ export default {
     this.getData();
   },
   methods: {
-    
+    // async getData(){
+    //   const id = this.$route.params.prod_id
+    //   const response = await fetch(`http://localhost/g4/public/phpfiles/getProducts.php/${{id}}`)
+    //   const list = await response.json()
+    //   this.list = list
+    // },
     getData() {
       // fetch(`{BASE_URL}/getProducts.php`)
       fetch("http://localhost/g4/public/phpfiles/getProducts.php")
@@ -169,8 +174,9 @@ export default {
       console.log(this.list);
     },
     goItem(item){
-      this.$router.push({path:`/shop/${item.prod_id}/${item.prod_name}/${item.prod_price}/${item.prod_intro}`})
+      this.$router.push({path:`/shop/${item.prod_id}`})
       // /${item.prod_pic_main}
+      // /${item.prod_name}/${item.prod_price}/${item.prod_intro}
     },
   },
   computed: {

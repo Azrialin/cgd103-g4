@@ -74,7 +74,7 @@ const routes = [
     component: () => import('../views/ShopView.vue')
   },
   {
-    path: '/shop/:id/:name/:price/:intro',
+    path: '/shop/:id',
     name: 'shopcontent',
     component: () => import('../views/ShopContent.vue'),
     // props:true
