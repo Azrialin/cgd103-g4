@@ -13,7 +13,7 @@
             <h3 class="news-title font-20">{{title}}</h3>
             <p class="news-des font-16-24em">{{des}}</p>
             <div class="news-btn">
-                <router-link to="/Newscontent" class="news-btn-more font-18">more</router-link>
+                <router-link to="/news/newsInfo" class="news-btn-more font-18" @click="toNext">more</router-link>
             </div>
         </div>
     </div>
@@ -27,7 +27,17 @@ export default {
         date: String,
         title: String,
         des: String,
-        link:String
+        link:String,
+    },
+    methods:{
+        toNext(){
+            // 切換頁面 $router.push語法有歷史紀錄，需要戴上參數(指引的網址)
+            this.$$router.push(`/news${this.news_no}`);
+            // /news
+        },
+        test(){
+            console.log(this.$route);
+        }
     }
 }
 </script>
