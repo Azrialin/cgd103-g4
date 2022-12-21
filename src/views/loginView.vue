@@ -114,138 +114,137 @@
 
     .wrap{
         width: 800px;
+        height: 700px;
         position: relative;
         overflow: hidden;
     }
    .panel,
    .main{
-    width: 400px;
-    height: 550px;
-    margin-top: 1px;
-    margin-bottom: 100px;
+        width: 400px;
+        height: 550px;
+        margin-top: 1px;
+        margin-bottom: 100px;
    }
    .image{
-    width: 60%;
-    margin: auto;
-    display: block;
+        width: 60%;
+        margin: auto;
+        display: block;
    }
+   //--------- 登入頁面卡片 ----------
     .signin-card{
-    display: flex;
-    position: relative;
-    transition: .3s;
-    left: 0;
-    z-index: 3;
-    top: -652px;
-
-    &.isMove{
-        transition: .3s;
-        // opacity: 0;
-        left: 400px;
-        .main{
-            border: 1px solid $back_color_active;
-            border-radius: 0 10px 10px 0;
-        }
-    }
-
-    .main{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border-radius: 10px 0 0 10px;
-        background-color: #fff;
-        border: 1px solid $front_color_main;
-    }
-    // ---------- 註冊 ------------
-    .signupform{ 
-            .title{
-                @include font(32px);
-                color: $color_444;
-                text-align: center;
-                margin: 15px;
+        position: relative;
+        transition: .2s;
+        // opacity: 0;
+        left: 0;
+        z-index: 3;
+        top: -652px;
+
+        &.isMove{
+            transition: .2s;
+            opacity: 1;
+            left: 400px;
+            .main{
+                border: 1px solid $back_color_active;
+                border-radius: 0 10px 10px 0;
             }
-            .inputfield-right{
-                width: 260px;
-                margin: auto;
-            }
-            .title-text{
-                @include font(16px);
-                color: $color_444;
-                font-weight: 300;
-                display: flex;
-                text-align: left;
-                line-height: 2.2;
-                margin-top: 10px;
-            }
-            .input-gold{
-                display: flex;
-                text-align: left;
-                width: 220px;
-                border: 1px solid $back_color_hover;
-                &:focus{
-                    border: 1px solid $back_color_main;
+        }
+
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 10px 0 0 10px;
+            background-color: #fff;
+            border: 1px solid $front_color_main;
+        }
+        // ---------- 註冊 ------------
+        .signupform{ 
+                .title{
+                    @include font(32px);
+                    color: $color_444;
+                    text-align: center;
+                    margin: 15px;
                 }
-            }
-            .btn-blue{
-                margin: 30px;
-            }
-    }
-    // ---------- 登入 ------------
-    .signinform{ 
-            .title{
-                @include font(32px);
-                color: $color_444;
-                text-align: center;
-                margin-bottom: 50px;
-            }
-            .inputfield-left{
-                width: 260px;
-                margin: auto;
-            }
-            .title-text{
-                @include font(16px);
-                color: $color_444;
-                font-weight: 300;
-                display: flex;
-                text-align: left;
-                line-height: 2.2;
-                margin-top: 10px;
-            }
-            .input-gold{
-                display: flex;
-                text-align: left;
-                width: 220px;
-            }
-            .forgot_password{
-                @include font(16px);
-                color: $front_color_main;
-                font-weight: 300;
-                display: flex;
-                justify-content: end;
-                line-height: 2.2;
-                &:hover{
-                    color: $front_color_active;
+                .inputfield-right{
+                    width: 260px;
+                    margin: auto;
                 }
-            }
-            .btn-gold{
-                margin-top: 40px;
-            }
-    }
+                .title-text{
+                    @include font(16px);
+                    color: $color_444;
+                    font-weight: 300;
+                    display: flex;
+                    text-align: left;
+                    line-height: 2.2;
+                    margin-top: 10px;
+                }
+                .input-gold{
+                    display: flex;
+                    text-align: left;
+                    width: 220px;
+                    border: 1px solid $back_color_hover;
+                    &:focus{
+                        border: 1px solid $back_color_main;
+                    }
+                }
+                .btn-blue{
+                    margin: 30px;
+                }
+        }
+        // ---------- 登入 ------------
+        .signinform{ 
+                .title{
+                    @include font(32px);
+                    color: $color_444;
+                    text-align: center;
+                    margin-bottom: 50px;
+                }
+                .inputfield-left{
+                    width: 260px;
+                    margin: auto;
+                }
+                .title-text{
+                    @include font(16px);
+                    color: $color_444;
+                    font-weight: 300;
+                    display: flex;
+                    text-align: left;
+                    line-height: 2.2;
+                    margin-top: 10px;
+                }
+                .input-gold{
+                    display: flex;
+                    text-align: left;
+                    width: 220px;
+                }
+                .forgot_password{
+                    @include font(16px);
+                    color: $front_color_main;
+                    font-weight: 300;
+                    display: flex;
+                    justify-content: end;
+                    line-height: 2.2;
+                    &:hover{
+                        color: $front_color_active;
+                    }
+                }
+                .btn-gold{
+                    margin-top: 40px;
+                }
+        }
    }
    .signup-card{
-    width: 800px;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
-    justify-content: center;
-    // z-index: -1;
+        width: 800px;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: nowrap;
+        justify-content: center;
    }
    // ---------- 歡迎回來 ------------
    .overlay-left{
-    // display: none;
         position: relative;
         right: 200px;
-        // opacity:0;
-        // z-index: 1;
         border-radius: 10px 0 0 10px;
         background-color: $back_color_active;
         display: flex;
@@ -266,7 +265,7 @@
                 font-weight: 300;
                 text-align: center;
                 line-height: 2.2;
-                margin-bottom: 60px;
+                margin-bottom: 70px;
             }
             .btn-blue_2nd{
                 margin-top: 90px;
@@ -303,10 +302,6 @@
         }
         
    }
-   
-
-    
-    
 }
 
 </style>
