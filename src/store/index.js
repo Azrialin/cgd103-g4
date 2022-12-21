@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 export default createStore({
   state: {
@@ -20,6 +21,7 @@ export default createStore({
       state.cart.find(v => v.id === id).amount = amount;
     },
   },
+  plugins:[createPersistedState()],
   actions: {
     setCart({commit},list){
       commit("setCart",list)

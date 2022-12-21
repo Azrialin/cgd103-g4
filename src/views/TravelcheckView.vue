@@ -90,7 +90,7 @@
       },
       methods:{
         setData(){
-          const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setcheck.php');
+          const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setTravelcheck.php');
           fetch(seturl,{
             method:'POST',
             body: new URLSearchParams({

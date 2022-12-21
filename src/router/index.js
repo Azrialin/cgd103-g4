@@ -74,9 +74,10 @@ const routes = [
     component: () => import('../views/ShopView.vue')
   },
   {
-    path: '/shopcontent',
+    path: '/shop/:id/:name/:price/:intro',
     name: 'shopcontent',
-    component: () => import('../views/ShopContent.vue')
+    component: () => import('../views/ShopContent.vue'),
+    // props:true
   },
   {
     path: '/shopcart',
@@ -123,6 +124,16 @@ const routes = [
     path: '/forgotpassword',
     name: 'forgotpassword',
     component: () => import('../views/ForgotpasswordView.vue')
+  },
+  {
+    path: '/Signin_suc',
+    name: 'Signin_suc',
+    component: () => import('../views/Signin_sucView.vue')
+  },
+  {
+    path: '/Signup_suc',
+    name: 'Signup_suc',
+    component: () => import('../views/Signup_sucView.vue')
   },
   {
     path: '/Contactus',

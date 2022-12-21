@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <router-link to="/ShopContent">
+   
       <div class="card-pic">
         <img :src="img" />
       </div>
@@ -8,7 +8,7 @@
         <h4 class="card-title">{{ title }}</h4>
         <p class="card-price">${{ price }}</p>
       </div>
-    </router-link>
+    
   </div>
 </template>
 

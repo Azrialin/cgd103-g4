@@ -11,7 +11,7 @@
       <div class="row">
         <div class="card-container">
           <div
-            v-for="item in vv"
+            v-for="item in list"
             :key="item.id"
             class="card-box col-sm-6 col-lg-3"
           >
@@ -20,6 +20,7 @@
               :title="item.prod_name"
               :price="item.prod_price"
               :img="`/img/${item.prod_pic_main}`"
+              @click="goItem(item,index)"
             />
 
           </div>
@@ -37,6 +38,7 @@
   </div>
 </template>
 <script>
+// import {BASE_URL} from '@/asseets/js/commom.js'
 import breadcrumb from "@/components/breadcrumb.vue";
 import side from "@/components/side.vue";
 import productcard from "@/components/ProductCard.vue";
@@ -69,7 +71,7 @@ export default {
           label: "特產系列",
         },
       ],
-      vv: [
+      list: [
         // {
         //   id: 1,
         //   img: require(`@/assets/img/products/pro1.jpg`),
@@ -153,17 +155,22 @@ export default {
     this.getData();
   },
   methods: {
+    
     getData() {
-      // this.result = result;
+      // fetch(`{BASE_URL}/getProducts.php`)
       fetch("http://localhost/g4/public/phpfiles/getProducts.php")
         .then((res) => res.json())
         .then((json) => {
-          this.vv = json;
-          console.log(this.vv);
+          this.list = json;
+          console.log(this.list);
         });
     },
     saveData() {
-      console.log(this.vv);
+      console.log(this.list);
+    },
+    goItem(item){
+      this.$router.push({path:`/shop/${item.prod_id}/${item.prod_name}/${item.prod_price}/${item.prod_intro}`})
+      // /${item.prod_pic_main}
     },
   },
   computed: {
