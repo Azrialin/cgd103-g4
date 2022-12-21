@@ -4,13 +4,13 @@
     <div class="pro-main">
       <!-- <div class="pro-up" v-for="(product,index) in content" :key="product.prod_id"> -->
         <div class="pro-pic">
-          <!-- <img :src="$route.params.pic1" alt="" /> -->
+          <img :src="`/img/${product.prod_pic_main}`"/>
         </div>
         <div class="pro-txt">
-          <h2 class="pro-txt-title">{{ $route.params.name }}</h2>
+          <h2 class="pro-txt-title">{{ product.prod_name }}</h2>
           <div class="pro-price">
             販售價格:
-            <span class="pro-price-num">${{ $route.params.price }}</span>
+            <span class="pro-price-num">${{ product.prod_price }}</span>
           </div>
           <div class="pro-price">
             購買數量:
@@ -31,15 +31,15 @@
         </div>
         <div class="produce-intro">
           <div class="pro-produce">
-            {{ $route.params.intro }}
+            {{ product.prod_intro }}
           </div>
         </div>
         <div class="pro-pro-pic">
           <div class="pro-pic-big">
-            <img :src="content['src2']" alt="" />
+            <img :src="`/img/${product.prod_pic_intro_1}`"/>
           </div>
           <div class="pro-pic-big">
-            <img :src="content['src3']" alt="" />
+            <img :src="`/img/${product.prod_pic_intro_2}`"/>
           </div>
         </div>
       <!-- </div> -->
@@ -144,7 +144,7 @@ export default {
       onSwiper,
       onSlideChange,
       modules: Pagination,
-      content: [
+      product: [
         // title: "福砂屋九州長崎蛋糕",
         // price: "460",
         // txt: "採用精選雞蛋、砂糖、糖漿和小麥粉的簡單材料，全程不用攪拌機，完全靠師傅手感攪拌，製作出口味道地且香甜綿潤的蛋糕點心。長崎蛋糕底砂糖結晶顆粒的粗糖，是攪拌蛋糕材料時留下來的，也是福砂屋長崎蛋糕的特徵。作為長崎蛋糕的傑作，特製五三燒長崎蛋糕的風味更濃，且香氣更濃郁。它由技術熟練的糕點師傅以高超技術製成，生量數量少，是福砂屋的特製長崎蛋糕，廣受長崎 蛋糕饕客們喜愛。",
@@ -212,9 +212,9 @@ export default {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  created() {},
   mounted() {
     this.getData();
+    this.getData2();
   },
   methods: {
     addCount() {
@@ -224,7 +224,9 @@ export default {
       if (this.count <= 0) return;
       this.count -= 1;
     },
-    cart() {},
+    cart() {
+
+    },
     buy() {
       this.$router.push("/shopcart?step=0");
     },
@@ -253,6 +255,22 @@ export default {
         circle.style.opacity = 0;
       }
     },
+    //============== 上面的資料
+    getData2() {
+      const productid = this.$route.params.id
+      console.log(productid)
+      // fetch(`{BASE_URL}/getProducts.php`)
+      fetch(`http://localhost/g4/public/phpfiles/getProducts.php`)
+        .then((res) => res.json())
+        .then((txt) => {
+          this.product = txt[`${productid-1}`];
+          console.log(this.product);
+        });
+    },
+    saveData2() {
+      console.log(this.product);
+    },
+    // =============輪播圖
     getData() {
       // this.result = result;
       fetch("http://localhost/g4/public/phpfiles/getProducts.php")
@@ -297,7 +315,8 @@ export default {
     flex-wrap: wrap;
     .pro-pic {
       img {
-        width: 100%;
+        width: 70%;
+        // border-radius: 10px;
       }
     }
     .pro-txt {
