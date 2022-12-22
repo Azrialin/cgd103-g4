@@ -13,7 +13,9 @@
             <h3 class="news-title font-20">{{title}}</h3>
             <p class="news-des font-16-24em">{{des}}</p>
             <div class="news-btn">
-                <router-link to="/news/newsInfo" class="news-btn-more font-18" @click="toNext">more</router-link>
+                <!-- <router-link to="/news/newsInfo" class="news-btn-more font-18" @click="toNext">more</router-link> -->
+                <router-link :to="`/newsInfo/${urlLink}`" class="news-btn-more font-18" @click="toNext">more</router-link>
+                <!-- <router-view/> -->
             </div>
         </div>
     </div>
@@ -28,6 +30,7 @@ export default {
         title: String,
         des: String,
         link:String,
+        urlLink:Number
     },
     methods:{
         toNext(){

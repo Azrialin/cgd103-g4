@@ -60,13 +60,19 @@ const routes = [
     path: '/news',
     name: 'news',
     component: () => import('../views/NewsView.vue'),
-    children:[
-      {
-        path:'newsInfo',
-        component:() => import('../views/NewsInfoView.vue'),
-      },
-    ],
+    // children:[
+    //   {
+    //     path:'newsInfo',
+    //     component:() => import('../views/NewsInfoView.vue'),
+    //   },
+    // ],
   },
+  // ------test 2 ------動態路由
+    {
+      path: '/newsInfo/:id',
+      name: 'newsInfo',
+      component: () =>import('../views/NewsInfoView.vue'),
+    },
   // ------TEST--------
   // {//動態路由 //動態顯示內文
   //   path: '/newsInfo/:newsId',
