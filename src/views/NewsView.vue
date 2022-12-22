@@ -1,15 +1,11 @@
 <template>
   <!---------------------尚未完成------------------------
-  🔹  tab 
-    v-if抓的filter
-  🔹  more按鈕 (動態路由)
+  🔹more按鈕 (動態路由)
   🔹圖的動態寫法怪怪的
   遇到問題:
   ▪ 動態路由應該要記得ID，但是它抓不到，是undefined
     (資料內頁已完成抓回資料)
   ▪ 資料內頁還沒把component對應的內容填進去
-
-  ▪ 從遠端載回篩資料的方法
   bug
   ▪ 已進入內文後，再點擊header時，路徑變成  http://localhost:8080/newsInfo/news ==>建立動態路由的時候，<router-view/>放置時機(目前應該跟newsInfo放置這個有關係) 
   ------------------------------------------------------->
@@ -18,8 +14,6 @@
   <div class="container">
     <div class="news-cards">
       <!--  tab 預設所有公告-->
-      <!-- filter OK 後，把下面p link 刪掉 -->
-        <p>{{ navLink }}</p>
         <nav class="nav-bar">
           <a class="nav-tab font-18" :class="{'active' : navLink ==='所有公告'}" href="#" @click="navLink='所有公告'">所有公告</a>
           <a class="nav-tab font-18 " :class="{'active' : navLink ==='重要'}" href="#" @click="navLink='重要'">重要</a>
@@ -44,7 +38,7 @@
           <!-- 重要顯示 -->
             <div v-else-if="navLink === '重要'">
               <NewsCard
-              v-for="detail in news" 
+              v-for="detail in newsImportant" 
               :key="detail.news_no"
               :link="require(`@/assets/img/News/2.jpg`)"
               :type="detail.news_type"
@@ -57,10 +51,10 @@
           <!-- 活動顯示 -->
             <div v-else-if="navLink === '活動'">
               <NewsCard
-              v-for="detail in news" 
+              v-for="detail in newsActive" 
               :key="detail.news_no"
               :link="require(`@/assets/img/News/3.jpg`)"
-              :type="detail.news_type === '活動' "
+              :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
               :des="detail.news_text_start"
@@ -70,10 +64,10 @@
           <!-- 其他顯示 -->
             <div v-else-if="navLink === '其他'">
               <NewsCard
-              v-for="detail in news" 
+              v-for="detail in newsOthers" 
               :key="detail.news_no"
               :link="require(`@/assets/img/News/4.jpg`)"
-              :type="detail.news_type === '其他' "
+              :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
               :des="detail.news_text_start"
@@ -140,7 +134,7 @@
       this.getNews();  //抓資料
     },
     mounted() {
-      // this.transData(); //失敗
+
     },
     data(){
       return{
@@ -182,8 +176,9 @@
         //     news_status: "上架"
         //   },
         news:[],
-        //以下想篩資料，但是失敗了
-        // newsImportant:[]
+        newsImportant:[],
+        newsActive:[],
+        newsOthers:[],
       }
     },
     methods:{
@@ -192,14 +187,23 @@
           fetch('http://localhost/list.php')
           .then(res=>res.json())
           .then(json=>{
+              // 抓回所有資料
               this.news = json;
+              // 篩資料放進"重要"陣列
+              this.newsImportant = this.news.filter(item => {
+                return item.news_type === "重要";
+              });
+              // 篩資料放進"活動"陣列
+              this.newsActive = this.news.filter(item => {
+                return item.news_type === "活動";
+              });
+              // 篩資料放進"其他"陣列
+              this.newsOthers = this.news.filter(item => {
+                return item.news_type === "其他";
+              });
+
           })
       },
-      // 想篩資料 失敗
-      // transData(){
-      //   let newsImportant = this.news.map(this.news.news_type == "重要")
-      //   console.log(newsImportant);
-      // }
     }
   }
 </script>
