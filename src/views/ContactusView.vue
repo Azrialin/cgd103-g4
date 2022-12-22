@@ -18,25 +18,29 @@
         <div class="Contact-Table">
           <div class="Contact-Table-Item">
             <p>聯絡主題*</p>
-            <CSelect
+            <select
               name="opinion_selecttopic"
               v-model="opinionselecttopic"
               :option="options"
               DefaultText="請選擇相關聯絡主題"
             >
-            </CSelect>
+              <option value="1">1111</option>
+              <option value="2">2222</option>
+              <option value="3">3333</option>
+              <option value="4">4444</option>
+            </select>
           </div>
           <div class="Contact-Table-Item">
             <p>聯絡人*</p>
-            <Input name="opinion_name" v-model="opinionname" />
+            <input name="opinion_name" v-model="opinionname" />
           </div>
           <div class="Contact-Table-Item">
             <p>Line ID</p>
-            <Input />
+            <input />
           </div>
           <div class="Contact-Table-Item">
             <p>連絡電話*</p>
-            <Input
+            <input
               name="opinion_tel"
               v-model="opiniontel"
               InputDefault="請以手機為主"
@@ -44,7 +48,7 @@
           </div>
           <div class="Contact-Table-Item">
             <p>Email</p>
-            <Input name="opinion_mail" v-model="opinionmail" />
+            <input name="opinion_mail" v-model="opinionmail" />
           </div>
           <div class="Contact-Table-Item">
             <p>需求說明</p>
