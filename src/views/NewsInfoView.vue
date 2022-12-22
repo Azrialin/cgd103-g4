@@ -1,17 +1,16 @@
 <template>
   <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
-  <h1>news TEST</h1>
   <NewsDetail
-
+  :img="`/img/News/${activeNews.news_img}`"
+  :img_des="activeNews.news_img_des"
+  :title="activeNews.news_title"
+  :text_start="activeNews.news_text_start" 
+  :text_middle="activeNews.news_text_middle"
+  :text_trans="activeNews.news_text_trans"
+  :text_end="activeNews.news_text_end"
   />
-  <!-- :img="news.news_img"
-  :img_des="news.news_img_des"
-  :title="news.news_title"
-  :text_start="news.news_text_start" 
-  :text_middle="news.news_text_middle"
-  :text_trans="news.news_text_trans"
-  :text_end="news.news_text_end" -->
+  <!-- :img="news.news_img" -->
   <GotoParadise/>
   <router-view/>
 </template>
@@ -54,20 +53,22 @@
         news:[],
       }
     },
+    computed: {
+      activeNews() {
+        return this.news.find(v => v.news_no == this.$route.params.id) ?? {}
+      },
+    },
     created(){
       // 抓資料
       this.getNews();
       // $route取值 屬性 $route只能取值 $router 可以呼叫方法
-      console.log(this.$route.params.id);
-      // 宣告單一id (airbnb必須使用解構 ((??)))
-      const { id } = this.$route.params;
-    },
-    mounted() {
-      
+      console.log(this.$route.params.id); 
     },
     methods:{
       // 抓資料
       getNews(){
+        const id = this.$route.params.id;
+        console.log(id);
           fetch('http://localhost/list.php')
           .then(res=>res.json())
           .then(json=>{
