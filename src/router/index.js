@@ -74,7 +74,7 @@ const routes = [
       component: () =>import('../views/NewsInfoView.vue'),
     },
   // ------TEST--------
-  // {//動態路由 //動態顯示內文
+  // {//動態路由 
   //   path: '/newsInfo/:newsId',
   //   name: 'newsInfo',
   //   component: () => import('../views/NewsInfoView.vue'),

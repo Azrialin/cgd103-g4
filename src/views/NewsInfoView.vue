@@ -50,6 +50,7 @@
             { name: '消息專區', source: 'News' },
             { name: '消息內文', source: 'NewsInfo' },
         ],
+        newsRaw:[],
         news:[],
       }
     },
@@ -70,7 +71,13 @@
           fetch('http://localhost/list.php')
           .then(res=>res.json())
           .then(json=>{
-              this.news = json;
+              // 抓回所有資料
+              this.newsRaw = json;
+
+              // 篩"上架"資料放進陣列
+              this.news = this.newsRaw.filter(item => {
+                return item.news_status === "上架";
+              });
           })
       },
     }

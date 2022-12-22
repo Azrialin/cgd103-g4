@@ -175,6 +175,7 @@
         //     news_img_des: "颱風路線圖",
         //     news_status: "上架"
         //   },
+        newsRaw:[],
         news:[],
         newsImportant:[],
         newsActive:[],
@@ -188,7 +189,13 @@
           .then(res=>res.json())
           .then(json=>{
               // 抓回所有資料
-              this.news = json;
+              this.newsRaw = json;
+
+              // 篩"上架"資料放進陣列
+              this.news = this.newsRaw.filter(item => {
+                return item.news_status === "上架";
+              });
+
               // 篩資料放進"重要"陣列
               this.newsImportant = this.news.filter(item => {
                 return item.news_type === "重要";
@@ -201,7 +208,6 @@
               this.newsOthers = this.news.filter(item => {
                 return item.news_type === "其他";
               });
-
           })
       },
     }

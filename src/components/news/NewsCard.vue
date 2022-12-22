@@ -14,7 +14,7 @@
             <p class="news-des font-16-24em">{{des}}</p>
             <div class="news-btn">
                 <!-- <router-link to="/news/newsInfo" class="news-btn-more font-18" @click="toNext">more</router-link> -->
-                <router-link :to="`/newsInfo/${urlLink}`" class="news-btn-more font-18" @click="toNext">more</router-link>
+                <router-link :to="`/newsInfo/${urlLink}`" class="news-btn-more font-18" @click="toNext(item)">more</router-link>
                 <!-- <router-view/> -->
             </div>
         </div>
@@ -33,9 +33,9 @@ export default {
         urlLink:Number
     },
     methods:{
-        toNext(){
+        toNext(item){
             // 切換頁面 $router.push語法有歷史紀錄，需要戴上參數(指引的網址)
-            this.$$router.push(`/news${this.news_no}`);
+            this.$router.push({path:`/news${item.news_no}`});
             // /news
         },
         test(){
