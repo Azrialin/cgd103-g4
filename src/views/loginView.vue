@@ -40,16 +40,17 @@
                         <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
                     </form>
                     <!-- 登入 -->
-                    <form class="signinform" autocomplete="off" v-show="isLogin">
+                    <form class="signinform" autocomplete="off" v-show="isLogin" method="post">
+                        <!-- @submit.prevent="login" -->
                         <h2 class="title">登入</h2>
                         <div class="inputfield-left">
                             <div class="signin-email">
                                 <label class="title-text">電子信箱</label>
-                                <input class="input-gold" type="email" placeholder="請輸入Email">
+                                <input class="input-gold" name="mem_email" v-model="mem_email" type="email" placeholder="請輸入Email">
                             </div>  
                             <div class="signin-password">
                                 <label class="title-text">密碼</label>
-                                <input class="input-gold" type="password" placeholder="半形英數共10碼">
+                                <input class="input-gold" name="mem_psw" v-model="mem_psw" type="password" placeholder="半形英數共10碼">
                             </div>   
                             <router-link to="/Forgotpassword" class="forgot_password">忘記密碼了嗎?</router-link>
                         </div>
@@ -82,8 +83,10 @@
         },
         data() {
             return {
-                email: "",
-                password: "",
+                mem_email: "",
+                mem_psw: "",
+                errorFlag: false,
+                errorMsg: "",
                 fonts:[
                     { name: '首頁', source: '/' },
                     { name: '會員登入', source: 'login' }
@@ -93,7 +96,37 @@
         },
         methods: {
             members() {
-                this.$router.push("/Signin_suc");
+                let thisvue = this;
+                if (thisvue.mem_email == "" || thisvue.mem_psw == ""){
+                    // thisvue.errorMsg = "請輸入帳號和密碼";
+                    // thisvue.errorFlag = true;
+                }else {
+                    fetch("http://localhost/cgd103-g4/public/phpfiles/login.php",
+                        {
+                            method: "post",
+                            credentials: "include",
+                            body: new URLSearchParams({
+                                mem_email: this.mem_email,
+                                mem_psw: this.mem_psw,
+                            }),
+                        }
+                    )
+                    .then((res) => res.json())
+                    .then((json) => {
+                        console.log(json);
+                        // this.mem_psw == json.mem_psw
+                        if (json.code == 1) {
+                            // console.log("成功");
+                            thisvue.$router.push("/Signin_suc");
+                        }
+                        else if (json.code == 0) {
+                            // console.log("失敗");
+                            alert("登入失敗");
+                        }
+
+                    });
+                }
+
             },
             signups(){
                 this.$router.push("/Signup_suc");
