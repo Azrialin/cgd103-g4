@@ -3,6 +3,8 @@
 <ul class="wrapper font-18">
 <h3>商品</h3>
 <hr class="hr-bar">
+  <li>所有商品</li>
+  <hr class="hr-bar">
   <li v-for="(item,index) in list" :key="'item'+index">
     <i class="fa-solid fa-angle-down"
       :class="{'open':item.open}"></i>
@@ -15,6 +17,48 @@
 </ul>
 
 </template>
+
+
+
+
+<script>
+import sideitem from '@/components/sideitem.vue'   
+export default {
+  components:{
+    sideitem
+  },
+  data(){
+    return {
+      list:[
+        // {
+        //   title:"所有商品",
+        //   open:false,
+        //   sublist:[
+        //     "","",
+        //   ]
+        // },
+        {
+          title:"紀念品系列",
+          open:false,
+          sublist:[
+            "水壺","便當盒",
+          ]
+        },
+        {
+          title:"特產系列",
+          open:false,
+          sublist:[
+            "零食","調味料",
+          ]
+        }
+      ]
+    }
+  },
+  
+};
+
+</script>
+
 
 <style lang="scss" scoped>
 @import "../assets/scss/base/font.scss";
@@ -53,42 +97,4 @@
 }
 
 </style>
-
-
-<script>
-import sideitem from '@/components/sideitem.vue'   
-export default {
-  data(){
-    return {
-      list:[
-        {
-          title:"所有商品",
-          open:false,
-          sublist:[
-            "水壺","便當盒","零食","調味料"
-          ]
-        },
-        {
-          title:"紀念品系列",
-          open:false,
-          sublist:[
-            "水壺","便當盒",
-          ]
-        },
-        {
-          title:"特產系列",
-          open:false,
-          sublist:[
-            "零食","調味料",
-          ]
-        }
-      ]
-    }
-  },
-  components:{
-    sideitem
-  }
-};
-
-</script>
 
