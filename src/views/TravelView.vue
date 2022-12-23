@@ -26,7 +26,7 @@
                 <div class="tago">
                   <!-- <p>{{list['tag']}}</p> -->
                   <p>{{result['package_tag']}}</p>
-                  <router-link to="/travelcontent">行程詳情</router-link>
+                  <router-link to="/travelcontent" @click="go(result['package_title'],result['package_price'],result['package_indes'])">行程詳情</router-link>
                 </div>
               </div>
             </div>
@@ -61,6 +61,11 @@
         created(){
           this.getData();
         },
+        watch:{
+          go(apri,bpri){
+            window.location.href = `a.html?apri=${apri}&bpri=${bpri}`;
+          }
+        },
         methods: {
           getData(){
             const myurl = new URL(
@@ -72,7 +77,15 @@
                 this.results=json;
                 console.log(this.results);
               })
-            },
+          },
+          go(theTitle,thePrice,theArticle){
+            let obj = {
+              theTitle, 
+              thePrice,
+              theArticle
+            }
+            localStorage.setItem('Title',JSON.stringify(obj))
+          },
         },
     }
 </script>
