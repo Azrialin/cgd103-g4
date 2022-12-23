@@ -90,7 +90,7 @@ export default {
 
                   .then((res) => res.json())
                   .then((json) =>{
-                    this.result = json[0];
+                    this.result = json;
                     console.log(this.result);
                   })
         },

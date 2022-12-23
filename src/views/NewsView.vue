@@ -1,13 +1,9 @@
 <template>
-  <!---------------------尚未完成------------------------
-  🔹more按鈕 (動態路由)
-  🔹圖的動態寫法怪怪的
-  遇到問題:
-  ▪ 動態路由應該要記得ID，但是它抓不到，是undefined
-    (資料內頁已完成抓回資料)
-  ▪ 資料內頁還沒把component對應的內容填進去
+  <!---------------------筆記------------------------
+  🔹圖的動態寫法怪怪的 靜態資料放public，打包時比較不會發生錯誤、產生亂碼 ，放public路徑不用"require(`@/assets/.../...jpg`)"，直接寫路徑即可 "`/img/News/${detail.news_img}`" 
+  🔹動態路由 
   bug
-  ▪ 已進入內文後，再點擊header時，路徑變成  http://localhost:8080/newsInfo/news ==>建立動態路由的時候，<router-view/>放置時機(目前應該跟newsInfo放置這個有關係) 
+  ▪ 已進入內文後，再點擊header時，路徑變成  http://localhost:8080/newsInfo/news =>header路徑寫法的問題
   ------------------------------------------------------->
   <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
@@ -25,14 +21,14 @@
             <div v-if="navLink === '所有公告'">
               <NewsCard
               v-for="detail in news" :key="detail.news_no"
-              :link="require(`@/assets/img/News/1.jpg`)"
+              :link="`/img/News/${detail.news_img}`"
               :type="detail.news_type "
               :date="detail.news_time"
               :title="detail.news_title"
               :des="detail.news_text_start"
-              :urlLik="detail.news_no"
+              :urlLink="detail.news_no"
               />
-              <!-- 假資料時 ，以下可用 ； 抓資料回來不知道為啥 寫活的失敗-->
+              <!-- 假資料時 ，以下可用 ； 抓資料回來不知道為啥 寫活的失敗 ==> public 問題--> 
               <!-- :link="require(`@/assets/img/News/${detail.news_img}`)" -->
             </div>
           <!-- 重要顯示 -->
@@ -40,12 +36,12 @@
               <NewsCard
               v-for="detail in newsImportant" 
               :key="detail.news_no"
-              :link="require(`@/assets/img/News/2.jpg`)"
+              :link="`/img/News/${detail.news_img}`"
               :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
               :des="detail.news_text_start"
-              :urlLik="detail.news_no"
+              :urlLink="detail.news_no"
               />
             </div>
           <!-- 活動顯示 -->
@@ -53,12 +49,12 @@
               <NewsCard
               v-for="detail in newsActive" 
               :key="detail.news_no"
-              :link="require(`@/assets/img/News/3.jpg`)"
+              :link="`/img/News/${detail.news_img}`"
               :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
               :des="detail.news_text_start"
-              :urlLik="detail.news_no"
+              :urlLink="detail.news_no"
               />
             </div>
           <!-- 其他顯示 -->
@@ -66,12 +62,12 @@
               <NewsCard
               v-for="detail in newsOthers" 
               :key="detail.news_no"
-              :link="require(`@/assets/img/News/4.jpg`)"
+              :link="`/img/News/${detail.news_img}`"
               :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
               :des="detail.news_text_start"
-              :urlLik="detail.news_no"
+              :urlLink="detail.news_no"
               />
             </div>
         </div>
@@ -84,8 +80,6 @@
         <!-- 組件 -->
         <GotoParadise/>
     </div>
-    <!-- 動態路由成功後拔除 -->
-    <router-link :to="`/newsInfo/${news.news_no}`" class="font-24">測試進入分頁</router-link>
   <router-view/>
 
   </div>
@@ -116,8 +110,6 @@
   import Pagination from "@/components/pagination/Pagination.vue"
   import Footer from "@/components/Footer.vue"
   import GotoParadise from "@/components/news/GotoParadise.vue"
-
-
 
   export default {
       name: "NewsView",
@@ -175,6 +167,7 @@
         //     news_img_des: "颱風路線圖",
         //     news_status: "上架"
         //   },
+        newsRaw:[],
         news:[],
         newsImportant:[],
         newsActive:[],
@@ -188,7 +181,13 @@
           .then(res=>res.json())
           .then(json=>{
               // 抓回所有資料
-              this.news = json;
+              this.newsRaw = json;
+
+              // 篩"上架"資料放進陣列
+              this.news = this.newsRaw.filter(item => {
+                return item.news_status === "上架";
+              });
+
               // 篩資料放進"重要"陣列
               this.newsImportant = this.news.filter(item => {
                 return item.news_type === "重要";
@@ -201,7 +200,6 @@
               this.newsOthers = this.news.filter(item => {
                 return item.news_type === "其他";
               });
-
           })
       },
     }

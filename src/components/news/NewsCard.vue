@@ -14,7 +14,7 @@
             <p class="news-des font-16-24em">{{des}}</p>
             <div class="news-btn">
                 <!-- <router-link to="/news/newsInfo" class="news-btn-more font-18" @click="toNext">more</router-link> -->
-                <router-link :to="`/newsInfo/${urlLink}`" class="news-btn-more font-18" @click="toNext">more</router-link>
+                <router-link :to="`/newsInfo/${urlLink}`" class="news-btn-more font-18" @click="toNext(item)">more</router-link>
                 <!-- <router-view/> -->
             </div>
         </div>
@@ -24,6 +24,12 @@
 <script>
 export default {
     name: 'NewsCard',
+    data(){
+        return{
+            newsRaw:[],
+            news:[]
+        }
+    },
     props: {
         type: String,
         date: String,
@@ -33,14 +39,30 @@ export default {
         urlLink:Number
     },
     methods:{
-        toNext(){
+        getNews(){
+            fetch('http://localhost/list.php')
+            .then(res=>res.json())
+            .then(json=>{
+                // 抓回所有資料
+                this.newsRaw = json;
+                // 篩"上架"資料放進陣列
+                this.news = this.newsRaw.filter(item => {
+                    return item.news_status === "上架";
+                });
+                console.log(this.news);
+            })
+        },
+        toNext(item){
             // 切換頁面 $router.push語法有歷史紀錄，需要戴上參數(指引的網址)
-            this.$$router.push(`/news${this.news_no}`);
+            this.$router.push({path:`/news${item.news_no}`});
             // /news
         },
         test(){
             console.log(this.$route);
         }
+    },
+    created(){
+        this.getNews();
     }
 }
 </script>
@@ -54,7 +76,6 @@ export default {
     margin-bottom: 50px;
     object-position: center bottom;
 }
-
 /* 圖片 */
 .news-card-img{
     width: 60%;
@@ -88,7 +109,6 @@ export default {
     margin-bottom: 50px;
 }
   /* 按鈕 */
-
 .news-btn-more{
     color: #888888;
     display: inline-block;
@@ -96,15 +116,12 @@ export default {
     position: relative;
     border-bottom: 1px solid #BC955C;
     margin-bottom: 40px;
-
-
 }
   /* 按鈕hover */
 .news-btn-more:hover{
     content: '';
     color: #0C3B59;
 }
-
 @media screen and (max-width:767px){
     .news-btn{
         margin: auto;
@@ -116,7 +133,6 @@ export default {
         text-align: end;
     }
 }
-
 @media screen and (min-width: 1024px){
     .news-card{
         display: flex;
