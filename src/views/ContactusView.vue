@@ -14,7 +14,7 @@
           </p>
         </div>
       </div>
-      <form method="post" enctype="multipart/form-data">
+      <form  ref="test">
         <div class="Contact-Table">
           <div class="Contact-Table-Item">
             <p>聯絡主題*</p>
@@ -111,23 +111,23 @@ export default {
   },
   methods: {
     submit() {
-      const myURL = new URL(
-        "http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php"
-      );
-      fetch("http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php", {
+      const url = "http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php";
+      formData.append("opinion_name", this.opinionname);
+      formData.append("opinionmail", this.opinionmail);
+      formData.append("opiniontel", this.opiniontel);
+      formData.append("opiniondetail", this.opiniondetail);
+      formData.append("opinionselecttopic", this.opinionselecttopic);
+      fetch( url , {
         method: "POST",
-        body: new URLSearchParams({
-          opinion_name: this.opinionname,
-          opinion_tel: this.opiniontel,
-          opinion_mail: this.opinionmail,
-          opinion_detail: this.opiniondetail,
-          opinion_selecttopic: this.opinionselecttopic,
-        }),
+        body: formData,
       })
         .then((res) => res.json())
         .then((result) => {
           console.log(result);
-        });
+        })
+        /* .catch((error) => {
+          // console.log(error);
+        }); */
     },
   },
 };
