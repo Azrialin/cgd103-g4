@@ -113,14 +113,13 @@
                     )
                     .then((res) => res.json())
                     .then((json) => {
-                        console.log(json);
-                        // this.mem_psw == json.mem_psw
                         if (json.code == 1) {
-                            // console.log("成功");
                             thisvue.$router.push("/Signin_suc");
+                            // sessionStorage.setItem("mem_no", json.mem_no);
+                            this.$store.dispatch("setMember", json.mem_no);
+                            // this.$store.state.mem_no
                         }
                         else if (json.code == 0) {
-                            // console.log("失敗");
                             alert("登入失敗");
                         }
 
