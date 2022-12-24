@@ -2,7 +2,7 @@
     header('Access-Control-Allow-Origin:*');
     header("Content-Type:application/json;charset=utf-8");
     
-	require_once("../php/connect_cgd103g4.php");
+	require_once("./connect_cgd103g4.php");
     // sql 指令
     $sql = "select * from `faq`";
     $faq = $pdo->query($sql);
