@@ -20,7 +20,7 @@
           </span>
         </div>
         <div class="pro-btn">
-          <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="cart">
+          <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="addCart">
             <i class="fa-solid fa-plus"></i>加入購物車
           </button>
           <button class="pro-btn-btn btn-gold" @click="buy">
@@ -109,6 +109,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import productcard from "@/components/ProductCard.vue";
+import store from '@/store';
 
 // import Pagination from "@/components/pagination/Pagination.vue"
 
@@ -134,6 +135,7 @@ export default {
     const isshock = true;
     return {
       // cardContext2: { list : []}, 鴻銘寫的先留著
+      // addCart,
       xyz: 4,
       count: 1,
       fonts: [
@@ -224,9 +226,6 @@ export default {
       if (this.count <= 0) return;
       this.count -= 1;
     },
-    cart() {
-      
-    },
     buy() {
       this.$router.push("/shopcart?step=0");
     },
@@ -283,10 +282,10 @@ export default {
     saveData() {
       console.log(this.list);
     },
-    // goItem(item){
-    //   this.$router.to({path:`/shop/${item.prod_id}`})
-    // },
-    // <router-link to="`/shop/${item.prod_id}`"></router-link>
+    addCart() { //要怎麼放進vuex??
+      store.commit("addCart", item); //看鴻銘的code
+    },
+    
     
   },
   created() {
@@ -297,11 +296,11 @@ export default {
       this.xyz = 4;
     }
   },
-  // computed: {
-  //   cart() {
-  //     return this.$store.getters.cart;
-  //   },
-  // },
+  computed: {
+    addCart() {
+      return this.$store.getters.cart;
+    },
+  },
 };
 </script>
 
