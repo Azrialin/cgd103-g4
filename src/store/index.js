@@ -4,11 +4,19 @@ import createPersistedState from 'vuex-persistedstate'
 export default createStore({
   state: {
     cart:[],
-    list:[]
+    list:[],
+    //member
+    mem_no: null,
   },
   getters: {
+    cart(state){
+      return state.cart;
+    }
   },
   mutations: {
+    setMember(state,number){
+      state.mem_no=number
+    },
     setCart(state,list){
       state.cart=list
     },
@@ -23,6 +31,9 @@ export default createStore({
   },
   plugins:[createPersistedState()],
   actions: {
+    setMember({commit},number){
+      commit("setMember",number)
+    },
     setCart({commit},list){
       commit("setCart",list)
     },

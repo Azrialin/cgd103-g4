@@ -2,9 +2,22 @@
   <Banner class="col" :src="require(`@/assets/img/Banner/banner_index.jpg`)" />
   <div class="Home">
     <div>
-        <p>{{ temperature }}</p>
+      <div class="WeatherApi">
+        <div class="Api-Header">
+          <p>{{ country_name }}　{{ place_name }}　{{ data_catch_time }}</p>
+        </div>
+        <div class="Api-Footer"></div>
+      </div>
       <div class="title">
         <h1>Topic 最新消息</h1>
+        <p>{{ temperature }}</p>
+        <p>{{ temperatureMin }}</p>
+        <p>{{ temperatureMax }}</p>
+        <p>{{ weather_description }}</p>
+        <p></p>
+        <p></p>
+        <img :src='weather_pic' alt="">
+        <p>{{weather_pic}}</p>
       </div>
       <ul class="HomeNew-List">
         <li v-for="list in lists" :key="list">
@@ -201,18 +214,26 @@ export default {
     };
   },
   methods: {
-    // async getdata() {
-    //   const response = await fetch(process.env.VUE_APP_WEATHERAPI, {
-    //     method: "GET",
-    //     mode: "cors",
-    //   });
-    //   const data = await response.json();
-    //   this.temperature = data.main.temp + "°C";
-    //   console.log(data);
-    // },
+    async getdata() {
+      const response = await fetch(process.env.VUE_APP_WEATHERAPI, {
+        method: "GET",
+        mode: "cors",
+      });
+      const data = await response.json();
+      this.temperature = parseInt(data.main.temp )+ "°C";
+      this.temperatureMin = parseInt(data.main.temp_min-1)+ "°C";
+      this.temperatureMax = parseInt(data.main.temp_max) + "°C";
+      this.weather_description = data.weather[0].description;
+      this.weather_pic = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+      this.place_name = data.name;
+      this.country_name = data.sys.country;
+      this.data_catch_time = new Date(data.dt*1000).toLocaleString().split(" ")[1];
+  
+      console.log(data);
+    },
   },
   created() {
-    // this.getdata();
+    this.getdata();
     //設定計時器
     // setInterval(()=>{
     // },3600*1000)

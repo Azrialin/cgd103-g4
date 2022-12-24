@@ -162,7 +162,6 @@ img {
   object-fit: cover;
 }
 .Text {
-  margin: 30px;
 }
 .Title {
   @include font(20px);
@@ -183,6 +182,12 @@ img {
   display: none;
 }
 
+.Introduce-Card {
+  display: inherit;
+  img{
+    width: 100%;
+  }
+}
 @media (min-width: 1200px) {
   // ----pc about us-----
   .Title {
@@ -236,17 +241,10 @@ img {
       }
     }
   }
-}
-// -----pc Train Introduce-----
+  // -----pc Train Introduce-----
   .Introduce-Card {
     display: flex;
     margin: 40px auto;
-    .Introduce-Text {
-      .Introduce-Title {
-      }
-      .Introduce-SubTitle {
-      }
-    }
     img{
       width: 50%;
     }
@@ -254,4 +252,6 @@ img {
   .Introduce-Card:nth-child(2n){
     flex-direction: row-reverse;
   }
+}
+
 </style>

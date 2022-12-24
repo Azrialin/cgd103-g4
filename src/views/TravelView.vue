@@ -26,7 +26,7 @@
                 <div class="tago">
                   <!-- <p>{{list['tag']}}</p> -->
                   <p>{{result['package_tag']}}</p>
-                  <router-link to="/travelcontent">行程詳情</router-link>
+                  <router-link to="/travelcontent" @click="go(result['package_title'],result['package_price'],result['package_indes'],result['package_no'])">行程詳情</router-link>
                 </div>
               </div>
             </div>
@@ -49,6 +49,7 @@
         },
         data(){
           return{
+            resultts:[],
             results:[],
             // lists:[{src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
             // {src:require(`@/assets/img/News/6.jpg`),title:"山口賀新年，福兔湯泉戀",subtitle:"雙世界遺產，超值一日遊",content:"雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊，雙世界遺產，超值一日遊",tag:"#產品推薦、餐點",price:"6,3456"},
@@ -61,6 +62,11 @@
         created(){
           this.getData();
         },
+        // watch:{
+        //   go(apri,bpri){
+        //     window.location.href = `a.html?apri=${apri}&bpri=${bpri}`;
+        //   }
+        // },
         methods: {
           getData(){
             const myurl = new URL(
@@ -69,10 +75,21 @@
             fetch(myurl)
               .then((res) => res.json())
               .then((json) =>{
-                this.results=json;
-                console.log(this.results);
+                this.resultts=json;
+                this.results = this.resultts.filter(v=>{
+                  return v.package_status === "上架";
+                })
               })
-            },
+          },
+          go(theTitle,thePrice,theArticle,theNo){
+            let obj = {
+              theTitle, 
+              thePrice,
+              theArticle,
+              theNo
+            }
+            localStorage.setItem('Title',JSON.stringify(obj))
+          },
         },
     }
 </script>
@@ -127,10 +144,12 @@
             padding: 10px;
             width: 100%;
             h3{
-              @include font(20px);
+              @include font(22px);
+              white-space: nowrap;
+              padding-bottom: 5px;
             }
             h4{
-              @include font(16px);
+              @include font(14px);
               padding-bottom: 30px;
               margin-bottom: 30px;
               border-bottom: 2px solid $color_ccc;

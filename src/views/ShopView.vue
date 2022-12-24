@@ -15,14 +15,12 @@
             :key="item.id"
             class="card-box col-sm-6 col-lg-3"
           >
-          
             <productcard
               :title="item.prod_name"
               :price="item.prod_price"
               :img="`/img/${item.prod_pic_main}`"
               @click="goItem(item)"
             />
-
           </div>
         </div>
       </div>
@@ -155,12 +153,6 @@ export default {
     this.getData();
   },
   methods: {
-    // async getData(){
-    //   const id = this.$route.params.prod_id
-    //   const response = await fetch(`http://localhost/g4/public/phpfiles/getProducts.php/${{id}}`)
-    //   const list = await response.json()
-    //   this.list = list
-    // },
     getData() {
       // fetch(`{BASE_URL}/getProducts.php`)
       fetch("http://localhost/g4/public/phpfiles/getProducts.php")
@@ -168,15 +160,18 @@ export default {
         .then((json) => {
           this.list = json;
           console.log(this.list);
+
+          // this.gift = this.item.filter((item) => {
+          //   return item.prod_series.idx === "p001";
+          //   console.log(this.gift);
+          // });
         });
     },
     saveData() {
       console.log(this.list);
     },
-    goItem(item){
-      this.$router.push({path:`/shop/${item.prod_id}`})
-      // /${item.prod_pic_main}
-      // /${item.prod_name}/${item.prod_price}/${item.prod_intro}
+    goItem(item) {
+      this.$router.push({ path: `/shop/${item.prod_id}` });
     },
   },
   computed: {

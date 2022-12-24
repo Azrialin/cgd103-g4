@@ -32,6 +32,17 @@ import PurchaseHistory from '@/components/PurchaseHistory.vue'
       return{
         fonts:[{name:'首頁',source:'/'},{name:'會員專區',source:'membership'}]
       }
+    },
+    computed: {
+      mem_no() {
+        return  this.$store.state.mem_no
+      }
+    },
+    mounted(){
+      if (!this.mem_no){
+        this.$router.push("/login");
+        return 
+      }
     }
   }
 </script>

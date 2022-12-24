@@ -22,19 +22,19 @@
                         <div class="inputfield-right">
                             <div class="signup-name">
                                 <label class="title-text">姓名</label>
-                                <input class="input-gold" type="text" placeholder="請輸入姓名">
+                                <input class="input-gold" type="text" v-model="signupName" placeholder="請輸入姓名(最多五個字)">
                             </div> 
                             <div class="signup-email">
                                 <label class="title-text">電子信箱</label>
-                                <input class="input-gold" type="email" placeholder="請輸入Email">
+                                <input class="input-gold" type="email" v-model="signupEmail" placeholder="請輸入Email">
                             </div>  
                             <div class="signup-password">
                                 <label class="title-text">密碼</label>
-                                <input class="input-gold" type="password" placeholder="半形英數共10碼">
+                                <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數共10碼">
                             </div>   
                             <div class="signup-tel">
                                 <label class="title-text">聯絡電話</label>
-                                <input class="input-gold" type="tel" placeholder="請輸入手機號碼">
+                                <input class="input-gold" type="tel" v-model="signupTel" placeholder="請輸入手機號碼(最多10碼)">
                             </div> 
                         </div>
                         <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
@@ -92,6 +92,14 @@
                     { name: '會員登入', source: 'login' }
                 ],
                 isLogin: true,
+                signupName:"",
+                signupEmail:"",
+                signupPsw:"",
+                signupTel:"",
+
+
+
+                // mem_no: this.$store.state.mem_no,
             };
         },
         methods: {
@@ -113,14 +121,13 @@
                     )
                     .then((res) => res.json())
                     .then((json) => {
-                        console.log(json);
-                        // this.mem_psw == json.mem_psw
                         if (json.code == 1) {
-                            // console.log("成功");
                             thisvue.$router.push("/Signin_suc");
+                            // sessionStorage.setItem("mem_no", json.mem_no);
+                            this.$store.dispatch("setMember", json.mem_no);
+                            // this.$store.state.mem_no
                         }
                         else if (json.code == 0) {
-                            // console.log("失敗");
                             alert("登入失敗");
                         }
 
@@ -129,8 +136,46 @@
 
             },
             signups(){
-                this.$router.push("/Signup_suc");
-            },
+                // const signupInfo = {//抓四筆資料
+                //     signupName:this.signupName.length > 5,
+                //     signupEmail:this.signupEmail,
+                //     signupPsw:this.signupPsw,
+                //     signupTel:this.signupTel,
+                // };
+                if( this.signupName ==="" || this.signupEmail ==="" || this.signupPsw ==="" || this.signupTel ===""){//沒有全填
+                    alert("註冊資料有少唷~");
+                // }else{
+                }else if(this.signupName.length >5 || this.signupPsw.length>11 || this.signupTel.length>11){  //全填後，判斷每一格都有符合格式
+                    alert("資料格式有誤");
+                }else{//符合格式// fetch()送四筆資料
+                    fetch("http://localhost/cgd103-g4/public/phpfiles/signUp.php",
+                        {
+                            method: "post",
+                            credentials: "include",
+                            body: new URLSearchParams({
+                                signupName: this.signupName,
+                                signupEmail: this.signupEmail,
+                                signupPsw: this.signupPsw,
+                                signupTel: this.signupTel,
+                            }),
+                        }
+                    )
+                        .then(res=> {
+ return res.json()
+                        })
+                        .then(res=>{
+                            console.log(res);
+                            if(res.code == 0){
+                                alert("有人註冊囉~")
+                            }else{
+                                alert("成功加入會員~")
+                                this.$store.dispatch("setMember", res.mem_no);
+                                this.$router.push("/Signup_suc");
+                            }
+                        })
+                    // this.$store.dispatch("setMember", json.mem_no);
+                }
+            }
         },
     };
 </script>

@@ -96,7 +96,8 @@ export default {
           show:false,
           hide:false,
           itineryOrder:[],
-          showdetailIndex:0
+          showdetailIndex:0,
+          mem_no: this.$store.state.mem_no,
         }
     },
     created(){
@@ -107,7 +108,7 @@ export default {
         getData(){
             /* this.result = result; */
             // fetch(`{BASE_URL}/getTravelQuery.php`)
-            fetch('http://localhost/cgd103-g4/public/phpfiles/getTravelQuery.php')
+            fetch(`http://localhost/cgd103-g4/public/phpfiles/getTravelQuery.php?memId=${this.mem_no}`)
               .then((res)=>res.json())
               .then((json)=> {
                 this.result = json;

@@ -83,7 +83,12 @@
         return{
           results:[],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
-          titles:[{date:`${this.$route.query.date}`,name:"山口圓舞曲，三世界遺產",code:"JTR05221122A",price:"100000"}],
+          titles:[{
+            date:`${this.$route.query.date}`,
+            name:JSON.parse(localStorage.getItem('Title')).theTitle,
+            code:"JTR05221122A",
+            price:JSON.parse(localStorage.getItem('Title')).thePrice
+          }],
           number:1,
           packagesaid:"",
         }
@@ -107,7 +112,7 @@
           })
         },
         getData(){
-          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getmember.php');
+          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php');
           fetch(myurl)
           .then((rs)=>rs.json())
           .then((json)=>{
@@ -126,6 +131,8 @@
       mounted(){
         // console.log(this.$route.query.date)
         return this.$route.query.date
+        return this.$route.query.name
+        return this.$route.query.price
       }
     }
 </script>

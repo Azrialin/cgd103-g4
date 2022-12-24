@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <p>{{ $route.params.newId }}路由測試</p>
         <figure class="news-article-img">
           <img :src="img" alt="">
           <figcaption class="font-14">{{img_des}}</figcaption>
@@ -92,18 +91,6 @@ export default {
   .news-article-btn a:hover{
     background-color: #8c6832;
   }
-  /* @media screen and (max-width:767px){
-  
-  } 
-  */
-  /* @media screen and (min-width: 768px){
-  
-  }
-   */
-  
-  /* @media screen and (min-width: 1024px){
-  
-  } 
-  */
+
 
 </style>

@@ -69,23 +69,32 @@ const result = {
     // passport: ""
 }
 // import {BASE_URL} from '@/assets/js/commom.js'
+
 export default {
     components: {
 
     },
     data(){
         return{
-            result:{},
-            
+            result:[],
+            // mem_no: this.$store.state.mem_no,
         }
     },
     created(){
         this.getData();
     },
+    computed: {
+      mem_no() {
+        return  this.$store.state.mem_no
+      }
+    },
     methods:{
         getData(){
+          if(!this.mem_no){
+            return 
+          }
             this.result = result;
-            fetch('http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php')
+            fetch(`http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php?memId=${this.mem_no}`)
             // fetch(`{BASE_URL}/getMemberInfo.php`)
 
                   .then((res) => res.json())
@@ -97,7 +106,7 @@ export default {
         saveData(){
           // console.log(this.result);
           // fetch(`{BASE_URL}/prod_update.php`)
-          fetch('http://localhost/cgd103-g4/public/phpfiles/prod_update.php', {
+          fetch('http://localhost/cgd103-g4/public/phpfiles/memberUpdate.php', {
             method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
           })
           .then((res)=>res.json())
