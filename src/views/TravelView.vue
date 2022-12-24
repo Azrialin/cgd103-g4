@@ -143,10 +143,12 @@
             padding: 10px;
             width: 100%;
             h3{
-              @include font(20px);
+              @include font(22px);
+              white-space: nowrap;
+              padding-bottom: 5px;
             }
             h4{
-              @include font(16px);
+              @include font(14px);
               padding-bottom: 30px;
               margin-bottom: 30px;
               border-bottom: 2px solid $color_ccc;
