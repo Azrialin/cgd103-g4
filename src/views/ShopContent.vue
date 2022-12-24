@@ -2,47 +2,45 @@
   <div class="pro-content">
     <breadcrumb :fonts="fonts" />
     <div class="pro-main">
-      <!-- <div class="pro-up" v-for="(product,index) in content" :key="product.prod_id"> -->
-        <div class="pro-pic">
-          <img :src="`/img/${product.prod_pic_main}`"/>
+      <div class="pro-pic">
+        <img :src="`/img/${product.prod_pic_main}`" />
+      </div>
+      <div class="pro-txt">
+        <h2 class="pro-txt-title">{{ product.prod_name }}</h2>
+        <div class="pro-price">
+          販售價格:
+          <span class="pro-price-num">${{ product.prod_price }}</span>
         </div>
-        <div class="pro-txt">
-          <h2 class="pro-txt-title">{{ product.prod_name }}</h2>
-          <div class="pro-price">
-            販售價格:
-            <span class="pro-price-num">${{ product.prod_price }}</span>
-          </div>
-          <div class="pro-price">
-            購買數量:
-            <span class="pro-amount-btn">
-              <button @click="reduceCount" class="minus">-</button>
-              <input type="text" v-model.number="count" class="input" />
-              <button @click="addCount" class="minus">+</button>
-            </span>
-          </div>
-          <div class="pro-btn">
-            <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="cart">
-              <i class="fa-solid fa-plus"></i>加入購物車
-            </button>
-            <button class="pro-btn-btn btn-gold" @click="buy">
-              <i class="fa-solid fa-bag-shopping"></i>立即購買
-            </button>
-          </div>
+        <div class="pro-price">
+          購買數量:
+          <span class="pro-amount-btn">
+            <button @click="reduceCount" class="minus">-</button>
+            <input type="text" v-model.number="count" class="input" />
+            <button @click="addCount" class="minus">+</button>
+          </span>
         </div>
-        <div class="produce-intro">
-          <div class="pro-produce">
-            {{ product.prod_intro }}
-          </div>
+        <div class="pro-btn">
+          <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="cart">
+            <i class="fa-solid fa-plus"></i>加入購物車
+          </button>
+          <button class="pro-btn-btn btn-gold" @click="buy">
+            <i class="fa-solid fa-bag-shopping"></i>立即購買
+          </button>
         </div>
-        <div class="pro-pro-pic">
-          <div class="pro-pic-big">
-            <img :src="`/img/${product.prod_pic_intro_1}`"/>
-          </div>
-          <div class="pro-pic-big">
-            <img :src="`/img/${product.prod_pic_intro_2}`"/>
-          </div>
+      </div>
+      <div class="produce-intro">
+        <div class="pro-produce">
+          {{ product.prod_intro }}
         </div>
-      <!-- </div> -->
+      </div>
+      <div class="pro-pro-pic">
+        <div class="pro-pic-big">
+          <img :src="`/img/${product.prod_pic_intro_1}`" />
+        </div>
+        <div class="pro-pic-big">
+          <img :src="`/img/${product.prod_pic_intro_2}`" />
+        </div>
+      </div>
       <div class="pro-warn">
         <h3>訂購須知</h3>
         <ul class="pro-warn-txt">
@@ -70,7 +68,7 @@
           <div class="right"><i class="fa-solid fa-angle-up"></i></div>
         </div>
         <h3>瀏覽更多商品</h3>
-        <div class="swip-container desk">
+        <div class="swip-container">
           <swiper
             class="bannerfa"
             :pagination="{ clickable: true }"
@@ -87,11 +85,13 @@
               v-for="item in list"
               :key="item.id"
             >
+            <!-- <router-link :to ="{path:`/shop/${item.prod_id}`}"> -->
               <productcard
                 :title="item.prod_name"
                 :price="item.prod_price"
                 :img="`/img/${item.prod_pic_main}`"
               />
+            <!-- </router-link> -->
             </swiper-slide>
           </swiper>
         </div>
@@ -139,7 +139,7 @@ export default {
       fonts: [
         { name: "首頁", source: "/" },
         { name: "線上商城", source: "shop" },
-        // { name: "商品詳情", source: `shop:${id}` },
+        // { name: "商品詳情", source: `${item.prod_id}` },
       ],
       onSwiper,
       onSlideChange,
@@ -225,7 +225,7 @@ export default {
       this.count -= 1;
     },
     cart() {
-
+      
     },
     buy() {
       this.$router.push("/shopcart?step=0");
@@ -257,13 +257,13 @@ export default {
     },
     //============== 上面的資料
     getData2() {
-      const productid = this.$route.params.id
-      console.log(productid)
+      const productid = this.$route.params.id;
+      console.log(productid);
       // fetch(`{BASE_URL}/getProducts.php`)
       fetch(`http://localhost/g4/public/phpfiles/getProducts.php`)
         .then((res) => res.json())
         .then((txt) => {
-          this.product = txt[`${productid-1}`];
+          this.product = txt[`${productid - 1}`];
           console.log(this.product);
         });
     },
@@ -283,6 +283,11 @@ export default {
     saveData() {
       console.log(this.list);
     },
+    // goItem(item){
+    //   this.$router.to({path:`/shop/${item.prod_id}`})
+    // },
+    // <router-link to="`/shop/${item.prod_id}`"></router-link>
+    
   },
   created() {
     let windowidth = window.innerWidth;
@@ -568,6 +573,7 @@ export default {
     .bannerfa {
       width: 100%;
       cursor: pointer;
+      // padding-left: 30px;
       .swiper-pro {
         border-radius: 10px;
         padding: 10px;
