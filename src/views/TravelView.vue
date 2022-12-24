@@ -26,7 +26,7 @@
                 <div class="tago">
                   <!-- <p>{{list['tag']}}</p> -->
                   <p>{{result['package_tag']}}</p>
-                  <router-link to="/travelcontent" @click="go(result['package_title'],result['package_price'],result['package_indes'])">行程詳情</router-link>
+                  <router-link to="/travelcontent" @click="go(result['package_title'],result['package_price'],result['package_indes'],result['package_no'])">行程詳情</router-link>
                 </div>
               </div>
             </div>
@@ -81,11 +81,12 @@
                 })
               })
           },
-          go(theTitle,thePrice,theArticle){
+          go(theTitle,thePrice,theArticle,theNo){
             let obj = {
               theTitle, 
               thePrice,
-              theArticle
+              theArticle,
+              theNo
             }
             localStorage.setItem('Title',JSON.stringify(obj))
           },
