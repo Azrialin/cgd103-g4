@@ -19,7 +19,7 @@
           :img="`/img/${item.prod_pic_main}`"
           :title="item.prod_name"
           :price="item.prod_price"
-          :amount="item.amount"
+          :amount="amount"
         />
         <span class="del" @click="delitem(index)">
           <i class="fa-regular fa-trash-can"></i>
@@ -217,13 +217,23 @@ export default {
   },
   mounted() {
     this.getData();
-    this.$store.dispatch("addCart", {
-      // id:item.id,
-      id: 10,
-      img: require(`@/assets/img/products/pro4.jpg`),
-      title: "長崎蛋糕",
-      price: 460,
-    });
+    // this.$store.dispatch("addCart",product);
+    this.$store.dispatch("addCart",{
+      id:product.prod_id,
+      amount:1,
+    })
+    // {
+    //   id:product.prod_id,
+    //   amount:product.amount,
+    // }
+
+
+    // this.$store.dispatch("addCart", {
+    //   // id: 10,
+    //   // img: require(`@/assets/img/products/pro4.jpg`),
+    //   // title: "長崎蛋糕",
+    //   // price: 460,
+    // });
   },
 };
 </script>
@@ -382,15 +392,15 @@ export default {
   }
   .pay-success-txt {
     width: 100%;
-    p{
+    p {
       @include font(14px);
       text-align: center;
       margin: 10px;
     }
   }
-  .pay-success-btn{
+  .pay-success-btn {
     width: 100%;
-    .pro-btn-btn{
+    .pro-btn-btn {
       @include font(12px);
       margin: 10px;
     }
@@ -504,19 +514,19 @@ export default {
   // ======================step2
   .pay-success {
     .pay-icon {
-      i{
+      i {
         font-size: 800%;
       }
     }
     .pay-success-txt {
-      p{
+      p {
         @include font(20px);
         margin: 20px;
         text-align: center;
       }
     }
-    .pay-success-btn{
-      .pro-btn-btn{
+    .pay-success-btn {
+      .pro-btn-btn {
         @include font(16px);
       }
     }
