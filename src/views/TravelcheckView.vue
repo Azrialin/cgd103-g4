@@ -112,7 +112,7 @@
           })
         },
         getData(){
-          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getmember.php');
+          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php');
           fetch(myurl)
           .then((rs)=>rs.json())
           .then((json)=>{
