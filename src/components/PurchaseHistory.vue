@@ -123,6 +123,7 @@ export default {
       hide: false,
       itineryOrder: [],
       showdetailIndex: 0,
+      mem_no: this.$store.state.mem_no,
     };
   },
   created() {
@@ -136,7 +137,7 @@ export default {
     getData() {
       // this.result = result;
       // fetch(`{BASE_URL}/getPurchaseHistory.php`)
-      fetch("http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php")
+      fetch(`http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php?memId=${this.mem_no}`)
         .then((res) => res.json())
         .then((json) => {
           this.temp = json;

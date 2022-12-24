@@ -69,28 +69,37 @@ const result = {
     // passport: ""
 }
 // import {BASE_URL} from '@/assets/js/commom.js'
+
 export default {
     components: {
 
     },
     data(){
         return{
-            result:{},
-            
+            result:[],
+            // mem_no: this.$store.state.mem_no,
         }
     },
     created(){
         this.getData();
     },
+    computed: {
+      mem_no() {
+        return  this.$store.state.mem_no
+      }
+    },
     methods:{
         getData(){
+          if(!this.mem_no){
+            return 
+          }
             this.result = result;
-            fetch('http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php')
+            fetch(`http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php?memId=${this.mem_no}`)
             // fetch(`{BASE_URL}/getMemberInfo.php`)
 
                   .then((res) => res.json())
                   .then((json) =>{
-                    this.result = json;
+                    this.result = json[0];
                     console.log(this.result);
                   })
         },
