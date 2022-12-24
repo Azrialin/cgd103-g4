@@ -153,12 +153,6 @@ export default {
     this.getData();
   },
   methods: {
-    // async getData(){
-    //   const id = this.$route.params.prod_id
-    //   const response = await fetch(`http://localhost/g4/public/phpfiles/getProducts.php/${{id}}`)
-    //   const list = await response.json()
-    //   this.list = list
-    // },
     getData() {
       // fetch(`{BASE_URL}/getProducts.php`)
       fetch("http://localhost/g4/public/phpfiles/getProducts.php")

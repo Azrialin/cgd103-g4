@@ -15,7 +15,7 @@
       <hr />
       <div class="shopcart-item" v-for="item in list" :key="item.id" col-sm-12>
         <cartitem
-          :id="item.id"
+          :id="item.prod_id"
           :img="`/img/${item.prod_pic_main}`"
           :title="item.prod_name"
           :price="item.prod_price"
@@ -195,7 +195,6 @@ export default {
     },
     add() {
       this.step++;
-      this.target.backgroundColor = "#fa0";
     },
     reduce() {
       this.step--;
@@ -203,14 +202,28 @@ export default {
     member() {
       this.$router.push("/membership");
     },
+    getData() {
+      // this.result = result;
+      fetch("http://localhost/g4/public/phpfiles/getProducts.php")
+        .then((res) => res.json())
+        .then((vv) => {
+          this.list = vv;
+          console.log(this.list);
+        });
+    },
+    saveData() {
+      console.log(this.list);
+    },
   },
   mounted() {
-    // this.$store.dispatch("addCart", {
-    //   id: 10,
-    //   img: require(`@/assets/img/products/pro4.jpg`),
-    //   title: "長崎蛋糕",
-    //   price: 460,
-    // });
+    this.getData();
+    this.$store.dispatch("addCart", {
+      // id:item.id,
+      id: 10,
+      img: require(`@/assets/img/products/pro4.jpg`),
+      title: "長崎蛋糕",
+      price: 460,
+    });
   },
 };
 </script>

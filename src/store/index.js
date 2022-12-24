@@ -9,6 +9,9 @@ export default createStore({
     mem_no: null,
   },
   getters: {
+    cart(state){
+      return state.cart;
+    }
   },
   mutations: {
     setMember(state,number){
