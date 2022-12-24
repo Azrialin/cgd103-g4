@@ -5,7 +5,8 @@
     <div class="bbix" v-show="open" @click.self="dbcheck">
       <div class="choosearea">
         <select class="choose" v-model="choose">
-          <option value="" disabled>-選擇日期-</option>
+          <option v-if="!bad" value="" disabled>-選擇日期-</option>
+          <option v-if="bad" value="" disabled>-暫無行程-</option>
           <option :value="option.departure_date" v-for="option in options" :key="option">{{option.departure_date}}</option>
           <!-- <option value="2023/03/10">2023/03/10</option>
           <option value="2023/03/11">2023/03/11</option>
@@ -81,6 +82,7 @@
       },
       data() {
         return{
+          bad:false,
           dat:[],
           word: {            
             // head:"★ 3世界遺產＋3日本名勝",
@@ -140,8 +142,13 @@
           fetch(datURL).then((res)=>res.json()).then((json)=>{
             this.dat = json;
             this.options = this.dat.filter(item=>{
-              return item.package_no == JSON.parse(localStorage.getItem('Title')).theNo
+              return item.package_no == JSON.parse(localStorage.getItem('Title')).theNo;
             });
+            if(this.options.length <=0 ){
+              this.bad = true;
+            }else{
+              this.bad = false;
+            }
           });
         },
       },
@@ -168,6 +175,12 @@
 // *{
 //   outline: solid 1px;
 // }
+.good{
+  display: block;
+}
+.close{
+  display: none;
+}
 .bang-leave-active,.bang-enter-active{
   transition: 0.5s;
 }
