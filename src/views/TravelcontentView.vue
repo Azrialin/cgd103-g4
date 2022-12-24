@@ -6,7 +6,7 @@
       <div class="choosearea">
         <select class="choose" v-model="choose">
           <option value="" disabled>-選擇日期-</option>
-          <option :value="option" v-for="option in options" :key="option">{{option}}</option>
+          <option :value="option" v-for="option in options" :key="option">{{option.departure_date}}</option>
           <!-- <option value="2023/03/10">2023/03/10</option>
           <option value="2023/03/11">2023/03/11</option>
           <option value="2023/03/12">2023/03/12</option>
@@ -81,6 +81,7 @@
       },
       data() {
         return{
+          dat:[],
           word: {            
             // head:"★ 3世界遺產＋3日本名勝",
             head: JSON.parse(localStorage.getItem('Title')).theTitle,
@@ -91,7 +92,9 @@
           imgs:[require(`@/assets/img/products/pro1.jpg`),require(`@/assets/img/products/pro2.jpg`),require(`@/assets/img/products/pro3.jpg`),require(`@/assets/img/products/pro4.jpg`),require(`@/assets/img/products/pro5.jpg`)],
           eats:[{alt:"火車餅乾",src:require(`@/assets/img/products/pro8.jpg`)},{alt:"鐵道醬油",src:require(`@/assets/img/products/pro9.jpg`)},{alt:"長途鐵盒",src:require(`@/assets/img/products/pro10.jpg`)}],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'行程詳情',source:'travelcontent'}],  // source各位自己輸入對應的router路徑^^
-          options:["2023 / 03 / 04","2023 / 03 / 13","2023 / 03 / 24","2023 / 03 / 30","2023 / 04 / 07","2023 / 04 / 12","2023 / 04 / 20"],
+          options:[
+            // "2023 / 03 / 04","2023 / 03 / 13","2023 / 03 / 24","2023 / 03 / 30","2023 / 04 / 07","2023 / 04 / 12","2023 / 04 / 20"
+            ],
           modules: [Pagination,Navigation],
           x:0,
           y:0,
@@ -103,7 +106,6 @@
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-   
       methods: {
         move(e){
           let windowidth = window.innerWidth;
@@ -132,15 +134,25 @@
             this.open = false;
             return this.open;
           }
-        }
-      },
-      watch:{
-        choose(nVal) {
-          this.$router.push(`/travelcheck?date=${nVal}`)
         },
-
+        getdate(){
+          const datURL = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcontentdate.php');
+          fetch(datURL).then((res)=>res.json()).then((json)=>{
+            this.dat = json;
+            this.options = this.dat.filter(item=>{
+              return item.package_no == JSON.parse(localStorage.getItem('Title')).theNo
+            });
+          });
+        },
       },
+      // watch:{
+      //   choose(nVal) {
+      //     this.$router.push(`/travelcheck?date=${nVal}`)
+      //   },
+
+      // },
       created() {
+        this.getdate();
         let windowidth = window.innerWidth;
         if(windowidth < 1024){
           this.xyz = 1;
