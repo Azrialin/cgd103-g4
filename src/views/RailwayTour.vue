@@ -43,36 +43,39 @@
                 this.winH = window.innerHeight;
             },
             scroll() {
-                const ul = this.$refs.list;
-                const li = this.$refs.item;
-                let move = 0;
-                let count = 0;
-                ul.style.left = move;
+                if(this.winW > this.winH){
+                    const ul = this.$refs.list;
+                    const li = this.$refs.item;
+                    let move = 0;
+                    let count = 0;
+                    ul.style.left = move;
+                    // ul.style.left = move;
 
-                function mouse_wheel(e) {
-                    e = e || window.event;
-                    if (e.wheelDelta <= 0 || e.detail > 0) {
-                        if(count>(li.length - 2)){return}
-                        move = move - 300;
-                        ul.style.left = move + "px";
-                        count++;
-                    } else {
-                        count--;
-                        if(count<0){count=0};
-                        if (parseInt(ul.style.left) == 0){return}
-                        move = move + 300;
-                        ul.style.left = move + "px";
+                    function mouseWheel(e) {
+                        e = e || window.event;
+                        if (e.wheelDelta <= 0 || e.detail > 0) {
+                            if(count>(li.length - 2)){return}
+                            move = move - 300;
+                            ul.style.left = move + "px";
+                            count++;
+                        } else {
+                            count--;
+                            if(count<0){count=0};
+                            if (parseInt(ul.style.left) == 0){return}
+                            move = move + 300;
+                            ul.style.left = move + "px";
+                        }
+                        
                     }
-                    
-                }
 
-                if("onmousewheel" in window){
-                    window.onmousewheel = mouse_wheel;
-                }else if("onmousewheel" in document){
-                    document.onmousewheel = mouse_wheel;
-                }else if("addEventListener" in window){
-                    window.addEventListener("mousewheel", mouse_wheel, { passive: false });
-                    window.addEventListener("DOMMouseScroll", mouse_wheel, { passive: false });
+                    if("onmousewheel" in window){
+                        window.onmousewheel = mouseWheel;
+                    }else if("onmousewheel" in document){
+                        document.onmousewheel = mouseWheel;
+                    }else if("addEventListener" in window){
+                        window.addEventListener("mousewheel", mouseWheel, { passive: false });
+                        window.addEventListener("DOMMouseScroll", mouseWheel, { passive: false });
+                    }
                 }
             }
         },
@@ -88,6 +91,7 @@
     .container{       
         width: 100%;
         position: relative;
+        overflow: hidden;
         ul{
             vertical-align: middle;
             position: relative;
@@ -99,7 +103,7 @@
                 list-style: none;
                 position: relative;
                 width: 100%;
-                height: calc(100vh - 17px);
+                height: 100vh;
                 vertical-align: top;
                 background: #333;
                 display: inline-block;
