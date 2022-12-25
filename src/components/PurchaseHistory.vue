@@ -84,7 +84,7 @@
 </template>
 
 <script>
-// import {BASE_URL} from '@/assets/js/commom.js'
+import {BASE_URL} from '@/assets/js/common.js'
 import Merchandisereceipt from "@/components/Merchandisereceipt.vue";
 const result = [
   //   {
@@ -123,7 +123,7 @@ export default {
       hide: false,
       itineryOrder: [],
       showdetailIndex: 0,
-      mem_no: this.$store.state.mem_no,
+      // mem_no: this.$store.state.mem_no,
     };
   },
   created() {
@@ -136,8 +136,8 @@ export default {
     // },
     getData() {
       // this.result = result;
-      // fetch(`{BASE_URL}/getPurchaseHistory.php`)
-      fetch(`http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php?memId=${this.mem_no}`)
+      // fetch(`http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php?memId=${this.mem_no}`)
+      fetch(`${BASE_URL}/getPurchaseHistory.php?memId=${this.mem_no}`)
         .then((res) => res.json())
         .then((json) => {
           this.temp = json;
@@ -173,6 +173,9 @@ export default {
     getResult2() {
       return this.result[this.showdetailIndex];
     },
+     mem_no() {
+        return  this.$store.state.mem_no
+      },
   },
 };
 </script>
