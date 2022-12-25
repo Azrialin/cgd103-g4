@@ -20,6 +20,7 @@
 </style>
 
 <script>
+  import {BASE_URL} from '@/assets/js/common.js'
   import Header from "@/components/Header.vue"
   import Banner from "@/components/Banner.vue"
   import breadcrumb from "@/components/breadcrumb.vue"
@@ -62,14 +63,15 @@
       // 抓資料
       this.getNews();
       // $route取值 屬性 $route只能取值 $router 可以呼叫方法
-      console.log(this.$route.params.id); 
+      // console.log(this.$route.params.id); 
     },
     methods:{
       // 抓資料
       getNews(){
         const id = this.$route.params.id;
-        console.log(id);
-          fetch('http://localhost/list.php')
+        // console.log(id);
+          // fetch('http://localhost/list.php') //本地端
+          fetch(`${BASE_URL}list.php`)
           .then(res=>res.json())
           .then(json=>{
               // 抓回所有資料
