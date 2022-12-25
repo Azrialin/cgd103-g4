@@ -110,6 +110,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import productcard from "@/components/ProductCard.vue";
 import store from '@/store';
+import {BASE_URL} from '@/assets/js/common.js'
 
 // import Pagination from "@/components/pagination/Pagination.vue"
 
@@ -259,7 +260,7 @@ export default {
       const productid = this.$route.params.id;
       console.log(productid);
       // fetch(`{BASE_URL}/getProducts.php`)
-      fetch(`http://localhost/g4/public/phpfiles/getProducts.php`)
+      fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((txt) => {
           this.product = txt[`${productid - 1}`];
@@ -272,7 +273,7 @@ export default {
     // =============輪播圖
     getData() {
       // this.result = result;
-      fetch("http://localhost/g4/public/phpfiles/getProducts.php")
+      fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((vv) => {
           this.list = vv;
@@ -283,7 +284,7 @@ export default {
       console.log(this.list);
     },
     addCart() { //要怎麼放進vuex??
-      store.commit("addCart", item); //看鴻銘的code
+      this.$store.commit("addCart",this.product); //看鴻銘的code 
     },
     
     
@@ -296,11 +297,11 @@ export default {
       this.xyz = 4;
     }
   },
-  computed: {
-    addCart() {
-      return this.$store.getters.cart;
-    },
-  },
+  // computed: {
+  //   addCart() {
+  //     return this.$store.getters.cart;
+  //   },
+  // },
 };
 </script>
 

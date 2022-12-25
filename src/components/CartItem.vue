@@ -27,7 +27,9 @@
 
 
 <script>
+import Input from './Input.vue';
 export default {
+  components: { Input },
   props: {
     id: Number,
     img: String,

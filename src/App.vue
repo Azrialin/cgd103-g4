@@ -14,15 +14,14 @@
         },
 		mounted() {
 			 this.$store.dispatch("setCart", [
-      // {
-      //   id: 1,
-      //   img: require(`@/assets/img/products/pro4.jpg`),
-      //   title: "長崎蛋糕",
-      //   price: 460,
-      //   amount:1
-      // },
-    ]);
-
+			// {
+			//   id: 1,
+			//   img: require(`@/assets/img/products/pro4.jpg`),
+			//   title: "長崎蛋糕",
+			//   price: 460,
+			//   amount:1
+			// },
+			]);
 		},
     }
 </script>
@@ -41,6 +40,17 @@
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
+	&:has(.RailwayTour){
+		padding-top: 0;
+		.main{
+			width: 100%;
+			height: 100vh;
+		    background: #111;
+		}
+		header,.footer-bg{
+			display: none;
+		}
+	}
 }
 .main{
 	margin: auto;

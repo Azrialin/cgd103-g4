@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
+
 export default {
     name: 'NewsCard',
     data(){
@@ -40,7 +42,8 @@ export default {
     },
     methods:{
         getNews(){
-            fetch('http://localhost/list.php')
+            // fetch('http://localhost/list.php')//本地端
+            fetch(`${BASE_URL}list.php`)
             .then(res=>res.json())
             .then(json=>{
                 // 抓回所有資料

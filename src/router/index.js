@@ -3,6 +3,11 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
+    path: '/RailwayTour',
+    name: 'RailwayTour',
+    component: () => import('../views/RailwayTour.vue')
+  },
+  {
     path: '/',
     name: 'home',
     component: HomeView

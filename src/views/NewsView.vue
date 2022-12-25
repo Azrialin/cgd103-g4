@@ -103,6 +103,7 @@
 </style>
 
 <script>
+  import {BASE_URL} from '@/assets/js/common.js'
   import Header from "@/components/Header.vue"
   import Banner from "@/components/Banner.vue"
   import breadcrumb from "@/components/breadcrumb.vue"
@@ -177,7 +178,8 @@
     methods:{
       // 取得資料
       getNews(){
-          fetch('http://localhost/list.php')
+          // fetch('http://localhost/list.php') //本地端
+          fetch(`${BASE_URL}list.php`)
           .then(res=>res.json())
           .then(json=>{
               // 抓回所有資料

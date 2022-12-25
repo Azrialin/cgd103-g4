@@ -161,6 +161,7 @@
 import cartitem from "@/components/CartItem.vue";
 import stepbar from "@/components/stepbar.vue";
 import Input from "@/components/Input.vue";
+import {BASE_URL} from '@/assets/js/common.js'
 export default {
   name: "ShopCart",
   components: {
@@ -204,7 +205,7 @@ export default {
     },
     getData() {
       // this.result = result;
-      fetch("http://localhost/g4/public/phpfiles/getProducts.php")
+      fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((vv) => {
           this.list = vv;
@@ -214,16 +215,29 @@ export default {
     saveData() {
       console.log(this.list);
     },
+    
   },
   mounted() {
     this.getData();
-    this.$store.dispatch("addCart", {
-      // id:item.id,
-      id: 10,
-      img: require(`@/assets/img/products/pro4.jpg`),
-      title: "長崎蛋糕",
-      price: 460,
+    // this.$store.dispatch("addCart",product);
+    this.$store.dispatch("addCart",{
+      id:product.prod_id,
+      amount:1,
     });
+    
+    // {
+    //   id:product.prod_id,
+    //   amount:product.amount,
+    // }
+
+
+    // this.$store.dispatch("addCart", {
+    //   id: 10,
+    //   img: require(`@/assets/img/products/pro4.jpg`),
+    //   title: "長崎蛋糕",
+    //   price: 460,
+    //   amount:1,
+    // });
   },
 };
 </script>
@@ -382,15 +396,15 @@ export default {
   }
   .pay-success-txt {
     width: 100%;
-    p{
+    p {
       @include font(14px);
       text-align: center;
       margin: 10px;
     }
   }
-  .pay-success-btn{
+  .pay-success-btn {
     width: 100%;
-    .pro-btn-btn{
+    .pro-btn-btn {
       @include font(12px);
       margin: 10px;
     }
@@ -504,19 +518,19 @@ export default {
   // ======================step2
   .pay-success {
     .pay-icon {
-      i{
+      i {
         font-size: 800%;
       }
     }
     .pay-success-txt {
-      p{
+      p {
         @include font(20px);
         margin: 20px;
         text-align: center;
       }
     }
-    .pay-success-btn{
-      .pro-btn-btn{
+    .pay-success-btn {
+      .pro-btn-btn {
         @include font(16px);
       }
     }

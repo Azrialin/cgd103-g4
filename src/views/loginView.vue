@@ -72,6 +72,7 @@
 </template>
 
 <script>
+    import {BASE_URL} from '@/assets/js/common.js'
     import breadcrumb from "@/components/breadcrumb.vue"
     import Input from "@/components/Input.vue"
 
@@ -109,7 +110,7 @@
                     // thisvue.errorMsg = "請輸入帳號和密碼";
                     // thisvue.errorFlag = true;
                 }else {
-                    fetch("http://localhost/cgd103-g4/public/phpfiles/login.php",
+                    fetch(`${BASE_URL}/login.php`,
                         {
                             method: "post",
                             credentials: "include",
@@ -148,7 +149,7 @@
                 }else if(this.signupName.length >5 || this.signupPsw.length>11 || this.signupTel.length>11){  //全填後，判斷每一格都有符合格式
                     alert("資料格式有誤");
                 }else{//符合格式// fetch()送四筆資料
-                    fetch("http://localhost/cgd103-g4/public/phpfiles/signUp.php",
+                    fetch(`${BASE_URL}/signUp.php`,
                         {
                             method: "post",
                             credentials: "include",
