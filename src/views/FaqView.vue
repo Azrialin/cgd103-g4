@@ -52,6 +52,7 @@
 </template>
   
 <script>
+    import {BASE_URL} from "@/assets/js/common.js"
     import breadcrumb from "@/components/breadcrumb.vue"
     import Pagination from "@/components/pagination/Pagination.vue"
 
@@ -62,13 +63,11 @@
             Pagination,
         },
         props:{
-
         },
         created(){
             this.getFaqData_Fetch();
         },
         mounted(){
-            
         },
         data(){
             return{
@@ -80,11 +79,7 @@
                     { name: '首頁', source: '/'  },
                     { name: 'FAQ',  source: 'faq' }
                 ],
-                categoryList:[
-                    { faq_type: '會員問題' },
-                    { faq_type: '行程問題' },
-                    { faq_type: '商品問題' },
-                ],
+                categoryList:[],
                 faqList:[],
             }
         },
@@ -96,11 +91,13 @@
                 });
             },
             getFaqData_Fetch(){
-                fetch('http://localhost/CGD103_G4_front/public/phpfiles/Faq_getData.php')
+                // fetch('http://localhost/CGD103_G4_front/public/phpfiles/Faq_getData.php')
+                fetch(`${BASE_URL}/Faq_getData.php`)
                 .then(res=>res.json())
                 .then(json=>{
                     this.faqList = json;
                     this.activeList = this.faqList;
+                    this.categoryList = [...new Set(this.faqList.map(item => item.faq_type))].map(faqType => ({ faq_type: faqType }));
             })
 		},
         },
