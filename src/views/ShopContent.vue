@@ -283,7 +283,7 @@ export default {
       console.log(this.list);
     },
     addCart() { //要怎麼放進vuex??
-      store.commit("addCart", item); //看鴻銘的code
+      this.$store.commit("addCart",this.product); //看鴻銘的code
     },
     
     
@@ -296,11 +296,11 @@ export default {
       this.xyz = 4;
     }
   },
-  computed: {
-    addCart() {
-      return this.$store.getters.cart;
-    },
-  },
+  // computed: {
+  //   addCart() {
+  //     return this.$store.getters.cart;
+  //   },
+  // },
 };
 </script>
 

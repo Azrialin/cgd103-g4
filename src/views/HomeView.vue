@@ -6,18 +6,17 @@
         <div class="Api-Header">
           <p>{{ country_name }}　{{ place_name }}　{{ data_catch_time }}</p>
         </div>
-        <div class="Api-Footer"></div>
+        <div class="Api-Footer">
+          <div>
+            <p>{{ temperature }}</p>
+            <p>{{ weather_description }}</p>
+            <p>{{ temperatureMin }}　{{ temperatureMax }}</p>
+          </div>
+          <img :src="weather_pic" alt="" />
+        </div>
       </div>
       <div class="title">
         <h1>Topic 最新消息</h1>
-        <p>{{ temperature }}</p>
-        <p>{{ temperatureMin }}</p>
-        <p>{{ temperatureMax }}</p>
-        <p>{{ weather_description }}</p>
-        <p></p>
-        <p></p>
-        <img :src='weather_pic' alt="">
-        <p>{{weather_pic}}</p>
       </div>
       <ul class="HomeNew-List">
         <li v-for="list in lists" :key="list">
@@ -220,15 +219,17 @@ export default {
         mode: "cors",
       });
       const data = await response.json();
-      this.temperature = parseInt(data.main.temp )+ "°C";
-      this.temperatureMin = parseInt(data.main.temp_min-1)+ "°C";
+      this.temperature = parseInt(data.main.temp) + "°C";
+      this.temperatureMin = parseInt(data.main.temp_min - 1) + "°C";
       this.temperatureMax = parseInt(data.main.temp_max) + "°C";
       this.weather_description = data.weather[0].description;
-      this.weather_pic = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+      this.weather_pic ="http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
       this.place_name = data.name;
       this.country_name = data.sys.country;
-      this.data_catch_time = new Date(data.dt*1000).toLocaleString().split(" ")[1];
-  
+      this.data_catch_time = new Date(data.dt * 1000)
+        .toLocaleString()
+        .split(" ")[1];
+
       console.log(data);
     },
   },
