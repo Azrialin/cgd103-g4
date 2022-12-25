@@ -71,7 +71,7 @@
   </div>
 </template>
 <script>
-    // import {BASE_URL} from '@/assets/js/common.js'
+    import {BASE_URL} from '@/assets/js/common.js'
     import Header from "@/components/Header.vue"
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
@@ -128,6 +128,7 @@
           // if(!this.mem_no){
           //   return 
           // }
+          // const myurl = new URL(`${BASE_URL}/getTravelcheckmember.php?memId=${this.mem_no}`);
           const myurl = new URL(`http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php?memId=${this.mem_no}`);
           fetch(myurl)
           .then((rs)=>rs.json())

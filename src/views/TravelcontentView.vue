@@ -63,6 +63,7 @@
   </div>
 </template>
 <script>
+    import {BASE_URL} from '@/assets/js/common.js'
     import Header from "@/components/Header.vue"
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
@@ -139,6 +140,7 @@
           }
         },
         getdate(){
+          // const datURL = new URL(`${BASE_URL}/getTravelcontentdate.php`);
           const datURL = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcontentdate.php');
           fetch(datURL).then((res)=>res.json()).then((json)=>{
             this.dat = json;

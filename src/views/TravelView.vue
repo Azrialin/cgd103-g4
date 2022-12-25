@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+    import {BASE_URL} from '@/assets/js/common.js'
     import Header from "@/components/Header.vue"
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
@@ -69,9 +70,8 @@
         // },
         methods: {
           getData(){
-            const myurl = new URL(
-              'http://localhost/cgd103-g4/public/phpfiles/getTravelView.php'
-            );
+            // const myurl = new URL(`${BASE_URL}/getTravelView.php`);
+            const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelView.php');
             fetch(myurl)
               .then((res) => res.json())
               .then((json) =>{
