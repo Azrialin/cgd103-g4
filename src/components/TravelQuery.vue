@@ -80,7 +80,7 @@
 </template>
 
 <script>
-// import {BASE_URL} from '@/assets/js/commom.js'
+import {BASE_URL} from '@/assets/js/common.js'
 import Travelreceipt from '@/components/Travelreceipt.vue'
 const result = [
 
@@ -97,18 +97,23 @@ export default {
           hide:false,
           itineryOrder:[],
           showdetailIndex:0,
-          mem_no: this.$store.state.mem_no,
+          // mem_no: this.$store.state.mem_no,
         }
     },
     created(){
         this.getData();
     },
+    computed: {
+      mem_no() {
+        return  this.$store.state.mem_no
+      }
+    },
     methods:{
 
         getData(){
             /* this.result = result; */
-            // fetch(`{BASE_URL}/getTravelQuery.php`)
-            fetch(`http://localhost/cgd103-g4/public/phpfiles/getTravelQuery.php?memId=${this.mem_no}`)
+            // fetch(`http://localhost/cgd103-g4/public/phpfiles/getTravelQuery.php?memId=${this.mem_no}`)
+            fetch(`${BASE_URL}/getTravelQuery.php?memId=${this.mem_no}`)
               .then((res)=>res.json())
               .then((json)=> {
                 this.result = json;

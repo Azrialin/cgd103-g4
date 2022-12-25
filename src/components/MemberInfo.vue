@@ -68,7 +68,7 @@ const result = {
     // gender: "-女-",
     // passport: ""
 }
-// import {BASE_URL} from '@/assets/js/commom.js'
+import {BASE_URL} from '@/assets/js/common.js'
 
 export default {
     components: {
@@ -94,8 +94,8 @@ export default {
             return 
           }
             this.result = result;
-            fetch(`http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php?memId=${this.mem_no}`)
-            // fetch(`{BASE_URL}/getMemberInfo.php`)
+            // fetch(`http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php?memId=${this.mem_no}`)
+            fetch(`${BASE_URL}/getMemberInfo.php?memId=${this.mem_no}`)
 
                   .then((res) => res.json())
                   .then((json) =>{
