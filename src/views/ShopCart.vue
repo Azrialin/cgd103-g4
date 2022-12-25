@@ -19,7 +19,7 @@
           :img="`/img/${item.prod_pic_main}`"
           :title="item.prod_name"
           :price="item.prod_price"
-          :amount="amount"
+          :amount="item.amount"
         />
         <span class="del" @click="delitem(index)">
           <i class="fa-regular fa-trash-can"></i>
@@ -161,6 +161,7 @@
 import cartitem from "@/components/CartItem.vue";
 import stepbar from "@/components/stepbar.vue";
 import Input from "@/components/Input.vue";
+import {BASE_URL} from '@/assets/js/common.js'
 export default {
   name: "ShopCart",
   components: {
@@ -204,7 +205,7 @@ export default {
     },
     getData() {
       // this.result = result;
-      fetch("http://localhost/g4/public/phpfiles/getProducts.php")
+      fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((vv) => {
           this.list = vv;
@@ -214,6 +215,7 @@ export default {
     saveData() {
       console.log(this.list);
     },
+    
   },
   mounted() {
     this.getData();
@@ -221,7 +223,8 @@ export default {
     this.$store.dispatch("addCart",{
       id:product.prod_id,
       amount:1,
-    })
+    });
+    
     // {
     //   id:product.prod_id,
     //   amount:product.amount,
@@ -229,10 +232,11 @@ export default {
 
 
     // this.$store.dispatch("addCart", {
-    //   // id: 10,
-    //   // img: require(`@/assets/img/products/pro4.jpg`),
-    //   // title: "長崎蛋糕",
-    //   // price: 460,
+    //   id: 10,
+    //   img: require(`@/assets/img/products/pro4.jpg`),
+    //   title: "長崎蛋糕",
+    //   price: 460,
+    //   amount:1,
     // });
   },
 };

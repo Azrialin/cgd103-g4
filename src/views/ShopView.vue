@@ -42,6 +42,7 @@ import side from "@/components/side.vue";
 import productcard from "@/components/ProductCard.vue";
 import Select from "@/components/Select.vue";
 import Pagination from "@/components/pagination/Pagination.vue";
+import {BASE_URL} from '@/assets/js/common.js'
 // const result={};
 export default {
   name: "ShopView",
@@ -155,7 +156,7 @@ export default {
   methods: {
     getData() {
       // fetch(`{BASE_URL}/getProducts.php`)
-      fetch("http://localhost/g4/public/phpfiles/getProducts.php")
+      fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((json) => {
           this.list = json;
