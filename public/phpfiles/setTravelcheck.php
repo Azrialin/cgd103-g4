@@ -5,7 +5,7 @@
 
       require_once("./connect_cgd103g4.php");
     //sql 指令
-      $sql = "insert into `final`.`package_order` values (
+      $sql = "insert into `package_order` values (
           null, 
           :group_id, 
           current_date(), 
@@ -14,17 +14,18 @@
           :package_total, 
           :package_no_fk, 
           :package_said,
-          :mem_no)";
+          :mem_no)
+          ";
       //編譯, 執行
       $items = $pdo->prepare($sql);
 
-      $items->bindValue(":group_id", "3");
+      $items->bindValue(":group_id", $_POST["group_id"]);
       $items->bindValue(":package_ticket_amount", $_POST["package_ticket_amount"]);
       $items->bindValue(":package_pay_status", "未付款");
-      $items->bindValue(":package_total", "70000");
-      $items->bindValue(":package_no_fk,", "3");
+      $items->bindValue(":package_total", $_POST["package_total"]);
+      $items->bindValue(":package_no_fk,", $_POST["package_no_fk"]);
       $items->bindValue(":package_said", $_POST["package_said"]);
-      $items->bindValue(":mem_no", "3");
+      $items->bindValue(":mem_no", $_POST["mem_no"]);
       
       $items->execute();
 

@@ -7,7 +7,7 @@
         <select class="choose" v-model="choose">
           <option v-if="!bad" value="" disabled>-選擇日期-</option>
           <option v-if="bad" value="" disabled>-暫無行程-</option>
-          <option :value="option.departure_date" v-for="option in options" :key="option">{{option.departure_date}}</option>
+          <option :value="[option.departure_date,option.group_id]" v-for="option in options" :key="option">{{option.departure_date}}</option>
           <!-- <option value="2023/03/10">2023/03/10</option>
           <option value="2023/03/11">2023/03/11</option>
           <option value="2023/03/12">2023/03/12</option>
@@ -101,6 +101,7 @@
           x:0,
           y:0,
           choose:'',
+          gg:"",
         }
       },
     
@@ -154,7 +155,7 @@
       },
       watch:{
         choose(nVal) {
-          this.$router.push(`/travelcheck?date=${nVal}`)
+          this.$router.push(`/travelcheck?date=${nVal}${this.gg}`)
         },
       },
       created() {

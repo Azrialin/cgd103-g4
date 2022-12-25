@@ -5,7 +5,7 @@
     <h2>行程預約</h2>
     <form method="post" enctype="multipart/form-data">
     <div class="content_form">
-      <div class="title_name" v-for="title in titles" :key="title">
+      <div class="title_name">
       <!-- <div class="title_name" v-for="result in results" :key="result"> -->
         <!-- <h4>{{title['date']}}</h4> -->
         <h4>{{title['date']}}</h4>
@@ -42,7 +42,7 @@
           <div class="many">
             <p>旅行人數*</p>
             <div class="count">
-              <input class="inputcompo inmany" name="package_ticket_amount" v-model.number=number />
+              <input class="inputcompo inmany" name="package_ticket_amount" v-model.number="number" />
               <div class="minus" @click="minus">-</div>
               <div class="plus" @click="add">+</div>
             </div>
@@ -50,6 +50,10 @@
           <div class="card">
             <p>信用卡號碼*</p>
             <input class="inputcompo" name="credit_card" v-model="results['credit_card']"/>
+            <input class="inputcompo" name="group_id" v-model="dt" style="display:none"/>
+            <input class="inputcompo" name="package_total" v-model="toltol" style="display:none"/>
+            <input class="inputcompo" name="package_no_fk" v-model="pcn" style="display:none"/>
+            <input class="inputcompo" name="mem_no" v-model="mem_no" style="display:none"/>
           </div>
         </div>
       </div>
@@ -59,7 +63,7 @@
           <input type="checkbox">同意我們的<a href="">使用條款</a>和<a href="">隱私政策</a>
         </div>
         <div class="checksub">
-          <div @click="setData"><p>確認送出</p></div>
+          <div @click="setData()">確認送出</div>
         </div>
       </div>
     </div>
@@ -67,6 +71,7 @@
   </div>
 </template>
 <script>
+    // import {BASE_URL} from '@/assets/js/common.js'
     import Header from "@/components/Header.vue"
     import Banner from "@/components/Banner.vue"
     import breadcrumb from "@/components/breadcrumb.vue"
@@ -83,14 +88,17 @@
         return{
           results:[],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
-          titles:[{
-            date:`${this.$route.query.date}`,
+          title:{
+            date:`${this.$route.query.date.toString().split(",")[0]}`,
             name:JSON.parse(localStorage.getItem('Title')).theTitle,
             code:"JTR05221122A",
             price:JSON.parse(localStorage.getItem('Title')).thePrice
-          }],
+          },
           number:1,
           packagesaid:"",
+          dt:"",
+          toltol:"",
+          pcn:JSON.parse(localStorage.getItem('Title')).theNo,
         }
       },
       created() {
@@ -98,6 +106,7 @@
       },
       methods:{
         setData(){
+          // const seturl = new URL(`${BASE_URL}/setTravelcheck.php`);
           const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setTravelcheck.php');
           fetch(seturl,{
             method:'POST',
@@ -105,6 +114,10 @@
               credit_card:this.results['credit_card'],
               package_ticket_amount:this.number,
               package_said:this.packagesaid,
+              pack_no_fk:this.pcn,
+              group_id:this.dt,
+              package_total:this.toltol,
+              mem_no:this.mem_no,
             })})
             .then((res)=>res.json())
             .then((result)=>{
@@ -112,7 +125,10 @@
           })
         },
         getData(){
-          const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php');
+          // if(!this.mem_no){
+          //   return 
+          // }
+          const myurl = new URL(`http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php?memId=${this.mem_no}`);
           fetch(myurl)
           .then((rs)=>rs.json())
           .then((json)=>{
@@ -122,18 +138,32 @@
         },
         add(){
           this.number++;
+          this.toltol = this.title.price * this.number
         },
         minus(){
           if(this.number>1)
-          this.number--;
-        }
+            this.number--;
+            this.toltol = this.title.price * this.number
+          }
       },
       mounted(){
         // console.log(this.$route.query.date)
+        this.dt = this.$route.query.date.toString().split(",").pop()
         return this.$route.query.date
-        return this.$route.query.name
-        return this.$route.query.price
-      }
+        
+        // if (!this.mem_no){
+        //   this.$router.push("/login");
+        //   return 
+        // }
+      },
+      computed:{
+        toltol(){
+           return this.toltol = this.title.price * this.number
+        },
+        mem_no() {
+          return this.$store.state.mem_no
+        }
+      },
     }
 </script>
 <style lang="scss" scoped>
