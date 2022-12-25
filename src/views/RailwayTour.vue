@@ -2,7 +2,20 @@
     <div class="RailwayTour" >
         <div class="container" v-if="winW > winH">
             <ul ref="list" @scroll="scroll" class="font-32">
-                <li ref="item">Landing page-1</li>
+                <li ref="item">Landing page-1
+                    <form method="post" enctype="multipart/form-data">
+                        <h2>忘記密碼</h2>
+                        <hr>
+                        <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
+                        <input name="email"
+                            v-model="email"
+                            class="input-gold"
+                            type="email"
+                            placeholder="請輸入Email">
+                        <button class="btn-gold_2nd" @click="logins">取消</button>
+                        <button class="btn-gold" type="button" @click="forgotPsw" >確認送出</button>
+                    </form>
+                </li>
                 <li ref="item">Landing page-2</li>
                 <li ref="item">Landing page-3</li>
                 <li ref="item">Landing page-4</li>
@@ -19,6 +32,7 @@
 </template>
 
 <script>
+    import {BASE_URL} from "@/assets/js/common.js"
     export default {
         name: 'RailwayTour',
         components: {
@@ -33,6 +47,7 @@
         },
         data(){
             return{
+                email:'',
                 winW: window.innerWidth,
                 winH: window.innerHeight,
             }
@@ -65,7 +80,6 @@
                             move = move + 300;
                             ul.style.left = move + "px";
                         }
-                        
                     }
 
                     if("onmousewheel" in window){
@@ -77,13 +91,33 @@
                         window.addEventListener("DOMMouseScroll", mouseWheel, { passive: false });
                     }
                 }
-            }
+            },
+            forgotPsw(){
+                console.log(this.email);
+                // fetch(`${BASE_URL}/forgotPsw.php`)
+                fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php",{
+                    method:'POST', body:new URLSearchParams({
+                    email:this.email,
+                })})
+                .then((res) => res.json())
+                .then((result)=> {
+                    console.log(result);
+                    if(result.msg == "查無此帳號"){
+                        alert("此帳號不存在，請重新輸入或確認資料無誤。");
+                        return;
+                    }else{
+                        alert("已收到您提交的的忘記密碼請求，請至信箱查收新密碼，並於重新登入後修改密碼。");
+                        window.location.reload();
+                    }
+                })
+            },
         },
     }
 </script>
 
 <style scoped lang="scss">
 @import "../assets/scss/base/font.scss";
+@import "../assets/scss/base/color.scss";
 @import "../assets/scss/components/btn.scss";
 .RailwayTour{
     display: flex;
@@ -138,6 +172,53 @@
     }
     p{
         color: $clr_blue_L4;
+    }
+}
+
+form{
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    // padding-right: 100px;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid $front_color_main;
+    text-align: right;
+    background: #fff;
+    h2{
+        @include font(32px);
+        color: $color_444;
+        padding: 5px 0;
+    }
+    hr{
+        height: 0.5px;
+        margin-bottom: 30px;
+        background: #BC955C;
+        border: none;
+    }
+    .input-gold{
+        display: block;
+        width: 310px;
+    }
+    h3{
+        @include font(18px);
+        color: $color_444;
+        font-weight: 300;
+        padding: 15px 0;
+        span{
+            @include font(18px);
+            color: #941111;
+        }
+    }
+    .btn-gold_2nd{
+        margin-right: 30px;
+        margin-top: 40px;
+    }
+    .btn-gold{
+        margin-top: 40px;
     }
 }
 </style>
