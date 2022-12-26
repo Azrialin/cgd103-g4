@@ -5,42 +5,53 @@
             <div class="signup-card">
                 <!-- 歡迎回來 -->
                 <div class="panel overlay-left">
-                    <div class="overlay-card-left">
+                    <div>
                         <h3>歡迎回來</h3>
                         <p>快速登入，開始預訂你的新旅程！</p>
                         <img src="../assets/img/Login/signin.svg" class="image" alt="signup">
                         <button class="btn-blue_2nd" @click="isLogin =! isLogin">登入</button>
                     </div>
                 </div>
+                <!-- 還不是會員 -->
+                <div class="panel overlay-right">
+                    <div>
+                        <h3>還不是會員？</h3>
+                        <p>加入JET SPEED，開始預訂你的新旅程！</p>
+                        <img src="../assets/img/Login/signup.svg" class="image" alt="signup">
+                        <button class="btn-gold_2nd" @click="isLogin =! isLogin">註冊</button>
+                    </div>
+                </div>
             </div>
+            <!------------------ 登入頁 ---------------->
             <div class="signin-card" :class="{'isMove' : isLogin == false}">
-                <!------------------ 登入頁 ---------------->
-                <div class="main form-sign_in">
-                    <!-- 註冊 -->
-                    <form class="signupform" autocomplete="off" v-show="isLogin == false">
+                <!-- 註冊 -->
+                <form class="signupform" autocomplete="off" v-show="isLogin == false">
+                    <div>
                         <h2 class="title">註冊</h2>
-                        <div class="inputfield-right">
-                            <div class="signup-name">
-                                <label class="title-text">姓名</label>
-                                <input class="input-gold" type="text" v-model="signupName" placeholder="請輸入姓名(最多五個字)">
-                            </div> 
-                            <div class="signup-email">
-                                <label class="title-text">電子信箱</label>
-                                <input class="input-gold" type="email" v-model="signupEmail" placeholder="請輸入Email">
-                            </div>  
-                            <div class="signup-password">
-                                <label class="title-text">密碼</label>
-                                <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數共10碼">
-                            </div>   
-                            <div class="signup-tel">
-                                <label class="title-text">聯絡電話</label>
-                                <input class="input-gold" type="tel" v-model="signupTel" placeholder="請輸入手機號碼(最多10碼)">
-                            </div> 
-                        </div>
-                        <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
-                    </form>
+                    <div class="inputfield-right">
+                        <div class="signup-name">
+                            <label class="title-text">姓名</label>
+                            <input class="input-gold" type="text" v-model="signupName" placeholder="請輸入姓名(最多五個字)">
+                        </div> 
+                        <div class="signup-email">
+                            <label class="title-text">電子信箱</label>
+                            <input class="input-gold" type="email" v-model="signupEmail" placeholder="請輸入Email">
+                        </div>  
+                        <div class="signup-password">
+                            <label class="title-text">密碼</label>
+                            <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數共10碼">
+                        </div>   
+                        <div class="signup-tel">
+                            <label class="title-text">聯絡電話</label>
+                            <input class="input-gold" type="tel" v-model="signupTel" placeholder="請輸入手機號碼(最多10碼)">
+                        </div> 
+                    </div>
+                    <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
+                    </div>
+                </form>
                     <!-- 登入 -->
-                    <form class="signinform" autocomplete="off" v-show="isLogin" method="post">
+                <form class="signinform" autocomplete="off" v-show="isLogin" method="post">
+                    <div>
                         <!-- @submit.prevent="login" -->
                         <h2 class="title">登入</h2>
                         <div class="inputfield-left">
@@ -55,17 +66,9 @@
                             <router-link to="/Forgotpassword" class="forgot_password">忘記密碼了嗎?</router-link>
                         </div>
                         <button type="button" class="btn-gold" @click="members">登入</button>
-                    </form>
-                </div>
-                <!---------------- 還不是會員 -------------->
-                <div class="panel overlay-right">
-                    <div class="overlay-card-right">
-                        <h3>還不是會員？</h3>
-                        <p>加入JET SPEED，開始預訂你的新旅程！</p>
-                        <img src="../assets/img/Login/signup.svg" class="image" alt="signup">
-                        <button class="btn-gold_2nd" @click="isLogin =! isLogin">註冊</button>
+                        <!-- <button type="button" class="btn-gold_2nd" @click="isLogin =! isLogin">註冊</button> -->
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -186,59 +189,122 @@
 @import "../assets/scss/components/btn.scss";
 
 .login{
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
-    justify-content: center;
-
+    width: fit-content;
+    overflow: hidden;
+    padding: 0 40px;
     .wrap{
-        width: 800px;
-        height: 700px;
         position: relative;
-        overflow: hidden;
-    }
-   .panel,
-   .main{
-        width: 400px;
-        height: 550px;
-        margin-top: 1px;
-        margin-bottom: 100px;
-   }
-   .image{
-        width: 60%;
         margin: auto;
-        display: block;
-   }
-   //--------- 登入頁面卡片 ----------
-    .signin-card{
-        display: flex;
-        position: relative;
-        transition: .2s;
-        // opacity: 0;
-        left: 0;
-        z-index: 3;
-        top: -652px;
-
-        &.isMove{
-            transition: .2s;
-            opacity: 1;
-            left: 400px;
-            .main{
-                border: 1px solid $back_color_active;
-                border-radius: 0 10px 10px 0;
-            }
+        width: 800px;
+        margin-bottom: 80px;
+        @include maxW(1200px){
+            width: fit-content;
+            width: calc(100vw - 80px);
         }
-
-        .main{
+        .panel, .signupform, .signinform{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-radius: 10px 0 0 10px;
-            background-color: #fff;
-            border: 1px solid $front_color_main;
+            width: 400px;
+            height: 550px;
+            @include maxW(1200px){
+            width: fit-content;
+            width: calc(100vw - 100px);
+            }
         }
-        // ---------- 註冊 ------------
-        .signupform{ 
+        .signup-card{
+            display: flex;
+            @include maxW(1200px){
+                position: relative;
+                left: calc(50% - 400px / 2);
+            }
+            // ---------- 歡迎回來 ------------
+            .overlay-left{
+                border-radius: 10px 0 0 10px;
+                border: 1px solid $back_color_active;
+                background-color: $back_color_active;
+                text-align: center;
+                @include maxW(1200px){
+                    position: absolute;
+                    left: calc(50% - 400px / 2);
+                }
+                h3{
+                    @include font(28px);
+                    color: #fff;
+                    text-align: center;
+                    line-height: 2.2;
+                    margin-bottom: 20px;
+                }
+                p{
+                    @include font(16px);
+                    color: #fff;
+                    font-weight: 300;
+                    text-align: center;
+                    line-height: 2.2;
+                    margin-bottom: 70px;
+                }
+                .btn-blue_2nd{
+                    margin-top: 90px;
+                }
+            }
+            // ---------- 還不是會員 ------------
+            .overlay-right{  
+                opacity: 1;
+                border-radius: 0 10px 10px 0;
+                border: 1px solid $front_color_active;
+                background-color: $front_color_active;
+                margin: auto;
+                text-align: center;
+                @include maxW(1200px){
+                    position: relative;
+                    left: calc(50% - 209px);
+                }
+                h3{
+                    @include font(28px);
+                    color: #fff;
+                    text-align: center;
+                    line-height: 2.2;
+                }
+                p{
+                    @include font(16px);
+                    color: #fff;
+                    font-weight: 300;
+                    text-align: center;
+                    line-height: 2.2;
+                    margin: 10px;
+                }
+                .btn-gold_2nd{
+                    margin-top: 40px;
+                }
+            }
+        }
+           //--------- 登入頁面卡片 ----------
+        .signin-card{
+            transition: .2s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fff;
+            @include maxW(1200px){
+                left: calc(50% - 400px / 2);
+                &.isMove{
+
+                }
+            }
+            &.isMove{
+                border-radius: 0 10px 10px 0;
+                border: 1px solid $back_color_main;
+                transition: .2s;
+                opacity: 1;
+                left: 398px;
+            }
+            // ---------- 註冊 ------------
+            .signupform{
+                border-radius: 0 10px 10px 0;
                 .title{
                     @include font(32px);
                     color: $color_444;
@@ -270,9 +336,12 @@
                 .btn-blue{
                     margin: 30px;
                 }
-        }
-        // ---------- 登入 ------------
-        .signinform{ 
+                
+            }
+            // ---------- 登入 ------------
+            .signinform{
+                border: 1px solid $front_color_main;
+                border-radius: 10px 0 0 10px;
                 .title{
                     @include font(32px);
                     color: $color_444;
@@ -311,76 +380,22 @@
                 .btn-gold{
                     margin-top: 40px;
                 }
-        }
-   }
-   .signup-card{
-        width: 800px;
-        display: flex;
-        flex-direction: row-reverse;
-        flex-wrap: nowrap;
-        justify-content: center;
-   }
-   // ---------- 歡迎回來 ------------
-   .overlay-left{
-        position: relative;
-        right: 200px;
-        border-radius: 10px 0 0 10px;
-        background-color: $back_color_active;
-        display: flex;
-        
-        .overlay-card-left{
-            margin: auto;
-            text-align: center;
-            h3{
-                @include font(28px);
-                color: #fff;
-                text-align: center;
-                line-height: 2.2;
-                margin-bottom: 20px;
-            }
-            p{
-                @include font(16px);
-                color: #fff;
-                font-weight: 300;
-                text-align: center;
-                line-height: 2.2;
-                margin-bottom: 70px;
-            }
-            .btn-blue_2nd{
-                margin-top: 90px;
+                .btn-gold_2nd{
+                    @include maxW(1200px){
+                        width: fit-content;
+                        // width: calc(100vw - 80px);
+                        margin-bottom: 10px;
+                    }
+                    
+                }
             }
         }
-   }
-   // ---------- 還不是會員 ------------
-   .overlay-right{  
-        opacity: 1;
-        background-color: $front_color_active;
-        border: 1px solid $front_color_active;
-        border-radius: 0 10px 10px 0;
-        display: flex;
-        .overlay-card-right{
-            margin: auto;
-            text-align: center;
-            h3{
-                @include font(28px);
-                color: #fff;
-                text-align: center;
-                line-height: 2.2;
-            }
-            p{
-                @include font(16px);
-                color: #fff;
-                font-weight: 300;
-                text-align: center;
-                line-height: 2.2;
-                margin: 10px;
-            }
-            .btn-gold_2nd{
-                margin-top: 40px;
-            }
-        }
-        
-   }
+    }
+   .image{
+        width: 60%;
+        margin: auto;
+        display: block;
+    }
 }
 
 </style>

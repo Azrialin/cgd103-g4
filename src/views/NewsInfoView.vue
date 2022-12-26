@@ -10,7 +10,10 @@
   :text_trans="activeNews.news_text_trans"
   :text_end="activeNews.news_text_end"
   />
-  <!-- :img="news.news_img" -->
+  <!-- 如果直接直接寫好打包後的圖片存在前台，就不用以下動作 -->
+  <!-- 打包前途片路徑 --> <!-- :img="`/img/News/${activeNews.news_img}`" -->
+  <!-- 打包後圖片路徑(加一個點) --> <!-- :img="`./img/News/${activeNews.news_img}`" -->
+
   <GotoParadise/>
   <router-view/>
 </template>
@@ -71,7 +74,7 @@
         const id = this.$route.params.id;
         // console.log(id);
           // fetch('http://localhost/cgd103-g4/public/phpfiles/getNews.php') //本地端
-          fetch(`${BASE_URL}getNews.php`)
+          fetch(`${BASE_URL}/getNews.php`)
           .then(res=>res.json())
           .then(json=>{
               // 抓回所有資料
