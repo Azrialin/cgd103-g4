@@ -151,6 +151,11 @@ const routes = [
     component: () => import('../views/Signin_sucView.vue')
   },
   {
+    path: '/Travelcheck_suc',
+    name: 'Travelcheck_suc',
+    component: () => import('../views/Travelcheck_sucView.vue')
+  },
+  {
     path: '/Signup_suc',
     name: 'Signup_suc',
     component: () => import('../views/Signup_sucView.vue')

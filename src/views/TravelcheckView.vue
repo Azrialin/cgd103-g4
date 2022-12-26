@@ -108,7 +108,10 @@
       },
       methods:{
         setData(){
-          
+          if(!this.mem_no){
+            this.$router.push("/login");
+            return 
+          }
           // const seturl = new URL(`${BASE_URL}/setTravelcheck.php`);
           const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setTravelcheck.php');
           const abc = {
@@ -129,12 +132,11 @@
             .then((res)=>res.json())
             .then((kuku)=>{
               console.log(kuku);
+              this.$router.push("/Travelcheck_suc");
           })
         },
         getData(){
-          // if(!this.mem_no){
-          //   return 
-          // }
+
           // const myurl = new URL(`${BASE_URL}/getTravelcheckmember.php?memId=${this.mem_no}`);
           const myurl = new URL(`http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php?memId=${this.mem_no}`);
           fetch(myurl)
