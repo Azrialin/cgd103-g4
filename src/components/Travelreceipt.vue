@@ -12,7 +12,7 @@
             <div class="receipt-wrapper">
               <div class="receipt-frame">
                 <div class="col-xl-4">
-                  <img :src="`/img/Scape/${result2?.package_pic}`" alt="">
+                  <img :src="`./img/Scape/${result2?.package_pic}`" alt="">
                 </div>
                 <div class="img-des col-xl-7">
                   <h3>九州線｜豪華觀光列車單日遊</h3> 
