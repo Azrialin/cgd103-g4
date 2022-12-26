@@ -22,7 +22,7 @@
                 <!--  -->
                 <div class="productImg">
 
-                  <img :src="`/img/${result.prod_pic_main}`" alt="">
+                  <img :src="`./img/${result.prod_pic_main}`" alt="">
                   <!-- <img :src="`front/img/${result.prod_pic_main}`" alt=""> -->
                 </div>
 

@@ -106,7 +106,7 @@ export default {
         saveData(){
           // console.log(this.result);
           // fetch(`{BASE_URL}/prod_update.php`)
-          fetch('http://localhost/cgd103-g4/public/phpfiles/memberUpdate.php', {
+          fetch(`${BASE_URL}/memberUpdate.php`, {
             method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
           })
           .then((res)=>res.json())
