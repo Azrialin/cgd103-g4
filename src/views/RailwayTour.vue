@@ -7,8 +7,8 @@
                         <h2>忘記密碼</h2>
                         <hr>
                         <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
-                        <input name="email"
-                            v-model="email"
+                        <input name="mem_email"
+                            v-model="mem_email"
                             class="input-gold"
                             type="email"
                             placeholder="請輸入Email">
@@ -47,7 +47,7 @@
         },
         data(){
             return{
-                email:'',
+                mem_email:'',
                 winW: window.innerWidth,
                 winH: window.innerHeight,
             }
@@ -93,11 +93,11 @@
                 }
             },
             forgotPsw(){
-                console.log(this.email);
+                console.log(this.mem_email);
                 // fetch(`${BASE_URL}/forgotPsw.php`)
                 fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php",{
                     method:'POST', body:new URLSearchParams({
-                    email:this.email,
+                        mem_email:this.mem_email,
                 })})
                 .then((res) => res.json())
                 .then((result)=> {
@@ -107,7 +107,7 @@
                         return;
                     }else{
                         alert("已收到您提交的的忘記密碼請求，請至信箱查收新密碼，並於重新登入後修改密碼。");
-                        window.location.reload();
+                        // window.location.reload();
                     }
                 })
             },
