@@ -16,7 +16,7 @@
       <div class="shopcart-item" v-for="item in list" :key="item.id" col-sm-12>
         <cartitem
           :id="item.prod_id"
-          :img="`/img/${item.prod_pic_main}`"
+          :img="`./img/${item.prod_pic_main}`"
           :title="item.prod_name"
           :price="item.prod_price"
           :amount="item.amount"
