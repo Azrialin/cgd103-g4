@@ -8,16 +8,16 @@
 	require_once("./connect_cgd103g4.php");
 	
 	$sql = "select * from news";
-	$book = $pdo->query($sql);
-	$books = $book->fetchAll();
+	$news = $pdo->query($sql);
+	$allNews = $news->fetchAll();
 	$data=[];
 
-	foreach($books as $i=> $page){
+	foreach($allNews as $i=> $page){
 		  $data[]=$page;
 	}
 	echo json_encode($data);
 
-	 // 舊
+	// ---------- 舊 --------
 	//  require_once("./connectG4.php");
 	// require_once("connect_cgd103g4.php"); //本地端
 	// require_once("./connect_cgd103g4.php");
