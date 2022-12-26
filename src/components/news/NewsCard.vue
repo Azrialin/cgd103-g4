@@ -42,8 +42,8 @@ export default {
     },
     methods:{
         getNews(){
-            // fetch('http://localhost/list.php')//本地端
-            fetch(`${BASE_URL}list.php`)
+            // fetch('http://localhost/cgd103-g4/public/phpfiles/getNews.php')//本地端
+            fetch(`${BASE_URL}getNews.php`)
             .then(res=>res.json())
             .then(json=>{
                 // 抓回所有資料
