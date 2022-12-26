@@ -39,14 +39,18 @@
                         </div>  
                         <div class="signup-password">
                             <label class="title-text">密碼</label>
-                            <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數共10碼">
+                            <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數最多10碼">
                         </div>   
                         <div class="signup-tel">
                             <label class="title-text">聯絡電話</label>
                             <input class="input-gold" type="tel" v-model="signupTel" placeholder="請輸入手機號碼(最多10碼)">
                         </div> 
                     </div>
-                    <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
+                    <div class="signup_btn">
+                        <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
+                        <button type="button" class="btn-blue_2nd" @click="isLogin =! isLogin">返回登入頁</button>
+                    </div> 
+                    <!-- <button type="button" class="btn-blue" @click="signups">註冊為會員</button> -->
                     </div>
                 </form>
                     <!-- 登入 -->
@@ -65,8 +69,10 @@
                             </div>   
                             <router-link to="/Forgotpassword" class="forgot_password">忘記密碼了嗎?</router-link>
                         </div>
-                        <button type="button" class="btn-gold" @click="members">登入</button>
-                        <!-- <button type="button" class="btn-gold_2nd" @click="isLogin =! isLogin">註冊</button> -->
+                        <div class="signin_btn">
+                            <button type="button" class="btn-gold" @click="members">登入</button>
+                            <button type="button" class="btn-gold_2nd" @click="isLogin =! isLogin">註冊</button>
+                        </div>  
                     </div>
                 </form>
             </div>
@@ -192,6 +198,9 @@
     width: fit-content;
     overflow: hidden;
     padding: 0 40px;
+    @include maxW(1200px){
+        padding: 0;
+    }
     .wrap{
         position: relative;
         margin: auto;
@@ -226,7 +235,7 @@
                 text-align: center;
                 @include maxW(1200px){
                     position: absolute;
-                    left: calc(50% - 400px / 2);
+                    left: calc(50% - 560px);
                 }
                 h3{
                     @include font(28px);
@@ -257,7 +266,7 @@
                 text-align: center;
                 @include maxW(1200px){
                     position: relative;
-                    left: calc(50% - 209px);
+                    left: calc(50% - -200px);
                 }
                 h3{
                     @include font(28px);
@@ -291,9 +300,6 @@
             background-color: #fff;
             @include maxW(1200px){
                 left: calc(50% - 400px / 2);
-                &.isMove{
-
-                }
             }
             &.isMove{
                 border-radius: 0 10px 10px 0;
@@ -305,6 +311,10 @@
             // ---------- 註冊 ------------
             .signupform{
                 border-radius: 0 10px 10px 0;
+                @include maxW(1200px){
+                    position: relative;
+                    left: calc(50% - 525px);
+                }
                 .title{
                     @include font(32px);
                     color: $color_444;
@@ -333,15 +343,39 @@
                         border: 1px solid $back_color_main;
                     }
                 }
-                .btn-blue{
-                    margin: 30px;
+                .signup_btn{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
                 }
-                
+                .btn-blue{
+                    margin-top: 30px;
+                    @include minW(1200px){
+                        margin-bottom: 30px;
+                        margin-top: 35px;
+                    }
+                }
+                .btn-blue_2nd{
+                    @include maxW(1200px){
+                        margin-top: 15px;
+                    }
+                    @include minW(1200px){
+                        display: none;
+                    }
+                }
             }
             // ---------- 登入 ------------
             .signinform{
                 border: 1px solid $front_color_main;
                 border-radius: 10px 0 0 10px;
+                @include maxW(1200px){
+                    position: relative;
+                    left: calc(50% - 180px / 2);
+                    width: 290px;
+                    border-radius: 10px;
+                }
                 .title{
                     @include font(32px);
                     color: $color_444;
@@ -377,16 +411,26 @@
                         color: $front_color_active;
                     }
                 }
+                .signin_btn{
+                    @include maxW(1200px){
+                        display: flex;
+                        flex-wrap: nowrap;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
                 .btn-gold{
-                    margin-top: 40px;
+                    margin-top: 50px;
                 }
                 .btn-gold_2nd{
                     @include maxW(1200px){
                         width: fit-content;
-                        // width: calc(100vw - 80px);
-                        margin-bottom: 10px;
+                        margin-top: 15px;
                     }
-                    
+                    @include minW(1200px){
+                        display: none;
+                    }
                 }
             }
         }
