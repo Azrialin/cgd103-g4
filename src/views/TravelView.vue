@@ -70,9 +70,9 @@
         // },
         methods: {
           getData(){
-            // const myurl = new URL(`${BASE_URL}/getTravelView.php`);
-            const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelView.php');
-            fetch(myurl)
+            // const myurl = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelView.php');
+            // fetch(myurl)
+            fetch(`${BASE_URL}/getTravelView.php`)
               .then((res) => res.json())
               .then((json) =>{
                 this.resultts=json;

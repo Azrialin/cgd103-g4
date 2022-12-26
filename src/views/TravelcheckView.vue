@@ -112,8 +112,7 @@
             this.$router.push("/login");
             return 
           }
-          // const seturl = new URL(`${BASE_URL}/setTravelcheck.php`);
-          const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setTravelcheck.php');
+          // const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setTravelcheck.php');
           const abc = {
             package_pay_status: this.package_pay_status,
             package_ticket_amount: this.number,
@@ -123,7 +122,8 @@
             package_total: this.toltol,
             mem_no: this.mem_no,
           }
-          fetch(seturl,{
+          // fetch(seturl,{
+          fetch(`${BASE_URL}/setTravelcheck.php`,{
             method:'POST',
             // credentials: "include",
             body: new URLSearchParams(abc)
@@ -137,9 +137,9 @@
         },
         getData(){
 
-          // const myurl = new URL(`${BASE_URL}/getTravelcheckmember.php?memId=${this.mem_no}`);
-          const myurl = new URL(`http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php?memId=${this.mem_no}`);
-          fetch(myurl)
+          // const myurl = new URL(`http://localhost/cgd103-g4/public/phpfiles/getTravelcheckmember.php?memId=${this.mem_no}`);
+          // fetch(myurl)
+          fetch(`${BASE_URL}/getTravelcheckmember.php?memId=${this.mem_no}`)
           .then((rs)=>rs.json())
           .then((json)=>{
             this.results=json[0];

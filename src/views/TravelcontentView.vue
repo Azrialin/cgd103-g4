@@ -140,9 +140,9 @@
           }
         },
         getdate(){
-          // const datURL = new URL(`${BASE_URL}/getTravelcontentdate.php`);
-          const datURL = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcontentdate.php');
-          fetch(datURL).then((res)=>res.json()).then((json)=>{
+          // const datURL = new URL('http://localhost/cgd103-g4/public/phpfiles/getTravelcontentdate.php');
+          // fetch(datURL).then((res)=>res.json()).then((json)=>{
+          fetch(`${BASE_URL}/getTravelcontentdate.php`).then((res)=>res.json()).then((json)=>{
             this.dat = json;
             this.options = this.dat.filter(item=>{
               return item.package_no == JSON.parse(localStorage.getItem('Title')).theNo;
