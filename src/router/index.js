@@ -65,29 +65,13 @@ const routes = [
     path: '/news',
     name: 'news',
     component: () => import('../views/NewsView.vue'),
-    // children:[
-    //   {
-    //     path:'newsInfo',
-    //     component:() => import('../views/NewsInfoView.vue'),
-    //   },
-    // ],
   },
   // ------test 2 ------動態路由
-    {
-      path: '/newsInfo/:id',
-      name: 'newsInfo',
-      component: () =>import('../views/NewsInfoView.vue'),
-    },
-  // ------TEST--------
-  // {//動態路由 
-  //   path: '/newsInfo/:newsId',
-  //   name: 'newsInfo',
-  //   component: () => import('../views/NewsInfoView.vue'),
-  //   // props : ()=> ({
-  //   //   newsId:''
-  //   // })
-  // },
-  // ----------------
+  {
+    path: '/newsInfo/:id',
+    name: 'newsInfo',
+    component: () =>import('../views/NewsInfoView.vue'),
+  },
   {
     path: '/shop',
     name: 'shop',
@@ -119,11 +103,6 @@ const routes = [
     path: '/Input',
     name: 'Input',
     component: () => import('../views/InputView.vue')
-  },
-  {
-    path: '/newscontent',
-    name: 'newscontent',
-    component: () => import('../views/NewscontentView.vue')
   },
   {
     path: '/faq',
