@@ -54,6 +54,7 @@
             <input class="inputcompo" name="package_total" v-model="toltol" style="display:none"/>
             <input class="inputcompo" name="package_no_fk" v-model="pcn" style="display:none"/>
             <input class="inputcompo" name="mem_no" v-model="mem_no" style="display:none"/>
+            <input class="inputcompo" name="package_pay_status" v-model="package_pay_status" style="display:none"/>
           </div>
         </div>
       </div>
@@ -98,7 +99,8 @@
           packagesaid:"",
           dt:"",
           toltol:"",
-          pcn:JSON.parse(localStorage.getItem('Title')).theNo,
+          package_pay_status:"未付款",
+          pcn:parseInt(JSON.parse(localStorage.getItem('Title')).theNo),
         }
       },
       created() {
@@ -106,22 +108,27 @@
       },
       methods:{
         setData(){
+          
           // const seturl = new URL(`${BASE_URL}/setTravelcheck.php`);
           const seturl = new URL('http://localhost/cgd103-g4/public/phpfiles/setTravelcheck.php');
+          const abc = {
+            package_pay_status: this.package_pay_status,
+            package_ticket_amount: this.number,
+            package_said: this.packagesaid,
+            package_no_fk: this.pcn,
+            group_id: this.dt,
+            package_total: this.toltol,
+            mem_no: this.mem_no,
+          }
           fetch(seturl,{
             method:'POST',
-            body: new URLSearchParams({
-              credit_card:this.results['credit_card'],
-              package_ticket_amount:this.number,
-              package_said:this.packagesaid,
-              pack_no_fk:this.pcn,
-              group_id:this.dt,
-              package_total:this.toltol,
-              mem_no:this.mem_no,
-            })})
+            // credentials: "include",
+            body: new URLSearchParams(abc)
+            })
+            
             .then((res)=>res.json())
-            .then((result)=>{
-              console.log(result);
+            .then((kuku)=>{
+              console.log(kuku);
           })
         },
         getData(){
@@ -149,7 +156,7 @@
       },
       mounted(){
         // console.log(this.$route.query.date)
-        this.dt = this.$route.query.date.toString().split(",").pop()
+        this.dt = parseInt(this.$route.query.date.toString().split(",").pop())
         return this.$route.query.date
         
         // if (!this.mem_no){
@@ -162,7 +169,7 @@
            return this.toltol = this.title.price * this.number
         },
         mem_no() {
-          return this.$store.state.mem_no
+          return parseInt(this.$store.state.mem_no)
         }
       },
     }
