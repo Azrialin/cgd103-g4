@@ -13,7 +13,7 @@
                   <!-- <div class="boxb">${{list['price']}} 起</div> -->
                   <div class="boxb">${{result['package_price']}} 起</div>
                   <!-- <img :src="list['src']" alt=""> -->
-                  <img :src="`/img/Scape/${result['package_pic']}`">
+                  <img :src="`./img/Scape/${result['package_pic']}`">
                 </router-link>
               </div>
               <div class="tra_intro">
