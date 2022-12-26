@@ -35,10 +35,10 @@
       </div>
       <div class="pro-pro-pic">
         <div class="pro-pic-big">
-          <img :src="`/img/${product.prod_pic_intro_1}`" />
+          <img :src="`./img/${product.prod_pic_intro_1}`" />
         </div>
         <div class="pro-pic-big">
-          <img :src="`/img/${product.prod_pic_intro_2}`" />
+          <img :src="`./img/${product.prod_pic_intro_2}`" />
         </div>
       </div>
       <div class="pro-warn">
@@ -89,7 +89,7 @@
               <productcard
                 :title="item.prod_name"
                 :price="item.prod_price"
-                :img="`/img/${item.prod_pic_main}`"
+                :img="`./img/${item.prod_pic_main}`"
               />
             <!-- </router-link> -->
             </swiper-slide>

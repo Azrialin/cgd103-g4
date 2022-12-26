@@ -138,36 +138,6 @@
             { name: '首頁', source: '/' },
             { name: '消息專區', source: 'News' }
         ],
-        // 假資料 留著看結構
-        // news:[
-        //   {
-        //     news_no: 1,
-        //     news_time: "2022-12-01",
-        //     news_last_edit: "2022-12-01",
-        //     news_type: "重要",
-        //     news_title: "「JS 春季行程方案」報名開始",
-        //     news_text_start: "我們已經開始接受 2022 年 11 月至 2022 年 12 月發車的「JS 春季行程方案」",
-        //     news_text_middle: "此次行程與活動請見網頁詳細介紹",
-        //     news_text_trans: "早鳥訂購優惠4人行響87折優惠。",
-        //     news_text_end: "還在猶豫什麼呢?",
-        //     news_img: "1.jpg",
-        //     news_img_des: "門司港夜景",
-        //     news_status: "上架"
-        //   },
-        //   {
-        //     news_no: 2,
-        //     news_time: "2022-12-01",
-        //     news_last_edit: "2022-12-01",
-        //     news_type: "重要",
-        //     news_title: "列車停駛",
-        //     news_text_start: "因九州地區受台風3號 (台灣名稱 : 桃花颱風)影響，JS列車決定停駛...",
-        //     news_text_middle: "目前九州鐵路有多處毀損，鐵路公司正急速修復中。",
-        //     news_text_trans: "目前公司決策至12月15日前，鐵路列車停止營運。",
-        //     news_text_end: "詳細退票方式，請留意註冊信箱與電話，有專人通知，造成不便，敬請見諒",
-        //     news_img: "2.jpg",
-        //     news_img_des: "颱風路線圖",
-        //     news_status: "上架"
-        //   },
         newsRaw:[],
         news:[],
         newsImportant:[],
@@ -178,8 +148,8 @@
     methods:{
       // 取得資料
       getNews(){
-          // fetch('http://localhost/list.php') //本地端
-          fetch(`${BASE_URL}list.php`)
+          // fetch('http://localhost/cgd103-g4/public/phpfiles/getNews.php') //本地端
+          fetch(`${BASE_URL}getNews.php`)
           .then(res=>res.json())
           .then(json=>{
               // 抓回所有資料

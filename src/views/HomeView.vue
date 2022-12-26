@@ -7,10 +7,10 @@
           <p>{{ country_name }}　{{ place_name }}　{{ data_catch_time }}</p>
         </div>
         <div class="Api-Footer">
-          <div>
+          <div class="weatherTemp">
             <p>{{ temperature }}</p>
             <p>{{ weather_description }}</p>
-            <p>{{ temperatureMin }}　{{ temperatureMax }}</p>
+            <p>最低溫: {{ temperatureMin }}　最高溫:{{ temperatureMax }}</p>
           </div>
           <img :src="weather_pic" alt="" />
         </div>
@@ -223,7 +223,8 @@ export default {
       this.temperatureMin = parseInt(data.main.temp_min - 1) + "°C";
       this.temperatureMax = parseInt(data.main.temp_max) + "°C";
       this.weather_description = data.weather[0].description;
-      this.weather_pic ="http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+      this.weather_pic =
+        "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
       this.place_name = data.name;
       this.country_name = data.sys.country;
       this.data_catch_time = new Date(data.dt * 1000)
@@ -258,6 +259,35 @@ img {
 li {
   margin-bottom: 30px;
 }
+//天氣預報區域
+  .WeatherApi {
+    .Api-Header {
+      margin: 30px auto 0;
+      p {
+        font-size: 24px;
+        padding: 10px 30px;
+        background-color: #bc955c;
+        text-align: left;
+      }
+    }
+    .Api-Footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px;
+      background-color: #ebdfce;
+      .weatherTemp {
+        font-size: 24px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      img {
+        width: auto;
+      }
+    }
+  }
+//------------
 .HomeNew-List {
   .HomeNew {
     .TopicsCard {
@@ -386,6 +416,34 @@ li {
 }
 
 @media (min-width: 1200px) {
+  //天氣預報區域
+  .WeatherApi {
+    .Api-Header {
+      margin: 30px auto 0;
+      p {
+        font-size: 24px;
+        padding: 10px 30px;
+        background-color: #bc955c;
+        text-align: left;
+      }
+    }
+    .Api-Footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px;
+      background-color: #ebdfce;
+      .weatherTemp {
+        font-size: 24px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      img {
+        width: auto;
+      }
+    }
+  }
   .top-banner {
     height: 680px;
     overflow: hidden;
