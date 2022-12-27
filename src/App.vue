@@ -12,17 +12,6 @@
             Header,
             Footer,
         },
-		mounted() {
-			 this.$store.dispatch("setCart", [
-			// {
-			//   id: 1,
-			//   img: require(`@/assets/img/products/pro4.jpg`),
-			//   title: "長崎蛋糕",
-			//   price: 460,
-			//   amount:1
-			// },
-			]);
-		},
     }
 </script>
 

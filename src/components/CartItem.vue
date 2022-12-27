@@ -131,8 +131,9 @@ export default {
     margin: 30px 0px;
   }
   .cart-pic {
+    width: 20%;
     img {
-      width: 80%;
+      width: 100%;
     }
   }
   .cart-amount {
