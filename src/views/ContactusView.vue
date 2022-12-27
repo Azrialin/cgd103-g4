@@ -71,7 +71,6 @@
 import breadcrumb from "@/components/breadcrumb.vue";
 import Input from "@/components/Input.vue";
 import CSelect from "@/components/Select.vue";
-// import {BASE_URL} from '@/assets/js/common.js';
 export default {
   name: "HeaderView",
   components: {
@@ -112,14 +111,13 @@ export default {
   },
   methods: {
     submit() {
-      //const url = "http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php";
-      const formData = new FormData();
+      const url = "http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php";
+      const formData = new FormData(this.$refs.test);
       formData.append("opinion_name", this.opinionname);
       formData.append("opinionmail", this.opinionmail);
       formData.append("opiniontel", this.opiniontel);
       formData.append("opiniondetail", this.opiniondetail);
       formData.append("opinionselecttopic", this.opinionselecttopic);
-      //`${BASE_URL}/ContactInsert.php`
       fetch("http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php", {
         method: "POST",
         body: formData,
@@ -128,9 +126,9 @@ export default {
         .then((result) => {
           console.log(result);
         })
-        /* .catch((error) => {
-          // console.log(error);
-        }); */
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
