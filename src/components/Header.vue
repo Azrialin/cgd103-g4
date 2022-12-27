@@ -15,9 +15,10 @@
                     </li>
                 </ul>
             <div class="h_feature">
-                <router-link to="/login"><i class="fa-regular fa-user"></i></router-link>
-                <!-- <router-link to="/membership"><i class="fa-solid fa-list-ol"></i></router-link> -->
+                <router-link v-show="!$store.state.mem_no" to="/login"><i class="fa-regular fa-user"></i></router-link>
+                <router-link v-show="$store.state.mem_no" to="/membership"><i class="fa-solid fa-list-ol"></i></router-link>
                 <router-link to="/shopcart"><i class="fa-solid fa-cart-shopping"></i></router-link>
+                <div v-show="$store.state.mem_no" class="logout" @click="logout"><i class="fa-solid fa-right-from-bracket"></i></div>
                 <div id="hambur" class="hambur" @click="toggle=!toggle">
                     <div class="hambox"></div>
                     <div class="hambox"></div>
@@ -35,9 +36,18 @@ export default {
         return{
             items:[{name:'列車介紹', sourc:'train'},{name:'行程介紹',sourc:'travel'},{name:'消息專區',sourc:'news'},{name:'線上商城',sourc:'shop'},{name:'關於我們',sourc:'about'}],
             toggle: false,
+            out:false,
         }
     },
+    mounted(){
+        this.see();
+    },
     methods: {
+        see(){
+            if(this.mem_no){
+                this.out = true
+            }
+        },
         check(){
             let h_list = document.getElementById("h_list");
             if(this.toggle == true){
@@ -45,6 +55,16 @@ export default {
                 this.toggle = false;
             }      
         },
+        logout(){
+            this.$store.dispatch("setMember", null);
+            location.reload();
+        },
+    },
+    computed:{
+        mem_no(){
+            return this.$store.state.mem_no
+            
+        }
     },
 }
 </script>
@@ -128,6 +148,16 @@ export default {
             justify-content: center;
             a+a{
                 margin-left: 20px;
+            }
+            .logout{
+                margin-left: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover{
+                    fill: $back_color_hover;
+                    color: $back_color_hover;
+                    transition: 0.3s;
+                }
             }
             .hambur {
                 cursor: pointer;
