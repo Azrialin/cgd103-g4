@@ -13,7 +13,12 @@
         <p></p>
       </div>
       <hr />
-      <div class="shopcart-item" v-for="item in list" :key="item.id" col-sm-12>
+      <div
+        class="shopcart-item"
+        v-for="item in combineList"
+        :key="item.id"
+        col-sm-12
+      >
         <cartitem
           :id="item.prod_id"
           :img="`./img/${item.prod_pic_main}`"
@@ -21,7 +26,7 @@
           :price="item.prod_price"
           :amount="item.amount"
         />
-        <span class="del" @click="delitem(index)">
+        <span class="del" @click="delitem(prod_id)">
           <i class="fa-regular fa-trash-can"></i>
         </span>
       </div>
@@ -161,7 +166,7 @@
 import cartitem from "@/components/CartItem.vue";
 import stepbar from "@/components/stepbar.vue";
 import Input from "@/components/Input.vue";
-import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 export default {
   name: "ShopCart",
   components: {
@@ -172,11 +177,14 @@ export default {
   data() {
     return {
       step: 0,
+      amount:1,
+      productList: [],
+      combineList: [],
     };
   },
   computed: {
     list() {
-      return this.$store.state.cart;
+      return this.$store.getters.cartList;
     },
     total() {
       return this.list.reduce((acc, cur) => {
@@ -184,9 +192,29 @@ export default {
       }, 0);
     },
   },
+  watch: {
+     productList: {
+      deep: true,
+      handler() {
+        this.combineList = this.list.map((v) => {
+          let sameData = this.productList.find((u) => v.prod_id == u.prod_id);
+          return { ...v, ...sameData };
+        });
+      },
+    },
+    list: {
+      deep: true,
+      handler() {
+        this.combineList = this.list.map((v) => {
+          let sameData = this.productList.find((u) => v.prod_id == u.prod_id);
+          return { ...v, ...sameData };
+        });
+      },
+    },
+  },
   methods: {
-    delitem: function (index) {
-      this.list.splice(index, 1);
+    delitem(prod_id) {
+      this.list.splice(prod_id, 1);
     },
     shopping() {
       this.$router.push("/shop");
@@ -208,28 +236,38 @@ export default {
       fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((vv) => {
-          this.list = vv;
-          console.log(this.list);
+          this.productList = vv;
+          console.log(this.productList);
+          // this.$store.dispatch("setCart",vv);
         });
     },
+    // getCart() {
+    //   // fetch(`${BASE_URL}/getCarts.php`)
+    //   //   .then((res) => res.json())
+    //   //   .then((vv) => {
+    //   //     console.log(vv);
+    //   //     this.$store.dispatch("setCart",vv);
+    //   //   });
+    //   const vv = [
+    //     { prod_id: 1, aaa: 111 },
+    //     { prod_id: 7, aaa: 111 },
+    //   ];
+    //   this.$store.dispatch("setCart", vv);
+    // },
     saveData() {
       console.log(this.list);
     },
-    
   },
   mounted() {
     this.getData();
+    // this.getCart();
     // this.$store.dispatch("addCart",product);
-    this.$store.dispatch("addCart",{
-      id:product.prod_id,
-      amount:1,
-    });
-    
+    // this.$store.dispatch("setCart",list);
+
     // {
     //   id:product.prod_id,
     //   amount:product.amount,
     // }
-
 
     // this.$store.dispatch("addCart", {
     //   id: 10,

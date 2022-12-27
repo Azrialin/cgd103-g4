@@ -3,13 +3,16 @@ import createPersistedState from 'vuex-persistedstate'
 
 export default createStore({
   state: {
-    cart:[],
+    cart:[
+      { prod_id: 1, amount: 111 },
+      { prod_id: 7, amount: 111 },
+    ],
     list:[],
     //member
     mem_no: null,
   },
   getters: {
-    cart(state){
+    cartList(state){
       return state.cart;
     }
   },
@@ -21,7 +24,8 @@ export default createStore({
       state.cart=list
     },
     addCart(state,item){
-      state.cart.push(item)
+      state.cart.push(item);
+      state.cart.find(v => v.id === prod_id).amount;
     },
     updateItem(state,item) {
       const id = item.id;
