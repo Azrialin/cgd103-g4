@@ -96,6 +96,7 @@
                 console.log(this.mem_email);
                 // fetch(`${BASE_URL}/forgotPsw.php`)
                 fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php",{
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/PHPMailer-6.7.1/src/forgotPsw.php",{
                     method:'POST', body:new URLSearchParams({
                         mem_email:this.mem_email,
                 })})
