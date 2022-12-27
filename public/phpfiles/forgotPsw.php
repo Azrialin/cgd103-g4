@@ -27,7 +27,7 @@ try {
 		$editPsw->execute();
 		
 		// 以下有錯
-		require("./class.phpmailer.php");
+		require("./phpMailer.php.php");
 		//Send mail using gmail
 		$mail = new PHPMailer(true);
 		$mail->IsSMTP(); // telling the class to use SMTP
