@@ -4,7 +4,6 @@ node_modules
 # php
 # phpfiles
 connect_cgd103g4.php
-/public/php
 
 # local env files
 .env.local
