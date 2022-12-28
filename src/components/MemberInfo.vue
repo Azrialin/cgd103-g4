@@ -15,13 +15,13 @@
               </div>
 
               <h3 class="info">密碼<span>*</span></h3>
-              <input class="unchangeable" name="mem_psw" v-model="result.mem_psw" />
+              <input name="mem_psw" v-model="result.mem_psw" />
               <h3 class="info">電子信箱<span>*</span></h3>
-              <input class="unchangeable" name="mem_email" v-model="result.mem_email" />
+              <input name="mem_email" v-model="result.mem_email" />
               <h3 class="info">地址</h3>
               <input name="mem_address" v-model="result.mem_address"/>
 
-              <div class="try col-xl-6">
+              <div class="try col-xl-12">
                 <h3 class="info ">電話號碼<span>*</span></h3>
                 <input name="mem_phone" v-model="result.mem_phone"/>
                 <h3 class="info ">國籍</h3>
@@ -31,19 +31,14 @@
                 </select>
               </div>
 
-              <div class="try col-xl-6">
-                <!-- <h3 class="info ">性別</h3>
-                <select  name="" id="">
-                    <option value="1">-女-</option>
-                    <option value="2">-男-</option>
-                </select> -->
+              <div class="try col-xl-12">
 
                 <h3 class="info ">護照號碼</h3>
                 <input name="mem_passport_no" v-model="result.mem_passport_no"/>
               </div>
 
               <div class="button-section">
-                <button class="btn-gold_2nd">取消修改</button>
+                <button class="btn-gold_2nd" type="button">取消修改</button>
 
                 <button class="btn-gold" @click="saveData" type="button">儲存修改</button>
               </div>
@@ -77,6 +72,15 @@ export default {
     data(){
         return{
             result:[],
+            mem_e_name:"",
+            mem_address:"",
+            mem_nation:"",
+            mem_passport_no:"",
+            mem_nation:"",
+            // mem_name:result.mem_name,
+            // mem_psw:result.mem_psw,
+            // mem_email:result.mem_email,
+            // mem_phone:result.mem_phone,
             // mem_no: this.$store.state.mem_no,
         }
     },
@@ -95,25 +99,30 @@ export default {
           }
             this.result = result;
             // fetch(`http://localhost/cgd103-g4/public/phpfiles/getMemberInfo.php?memId=${this.mem_no}`)
-            fetch(`${BASE_URL}/getMemberInfo.php?memId=${this.mem_no}`)
-
-                  .then((res) => res.json())
-                  .then((json) =>{
-                    this.result = json[0];
-                    console.log(this.result);
-                  })
+              fetch(`${BASE_URL}/getMemberInfo.php?memId=${this.mem_no}`)
+  
+                    .then((res) => res.json())
+                    .then((json) =>{
+                      this.result = json[0];
+                      console.log(this.result);
+                    })
         },
         saveData(){
           // console.log(this.result);
           // fetch(`{BASE_URL}/prod_update.php`)
-          fetch(`${BASE_URL}/memberUpdate.php`, {
-            method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
-          })
-          .then((res)=>res.json())
-          .then((result)=>{
-            console.log(result);
-          })
-           alert("更改成功");
+          if(this.result.mem_name ==="" || this.result.mem_psw ==="" || this.result.mem_email ==="" || this.result.mem_phone ===""){
+            alert("必填資料有缺少~");
+          }else{
+
+            fetch(`${BASE_URL}/memberUpdate.php`, {
+              method:'POST',body: new URLSearchParams(JSON.parse(JSON.stringify(this.result)))
+            })
+            .then((res)=>res.json())
+            .then((result)=>{
+              console.log(result);
+            })
+             alert("更改成功");
+          }
         }
     },
     watch: {
