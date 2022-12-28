@@ -188,7 +188,7 @@ export default {
     },
     total() {
       return this.list.reduce((acc, cur) => {
-        return (acc += cur.price * cur.amount);
+        return (acc += cur.prod_price * cur.amount);
       }, 0);
     },
   },

@@ -44,11 +44,13 @@ export default {
   },
   methods: {
     handleAmount(amount) {
+      console.log(amount)
       if(amount<0) return 
       this.$store.dispatch("updateItem", {
         id: this.id,
         amount: this.amount,
       });
+      //console.log(this.amount);
     },
     
     

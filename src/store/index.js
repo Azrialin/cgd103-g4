@@ -27,6 +27,7 @@ export default createStore({
     updateItem(state,item) {
       const id = item.id;
       const amount = item.amount;
+      console.log(this.state.cart);
       state.cart.amount = amount;
     },
   },
