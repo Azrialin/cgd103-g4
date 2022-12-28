@@ -15,12 +15,12 @@
           購買數量:
           <span class="pro-amount-btn">
             <button @click="reduceCount" class="minus">-</button>
-            <input type="text" v-model.number="count" class="input" />
+            <input type="text" v-model.number="amount" class="input" />
             <button @click="addCount" class="minus">+</button>
           </span>
         </div>
         <div class="pro-btn">
-          <button class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="addCart">
+          <button type="butto" class="pro-btn-btn btn-gold_2nd $clr_gold_L1" @click="addCart">
             <i class="fa-solid fa-plus"></i>加入購物車
           </button>
           <button class="pro-btn-btn btn-gold" @click="buy">
@@ -138,7 +138,7 @@ export default {
       // cardContext2: { list : []}, 鴻銘寫的先留著
       // addCart,
       xyz: 4,
-      count: 1,
+      amount: 1,
       fonts: [
         { name: "首頁", source: "/" },
         { name: "線上商城", source: "shop" },
@@ -155,7 +155,7 @@ export default {
         // src2: require(`@/assets/img/products/pro-b-1.jpg`),
         // src3: require(`@/assets/img/products/pro-b-2.jpg`),
       ],
-
+      cartlist:[],
       list: [
         // {
         //   id: 1,
@@ -206,6 +206,9 @@ export default {
         //   price: 280,
         // },
       ],
+      cartlists:[
+
+      ],
       modules: [Pagination, Navigation],
       x: 0,
       y: 0,
@@ -221,11 +224,11 @@ export default {
   },
   methods: {
     addCount() {
-      this.count += 1;
+      this.amount += 1;
     },
     reduceCount() {
-      if (this.count <= 0) return;
-      this.count -= 1;
+      if (this.amount <= 0) return;
+      this.amount -= 1;
     },
     buy() {
       this.$router.push("/shopcart?step=0");
@@ -256,6 +259,7 @@ export default {
       }
     },
     //============== 上面的資料
+
     getData2() {
       const productid = this.$route.params.id;
       console.log(productid);
@@ -263,9 +267,11 @@ export default {
       fetch(`${BASE_URL}/getProducts.php`)
         .then((res) => res.json())
         .then((txt) => {
-          this.product = txt[`${productid - 1}`];
-          console.log(this.product);
-        });
+           this.product = txt[`${productid - 1}`];
+        })
+        // combinedata(){
+
+        // };
     },
     saveData2() {
       console.log(this.product);
@@ -284,11 +290,18 @@ export default {
       console.log(this.list);
     },
     addCart() { //要怎麼放進vuex??
+      const productid = this.$route.params.id;
+      fetch(`${BASE_URL}/getProducts.php`)
+        .then((res) => res.json())
+        .then((txt) => {
+          this.product.amount = this.amount;
+        })
+      console.log(this.product);
       this.$store.commit("addCart",this.product); //看鴻銘的code 
     },
     
     
-  },
+  },  
   created() {
     let windowidth = window.innerWidth;
     if (windowidth < 1024) {
@@ -297,11 +310,8 @@ export default {
       this.xyz = 4;
     }
   },
-  // computed: {
-  //   addCart() {
-  //     return this.$store.getters.cart;
-  //   },
-  // },
+  computed: {
+  },
 };
 </script>
 

@@ -177,7 +177,7 @@ export default {
   data() {
     return {
       step: 0,
-      amount:1,
+      //amount:1,
       productList: [],
       combineList: [],
     };

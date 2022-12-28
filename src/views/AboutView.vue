@@ -69,7 +69,7 @@
                   「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
                 </p>
               </div>
-              <img src="../assets/img/Scape/01.jpg" alt="" />
+              <img src="../assets/img/Train/outside/img_602dfce101ce8.jpeg" alt="" />
             </div>
             <div class="Introduce-Card">
               <div class="Introduce-Text Text">
@@ -78,7 +78,7 @@
                   「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
                 </p>
               </div>
-              <img src="../assets/img/Scape/01.jpg" alt="" />
+              <img src="../assets/img/Train/outside/img_602dfce09a61b.png" alt="" />
             </div>
             <div class="Introduce-Card">
               <div class="Introduce-Text Text">
@@ -87,21 +87,21 @@
                   「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
                 </p>
               </div>
-              <img src="../assets/img/Scape/01.jpg" alt="" />
+              <img src="../assets/img/Train/outside/img_602e12443ccb7.jpeg" alt="" />
             </div>
             <div class="Train-Card">
               <div class="Introduce-Text">
                 <p class="Introduce-Title Title">JetSpeed</p>
-                <img src="../assets/img/Scape/01.jpg" alt="" />
-                <img src="../assets/img/Scape/01.jpg" alt="" />
-                <img src="../assets/img/Scape/01.jpg" alt="" />
+                <img src="../assets/img/Train/outside/trains_aprc_ph.jpg" alt="" />
+                <img src="../assets/img/Train/outside/hinotori_testrun005.jpg" alt="" />
+                <img src="../assets/img/Train/outside/img_enjoyment-carousel02.jpg" alt="" />
                 <div class="row-cols-2 row-cols-xl-3">
-                  <img src="../assets/img/Scape/01.jpg" alt="" />
-                  <img src="../assets/img/Scape/01.jpg" alt="" />
-                  <img src="../assets/img/Scape/01.jpg" alt="" />
-                  <img src="../assets/img/Scape/01.jpg" alt="" />
-                  <img src="../assets/img/Scape/01.jpg" alt="" />
-                  <img src="../assets/img/Scape/01.jpg" alt="" />
+                  <img src="../assets/img/Train/inside/4c1be0e2330e4f9c809db85f5442b09c.jpg" alt="" />
+                  <img src="../assets/img/Train/inside/69ab68a9c7dc4a0b8997a33f158447e9.jpg" alt="" />
+                  <img src="../assets/img/Train/inside/8975c714686241b3b63649cd1e0e0b4a.jpg" alt="" />
+                  <img src="../assets/img/Train/inside/ba75f2e7df4a4b448c1316a84c196b81.jpg" alt="" />
+                  <img src="../assets/img/Train/inside/d761105b7dec4897bfd83108df22f99b.jpg" alt="" />
+                  <img src="../assets/img/Train/inside/e8b06fdaa6cf4a599f4cd21549059f44.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -162,6 +162,7 @@ img {
   object-fit: cover;
 }
 .Text {
+  margin: 20px;
 }
 .Title {
   @include font(20px);
