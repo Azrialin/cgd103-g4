@@ -3,7 +3,7 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 try {
 	require_once("./connect_cgd103g4.php");
-	$sql = "insert into `opinion`.`customer` values (
+	$sql = "insert into `opinion` values (
 		Null,
 		CURRENT_TIMESTAMP(),
 		:opinion_name, 
