@@ -20,6 +20,7 @@
 
 .card {
   width: 90%;
+  height: 100%;
   margin: 10px;
   &:hover {
     box-shadow: 4px 4px 4px 0px #dadada;

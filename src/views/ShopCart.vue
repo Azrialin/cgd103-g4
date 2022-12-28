@@ -21,12 +21,12 @@
       >
         <cartitem
           :id="item.prod_id"
-          :img="`./img/${item.prod_pic_main}`"
+          :img="`./img/products/${item.prod_pic_intro_0}`"
           :title="item.prod_name"
           :price="item.prod_price"
           :amount="item.amount"
         />
-        <span class="del" @click="delitem(prod_id)">
+        <span class="del" @click="delitem(index)">
           <i class="fa-regular fa-trash-can"></i>
         </span>
       </div>
@@ -213,8 +213,8 @@ export default {
     },
   },
   methods: {
-    delitem(prod_id) {
-      this.list.splice(prod_id, 1);
+    delitem(index) {
+      this.list.splice(index, 1);
     },
     shopping() {
       this.$router.push("/shop");
