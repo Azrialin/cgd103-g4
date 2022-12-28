@@ -61,10 +61,10 @@
       <div class="main_online">
         <h3>線上預約須知</h3>
         <div class="okay">
-          <input type="checkbox">同意我們的<a href="">使用條款</a>和<a href="">隱私政策</a>
+          <input type="checkbox" v-model="yoma">同意我們的<a href="">使用條款</a>和<a href="">隱私政策</a>
         </div>
         <div class="checksub">
-          <div @click="setData()">確認送出</div>
+          <div  @click="setData()">確認送出</div>
         </div>
       </div>
     </div>
@@ -87,6 +87,7 @@
       },
       data(){
         return{
+          yoma:false,
           results:[],
           fonts:[{name:'首頁',source:'/'},{name:'行程方案',source:'travel'},{name:'預約行程',source:'travelcheck'}],
           title:{
@@ -108,7 +109,11 @@
       },
       methods:{
         setData(){
-          if(!this.mem_no){
+          if(this.yoma == false){
+            alert("請勾選同意喔")
+            return
+          }
+          else if(!this.mem_no){
             this.$router.push("/login");
             return 
           }
@@ -183,6 +188,7 @@
 // *{
 //   outline: solid 1px;
 // }
+
 .container_form{
   // background-color: #f0a;
   box-sizing: border-box;
@@ -326,6 +332,9 @@
             color: $front_color_main;
           }
         }
+        // div.nono{
+        //   background-color: $front_color_main;
+        // }
       }
     }
   }
