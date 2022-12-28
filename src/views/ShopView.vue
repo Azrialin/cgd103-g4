@@ -18,7 +18,7 @@
             <productcard
               :title="item.prod_name"
               :price="item.prod_price"
-              :img="`./img/${item.prod_pic_main}`"
+              :img="`./img/products/${item.prod_pic_intro_0}`"
               @click="goItem(item)"
             />
           </div>

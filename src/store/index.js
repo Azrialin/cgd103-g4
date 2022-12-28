@@ -25,7 +25,7 @@ export default createStore({
     },
     addCart(state,item){
       state.cart.push(item);
-      state.cart.find(v => v.id === prod_id).amount;
+      
     },
     updateItem(state,item) {
       const id = item.id;
