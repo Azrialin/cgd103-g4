@@ -20,7 +20,7 @@
 
 .card {
   width: 90%;
-  height: 100%;
+  height: 200px;
   margin: 10px;
   &:hover {
     box-shadow: 4px 4px 4px 0px #dadada;
@@ -58,6 +58,12 @@
       @include font(16px);
       margin: 7px 0px;
     }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .card {
+    height: 225px;
   }
 }
 </style>
