@@ -14,20 +14,20 @@
           </p>
         </div>
       </div>
-      <form ref="test">
+      <form  ref="test">
         <div class="Contact-Table">
           <div class="Contact-Table-Item">
             <p>聯絡主題*</p>
             <select
               name="opinion_selecttopic"
               v-model="opinionselecttopic"
-              aria-placeholder="請選擇相關聯絡主題"
+              :option="options"
+              DefaultText="請選擇相關聯絡主題"
             >
-              <option value="null" disabled="disabled" selected="selected">請選擇相關聯絡主題</option>
-              <option value="行程諮詢">行程諮詢</option>
-              <option value="旅遊建議">旅遊建議</option>
-              <option value="帳號相關">帳號相關</option>
-              <option value="其他協助">其他協助</option>
+              <option value="1">1111</option>
+              <option value="2">2222</option>
+              <option value="3">3333</option>
+              <option value="4">4444</option>
             </select>
           </div>
           <div class="Contact-Table-Item">
@@ -71,7 +71,7 @@
 import breadcrumb from "@/components/breadcrumb.vue";
 import Input from "@/components/Input.vue";
 import CSelect from "@/components/Select.vue";
-import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 export default {
   name: "HeaderView",
   components: {
@@ -90,26 +90,44 @@ export default {
         { name: "首頁", source: "/" },
         { name: "聯絡我們", source: "Contactus" },
       ],
+      options: [
+        {
+          value: "行程諮詢",
+          label: "行程諮詢",
+        },
+        {
+          value: "量身訂做",
+          label: "量身訂做",
+        },
+        {
+          value: "旅遊建議",
+          label: "旅遊建議",
+        },
+        {
+          value: "其他問題",
+          label: "其他問題",
+        },
+      ],
     };
   },
   methods: {
     submit() {
-      const url =
-        "http://localhost/cgd103-g4/public/phpfiles/ContactInsert.php";
       const formData = new FormData(this.$refs.test);
       formData.append("opinion_name", this.opinionname);
-      formData.append("opinionmail", this.opinionmail);
-      formData.append("opiniontel", this.opiniontel);
-      formData.append("opiniondetail", this.opiniondetail);
-      formData.append("opinionselecttopic", this.opinionselecttopic);
-      fetch(`${BASE_URL}/ContactInsert.php`, {
+      formData.append("opinion_mail", this.opinionmail);
+      formData.append("opinion_tel", this.opiniontel);
+      formData.append("opinion_detail", this.opiniondetail);
+      formData.append("opinion_selecttopic", this.opinionselecttopic);
+      fetch(`${ BASE_URL }/ContactInsert.php`, {
         method: "POST",
         body: formData,
       })
         .then((res) => res.json())
         .then((result) => {
+          console.log(result);
         })
         .catch((error) => {
+          console.log(error);
         });
     },
   },
@@ -153,53 +171,50 @@ export default {
     }
   }
 }
-form {
-  width: 100%;
-  .Contact-Table {
-    background-color: #ccc;
-    padding: 20px 10px;
-    .Contact-Table-Item:nth-child(1) {
-      text-align: center;
+.Contact-Table {
+  background-color: #ccc;
+  padding: 20px 10px;
+  .Contact-Table-Item:nth-child(1) {
+    text-align: center;
+  }
+  .Contact-Table-Item {
+    p {
+      margin: 10px 0;
+      @include font(18px);
     }
-    .Contact-Table-Item {
-      p {
-        margin: 10px 0;
-        @include font(18px);
-      }
-      select,input {
-        text-align: center;
-        width: 100%;
-        height: 30px;
-      }
-      option{
-        font-size: 20px;
-      }
-      textarea {
-        padding: 10px;
-        width: 100%;
-        @include font(14px);
-        appearance: none;
-        border-radius: 5px;
-        border: 1px solid #ebdfce;
-        outline: none;
-        resize: none;
-      }
-      textarea:focus {
-        border: 1px solid #bc955c;
-      }
-    }
-    button {
-      @include font(14px);
-      color: #e6e6e6;
-      background-color: #bc955c;
+    select {
       text-align: center;
-      margin: 30px auto;
-      border: 1px solid transparent;
-      border-radius: 10px;
+      width: 100%;
+    }
+    input {
+      width: 100%;
+      height: 100%;
+    }
+    textarea {
       padding: 10px;
-      width: 180px;
+      width: 100%;
+      @include font(14px);
       appearance: none;
+      border-radius: 5px;
+      border: 1px solid #ebdfce;
+      outline: none;
+      resize: none;
     }
+    textarea:focus {
+      border: 1px solid #bc955c;
+    }
+  }
+  button {
+    @include font(14px);
+    color: #e6e6e6;
+    background-color: #bc955c;
+    text-align: center;
+    margin: 30px auto;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    width: 180px;
+    appearance: none;
   }
 }
 
@@ -217,11 +232,8 @@ form {
         justify-content: center;
       }
     }
-    form {
-      width: 40%;
-      .Contact-Table {
-        width: 100%;
-      }
+    .Contact-Table {
+      width: 60%;
     }
   }
 }
