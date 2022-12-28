@@ -9,7 +9,7 @@
           <li v-for="result in results" :key="result">
             <div class="tra_card">
               <div class="tra_img">
-                <router-link to="/travelcontent" class="aaa">
+                <router-link to="/travelcontent" @click="go(result['package_title'],result['package_price'],result['package_indes'],result['package_no'])" class="aaa">
                   <!-- <div class="boxb">${{list['price']}} 起</div> -->
                   <div class="boxb">${{result['package_price']}} 起</div>
                   <!-- <img :src="list['src']" alt=""> -->
