@@ -69,9 +69,11 @@
                 </div>
               </div>
             </div>
-            <div class="MoreButton">
-              <button>more</button>
-            </div>
+            <router-link :to="article.link">
+              <div class="MoreButton">
+                <button>more</button>
+              </div>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -105,7 +107,9 @@
               將為您創造一生中從未體驗過的新火車之旅。
             </p>
             <div class="MoreButton">
-              <button>more</button>
+              <router-link to="/train">
+                <button>more</button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -198,16 +202,19 @@ export default {
           imageurl: require("../assets/img/Scape/01.jpg"),
           Title: "-列車旅遊行程介紹",
           SubTitle: "推薦給您最優質的列車旅行",
+          link: "/travel",
         },
         {
           imageurl: require("@/assets/img/products/pro-b-1.jpg"),
           Title: "-特色產品介紹",
           SubTitle: "當地特產及紀念週邊推薦",
+          link: "/shop",
         },
         {
           imageurl: require("../assets/img/Train/outside/img_602dfce09a61b.png"),
           Title: "-列車介紹",
           SubTitle: "列車環境簡介",
+          link: "/train",
         },
       ],
     };
@@ -260,33 +267,33 @@ li {
   margin-bottom: 30px;
 }
 //天氣預報區域
-  .WeatherApi {
-    .Api-Header {
-      margin: 30px auto 0;
-      p {
-        font-size: 24px;
-        padding: 10px 30px;
-        background-color: #bc955c;
-        text-align: left;
-      }
-    }
-    .Api-Footer {
-      display: flex;
-      justify-content: space-between;
+.WeatherApi {
+  .Api-Header {
+    margin: 30px auto 0;
+    p {
+      font-size: 24px;
       padding: 10px 30px;
-      background-color: #ebdfce;
-      .weatherTemp {
-        font-size: 24px;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-      }
-      img {
-        width: auto;
-      }
+      background-color: #bc955c;
+      text-align: left;
     }
   }
+  .Api-Footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #ebdfce;
+    .weatherTemp {
+      font-size: 24px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    img {
+      width: auto;
+    }
+  }
+}
 //------------
 .HomeNew-List {
   .HomeNew {

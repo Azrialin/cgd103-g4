@@ -3,10 +3,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 export default createStore({
   state: {
-    cart:[
-      { prod_id: 1, amount: 111 },
-      { prod_id: 7, amount: 111 },
-    ],
+    cart:[],
     list:[],
     //member
     mem_no: null,
@@ -25,12 +22,12 @@ export default createStore({
     },
     addCart(state,item){
       state.cart.push(item);
-      state.cart.find(v => v.id === prod_id).amount;
+      //state.cart.find(v => v.id === prod_id).amount;
     },
     updateItem(state,item) {
       const id = item.id;
       const amount = item.amount;
-      state.cart.find(v => v.id === id).amount = amount;
+      state.cart.amount = amount;
     },
   },
   plugins:[createPersistedState()],

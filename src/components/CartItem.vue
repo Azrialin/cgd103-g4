@@ -35,7 +35,7 @@ export default {
     img: String,
     title: String,
     price: Number,
-    amount: Number,
+    amount: Number, 
   },
   computed: {
     total() {
@@ -47,7 +47,7 @@ export default {
       if(amount<0) return 
       this.$store.dispatch("updateItem", {
         id: this.id,
-        amount: amount,
+        amount: this.amount,
       });
     },
     
