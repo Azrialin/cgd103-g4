@@ -65,7 +65,7 @@
                             </div>  
                             <div class="signin-password">
                                 <label class="title-text">密碼</label>
-                                <input class="input-gold" name="mem_psw" v-model="mem_psw" type="password" placeholder="半形英數共10碼">
+                                <input class="input-gold" name="mem_psw" v-model="mem_psw" type="password" placeholder="請輸入密碼">
                             </div>   
                             <router-link to="/Forgotpassword" class="forgot_password">忘記密碼了嗎?</router-link>
                         </div>
@@ -204,28 +204,23 @@
     .wrap{
         position: relative;
         margin: auto;
-        width: 800px;
         margin-bottom: 80px;
-        @include maxW(1200px){
-            width: fit-content;
-            width: calc(100vw - 80px);
+        @include minW(1200px){
+            width: 800px;
         }
         .panel, .signupform, .signinform{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            width: 400px;
             height: 550px;
-            @include maxW(1200px){
-            width: fit-content;
-            width: calc(100vw - 100px);
-            }
         }
         .signup-card{
             display: flex;
             @include maxW(1200px){
                 position: relative;
-                left: calc(50% - 400px / 2);
+            }
+            @include minW(1200px){
+                width: 800px;
             }
             // ---------- 歡迎回來 ------------
             .overlay-left{
@@ -234,8 +229,10 @@
                 background-color: $back_color_active;
                 text-align: center;
                 @include maxW(1200px){
-                    position: absolute;
-                    left: calc(50% - 560px);
+                    display: none;
+                }
+                @include minW(1200px){
+                    width: 400px;
                 }
                 h3{
                     @include font(28px);
@@ -266,7 +263,10 @@
                 text-align: center;
                 @include maxW(1200px){
                     position: relative;
-                    left: calc(50% - -200px);
+                    display: none;
+                }
+                @include minW(1200px){
+                    width: 400px;
                 }
                 h3{
                     @include font(28px);
@@ -283,7 +283,7 @@
                     margin: 10px;
                 }
                 .btn-gold_2nd{
-                    margin-top: 40px;
+                    margin-top: 50px;
                 }
             }
         }
@@ -298,8 +298,14 @@
             flex-direction: column;
             justify-content: center;
             background-color: #fff;
+            @include minW(1200px){
+                width: 400px;
+            }
             @include maxW(1200px){
-                left: calc(50% - 400px / 2);
+                position: relative;
+                &.isMove{
+                    left: 0;
+                }
             }
             &.isMove{
                 border-radius: 0 10px 10px 0;
@@ -307,13 +313,21 @@
                 transition: .2s;
                 opacity: 1;
                 left: 398px;
+                @include maxW(1200px){
+                    left: 0;
+                    border: none;
+                }
+                @include minW(1200px){
+                    width: 400px;
+                }
             }
             // ---------- 註冊 ------------
             .signupform{
                 border-radius: 0 10px 10px 0;
                 @include maxW(1200px){
                     position: relative;
-                    left: calc(50% - 525px);
+                    width: 100%;
+                    padding: 0;
                 }
                 .title{
                     @include font(32px);
@@ -322,7 +336,7 @@
                     margin: 15px;
                 }
                 .inputfield-right{
-                    width: 260px;
+                    padding: 0 30px;
                     margin: auto;
                 }
                 .title-text{
@@ -337,7 +351,8 @@
                 .input-gold{
                     display: flex;
                     text-align: left;
-                    width: 220px;
+                    width: 100%;
+                    max-width: calc(100% - 40px);
                     border: 1px solid $back_color_hover;
                     &:focus{
                         border: 1px solid $back_color_main;
@@ -372,8 +387,6 @@
                 border-radius: 10px 0 0 10px;
                 @include maxW(1200px){
                     position: relative;
-                    left: calc(50% - 180px / 2);
-                    width: 290px;
                     border-radius: 10px;
                 }
                 .title{
@@ -383,8 +396,11 @@
                     margin-bottom: 50px;
                 }
                 .inputfield-left{
-                    width: 260px;
                     margin: auto;
+                }
+                .signin-email, .signin-password{
+                    padding: 0 30px;
+                    text-align: left;
                 }
                 .title-text{
                     @include font(16px);
@@ -398,7 +414,8 @@
                 .input-gold{
                     display: flex;
                     text-align: left;
-                    width: 220px;
+                    width: 100%;
+                    max-width: calc(100% - 40px);
                 }
                 .forgot_password{
                     @include font(16px);
@@ -407,6 +424,7 @@
                     display: flex;
                     justify-content: end;
                     line-height: 2.2;
+                    padding: 5px 30px;
                     &:hover{
                         color: $front_color_active;
                     }
