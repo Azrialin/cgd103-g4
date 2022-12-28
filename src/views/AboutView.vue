@@ -155,7 +155,6 @@ export default {
 h1,
 p {
   text-align: left;
-  color: #444;
 }
 img {
   width: 100%;

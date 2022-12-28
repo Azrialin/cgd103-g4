@@ -106,9 +106,9 @@
               您可以在獨特的氛圍下享用我們的 特色佳餚。
               將為您創造一生中從未體驗過的新火車之旅。
             </p>
-            <div class="MoreButton">
-              <button>more</button>
-            </div>
+              <div class="MoreButton">
+                <button>more</button>
+              </div>
           </div>
         </div>
       </div>
@@ -182,17 +182,20 @@ export default {
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
             "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
+                      link: "/travel",
         },
         {
           imageurl: require("@/assets/img/Scape/01.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
             "JET SPEED成立5周年紀念特展將於2022年5月5日舉行紀念遊行活動...",
+                      link: "/shop",
         },
         {
           imageurl: require("@/assets/img/News/3.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle: "高千穗知名祭典活動-夜神樂 ，將於今年的11月...",
+                    link: "/train",
         },
       ],
       articles: [

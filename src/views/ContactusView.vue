@@ -9,7 +9,7 @@
         </div>
         <div class="Caption">
           <p>
-            感謝您拜訪晴日旅遊網站，如果您有任何疑問，或對我們公司的行程與服務
+            感謝您拜訪JET SPEED旅遊網站，如果您有任何疑問，或對我們公司的行程與服務
             有任何想要了解的地方，歡迎填寫下列表單，我們將會用最快的速度與您聯絡。
           </p>
         </div>
@@ -21,13 +21,12 @@
             <select
               name="opinion_selecttopic"
               v-model="opinionselecttopic"
-              :option="options"
-              DefaultText="請選擇相關聯絡主題"
             >
-              <option value="1">1111</option>
-              <option value="2">2222</option>
-              <option value="3">3333</option>
-              <option value="4">4444</option>
+              <option value="null" disabled="disabled" selected="selected">請選擇相關聯絡主題</option>
+              <option value="行程諮詢">行程諮詢</option>
+              <option value="旅遊建議">旅遊建議</option>
+              <option value="帳號相關">帳號相關</option>
+              <option value="其他主題">其他主題</option>
             </select>
           </div>
           <div class="Contact-Table-Item">
@@ -89,24 +88,6 @@ export default {
       fonts: [
         { name: "首頁", source: "/" },
         { name: "聯絡我們", source: "Contactus" },
-      ],
-      options: [
-        {
-          value: "行程諮詢",
-          label: "行程諮詢",
-        },
-        {
-          value: "量身訂做",
-          label: "量身訂做",
-        },
-        {
-          value: "旅遊建議",
-          label: "旅遊建議",
-        },
-        {
-          value: "其他問題",
-          label: "其他問題",
-        },
       ],
     };
   },
