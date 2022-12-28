@@ -1,5 +1,14 @@
 <template>
-  <Banner class="col" :src="require(`@/assets/img/Banner/banner_index.jpg`)" />
+  <Banner class="col" :src="require(`@/assets/img/Banner/banner_index.jpg`)">
+    <div class="BannerTEXT">
+      <img class="BannerLogo" src="../assets/img/Group_625335.svg" alt="" />
+      <div class="Bannertxt">
+        <p>
+          深遊探訪<br />遇見這個國家的深度，<br />欣賞偶爾的放鬆<br />在你的生活中<br />成為“最高級”的體驗<br />日本九州的每列火車。
+        </p>
+      </div>
+    </div>
+  </Banner>
   <div class="Home">
     <div>
       <div class="WeatherApi">
@@ -106,9 +115,11 @@
               您可以在獨特的氛圍下享用我們的 特色佳餚。
               將為您創造一生中從未體驗過的新火車之旅。
             </p>
+            <router-link to="/train">
               <div class="MoreButton">
                 <button>more</button>
               </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -182,20 +193,20 @@ export default {
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
             "｢Jet Speed 九州之旅｣2晚3天課程/冬季額外招聘已經開始。",
-                      link: "/travel",
+          link: "/travel",
         },
         {
           imageurl: require("@/assets/img/Scape/01.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle:
             "JET SPEED成立5周年紀念特展將於2022年5月5日舉行紀念遊行活動...",
-                      link: "/shop",
+          link: "/shop",
         },
         {
           imageurl: require("@/assets/img/News/3.jpg"),
           HomeNew_Title: "2022/11/06",
           HomeNew_Subtitle: "高千穗知名祭典活動-夜神樂 ，將於今年的11月...",
-                    link: "/train",
+          link: "/train",
         },
       ],
       articles: [
@@ -266,6 +277,9 @@ img {
 }
 li {
   margin-bottom: 30px;
+}
+.BannerTEXT {
+  display: none;
 }
 //天氣預報區域
 .WeatherApi {
@@ -449,6 +463,26 @@ li {
       }
       img {
         width: auto;
+      }
+    }
+  }
+  .BannerTEXT {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    .BannerLogo {
+      width: 30%;
+      object-fit: contain;
+    }
+    .Bannertxt {
+      p {
+        @include font(24px);
+        color: #fff;
+        writing-mode: vertical-rl;
+        text-align: left;
+        line-height: 60px;
       }
     }
   }

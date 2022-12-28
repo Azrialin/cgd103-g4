@@ -1,6 +1,7 @@
 <template>
     <div class="top-banner">
         <img :src="src" alt="banner">
+        <slot/>
     </div>
 </template>
     
