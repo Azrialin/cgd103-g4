@@ -1,4 +1,5 @@
 <template>
+
     <div class="footer-bg">
         <div class="container">
             <div class="footer-logo">
@@ -6,6 +7,11 @@
             </div>
             <div class="footer-content">
                 <ul class="footer-pages">
+                    <!-- <li class="desktop">
+                        <router-link to="/Train" class="font-24">預約行程
+                        <p class="link-note font-20">Booking</p>
+                        </router-link>
+                    </li> -->
                     <li class="desktop">
                         <router-link to="/News" class="font-24">消息專區
                         <p class="link-note font-20">News</p>
@@ -84,6 +90,9 @@ export default {
     max-width: 1200px;
     margin: auto;
 }
+
+/**/
+
 /*logo*/
 .footer-logo{
     padding: 60px 0;
@@ -93,6 +102,7 @@ export default {
     width: 200px;
     height: 75px;
 }
+
 /*pages*/
 .footer-pages{
     display: flex;
@@ -106,7 +116,7 @@ export default {
 }
 
 .footer-pages li:nth-child(1),
-.footer-pages li:nth-child(4){
+.footer-pages li:nth-child(3){
     border-left: none ;
 }
 .footer-pages a{
@@ -153,12 +163,14 @@ export default {
     font-size: 30px;
     color: #fff;
 }
+
 .copyright{
   /* font-size: 16px; */
     text-align: center;
     letter-spacing : 0.1rem;
 
 }
+
 /*address*/
 .footer-contact{
     color: #fff;
@@ -173,6 +185,7 @@ export default {
 .footer-contact p{
     line-height: 2rem;
 }
+
 .footer-tibame{
   /* font-size: 16px; */
     opacity: 0.5;
@@ -182,16 +195,21 @@ export default {
     line-height: 2rem;
     padding: 0 10px;
 }
+
+
 @media screen and (max-width:767px){
-    .footer-bg{height: 900px;}
+    .footer-bg{height: 990px;}
     .footer-content .footer-pages .desktop{display: none;}
+
 }
 @media screen and (min-width: 768px){
     .footer-bg{height: 910px;}
     .footer-content .footer-pages .desktop{display: flex;}
-    .footer-pages li:nth-child(4){
+
+    .footer-pages li:nth-child(3){
         border-left: 1px solid rgb(255, 255, 255) ;
     }
+
     .footer-content{
         display: flex;
         justify-content: center;
@@ -200,6 +218,7 @@ export default {
     .footer-pages{
         width: 80%;
     }
+
     .footer-follow,
     .footer-contact{
         width: 40%;
@@ -214,6 +233,7 @@ export default {
         width: 30%;
         order:2;
     }
+
     .footer-follow{
         width: 20%;
         order:1;
@@ -223,7 +243,10 @@ export default {
         order:3;
     }
 }
+
 @media screen and (min-width: 1024px){
-    .footer-bg{height: 550px;}
+    .footer-bg{height: 600px;}
 }
+
+
 </style>
