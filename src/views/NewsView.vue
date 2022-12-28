@@ -11,11 +11,11 @@
           <a class="nav-tab font-18" :class="{'active' : navLink ==='其他'}" href="#" @click="navLink='其他'">其他</a>
         </nav>
         <div class="news-card">
-          <!-- 所有公告顯示 -->
+          <!-- 所有公告顯示 上線圖片改.-->
             <div v-if="navLink === '所有公告'">
               <NewsCard
               v-for="detail in news" :key="detail.news_no"
-              :link="`/img/News/${detail.news_img}`"
+              :link="`./img/News/${detail.news_img}`"
               :type="detail.news_type "
               :date="detail.news_time"
               :title="detail.news_title"
@@ -25,12 +25,12 @@
               <!-- 假資料時 ，以下可用 ； 抓資料回來不知道為啥 寫活的失敗 ==> public 問題--> 
               <!-- :link="require(`@/assets/img/News/${detail.news_img}`)" -->
             </div>
-          <!-- 重要顯示 -->
+          <!-- 重要顯示 上線圖片改.-->
             <div v-else-if="navLink === '重要'">
               <NewsCard
               v-for="detail in newsImportant" 
               :key="detail.news_no"
-              :link="`/img/News/${detail.news_img}`"
+              :link="`./img/News/${detail.news_img}`"
               :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
@@ -40,13 +40,13 @@
             </div>
             <!-- 如果直接直接寫好打包後的圖片存在前台，就不用以下動作 -->
             <!-- 打包前圖片路徑 --> <!-- :link="`/img/News/${detail.news_img}`" -->
-            <!-- 打包後圖片路徑 --> <!-- :link="`./img/News/${detail.news_img}`" -->
-          <!-- 活動顯示 -->
+            <!-- 打包後圖片路徑 --> <!-- :link="`./img/News/${detail.news_img}`"  一個點-->
+          <!-- 活動顯示 上線圖片改.-->
             <div v-else-if="navLink === '活動'">
               <NewsCard
               v-for="detail in newsActive" 
               :key="detail.news_no"
-              :link="`/img/News/${detail.news_img}`"
+              :link="`./img/News/${detail.news_img}`"
               :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
@@ -54,12 +54,12 @@
               :urlLink="detail.news_no"
               />
             </div>
-          <!-- 其他顯示 -->
+          <!-- 其他顯示 上線圖片改.-->
             <div v-else-if="navLink === '其他'">
               <NewsCard
               v-for="detail in newsOthers" 
               :key="detail.news_no"
-              :link="`/img/News/${detail.news_img}`"
+              :link="`./img/News/${detail.news_img}`"
               :type="detail.news_type"
               :date="detail.news_time"
               :title="detail.news_title"
@@ -70,7 +70,7 @@
         </div>
   </div>
   <div class="news-next-page">
-    <Pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="5" :total="10"/>
+    <Pagination @change="page=$event" :defaultCurrentPage="page" :defaultPageSize="5" :total="5"/>
       <!-- 組件 -->
   </div>
     <div class="go-up">
@@ -183,7 +183,7 @@
   display: inline-block;
   color: #BC955C;
   padding: 5px 10px;
-  margin: 0 10px;
+  margin: 0 2px;
   border: #BC955C 1px solid;
   border-radius: 5px 5px 0 0;
 }

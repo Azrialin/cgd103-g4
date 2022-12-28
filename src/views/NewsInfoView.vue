@@ -2,7 +2,7 @@
   <Banner :src="require(`@/assets/img/Banner/banner_news.jpg`)"/>
   <breadcrumb :fonts="fonts"/>
   <NewsDetail
-  :img="`/img/News/${activeNews.news_img}`"
+  :img="`../img/News/${activeNews.news_img}`"
   :img_des="activeNews.news_img_des"
   :title="activeNews.news_title"
   :text_start="activeNews.news_text_start" 
@@ -10,9 +10,8 @@
   :text_trans="activeNews.news_text_trans"
   :text_end="activeNews.news_text_end"
   />
-  <!-- 如果直接直接寫好打包後的圖片存在前台，就不用以下動作 -->
   <!-- 打包前途片路徑 --> <!-- :img="`/img/News/${activeNews.news_img}`" -->
-  <!-- 打包後圖片路徑(加一個點) --> <!-- :img="`./img/News/${activeNews.news_img}`" -->
+  <!-- 打包後圖片路徑(加兩個點) --> <!-- :img="`../img/News/${activeNews.news_img}`" -->
 
   <GotoParadise/>
   <router-view/>
