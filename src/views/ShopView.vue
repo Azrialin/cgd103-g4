@@ -210,7 +210,9 @@ export default {
     flex-wrap: wrap;
     .card-box {
       // width: 48%;
-      margin: auto;
+      // margin: auto;
+      padding: 5px;
+      box-sizing: border-box;
     }
   }
 }
