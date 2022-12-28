@@ -303,7 +303,7 @@ export default {
   .shopcart-item {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
   }
   .cart-total {
@@ -467,7 +467,7 @@ export default {
     }
     .shopcart-item {
       .del {
-        margin: 0px 5px;
+        margin: 0px 2px;
       }
     }
     .cart-total {
@@ -500,6 +500,7 @@ export default {
       }
     }
     .shopcart-item {
+      justify-content: center;
       .del {
         margin: 0px 10px;
       }

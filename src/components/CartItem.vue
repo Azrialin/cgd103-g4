@@ -91,7 +91,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .cart-item {
-    @include font(14px);
+    @include font(12px);
     width: 100%;
     justify-content: center;
     margin: 20px 0px;
@@ -106,7 +106,7 @@ export default {
       }
     }
     .cart-amount {
-      margin: 10px;
+      margin: 5px;
       width: 20%;
 
       button {
@@ -120,7 +120,7 @@ export default {
     }
     .cart-sum {
       width: 15%;
-      margin: 10px;
+      margin: 5px;
     }
   }
 }

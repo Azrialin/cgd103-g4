@@ -85,13 +85,13 @@
               v-for="item in list"
               :key="item.id"
             >
-            <!-- <router-link :to ="{path:`/shop/${item.prod_id}`}"> -->
+            
               <productcard
                 :title="item.prod_name"
                 :price="item.prod_price"
                 :img="`../img/products/${item.prod_pic_intro_0}`"
               />
-            <!-- </router-link> -->
+            
             </swiper-slide>
           </swiper>
         </div>
