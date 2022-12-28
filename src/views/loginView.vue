@@ -45,6 +45,7 @@
                             <label class="title-text">聯絡電話</label>
                             <input class="input-gold" type="tel" v-model="signupTel" placeholder="請輸入手機號碼(最多10碼)">
                         </div> 
+                        <p>註冊即表示您已同意<span>服務條款</span>及<span>隱私權政策</span></p>
                     </div>
                     <div class="signup_btn">
                         <button type="button" class="btn-blue" @click="signups">註冊為會員</button>
@@ -250,7 +251,7 @@
                     margin-bottom: 70px;
                 }
                 .btn-blue_2nd{
-                    margin-top: 90px;
+                    margin-top: 110px;
                 }
             }
             // ---------- 還不是會員 ------------
@@ -358,6 +359,23 @@
                         border: 1px solid $back_color_main;
                     }
                 }
+                p{
+                    @include font(15px);
+                    color: $color_888;
+                    text-align: center;
+                    margin-top: 15px;
+                    font-weight: 300;
+                }
+                span{
+                    @include font(15px);
+                    color: $back_color_active;
+                    text-align: center;
+                    // margin: 15px;
+                    &:hover{
+                        color: $back_color_hover;
+                        cursor: pointer;
+                    }
+                }
                 .signup_btn{
                     display: flex;
                     flex-wrap: nowrap;
@@ -366,15 +384,21 @@
                     align-items: center;
                 }
                 .btn-blue{
-                    margin-top: 30px;
+                    margin-top: 20px;
+                    @include maxW(1200px){
+                        width: 100%;
+                        max-width: calc(100% - 60px);
+                    }
                     @include minW(1200px){
                         margin-bottom: 30px;
-                        margin-top: 35px;
+                        margin-top: 20px;
                     }
                 }
                 .btn-blue_2nd{
                     @include maxW(1200px){
-                        margin-top: 15px;
+                        margin-top: 20px;
+                        width: 100%;
+                        max-width: calc(100% - 60px);
                     }
                     @include minW(1200px){
                         display: none;
@@ -439,11 +463,16 @@
                     }
                 }
                 .btn-gold{
-                    margin-top: 50px;
+                    margin-top: 40px;
+                    @include maxW(1200px){
+                        width: 100%;
+                        max-width: calc(100% - 60px);
+                    }
                 }
                 .btn-gold_2nd{
                     @include maxW(1200px){
-                        width: fit-content;
+                        width: 100%;
+                        max-width: calc(100% - 60px);
                         margin-top: 15px;
                     }
                     @include minW(1200px){

@@ -125,6 +125,11 @@ const routes = [
     component: () => import('../views/ForgotpasswordView.vue')
   },
   {
+    path: '/Resetpsw',
+    name: 'Resetpsw',
+    component: () => import('../views/ResetpswView.vue')
+  },
+  {
     path: '/Signin_suc',
     name: 'Signin_suc',
     component: () => import('../views/Signin_sucView.vue')

@@ -4,14 +4,18 @@
         <div class="container">
             <div class="main">
                 <form action="">
-                    <h2>忘記密碼</h2>
+                    <h2>重設密碼</h2>
                     <hr>
                     <div class="inputfield">
-                        <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
-                        <input class="input-gold" type="email" placeholder="請輸入Email">
+                        <h3 class="title">設定新密碼</h3>
+                        <input class="input-gold" type="password" placeholder="半形英數最多10碼">
                     </div> 
-                    <button class="btn-gold">確認送出</button>
-                    <button class="btn-gold_2nd" @click="logins">取消</button>
+                    <div class="inputfield">
+                        <h3 class="title">確認密碼</h3>
+                        <input class="input-gold" type="password" placeholder="再次輸入您的密碼">
+                    </div> 
+                    <!-- <button class="btn-gold_2nd" @click="logins">取消</button> -->
+                    <button class="btn-gold" @click="members">確認變更</button>
                 </form>
             </div>
         </div>
@@ -35,11 +39,14 @@
                 fonts:[
                     { name: '首頁', source: '/' },
                     { name: '會員登入', source: 'login' },
-                    { name: '忘記密碼', source: 'forgotpassword' }
+                    { name: '重設密碼', source: 'resetpsw' }
                 ],
             };
         },
         methods: {
+            members() {
+                this.$router.push("/Signin_suc");
+            },
             logins(){
                 this.$router.push("/login");
             },
@@ -55,13 +62,12 @@
     .main{
         @include minW(1200px){
                 width: calc(50% - 100px);
-                height: 430px;
         }
-        height: 470px;
+        height: 500px;
         margin: 10%;
         margin: auto;
         margin-top: 80px;
-        margin-bottom: 120px;
+        margin-bottom: 100px;
         border-radius: 10px;
         border: 1px solid $front_color_main;
         box-shadow: 0 8px 10px -5px rgb(223, 221, 221);
@@ -81,7 +87,7 @@
             hr{
                 width: 100%;
                 height: 0.5px;
-                margin-bottom: 50px;
+                margin-bottom: 30px;
                 background: #BC955C;
                 border: none;
             }
@@ -110,22 +116,21 @@
                 outline:none;
             }
 
-            .btn-gold{
-                width: 40%;
-                padding: 10px 15px;
-                margin-right: 30px;
-                margin-top: 20px;
-                @include maxW(1200px){
-                        width: 100%;
-                    }
-            }
+            // .btn-gold_2nd{
+            //     width: 30%;
+            //     padding: 10px 15px;
+            //     margin-right: 30px;
+            //     margin-top: 40px;
+            // }
 
-            .btn-gold_2nd{
-                width: 30%;
+            .btn-gold{
+                // width: 100%;
                 padding: 10px 15px;
-                margin-top: 20px;
+                margin-top: 30px;
+                text-align: center;
                 @include maxW(1200px){
                         width: 100%;
+                        // max-width: calc(100% - 60px);
                     }
             }
         }
