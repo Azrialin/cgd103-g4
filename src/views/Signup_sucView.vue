@@ -11,7 +11,7 @@
             回首頁
             </button>
             <button class="btn-blue" @click="members">
-            前往登入
+            前往會員專區
             </button>
         </div>
       </div>
@@ -25,7 +25,7 @@ export default {
 
   methods: {
     members() {
-      this.$router.push("/login");
+      this.$router.push("/membership");
     },
     backs(){
         this.$router.push("/");
