@@ -14,7 +14,7 @@
           </p>
         </div>
       </div>
-      <form  ref="test">
+      <form ref="test">
         <div class="Contact-Table">
           <div class="Contact-Table-Item">
             <p>聯絡主題*</p>
@@ -118,7 +118,7 @@ export default {
       formData.append("opinion_tel", this.opiniontel);
       formData.append("opinion_detail", this.opiniondetail);
       formData.append("opinion_selecttopic", this.opinionselecttopic);
-      fetch(`${ BASE_URL }/ContactInsert.php`, {
+      fetch(`${BASE_URL}/ContactInsert.php`, {
         method: "POST",
         body: formData,
       })
@@ -182,13 +182,14 @@ export default {
       margin: 10px 0;
       @include font(18px);
     }
-    select {
+    select,
+    input {
       text-align: center;
       width: 100%;
+      height: 30px;
     }
-    input {
-      width: 100%;
-      height: 100%;
+    option {
+      font-size: 20px;
     }
     textarea {
       padding: 10px;
@@ -232,8 +233,11 @@ export default {
         justify-content: center;
       }
     }
-    .Contact-Table {
-      width: 60%;
+    form {
+      width: 40%;
+      .Contact-Table {
+        width: 100%;
+      }
     }
   }
 }

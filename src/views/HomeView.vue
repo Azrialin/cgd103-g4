@@ -107,9 +107,7 @@
               將為您創造一生中從未體驗過的新火車之旅。
             </p>
             <div class="MoreButton">
-              <router-link to="/train">
-                <button>more</button>
-              </router-link>
+              <button>more</button>
             </div>
           </div>
         </div>
