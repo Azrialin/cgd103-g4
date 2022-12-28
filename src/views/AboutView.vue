@@ -13,7 +13,7 @@
               <div class="Aboutus-Text Text">
                 <h1 class="Aboutus-Text-Title Title">關於我們</h1>
                 <p class="Content">
-                  「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
+                  「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「JET SPEED旅遊」共同創立「JETSPEED公司」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
                 </p>
               </div>
               <img class="About-Img" src="../assets/img/Scape/08.jpg" />
@@ -35,7 +35,7 @@
               <div class="BusinessScope-Text Text">
                 <p class="BusinessScope-Text-Title Title">企業理念</p>
                 <p class="Content">
-                  JET SPEED是由董事長—小林先生，於2016年成立。
+                  JET SPEED是由董事長—小林(林子皓)先生，於2016年成立。
                   路線定位為『中高階豪華團』到『高階頂級奢華團』；不走競價路線，以創意、質感、美學為概念出發。體會旅遊多元的同時，期望也能在同團貴賓中交到許多與自己各方面契合的夥伴。
                 </p>
               </div>
@@ -44,7 +44,7 @@
               <p class="JSTravel-Text-Title-PC Title">Jetspeed旅遊</p>
               <img
                 class="About-Img"
-                src="https://picsum.photos/1920/1080/?random=10"
+                src="../assets/img/Scape/23.jpg"
               />
               <div class="JSTravel-Text Text">
                 <p class="JSTravel-Text-Title Title">Jetspeed旅遊</p>
@@ -69,7 +69,7 @@
                   「職人匠心堅持，旅人逐夢踏實！」為了更長遠的路，與「晴天旅遊」共同創立「晴日旅行社」，為『姊妹社關係企業』同為優質與藍海策略差異化旅遊再努力。
                 </p>
               </div>
-              <img src="../assets/img/Train/outside/img_602dfce101ce8.jpeg" alt="" />
+              <img src="../assets/img/Train/outside/461565832_78ffb91acb_b.webp" alt="" />
             </div>
             <div class="Introduce-Card">
               <div class="Introduce-Text Text">
