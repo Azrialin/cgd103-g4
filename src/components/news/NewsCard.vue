@@ -52,7 +52,6 @@ export default {
                 this.news = this.newsRaw.filter(item => {
                     return item.news_status === "上架";
                 });
-                console.log(this.news);
             })
         },
         toNext(item){
@@ -60,9 +59,6 @@ export default {
             this.$router.push({path:`/news${item.news_no}`});
             // /news
         },
-        test(){
-            console.log(this.$route);
-        }
     },
     created(){
         this.getNews();
