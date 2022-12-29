@@ -137,7 +137,7 @@ export default {
     return {
       // cardContext2: { list : []}, 鴻銘寫的先留著
       // addCart,
-      xyz: 4,
+      xyz: 6,
       amount: 1,
       fonts: [
         { name: "首頁", source: "/" },
@@ -307,7 +307,7 @@ export default {
     if (windowidth < 1024) {
       this.xyz = 2;
     } else {
-      this.xyz = 4;
+      this.xyz = 6;
     }
   },
   computed: {
