@@ -130,17 +130,17 @@
                     )
                     .then((res) => res.json())
                     .then((json) => {
-                        if (json.code == 2) {
-                            alert("歡迎回來，請重新設定您的登入密碼。");
-                            thisvue.$router.push("/Resetpsw");
-                        }
-                        else if (json.code == 1) {
+                        // if (json.code == 2) {
+                        //     alert("歡迎回來，請重新設定您的登入密碼。");
+                        //     thisvue.$router.push("/Resetpsw");
+                        // }
+                         if (json.code == 1) {
                             thisvue.$router.push("/Signin_suc");
                             // sessionStorage.setItem("mem_no", json.mem_no);
                             this.$store.dispatch("setMember", json.mem_no);
                             // this.$store.state.mem_no
                         }
-                        else if (json.code == 0) {
+                        else if(json.code == 0) {
                             alert("登入失敗");
                         }
                     });
