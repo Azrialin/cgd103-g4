@@ -93,7 +93,7 @@ export default {
   .cart-item {
     @include font(12px);
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     margin: 20px 0px;
     .cart-price {
       display: none;
