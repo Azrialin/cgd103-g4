@@ -94,21 +94,16 @@
             },
             forgotPsw(){
                 console.log(this.mem_email);
-                // fetch(`${BASE_URL}/forgotPsw.php`)
-                fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php",{
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php",{
+                fetch(`${BASE_URL}/forgotPsw.php`,{
                     method:'POST', body:new URLSearchParams({
-                        mem_email:this.mem_email,
+                    email:this.mem_email,
                 })})
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php?mem_email="+this.mem_email)
                 .then((res) => res.json())
                 .then((result)=> {
                     console.log(result);
-                    if(result.msg == "查無此帳號"){
-                        alert("此帳號不存在，請重新輸入或確認資料無誤。");
-                        return;
-                    }else{
-                        alert("已收到您提交的的忘記密碼請求，請至信箱查收新密碼，並於重新登入後修改密碼。");
-                        // window.location.reload();
-                    }
+                    alert(result.msg);
                 })
             },
         },

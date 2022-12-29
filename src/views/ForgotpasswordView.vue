@@ -8,10 +8,14 @@
                     <hr>
                     <div class="inputfield">
                         <h3 class="title">請輸入你的<span>電子信箱</span>以搜尋帳號。</h3>
-                        <input class="input-gold" type="email" placeholder="請輸入Email">
+                        <input class="input-gold"
+                            name="mem_email"
+                            v-model="mem_email"
+                            type="email"
+                            placeholder="請輸入Email">
                     </div> 
-                    <button class="btn-gold">確認送出</button>
-                    <button class="btn-gold_2nd" @click="logins">取消</button>
+                    <button class="btn-gold" type="button" @click="forgotPsw" >確認送出</button>
+                    <button class="btn-gold_2nd" type="button" @click="logins">取消</button>
                 </form>
             </div>
         </div>
@@ -30,7 +34,7 @@
         },
         data() {
             return {
-                email: "",
+                mem_email:'',
                 password: "",
                 fonts:[
                     { name: '首頁', source: '/' },
@@ -42,6 +46,19 @@
         methods: {
             logins(){
                 this.$router.push("/login");
+            },
+            forgotPsw(){
+                // console.log(this.mem_email);
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php?mem_email="+this.mem_email)
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php",{
+                    fetch(`${BASE_URL}/forgotPsw.php`,{
+                    method:'POST', body:new URLSearchParams({
+                    email:this.mem_email,
+                })})
+                .then((res) => res.json())
+                .then((result)=> {
+                    alert(result.msg);
+                })
             },
         },
     };

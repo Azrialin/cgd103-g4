@@ -39,7 +39,7 @@
                         </div>  
                         <div class="signup-password">
                             <label class="title-text">密碼</label>
-                            <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數最多10碼">
+                            <input class="input-gold" type="password" v-model="signupPsw" placeholder="半形英數最多10碼" maxlength="10">
                         </div>   
                         <div class="signup-tel">
                             <label class="title-text">聯絡電話</label>
@@ -66,7 +66,7 @@
                             </div>  
                             <div class="signin-password">
                                 <label class="title-text">密碼</label>
-                                <input class="input-gold" name="mem_psw" v-model="mem_psw" type="password" placeholder="請輸入密碼">
+                                <input class="input-gold" name="mem_psw" v-model="mem_psw" type="password" placeholder="請輸入密碼" maxlength="16">
                             </div>   
                             <router-link to="/Forgotpassword" class="forgot_password">忘記密碼了嗎?</router-link>
                         </div>
@@ -107,9 +107,6 @@
                 signupEmail:"",
                 signupPsw:"",
                 signupTel:"",
-
-
-
                 // mem_no: this.$store.state.mem_no,
             };
         },
@@ -120,6 +117,7 @@
                     // thisvue.errorMsg = "請輸入帳號和密碼";
                     // thisvue.errorFlag = true;
                 }else {
+                    // fetch("http://localhost/CGD103_G4_front/public/phpfiles/login.php",
                     fetch(`${BASE_URL}/login.php`,
                         {
                             method: "post",
@@ -132,7 +130,11 @@
                     )
                     .then((res) => res.json())
                     .then((json) => {
-                        if (json.code == 1) {
+                        if (json.code == 2) {
+                            alert("歡迎回來，請重新設定您的登入密碼。");
+                            thisvue.$router.push("/Resetpsw");
+                        }
+                        else if (json.code == 1) {
                             thisvue.$router.push("/Signin_suc");
                             // sessionStorage.setItem("mem_no", json.mem_no);
                             this.$store.dispatch("setMember", json.mem_no);
@@ -141,7 +143,6 @@
                         else if (json.code == 0) {
                             alert("登入失敗");
                         }
-
                     });
                 }
 
@@ -171,8 +172,7 @@
                             }),
                         }
                     )
-                        .then(res=> {
- return res.json()
+                        .then(res=> {return res.json()
                         })
                         .then(res=>{
                             console.log(res);

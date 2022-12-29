@@ -18,8 +18,13 @@
             </aside>
             <main>
                 <label class="search">
-                    <input class="input-gold" type="text" placeholder="輸入您想尋找的內容（還不能用，不會寫）">
-                    <button type="submit">
+                    <input
+                        class="input-gold"
+                        type="text"
+                        v-model="keyword"
+                        @keyup.enter="Faq_search"
+                        placeholder="輸入您想尋找的內容">
+                    <button type="submit" @click="Faq_search">
                         <i class="material-symbols-outlined">&#xe8b6;</i>
                     </button>
                 </label>
@@ -33,11 +38,22 @@
                         {{category.faq_type}}
                     </li>
                 </ul>
+                <!-- <ul class="faqList">
+                    <li class="font-16-24em faq" v-for="faqList in activeList" :key="faqList">
+                    Q：
+                    <span v-html="faqList.faq_q.replace(keyword, `<span class="highlighted">${keyword}</span>`)"></span>
+                    <br>
+                    A：
+                    <span v-html="faqList.faq_a.replace(keyword, `<span class="highlighted">${keyword}</span>`)"></span>
+                    </li>
+                </ul> -->
                 <ul class="faqList">
                     <li class="font-16-24em faq"
                         v-for="faqList in activeList"
                         :key="faqList">
-                        Q：{{faqList.faq_q}}<br>A：{{faqList.faq_a}}
+                        Q：{{faqList.faq_q}}
+                        <br>
+                        A：{{faqList.faq_a}}
                     </li>
                 </ul>
             </main>
@@ -81,10 +97,12 @@
                 ],
                 categoryList:[],
                 faqList:[],
+                keyword:'',
             }
         },
         methods: {
             tabChange(tab){
+                this.keyword='';
                 this.activeCategory = tab;
                 this.activeList = this.faqList.filter(item => {
                     return item.faq_type === tab.faq_type;
@@ -98,12 +116,34 @@
                     this.faqList = json;
                     this.activeList = this.faqList;
                     this.categoryList = [...new Set(this.faqList.map(item => item.faq_type))].map(faqType => ({ faq_type: faqType }));
-            })
-		},
+                })
+		    },
+            Faq_search(){
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/Faq_search.php",{
+                fetch(`${BASE_URL}/Faq_search.php`,{
+                    method:'POST', body:new URLSearchParams({
+                    keyword:this.keyword,
+                })})
+                .then(res=>res.json())
+                .then(json=>{
+                    this.faqList = json;
+                    this.activeList = this.faqList;
+                    for (const item of this.activeList) {
+                        if (item.faq_q.includes(this.keyword)||item.faq_a.includes(this.keyword)) {
+                            item.isHighlighted = true;
+                        } else {
+                            item.isHighlighted = false;
+                        }
+                    }
+                })
+            }
         },
     }
 </script>
 
 <style scoped lang="scss">
     @import "../assets/scss/pages/faq.scss";
+    .highlighted{
+        background-color: yellow;
+    }
 </style>

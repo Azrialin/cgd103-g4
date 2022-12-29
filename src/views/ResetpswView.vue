@@ -8,14 +8,14 @@
                     <hr>
                     <div class="inputfield">
                         <h3 class="title">設定新密碼</h3>
-                        <input class="input-gold" type="password" placeholder="半形英數最多10碼">
+                        <input class="input-gold" v-model="password_1" type="password" placeholder="半形英數最多10碼" maxlength="10">
                     </div> 
                     <div class="inputfield">
                         <h3 class="title">確認密碼</h3>
-                        <input class="input-gold" type="password" placeholder="再次輸入您的密碼">
+                        <input class="input-gold" v-model="password_2" type="password" placeholder="再次輸入您的密碼" maxlength="10">
                     </div> 
                     <!-- <button class="btn-gold_2nd" @click="logins">取消</button> -->
-                    <button class="btn-gold" @click="members">確認變更</button>
+                    <button class="btn-gold" type="button" @click="members">確認變更</button>
                 </form>
             </div>
         </div>
@@ -34,8 +34,8 @@
         },
         data() {
             return {
-                email: "",
-                password: "",
+                password_1: "",
+                password_2: "",
                 fonts:[
                     { name: '首頁', source: '/' },
                     { name: '會員登入', source: 'login' },
@@ -45,7 +45,24 @@
         },
         methods: {
             members() {
-                this.$router.push("/Signin_suc");
+                if(this.password_1 === this.password_2 && this.password_1 != ''){
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/resetPsw.php",{
+                fetch(`${BASE_URL}/resetPsw.php`,{
+                    method:'POST', body:new URLSearchParams({
+                    mem_no:this.mem_no,
+                    mem_psw:this.mem_psw,
+                })})
+                // fetch("http://localhost/CGD103_G4_front/public/phpfiles/forgotPsw.php?mem_email="+this.mem_email)
+                .then((res) => res.json())
+                .then((result)=> {
+                    alert(result.msg);
+                    setTimeout(() => {
+                        this.$router.push("/Signin_suc");
+                    }, 600);
+                })
+                }else{
+                    alert("兩次輸入的密碼不一致，請確定後重新輸入。");
+                }
             },
             logins(){
                 this.$router.push("/login");
