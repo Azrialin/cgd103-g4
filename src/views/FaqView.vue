@@ -97,11 +97,13 @@
                 ],
                 categoryList:[],
                 faqList:[],
+                filterList:[],
                 keyword:'',
             }
         },
         methods: {
             tabChange(tab){
+                // console.log(this.keyword);
                 this.keyword='';
                 this.activeCategory = tab;
                 this.activeList = this.faqList.filter(item => {
@@ -126,15 +128,15 @@
                 })})
                 .then(res=>res.json())
                 .then(json=>{
-                    this.faqList = json;
-                    this.activeList = this.faqList;
-                    for (const item of this.activeList) {
-                        if (item.faq_q.includes(this.keyword)||item.faq_a.includes(this.keyword)) {
-                            item.isHighlighted = true;
-                        } else {
-                            item.isHighlighted = false;
-                        }
-                    }
+                    this.filterList = json;
+                    this.activeList = this.filterList;
+                    // for (const item of this.activeList) {
+                    //     if (item.faq_q.includes(this.keyword)||item.faq_a.includes(this.keyword)) {
+                    //         item.isHighlighted = true;
+                    //     } else {
+                    //         item.isHighlighted = false;
+                    //     }
+                    // }
                 })
             }
         },
