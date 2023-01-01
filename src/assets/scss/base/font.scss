@@ -20,15 +20,39 @@
 @import "../components/btn.scss";
 
 // 前台:思源宋體
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
 
 // 後台:思源黑體
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
+
+@font-face {
+	font-family: 'Noto Sans TC';
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-Black.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-Bold.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-DemiLight.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-Light.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-Medium.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-Regular.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansCJKtc-Thin.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansMonoCJKtc-Bold.otf');
+	src: url('/src/assets/font/NotoSansCJKtc/NotoSansMonoCJKtc-Regular.otf');
+}
+
+@font-face {
+	font-family: 'Noto Serif TC';
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-Black.otf');
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-Bold.otf');
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-ExtraLight.otf');
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-Light.otf');
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-Medium.otf');
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-Regular.otf');
+	src: url('/src/assets/font/NotoSerifCJKtc/NotoSerifCJKtc-SemiBold.otf');
+}
 
 %font-style{
 	$Serif: true;
-	@if $Serif{ font-family: 'Noto Serif TC', '微軟正黑體'; }
-	@else{		font-family: 'Noto Sans', '微軟正黑體'; 	}
+	@if $Serif{ font-family: 'Noto Serif TC', '微軟正黑體';}
+	@else{		font-family: 'Noto Sans', '微軟正黑體';}
 	font-weight: 700;
 	line-height: 1.2em;
 	letter-spacing: 0.15em;
