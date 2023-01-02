@@ -19,7 +19,7 @@ header("Content-Type:application/json;charset=utf-8");      // cors请求时,谷
 
   if($login_account != "" && $login_psw != "") {
 
-        $sql = " SELECT * FROM member WHERE mem_email = '{$login_account}' OR mem_psw = '{$login_psw}'; ";
+        $sql = " SELECT * FROM member WHERE mem_email = '{$login_account}' AND mem_psw = '{$login_psw}'; ";
         $result = $pdo->query($sql);
         $resArray = $result->fetch(PDO::FETCH_ASSOC);
         $mem_psw = $resArray["mem_psw"]??"";
