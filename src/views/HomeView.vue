@@ -89,7 +89,7 @@
       <div class="HomeTrain">
         <div class="HomeTrain-Title">
           <h1>The cruise train</h1>
-          <p>____列車介紹</p>
+          <p>列車介紹</p>
         </div>
         <div class="HomeTrain-Graphic">
           <div class="HomeTrain-Pic">
@@ -105,7 +105,7 @@
           <div class="HomeTrain-Text">
             <div class="HomeTrain-Title-Pc">
               <h1>The cruise train</h1>
-              <p>____列車介紹</p>
+              <p>列車介紹</p>
             </div>
             <p class="HomeTrain-Text-Title">
               有豐富的品質， <br />只有在火車上才能體驗的特殊空間。
@@ -126,38 +126,60 @@
       <div class="Home-Carousal">
         <div class="Carousal-Title">
           <h1 class="Home-Carousal-First">YOUR JOURNET</h1>
-          <p class="Home-Carousal-Second">____旅遊行程介紹</p>
+          <p class="Home-Carousal-Second">旅遊行程介紹</p>
           <swiper :navigation="true" :modules="modules" class="mySwiper">
             <swiper-slide>
-              <img src="../assets/img/Scape/11.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/11.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/13.jpg" alt="" />
+              <router-link to="">
+                <img src="../assets/img/Scape/13.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/17.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/17.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/04.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/04.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/05.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/05.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/06.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/06.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/07.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/07.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/08.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/08.jpg" alt="" />
+              </router-link>
             </swiper-slide>
             <swiper-slide>
-              <img src="../assets/img/Scape/10.jpg" alt="" />
+              <router-link to="/travel">
+                <img src="../assets/img/Scape/10.jpg" alt="" />
+              </router-link>
             </swiper-slide>
           </swiper>
         </div>
       </div>
+      <router-link to="/travel">
+        <button class="moretravel">預覽行程</button>
+      </router-link>
+      <GotoParadise />
     </div>
   </div>
   <router-view></router-view>
@@ -165,6 +187,7 @@
 
 <script>
 import Banner from "@/components/Banner.vue";
+import GotoParadise from "@/components/news/GotoParadise.vue";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -182,6 +205,7 @@ export default {
     Banner,
     Swiper,
     SwiperSlide,
+    GotoParadise,
   },
   data() {
     return {
@@ -319,7 +343,6 @@ li {
       .HomeNew-Text {
         text-align: start;
         @include font(12px);
-        font-weight: 500;
       }
     }
   }
@@ -335,9 +358,9 @@ li {
       background-color: #ebdfce;
       .CovidText {
         margin: 10px 20px;
-        @include font(14px);
+        @include font(16px);
         button {
-          @include font(14px);
+          @include font(16px);
           width: 100%;
           margin: 10px auto;
           padding: 10px;
@@ -353,7 +376,7 @@ li {
         margin: 30px auto;
         border: 1px solid #bc955c;
         p {
-          @include font(14px);
+          @include font(16px);
           margin: 20px;
           text-align: start;
         }
@@ -368,7 +391,7 @@ li {
   width: 100%;
   text-align: right;
   button {
-    @include font(14px);
+    @include font(16px);
     background-color: transparent;
     border: 0;
     border-bottom: 1px solid #bc955c;
@@ -380,7 +403,7 @@ li {
     display: flex;
     gap: 10px;
     .HomeArticle-Text {
-      @include font(14px);
+      @include font(12px);
       text-align: left;
     }
   }
@@ -403,7 +426,7 @@ li {
   }
   .HomeTrain-Text {
     margin-bottom: 20px;
-    @include font(14px);
+    @include font(16px);
     font-weight: 500;
     p {
       margin: 20px auto;
@@ -435,6 +458,18 @@ li {
       margin-bottom: 20px;
     }
   }
+}
+.moretravel {
+  @include font(14px);
+  color: #e6e6e6;
+  background-color: #bc955c;
+  text-align: center;
+  margin: 30px auto;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  width: 180px;
+  appearance: none;
 }
 
 @media (min-width: 1200px) {
@@ -555,9 +590,15 @@ li {
           display: block;
           width: 400px;
           gap: 20px;
-          margin: auto;
           img {
             width: 100%;
+          }
+          .HomeArticle-Text {
+            margin-top: 10px;
+            .HomeArticle-Title {
+              font-size: 20px;
+              margin: 10px auto;
+            }
           }
         }
         .MoreButton {
@@ -585,21 +626,28 @@ li {
       display: flex;
       gap: 20px;
       .HomeTrain-Pic {
-        width: 50%;
+        width: 60%;
+        img {
+          height: 300px;
+        }
       }
       .HomeTrain-Text {
         width: 50%;
-        @include font(24px);
         margin: auto 20px;
         .HomeTrain-Title-Pc {
-          @include font(36px);
+          @include font(32px);
           margin-bottom: 40px;
+          display: inherit;
+          p {
+            @include font(20px);
+          }
+        }
+        .HomeTrain-Text-SubTitle,
+        .HomeTrain-Text-Title {
+          @include font(16px);
         }
         button {
           @include font(20px);
-        }
-        .HomeTrain-Title-Pc {
-          display: inherit;
         }
       }
     }

@@ -9,20 +9,20 @@
         </div>
         <div class="Caption">
           <p>
-            感謝您拜訪JET SPEED旅遊網站，如果您有任何疑問，或對我們公司的行程與服務
+            感謝您拜訪JET
+            SPEED旅遊網站，如果您有任何疑問，或對我們公司的行程與服務
             有任何想要了解的地方，歡迎填寫下列表單，我們將會用最快的速度與您聯絡。
           </p>
         </div>
       </div>
-      <form ref="test">
+      <form ref="test" @submit.prevent="onSubmit">
         <div class="Contact-Table">
           <div class="Contact-Table-Item">
             <p>聯絡主題*</p>
-            <select
-              name="opinion_selecttopic"
-              v-model="opinionselecttopic"
-            >
-              <option value="null" disabled="disabled" selected="selected">請選擇相關聯絡主題</option>
+            <select name="opinion_selecttopic" v-model="opinionselecttopic">
+              <option value="null" disabled="disabled" selected="selected">
+                請選擇相關聯絡主題
+              </option>
               <option value="行程諮詢">行程諮詢</option>
               <option value="旅遊建議">旅遊建議</option>
               <option value="帳號相關">帳號相關</option>
@@ -46,11 +46,11 @@
             />
           </div>
           <div class="Contact-Table-Item">
-            <p>Email</p>
+            <p>Email*</p>
             <input name="opinion_mail" v-model="opinionmail" />
           </div>
           <div class="Contact-Table-Item">
-            <p>需求說明</p>
+            <p>需求說明*</p>
             <textarea
               name="opinion_detail"
               id=""
@@ -59,7 +59,13 @@
               v-model="opiniondetail"
             ></textarea>
           </div>
-          <div @click="submit">送出表單</div>
+          <div
+            class="SubmitData"
+            @click="submit"
+            v-bind:class="{ disabled: !allFieldsFilled }"
+          >
+            送出表單
+          </div>
         </div>
       </form>
     </div>
@@ -91,25 +97,38 @@ export default {
       ],
     };
   },
+  computed: {
+    allFieldsFilled() {
+      return this.opinionname.trim() !== "" && this.opinionmail.trim() !== "" && this.opiniontel.trim() !== "" && this.opiniondetail.trim() !== "" && this.opinionselecttopic.trim() !== ""
+    },
+  },
+  watch: {},
   methods: {
     submit() {
-      const formData = new FormData(this.$refs.test);
-      formData.append("opinion_name", this.opinionname);
-      formData.append("opinion_mail", this.opinionmail);
-      formData.append("opinion_tel", this.opiniontel);
-      formData.append("opinion_detail", this.opiniondetail);
-      formData.append("opinion_selecttopic", this.opinionselecttopic);
-      fetch(`${BASE_URL}/ContactInsert.php`, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
+      if (this.allFieldsFilled) {
+        // all fields are filled, do something here
+        const formData = new FormData(this.$refs.test);
+        formData.append("opinion_name", this.opinionname);
+        formData.append("opinion_mail", this.opinionmail);
+        formData.append("opinion_tel", this.opiniontel);
+        formData.append("opinion_detail", this.opiniondetail);
+        formData.append("opinion_selecttopic", this.opinionselecttopic);
+        fetch(`${BASE_URL}/ContactInsert.php`, {
+          method: "POST",
+          body: formData,
         })
-        .catch((error) => {
-          console.log(error);
-        });
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        alert("成功送出表單");
+        location.reload();
+      } else {
+        alert("請填寫完所有欄位");
+      }
     },
   },
 };
@@ -186,7 +205,7 @@ export default {
       border: 1px solid #bc955c;
     }
   }
-  button {
+  .SubmitData {
     @include font(14px);
     color: #e6e6e6;
     background-color: #bc955c;
