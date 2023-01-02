@@ -24,7 +24,7 @@ header("Content-Type:application/json;charset=utf-8");      // cors请求时,谷
         $resArray = $result->fetch(PDO::FETCH_ASSOC);
         $mem_psw = $resArray["mem_psw"]??"";
 
-        if($mem_psw == $login_psw) {
+        if($mem_psw == $login_psw && $mem_psw < 16) {
             //產生一個令牌
             $nowTime = time();
             // $token = md5($resArray["mem_account"].$resArray["mem_psw"].$nowTime);
@@ -35,11 +35,11 @@ header("Content-Type:application/json;charset=utf-8");      // cors请求时,谷
             $result_array = ["code"=>"1", "msg"=>"登陸成功", "account" =>"{$login_account}", "mem_no" =>"{$resArray["mem_no"]}"];//, "token"=>$token
             echo json_encode($result_array);
         }
-        // else if ($mem_psw == $login_psw && $mem_psw > 10) {
-        //   // 忘記密碼的人會收到一組 16 碼亂數當新密碼，其他用戶註冊時最多只能 10 碼
-        //   $result_array = ["code"=>"2","msg"=>"歡迎回來，請重新設定您的登入密碼。"];
-        //   echo json_encode($result_array);
-        // }
+        else if ($mem_psw == $login_psw && $mem_psw > 10) {
+          // 忘記密碼的人會收到一組 16 碼亂數當新密碼，其他用戶註冊時最多只能 10 碼
+          $result_array = ["code"=>"2","msg"=>"歡迎回來，請重新設定您的登入密碼。"];
+          echo json_encode($result_array);
+        }
         else {
             $result_array = ["code"=>"0","msg"=>"帳號或密碼錯誤"];
             echo json_encode($result_array);
