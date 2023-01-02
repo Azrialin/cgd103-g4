@@ -64,6 +64,7 @@
             .search{
                 display: flex;
                 align-items: center;
+                position: relative;
                 .input-gold{ 
                     width: 100%;
                     margin: 10px 0 30px;
@@ -90,6 +91,13 @@
                         cursor: pointer;
                         margin: 10px 10px 30px;
                     }
+                }
+                span{
+                    cursor: pointer;
+                    color: $clr_gold_L1;
+                    position: absolute;
+                    left: calc(100% - 90px);
+                    bottom: 40px;
                 }
             }
             .tabs{

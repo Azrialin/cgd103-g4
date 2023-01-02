@@ -1,6 +1,13 @@
 .DS_Store
 node_modules
 /dist
+
+#composer
+/vendor
+composer.phar
+composer.json
+composer.lock
+
 # php
 # phpfiles
 connect_cgd103g4.php
