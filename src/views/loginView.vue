@@ -175,7 +175,6 @@
                         .then(res=> {return res.json()
                         })
                         .then(res=>{
-                            console.log(res);
                             if(res.code == 0){
                                 alert("有人註冊囉~")
                             }else{

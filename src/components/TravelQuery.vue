@@ -117,7 +117,6 @@ export default {
               .then((res)=>res.json())
               .then((json)=> {
                 this.result = json;
-                console.log(this.result);
               })
         },
         showdetail(index){

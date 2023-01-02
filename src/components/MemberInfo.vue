@@ -104,11 +104,9 @@ export default {
                     .then((res) => res.json())
                     .then((json) =>{
                       this.result = json[0];
-                      console.log(this.result);
                     })
         },
         saveData(){
-          // console.log(this.result);
           // fetch(`{BASE_URL}/prod_update.php`)
           if(this.result.mem_name ==="" || this.result.mem_psw ==="" || this.result.mem_email ==="" || this.result.mem_phone ===""){
             alert("必填資料有缺少~");

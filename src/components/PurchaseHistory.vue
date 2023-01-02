@@ -130,10 +130,6 @@ export default {
     this.getData();
   },
   methods: {
-    // getResult2(){
-    //   console.log( this.tmp.filter(e=> e.product_orders_id == this.result[this.showdetailIndex].product_orders_id))
-    //   return this.tmp.filter(e=> e.product_orders_id == this.result[this.showdetailIndex].product_orders_id)
-    // },
     getData() {
       // this.result = result;
       // fetch(`http://localhost/cgd103-g4/public/phpfiles/getPurchaseHistory.php?memId=${this.mem_no}`)
@@ -141,22 +137,12 @@ export default {
         .then((res) => res.json())
         .then((json) => {
           this.temp = json;
-          // console.log(JSON.stringify(this.result));
-          // console.log(this.result[0]);
           let data = {};
           this.result = json.reduce(function (results, org) {
             (results[org.product_orders_id] =
               results[org.product_orders_id] || []).push(org);
             return results;
           }, {});
-          // json.forEach(function(obj) {
-          //   console.log(obj);
-          //   if (!data[obj.product_orders_id]) {
-          //     data[obj.product_orders_id] = obj;
-          //   }
-          // });
-          //   console.log(data)
-          //   this.result = data
         });
     },
     showdetail(index) {
