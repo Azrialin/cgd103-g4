@@ -15,7 +15,7 @@ use PHPMailer\PHPMailer\PHPMailer_Exception;
 // strtolower 大寫轉小寫
 // (filter_var($email, FILTER_VALIDATE_EMAIL)) 檢驗email格式
 // mb_convert_kana() 全形轉半形
-// $email = strtolower(trim(mb_convert_kana($_POST['email'], 'as', 'UTF-8')));
+
 $string = isset($_POST['email']) ? $_POST['email'] : '';
 $email = strtolower(trim(mb_convert_kana($string, 'as', 'UTF-8')));
 
@@ -60,20 +60,8 @@ $email = strtolower(trim(mb_convert_kana($string, 'as', 'UTF-8')));
         // Mailer error: SMTP Error: Could not authenticate.
 
         // OutLook 信箱二 
-        // $mail->Host = 'smtp.office365.com';
-        // $mail->Username = 'dontpig@hotmail.com.tw';
-        // $mail->Password = 'just2pig';
-        // $mail->SMTPSecure = 'tls';
-        // $mail->Port = 587;
-        // Mailer error: SMTP Error: Could not authenticate.
 
         // OutLook 信箱三
-        // $mail->Host = 'smtp.office365.com';
-        // $mail->Username = 'just2boring@hotmail.com';
-        // $mail->Password = '1u,6gj831p4';
-        // $mail->SMTPSecure = 'tls';
-        // $mail->Port = 587;
-        // Mailer error: SMTP Error: Could not authenticate.
 
         // OutLook 信箱四
         $mail->Host = 'smtp.office365.com';
@@ -81,15 +69,21 @@ $email = strtolower(trim(mb_convert_kana($string, 'as', 'UTF-8')));
         $mail->Password = 'cgd103g4';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
+        // Mailer error: SMTP Error: Could not authenticate.
+
+        // mailersend 信箱五 Godaddy 阻擋
+        // $mail->Host = 'smtp.mailersend.net';
+        // $mail->Username = 'MS_Py2LMd@jetspeed.cc';
+        // $mail->Password = 'CmBA4CYOh6O6VABN';
+        // $mail->SMTPSecure = 'tls';
+        // $mail->Port = 587;
     
         // 設置郵件內容
         // $mail->setFrom('tibametest@outlook.com', 'Jet Speed'); // 信箱一
-        // $mail->setFrom('dontpig@hotmail.com.tw', 'Jet Speed'); // 信箱二
-        // $mail->setFrom('just2boring@hotmail.com', 'Jet Speed'); // 信箱二
-        $mail->setFrom('cgd103_jetspeed@outlook.com', 'Jet Speed'); // 信箱二
+        $mail->setFrom('cgd103_jetspeed@outlook.com', 'Jet Speed'); // 信箱四
+        // $mail->setFrom('MS_Py2LMd@jetspeed.cc', 'Jet Speed'); // 信箱五
 
-        $mail->addAddress('chubbytobey@gmail.com', 'Recipient Name');
-        // $mail->addAddress($email, 'Recipient Name'); // 用變數寄不出去
+        $mail->addAddress($email, 'Recipient Name');
         $mail->Subject = '忘記密碼通知';
         $mail->Body = "尊敬的會員您好，我們收到了您的忘記密碼申請，以下是系統為您生成的新密碼：$newPsw, 請在登入後修改密碼，https://tibamef2e.com/cgd103/g4/front/login";
 

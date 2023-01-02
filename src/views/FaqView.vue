@@ -130,8 +130,8 @@
                 });
             },
             getFaqData_Fetch(){
-                fetch('http://localhost/CGD103_G4_front/public/phpfiles/Faq_getData.php')
-                // fetch(`${BASE_URL}/Faq_getData.php`)
+                // fetch('http://localhost/CGD103_G4_front/public/phpfiles/Faq_getData.php')
+                fetch(`${BASE_URL}/Faq_getData.php`)
                 .then(res=>res.json())
                 .then(json=>{
                     this.faqList = json;
