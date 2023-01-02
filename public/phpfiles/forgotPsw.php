@@ -59,10 +59,6 @@ $email = strtolower(trim(mb_convert_kana($string, 'as', 'UTF-8')));
         // $mail->Port = 587;
         // Mailer error: SMTP Error: Could not authenticate.
 
-        // OutLook 信箱二 
-
-        // OutLook 信箱三
-
         // OutLook 信箱四
         $mail->Host = 'smtp.office365.com';
         $mail->Username = 'cgd103_jetspeed@outlook.com';
